@@ -1,3 +1,6 @@
+
+import Navbar from "../Headers.js/Navbar/navbar";
+
 import { useSelector } from "react-redux";
 
 function Home(){
