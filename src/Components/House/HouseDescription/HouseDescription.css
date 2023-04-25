@@ -1,0 +1,29 @@
+#main{
+     width: 100%;
+     box-shadow: 1px 0px 1px  black;
+}
+#outer{
+    margin-left: 22vh;
+    width: 80%;
+}
+#desc{
+}
+.config{
+    color: rgb(105, 105, 105);
+    font-size: 2.6vh;
+}
+.contant{
+    color: rgb(0, 0, 0);
+    font-family: candara;
+    font-size: 3vh;
+    margin-top: -2vh;
+}
+#side{
+    margin-top: -1vh;
+}
+#down{
+    margin-left: 0.2vh;
+}
+.logimg{
+    box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 15px 0px;
+}
