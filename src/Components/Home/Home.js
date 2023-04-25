@@ -2,15 +2,19 @@
 import Navbar from "../Headers.js/Navbar/navbar";
 
 import { useSelector } from "react-redux";
-import HouseDescription from "../House/HouseDescription/HouseDescription";
-import Signin from "../User/signin";
-import Signup from "../User/signup";
-import PostProperty from "../House/PostProperty/postProperty";
+import RecommendedProperties from "../House/RecommendedProperties";
+import Categories from "../House/Categories/categories";
 
 function Home(){
   return <>
-  <h1>Home Component</h1>
-  <PostProperty/>
+   <div className="container-fluid">
+    
+    <Navbar/>
+    <div className="mtt"></div>
+    <RecommendedProperties/>
+    <div className="mtt"></div>
+    <Categories/>
+  </div>
   </>
 }
 

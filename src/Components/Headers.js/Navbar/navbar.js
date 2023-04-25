@@ -6,7 +6,8 @@ function Navbar (){
           <div className="navbardivBackgroundColor">
           <nav className="navbar navbar-expand-lg main-nav px-0 ">
             <div className="navbar-brand" >
-              <span> Kirayewala</span>
+              <img src="images/logo.png" className="logoImg"/>
+              {/* <span> Kirayewala</span> */}
             </div>
             <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#mainMenu" aria-controls="mainMenu" aria-expanded="false" aria-label="Toggle navigation">
               <span className="icon-bar icon-bar-1" />
@@ -38,7 +39,7 @@ function Navbar (){
               </ul>
             </div>
           </nav>
-          <div className="demo">
+          <div className="navbarHelpdiv">
            <SearchBar/>
          </div>
           

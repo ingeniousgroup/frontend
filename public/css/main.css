@@ -10,11 +10,10 @@
    
   } */
 
-  .navbardivBackgroundColor{
-    background-color: #2775EA;
-    height: 330px;
+  body{
+    background-color: whitesmoke;
   }
-  
+
   #mainMenu li > a {
     font-size: 16px;
     letter-spacing: 1px;
@@ -71,11 +70,19 @@
   }
   
   .main-header {
-    position: fixed;
     top: 0;
     left: 0;
-    /* z-index: 99; */
+    /* background-color: #2775EA; */
+    /* background: rgb(2,0,36);
+    background: linear-gradient(157deg, rgba(2,0,36,1) 0%, rgba(34,107,215,1) 35%, rgba(0,212,255,1) 100%); */
+    height: 330px;
     width: 100%;
+    /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#1e5799+0,7db9e8+100&1+0,0+100;Blue+to+Transparent */
+    background: -moz-linear-gradient(top,  rgba(39,117,234,1) 0%, rgba(125,185,232,0) 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(top,  rgba(39,117,234,1) 0%,rgba(125,185,232,0) 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to bottom,  rgba(39,117,234,1) 0%,rgba(125,185,232,0) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1e5799', endColorstr='#007db9e8',GradientType=0 ); /* IE6-9 */
+
     -webkit-transition: all 0.4s ease;
     transition: all 0.4s ease;
   }
@@ -89,13 +96,6 @@
     transition: all 0.4s ease;
   }
   
-  .main-header.fixed-nav .navbar-brand > img:last-of-type {
-    display: block;
-  }
-  
-  .main-header.fixed-nav .navbar-brand > img:first-of-type {
-    display: none;
-  }
   .navbar-brand {
     color: #fff;
   }
@@ -216,6 +216,8 @@
     height: 120px;
     background-color: white;
     z-index: 1000;
+    /* box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 2px 0px; */
+    box-shadow: rgba(0, 0, 0, 0.15) 0px 3px 3px 0px;
 }
 
 .categriesInSearchBar{
@@ -345,4 +347,179 @@
 
 .postPropertyButton :hover{
    background-color: #dc3545;
+}
+
+
+/* --------------------------- */
+
+
+
+.profile-card-2 {
+    max-width: 350px;
+    background-color: #FFF;
+    box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.1);
+    background-position: center;
+    overflow: hidden;
+    position: relative;
+    margin: 10px auto;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.profile-card-2 img {
+    transition: all linear 0.25s;
+}
+
+.profile-card-2 .profile-name {
+    position: absolute;
+    left: 30px;
+    bottom: 30px;
+    font-size: 30px;
+    color: #FFF;
+    /* text-shadow: 0px 0px 20px rgba(0, 0, 0, 0.5); */
+    text-shadow: 0px 2px 4px black;
+    font-weight: bold;
+    transition: all linear 0.25s;
+
+}
+
+.profile-card-2 .profile-icons {
+    position: absolute;
+    bottom: 30px;
+    right: 30px;
+    color: #FFF;
+    transition: all linear 0.25s;
+}
+
+.profile-card-2 .profile-username {
+    position: absolute;
+    bottom: 15px;
+    left: 30px;
+    color: #FFF;
+    font-size: 13px;
+    transition: all linear 0.25s;
+    font-style: italic;
+    text-shadow: 0px 2px 4px black ;
+    
+}
+
+.profile-card-2 .profile-icons .fa {
+    margin: 5px;
+    font-size: 20px;
+    font-weight: 600;
+    color: white;
+}
+.img{
+    height: 200px;
+}
+.profile-card-2:hover img {
+    filter: blur(1.5px);
+}
+
+.profile-card-2:hover .profile-name {
+    bottom: 80px;
+}
+
+.profile-card-2:hover .profile-username {
+    bottom: 60px;
+}
+
+.profile-card-2:hover .profile-icons {
+    right: 40px;
+}
+
+.profile-textDiv{
+    max-width: 350px;
+    background-position: center;
+    overflow: hidden;
+    position: relative;
+    margin: 10px auto;
+    cursor: pointer;
+}
+.profile-textDiv a{
+   text-decoration: none;
+}
+.paddingStyle{
+    padding-left: 40%;
+}
+
+.navbarHelpdiv{
+  /* background-color: #dc3545; */
+  margin-top: 211px;
+}
+
+.mtt{
+    margin-top: 100px;
+}
+/* ------------------- */
+.profile-card-6 {
+    max-width: 300px;
+    background-color: #FFF;
+    border-radius: 5px;
+    box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    position: relative;
+    margin: 10px auto;
+    cursor: pointer;
+}
+
+.profile-card-6 img {
+    
+    transition: all 0.15s linear;
+}
+
+.profile-card-6 .profile-name {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    font-size: 25px;
+    font-weight: bold;
+    color: #FFF;
+    padding: 15px 20px;
+    background: linear-gradient(140deg, rgba(0, 0, 0, 0.4) 50%, rgba(255, 255, 0, 0) 50%);
+    transition: all 0.15s linear;
+}
+
+.profile-card-6 .profile-position {
+    position: absolute;
+    color: rgba(255, 255, 255, 0.4);
+    left: 30px;
+    top: 100px;
+    transition: all 0.15s linear;
+}
+
+.profile-card-6 .profile-overview {
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    background: linear-gradient(0deg, rgba(0, 0, 0, 0.4) 50%, rgba(255, 255, 0, 0));
+    color: #FFF;
+    padding: 50px 0px 20px 0px;
+    transition: all 0.15s linear;
+}
+
+.profile-card-6 .profile-overview h3 {
+    font-weight: bold;
+}
+
+.profile-card-6 .profile-overview p {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.profile-card-6:hover img {
+    filter: brightness(80%);
+}
+
+.profile-card-6:hover .profile-name {
+    padding-left: 25px;
+    padding-top: 20px;
+}
+
+.profile-card-6:hover .profile-position {
+    left: 40px;
+}
+
+.profile-card-6:hover .profile-overview {
+    padding-bottom: 25px;
 }
