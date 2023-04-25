@@ -1,6 +1,12 @@
+import { useState } from "react";
 import Navbar from "../../../Headers.js/Navbar/navbar";
 import "./Flate.css";
 function Flate(){
+
+  const [floor,setFloor] = useState();
+    const noOffloor = (event)=>{
+      setFloor(event.target.value);
+    }
     return <>
     <Navbar/>
     <div className="mtt"></div>
@@ -95,7 +101,74 @@ function Flate(){
                 </select>
                 </div>
                </div>
-            </div>             
+            </div>
+            <h5 className="mt-4 mb-4">Other Rooms</h5>
+            <div class="row d-flex justify-content-center">
+              
+                <div class="card">
+                   <div class="card-body text-center">
+                        <label class="check">
+                          <input type="checkbox"/>
+                          <span>Pooja Room</span>
+                        </label>
+                        <label class="check">
+                          <input type="checkbox"/>
+                          <span>Study Room</span>
+                        </label>
+
+                        <label class="check">
+                          <input type="checkbox"/>
+                          <span>Servent Room</span>
+                        </label>
+
+                        <label class="check">
+                          <input type="checkbox"/>
+                          <span>Store Room</span>
+                        </label>
+                        </div>
+                    </div>
+            </div>
+            <h5 className="mt-4 mb-4">Furnishing</h5>
+            <div className="row">
+              <div className="col-2">
+                  <label class="check">
+                    <input type="radio" id="furnished" name="Furnishing"/>
+                    <span>Furnished</span>
+                  </label>
+              </div>
+              <div className="col-3">
+                <label class="check">
+                  <input type="radio" id="semiFurnished" name="Furnishing" />
+                  <span>Semi-Furnished</span>
+                </label>
+              </div>
+              <div className="col-3">
+                <label class="check">
+                  <input type="radio" id="unFurnished" name="Furnishing"/>
+                  <span>Un-Furnished</span>
+                </label>
+              </div>
+            </div>
+            <h5 className="mt-4 mb-4">Floor Details</h5>
+            <div className="row">
+              <div className="col-6  row flor-input">
+                <div className="bg-border">
+                 <small className="col-8">Total Floor</small>
+                 <input onBlur={noOffloor} className="floor-input col-8" type="text"/>  
+                 </div>
+              </div>
+              <div className="col-6  row ">
+                <div className="bg-border">
+                 <small className="col-8">Property on floor</small>
+                 <select class="form-select selectStyle" id="sel1" name="sellist1">
+                  <option>Basement</option>
+                  <option>Ground</option>
+                  <option>Lower Ground</option>
+                  {}
+                </select>
+                 </div>
+              </div>
+            </div>
         </div>
         <div className="col-3 bg-c"></div>
       </div>
