@@ -1,22 +1,23 @@
 import { useState } from 'react';
 import './postProperty.css'
-import { useNavigate } from 'react-router';
-
+import { Route, Routes, useNavigate } from 'react-router';
+import Flate from '../PostPropertyForms/Flate/Flate';
+import Home from '../../Home/Home';
 
 function PostProperty() {
     const [propertyType, setPropertyType] = useState("commercial");
-    const [property , setProperty] = useState("");
+    const [property, setProperty] = useState("");
     const navigate = useNavigate();
-    const changecontent = (event)=>{
+    const changecontent = (event) => {
         setProperty(event.target.name);
     }
-    const Continue = () => {
-        window.alert("called")
-        navigate("/");
+    const Continue = (event) => {
+        if (property)
+            navigate('/' + property);
     }
     return <>
         <div className='container-fluid main'>
-            <div className='row mt-4 inner '  >
+            <div className='row mt-4 inner'>
                 <div className='col-md-3  bg-light'>
 
                 </div>
@@ -27,7 +28,7 @@ function PostProperty() {
                         </div> */}
                         <div className='col-md-12 '>
                             <h4 className='welcome'>
-                                Welcome back Mr.Andrew Aderson<br/>
+                                Welcome back Mr.Andrew Aderson<br />
                                 fill out basic details
                             </h4>
                         </div>
@@ -37,8 +38,8 @@ function PostProperty() {
                             <p className='fs-5'>
                                 what kind of property do you have ?
                             </p>
-                            <input  type='radio' name='propertyType' id='commercial' onClick={(event) => setPropertyType(event.target.id)} /><label for='commercial' className='ms-2 com-radio'>Commercial</label>
-                            <input type='radio'  className='ms-5' name='propertyType' id='residential' onClick={(event) => setPropertyType(event.target.id)} /><label for='residential' className='ms-2 res-radio'>Residential</label>
+                            <input type='radio' name='propertyType' id='commercial' onClick={(event) => setPropertyType(event.target.id)} /><label for='commercial' className='ms-2 com-radio'>Commercial</label>
+                            <input type='radio' className='ms-5' name='propertyType' id='residential' onClick={(event) => setPropertyType(event.target.id)} /><label for='residential' className='ms-2 res-radio'>Residential</label>
                             {propertyType == "commercial" && <p className=''>
                                 <div className='row mt-4 ms-3 com-outer'>
                                     <div className='col-md-12 com-out-inner'>
@@ -74,9 +75,12 @@ function PostProperty() {
                     </div>
                     <div className='row mt-4'>
                         <div className='col-md-12  ms-2'>
-                            <button className='continue' onClick={Continue}>
+                            {property ? <button className='continue' onClick={Continue}>
                                 Continue
-                            </button>
+                            </button> : <button disabled className='continue' onClick={Continue}>
+                                Continue
+                            </button>}
+
                         </div>
                     </div>
                 </div>
@@ -85,7 +89,11 @@ function PostProperty() {
                 </div>
             </div>
         </div>
+        <Routes>
+            <Route path='/flat' element={<Flate />} />
+        </Routes>
     </>
+
 }
 
 export default PostProperty;

@@ -2,7 +2,7 @@ import Navbar from "../../../Headers.js/Navbar/navbar";
 import "./Flate.css";
 function Flate(){
     return <>
-    <Navbar/>
+    {/* <Navbar/> */}
     <div className="mtt"></div>
       <div className="row ">
         <div className="col-3 bg-c"></div>
