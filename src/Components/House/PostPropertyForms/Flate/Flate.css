@@ -1,0 +1,92 @@
+.bg-c{
+ background-color: #f4f5f7;
+}
+
+.parent {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+  
+  .parent button {
+    background-color: #2775ea;
+    color: white;
+    border: none;
+    padding: 5px;
+    font-size: 12px;
+    height: 30px;
+    width: 30px;
+    box-shadow: 0 2px 4px darkslategray;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+  
+  .parent button:active {
+    background-color: #2775ea;
+    box-shadow: 0 0 2px darkslategray;
+    transform: translateY(2px);
+  }
+  
+  .parent button:not(:first-child) {
+    margin-top: 10px;
+  }
+  
+  .round-6 {
+    border-radius: 70%;
+  }
+  
+.p-style{
+    margin-left: 15px;
+    font-size: 12px;
+    font-weight: 500;
+    color: #2775ea;
+    cursor: pointer;
+}  
+
+.parent .cylender{
+    background-color: #2775ea;
+    color: white;
+    padding: 5px;
+    font-size: 12px;
+    height: 30px;
+    width: 90px;
+    border-radius: 25px 25px;
+    box-shadow: 0 2px 4px darkslategray;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.carpetArea{
+    width: 350px;
+    height: 50px;
+    border: 1px solid #2775ea;
+}
+
+.carpetArea input{
+    padding: 10px;
+    width: 200px;
+    border: none; 
+}
+
+.carpetArea input:focus, textarea:focus, select:focus{
+    outline: none;
+}
+
+.inputArea{
+    width:220px;
+    height: 50px;
+    border-right: 1px solid #2775ea;
+    float: left;
+}
+
+.carpetAreaDD{
+  float: left;   
+}
+
+.selectStyle{
+        border: none;
+    width: 102px;
+}
+.carpetAreaDD select:focus{
+    outline: none;
+}   
