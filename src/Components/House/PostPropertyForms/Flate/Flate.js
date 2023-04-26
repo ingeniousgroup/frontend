@@ -9,7 +9,8 @@ function Flate(){
   let totalfloor = useRef(""); 
   let onFloor = useRef("");
   let [otherRoom, setOtherRoom] = useState([]);
-  let [furnshing, setFurnshing] = useState("furnshing");
+  let [furnshing, setFurnshing] = useState("furnished");
+  let [floor,setFloor] = useState([]);
   
   function bedroom(no){
    for( var i = 1 ; i<=4;i++){
@@ -23,7 +24,7 @@ function Flate(){
       obj.style.color = "white";
     }
    }
-   room = no;
+   room = no*1;
   }
   function bathroom(no){
     for( var i = 1 ; i<=4;i++){
@@ -37,9 +38,10 @@ function Flate(){
        obj.style.color = "white";
      }
     }
-    noOfBathoom = no;
-   }
-   function balconiesFunction(no){
+    noOfBathoom = no*1;
+    // alert(noOfBathoom);
+  }
+  function balconiesFunction(no){
     for( var i = 1 ; i<=5;i++){
      if(i == no){ 
        var obj =document.getElementById("balconiesbtn"+no);
@@ -55,41 +57,38 @@ function Flate(){
      balconies = "3++";
     else
      balconies = no-1;
-   }
-   function carpetAreaFun(event){
-    carpetArea = carpetArea.current.value+" "+event.target.value;
-    alert(carpetArea); 
-  }
 
+    //  console.log(balconies);
+  }
+  function carpetAreaFun(event){
+    console.log(carpetArea.current.value);
+  }
   const handleChange = (e) => {
     const { value, checked } = e.target;    
     if (checked) 
       otherRoom = [...otherRoom,value];
     else
       otherRoom = otherRoom.filter((e)=> e !== value);
+    console.log(otherRoom);
   }
-  
   const furnshingChange = (e)=>{
     alert(e.target.id);
-    setFurnshing(e.target.value);
+    setFurnshing(e.target.id);
   }
-  const [floor,setFloor] = useState([]);
-
   const noOffloor = (event)=>{
     alert("no ... "+event.target.value*1)
     for (let i = 1 ; i <= event.target.value*1; i++){
       console.log("---"+i)
     }
   }
-
   const submit = ()=>{
-    console.log("room   "+room);
-    console.log("bathroom   "+noOfBathoom);
-    console.log("Balconies   "+balconies);
-    console.log("CaerpetArea"+carpetArea);
-    console.log("Other room   "+otherRoom);
-    console.log("FUrnising   "+furnshing);
-    console.log("floor   "+floor);
+    console.log(room);
+    console.log(noOfBathoom);
+    console.log(balconies);
+    console.log(carpetArea.current.value);
+    console.log(otherRoom);
+    console.log(furnshing);
+    console.log(floor);
   }
     return <>
     <Navbar/>
@@ -97,7 +96,8 @@ function Flate(){
       <div className="row ">
         
         <div className="col-3 bg-c"></div>
-        <div className="col-6 p-4  ">
+        <div className="col-6 p-4 ">
+          
             <h3 className="ml-2 mb-5">Tell us about your property</h3>
              <h5>Add Room Details</h5>
              <div className="row">

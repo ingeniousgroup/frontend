@@ -42,9 +42,7 @@ function Navbar (){
           <div className="navbarHelpdiv">
            <SearchBar/>
          </div>
-          
           </div>
-
         </div>
         {/* /.container */}
       </header>
