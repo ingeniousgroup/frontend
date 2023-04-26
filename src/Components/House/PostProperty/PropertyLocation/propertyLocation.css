@@ -1,0 +1,18 @@
+.locationfinder{
+    height: 7vh;
+    width: 50vh;
+
+}
+.locationfinder::placeholder{
+    font-size: 3vh;
+}
+.mess{
+    color: rgb(148, 148, 148);
+    
+}
+.locationFinder{
+    margin-left: -22vh;
+}
+.find{
+    cursor: pointer;
+}

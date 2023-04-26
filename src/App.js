@@ -3,14 +3,12 @@ import './App.css';
 import Home from './Components/Home/Home';
 import { Route, Routes } from 'react-router';
 import Signin from './Components/User/signin';
+import Flate from './Components/House/PostPropertyForms/Flate/Flate';
+import { BrowserRouter } from 'react-router-dom';
 
 function App() {
   return<>
     <Home/>
-    <Routes>
-      {/* <Route path='/' element={<Signin/>}/> */}
-    </Routes>
-   </>
 }
 
 export default App;
