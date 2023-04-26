@@ -1,7 +1,9 @@
 import { useRef, useState } from "react";
 import Navbar from "../../../Headers.js/Navbar/navbar";
 import "./Flate.css";
+import PropertyLocation from "../../PostProperty/PropertyLocation/propertyLocation";
 function Flate(){
+
   let room = useRef("");
   let noOfBathoom = useRef("");
   let balconies = useRef("");
@@ -91,6 +93,7 @@ function Flate(){
     console.log(floor);
   }
     return <>
+
     <Navbar/>
     <div className="mtt"></div>
       <div className="row ">
@@ -106,6 +109,7 @@ function Flate(){
                       <div className="row p-3">
                           
                         <div className="parent col">
+
                           <button id="bedroombtn1" onClick={()=>bedroom(1)} className="round-6">1</button>
                         </div>
                         <div className="parent col">
@@ -129,6 +133,7 @@ function Flate(){
                 <div className="col-6">
                       <div className="row p-3">
                         <div className="parent col">
+
                           <button id="bathroombtn1" onClick={()=>bathroom(1)} className="round-6">1</button>
                         </div>
                         <div className="parent col">
@@ -139,6 +144,7 @@ function Flate(){
                         </div>
                         <div className="parent col">
                           <button id="bathroombtn4" onClick={()=>bathroom(4)} className="round-6">4</button>
+
                         </div>
                         <div className="col"></div>
                         <div className="col"></div>
@@ -152,6 +158,7 @@ function Flate(){
                 <div className="col-6">
                       <div className="row p-3">
                         <div className="parent col">
+
                           <button id="balconiesbtn1" onClick={()=>balconiesFunction(1)} className="round-6">0</button>
                         </div>
                         <div className="parent col">
@@ -178,7 +185,9 @@ function Flate(){
                   <input ref={carpetArea} type="text"  placeholder="Carpet Area"/>
                 </div>
                 <div className="carpetAreaDD ">
+
                 <select onChange={carpetAreaFun} className="form-select selectStyle" id="sel1" name="sellist1">
+
                   <option>Meter</option>
                   <option>Sqr Meter</option>
                   <option>Acers</option>
@@ -193,20 +202,24 @@ function Flate(){
                 <div className="card">
                    <div className="card-body text-center">
                         <label className="check">
+
                           <input type="checkbox" name="otherroom" value="poojaRoom" onChange={handleChange}/>
                           <span>Pooja Room</span>
                         </label>
                         <label className="check">
                           <input type="checkbox" name="otherroom" value="studyRoom" onChange={handleChange}/>
+
                           <span>Study Room</span>
                         </label>
 
                         <label className="check">
+
                           <input type="checkbox" name="otherroom" value="serventRoom" onChange={handleChange}/>
                           <span>Servent Room</span>
                         </label>
 
                         <label className="check">
+
                           <input type="checkbox" name="otherroom" value="storeRoom" onChange={handleChange}/>
                           <span>Store Room</span>
                         </label>
@@ -217,18 +230,21 @@ function Flate(){
             <div className="row">
               <div className="col-2">
                   <label className="check">
+
                     <input type="radio" id="furnished" name="Furnishing"  onChange={furnshingChange}/>
                     <span>Furnished</span>
                   </label>
               </div>
               <div className="col-3">
                 <label className="check">
+
                   <input type="radio" id="semiFurnished" name="Furnishing"  onChange={furnshingChange}/>
                   <span>Semi-Furnished</span>
                 </label>
               </div>
               <div className="col-3">
                 <label className="check">
+
                   <input type="radio" id="unFurnished" name="Furnishing" onChange={furnshingChange}/>
                   <span>Un-Furnished</span>
                 </label>
@@ -243,6 +259,7 @@ function Flate(){
                  </div>
               </div>
               <div className="col-6  row ">
+
                 <div className="bg-border ">
                  <small className="col-8"  >Property on floor</small>
                  <select className="form-select selectStyle w-100"  name="sellist1">

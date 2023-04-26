@@ -1,6 +1,13 @@
+import { useNavigate } from "react-router";
 import SearchBar from "./SerchBar";
 
+
 function Navbar (){
+  const navigate = useNavigate();
+  const propertyPost = ()=>{
+    navigate("/propertypost");
+  }
+
   return<header className="main-header">
          <div className="container-fluid">
           <div className="navbardivBackgroundColor">
@@ -26,7 +33,7 @@ function Navbar (){
                   <a href="#service">Services</a>
                 </li>
                 <li>
-                  <button className="postPropertyButton">
+                  <button className="postPropertyButton" onClick={propertyPost}>
                     Post property
                   </button>
                 </li>
@@ -34,7 +41,7 @@ function Navbar (){
                   <a href="#contact">Contact</a>
                 </li>
                 <li className="userIconStyle">
-                <i class="fa fa-user-circle-o" aria-hidden="true"></i>
+                <i class="fa fa-user-circle-o" aria-hidden="true" ></i>
                 </li>
               </ul>
             </div>
