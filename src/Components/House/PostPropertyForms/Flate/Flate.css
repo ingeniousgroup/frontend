@@ -133,3 +133,15 @@ label.check input:checked + span {
 .bg-border{
     border: 2px solid #2775ea;
 }
+.submitBtnDiv{
+    margin-top: 35px;
+}
+.submitbtn{
+   padding: 5px;
+   padding-left: 20px;
+   padding-right: 20px;
+   border:2px solid #2775ea;
+   border-radius: 50px;
+   background-color: #f0f9ff;
+   color: #2775ea;
+}
