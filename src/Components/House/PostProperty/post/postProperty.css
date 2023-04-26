@@ -3,7 +3,6 @@
     font-weight: 600;
 }
 .com-outer{
-    display: flex;
     text-align: left;
 }
 .com-element{
@@ -33,14 +32,11 @@
     border: 0;
     box-shadow: 2px 2px 3px black;
 }
-.com-out-inner :hover{
-    background-color: rgb(198, 231, 253);
-}
 .continue{
     height: 7vh;
     width: 13vh;
-    background-color: #4e93fa;
-    border-radius: 1.3vh 1.3vh ;
+    background-color: #2775ea;
+    border-radius: 1vh 1vh ;
     border: 0;
     color: white;
 }
