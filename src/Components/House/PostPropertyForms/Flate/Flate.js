@@ -1,8 +1,9 @@
 import { useRef, useState } from "react";
-import Navbar from "../../../Headers.js/Navbar/navbar";
 import "./Flate.css";
-import PropertyLocation from "../../PostProperty/PropertyLocation/propertyLocation";
+import { useLocation, useNavigate } from "react-router-dom";
 function Flate(){
+  
+  const typeOfPropertyDetails = useLocation();
 
   let room = useRef("");
   let noOfBathoom = useRef("");
@@ -11,8 +12,10 @@ function Flate(){
   let totalfloor = useRef(""); 
   let onFloor = useRef("");
   let [otherRoom, setOtherRoom] = useState([]);
-  let [furnshing, setFurnshing] = useState("furnshing");
+  let [furnshing, setFurnshing] = useState("furnished");
+  let [floor,setFloor] = useState([]);
   
+  const navigate = useNavigate();
   function bedroom(no){
    for( var i = 1 ; i<=4;i++){
     if(i == no){ 
@@ -25,7 +28,7 @@ function Flate(){
       obj.style.color = "white";
     }
    }
-   room = no;
+   room = no*1;
   }
   function bathroom(no){
     for( var i = 1 ; i<=4;i++){
@@ -39,9 +42,10 @@ function Flate(){
        obj.style.color = "white";
      }
     }
-    noOfBathoom = no;
-   }
-   function balconiesFunction(no){
+    noOfBathoom = no*1;
+    // alert(noOfBathoom);
+  }
+  function balconiesFunction(no){
     for( var i = 1 ; i<=5;i++){
      if(i == no){ 
        var obj =document.getElementById("balconiesbtn"+no);
@@ -57,50 +61,48 @@ function Flate(){
      balconies = "3++";
     else
      balconies = no-1;
-   }
-   function carpetAreaFun(event){
-    carpetArea = carpetArea.current.value+" "+event.target.value;
-    alert(carpetArea); 
-  }
 
+    //  console.log(balconies);
+  }
+  function carpetAreaFun(event){
+    console.log(carpetArea.current.value);
+  }
   const handleChange = (e) => {
     const { value, checked } = e.target;    
     if (checked) 
       otherRoom = [...otherRoom,value];
     else
       otherRoom = otherRoom.filter((e)=> e !== value);
+    console.log(otherRoom);
   }
-  
   const furnshingChange = (e)=>{
     alert(e.target.id);
-    setFurnshing(e.target.value);
+    setFurnshing(e.target.id);
   }
-  const [floor,setFloor] = useState([]);
-
   const noOffloor = (event)=>{
     alert("no ... "+event.target.value*1)
     for (let i = 1 ; i <= event.target.value*1; i++){
       console.log("---"+i)
     }
   }
-
   const submit = ()=>{
-    console.log("room   "+room);
-    console.log("bathroom   "+noOfBathoom);
-    console.log("Balconies   "+balconies);
-    console.log("CaerpetArea"+carpetArea);
-    console.log("Other room   "+otherRoom);
-    console.log("FUrnising   "+furnshing);
-    console.log("floor   "+floor);
+    console.log(room);
+    console.log(noOfBathoom);
+    console.log(balconies);
+    console.log(carpetArea);
+    console.log(otherRoom);
+    console.log(furnshing);
+    console.log(floor);
+    const ActualHouseDetails = {room,noOfBathoom,balconies,carpetArea,otherRoom,furnshing,floor};
+    navigate("/CurrentLocation",{state:{ActualHouseDetails,typeOfPropertyDetails}});
   }
     return <>
-
-    <Navbar/>
     <div className="mtt"></div>
       <div className="row ">
         
         <div className="col-3 bg-c"></div>
-        <div className="col-6 p-4  ">
+        <div className="col-6 p-4 ">
+          
             <h3 className="ml-2 mb-5">Tell us about your property</h3>
              <h5>Add Room Details</h5>
              <div className="row">
@@ -182,7 +184,7 @@ function Flate(){
              <div className="row">
                <div className="carpetArea ml-4 ">
                 <div className="inputArea   ">
-                  <input ref={carpetArea} type="text"  placeholder="Carpet Area"/>
+                  <input onChange={(event)=>{carpetArea=event.target.value}} type="text"  placeholder="Carpet Area"/>
                 </div>
                 <div className="carpetAreaDD ">
 
@@ -271,7 +273,7 @@ function Flate(){
               </div>
             </div>
             <div className="submitBtnDiv">
-              <button onClick={submit} className="submitbtn">
+              <button onClick={submit} className='continue'>
                 Continue
               </button>
             </div>

@@ -523,3 +523,63 @@
 .profile-card-6:hover .profile-overview {
     padding-bottom: 25px;
 }
+
+
+/* --------------------- */
+.popout-left {
+	width: 100px;
+	margin-right: 20px;
+}
+.popout-menu-left {
+	background: none;
+	border: none;
+	box-shadow: none;
+	margin-right: 100px;
+	top: -82px;
+}
+.popout-menu-left li {
+	width: 140px;
+	margin-bottom: 18px;
+	padding: 6px;
+	background: #337ab7;
+	border-radius: 6px;
+	box-shadow: 0 0 8px rgba(0,0,0, 0.6);
+}
+.popout-menu-left li:last-of-type {
+	margin-bottom: 0;
+}
+.popout-menu-left li:not(:nth-of-type(2n)){
+	margin-left: 12px;
+}
+.popout-menu-left li a {
+	color: #fff;
+}
+.popout-menu-left li a:hover {
+	background: inherit;
+	color: #fff;
+}
+.popout-menu-left li:hover {
+	background: #286090;
+}
+/** Arrow Styles For Popout Left **/
+.arrow-box-right {
+	position: relative;
+	background: #337ab7;
+}
+.arrow-box-right::after {
+	left: 100%;
+	top: 50%;
+	border: solid transparent;
+	content: " ";
+	height: 0;
+	width: 0;
+	position: absolute;
+	pointer-events: none;
+	border-color: rgba(136, 183, 213, 0);
+	border-left-color: #337ab7;
+	border-width: 8px;
+	margin-top: -8px;
+}
+.popout-menu-left li:hover:after {
+	border-left-color: #286090;
+}

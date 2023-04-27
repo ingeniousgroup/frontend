@@ -35,6 +35,7 @@ function Navbar (){
                 <li>
                   <button className="postPropertyButton" onClick={propertyPost}>
                     Post property
+            
                   </button>
                 </li>
                 <li>
@@ -49,9 +50,7 @@ function Navbar (){
           <div className="navbarHelpdiv">
            <SearchBar/>
          </div>
-          
           </div>
-
         </div>
         {/* /.container */}
       </header>

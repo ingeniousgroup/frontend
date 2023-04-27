@@ -7,9 +7,9 @@ import Categories from "../House/Categories/categories";
 
 import PostProperty from "../House/PostProperty/post/postProperty";
 import Flate from "../House/PostPropertyForms/Flate/Flate";
+import { Route, Routes } from "react-router";
 import PropertyLocation from "../House/PostProperty/PropertyLocation/propertyLocation";
 import ImagePost from "../House/PostProperty/PostImage/ImagePost";
-import { Route, Routes } from "react-router";
 
 function Home(){
   return <>
@@ -34,6 +34,9 @@ function Home(){
         <Route path="/office" element={<Flate/>}/>  
         <Route path="/other" element={<Flate/>}/>
         <Route path="/flat" element={<Flate/>}/>
+        <Route path="/CurrentLocation" element={<PropertyLocation/>}/>
+        <Route path="/uploadImage" element={<ImagePost/>}/>
+        
     </Routes>
     {/* <ImagePost/> */}
 
