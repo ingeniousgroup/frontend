@@ -2,12 +2,12 @@ function Categories(){
    return<>
     <h1>Categories</h1>
     <div className="row">
-    <div class="col-md-3">
-     <div class="profile-card-6"><img src="images/2.jpeg" class="img img-responsive"/>
-         <div class="profile-overview">
-            <div class="profile-overview">
-                <div class="row text-center">
-                    <div class="col-xs-4">
+    <div calssName="col-md-3">
+     <div calssName="profile-card-6"><img src="images/2.jpeg" calssName="img img-responsive"/>
+         <div calssName="profile-overview">
+            <div calssName="profile-overview">
+                <div calssName="row text-center">
+                    <div calssName="col-xs-4">
                         <h3>12000+</h3>
                         <p>Apartment</p>
                     </div>
@@ -17,12 +17,12 @@ function Categories(){
         </div>
      </div>
     </div>
-    <div class="col-md-3">
-     <div class="profile-card-6"><img src="images/2.jpeg" class="img img-responsive"/>
-         <div class="profile-overview">
-            <div class="profile-overview">
-                <div class="row text-center">
-                    <div class="col-xs-4">
+    <div calssName="col-md-3">
+     <div calssName="profile-card-6"><img src="images/2.jpeg" calssName="img img-responsive"/>
+         <div calssName="profile-overview">
+            <div calssName="profile-overview">
+                <div calssName="row text-center">
+                    <div calssName="col-xs-4">
                         <h3>12000+</h3>
                         <p>Apartment</p>
                     </div>
@@ -32,12 +32,12 @@ function Categories(){
         </div>
      </div>
     </div>
-    <div class="col-md-3">
-     <div class="profile-card-6"><img src="images/2.jpeg" class="img img-responsive"/>
-         <div class="profile-overview">
-            <div class="profile-overview">
-                <div class="row text-center">
-                    <div class="col-xs-4">
+    <div calssName="col-md-3">
+     <div calssName="profile-card-6"><img src="images/2.jpeg" calssName="img img-responsive"/>
+         <div calssName="profile-overview">
+            <div calssName="profile-overview">
+                <div calssName="row text-center">
+                    <div calssName="col-xs-4">
                         <h3>12000+</h3>
                         <p>Apartment</p>
                     </div>
@@ -47,12 +47,12 @@ function Categories(){
         </div>
      </div>
     </div>
-    <div class="col-md-3">
-     <div class="profile-card-6"><img src="images/2.jpeg" class="img img-responsive"/>
-         <div class="profile-overview">
-            <div class="profile-overview">
-                <div class="row text-center">
-                    <div class="col-xs-4">
+    <div calssName="col-md-3">
+     <div calssName="profile-card-6"><img src="images/2.jpeg" calssName="img img-responsive"/>
+         <div calssName="profile-overview">
+            <div calssName="profile-overview">
+                <div calssName="row text-center">
+                    <div calssName="col-xs-4">
                         <h3>12000+</h3>
                         <p>Office</p>
                     </div>
@@ -62,12 +62,12 @@ function Categories(){
         </div>
      </div>
     </div>
-    <div class="col-md-3">
-     <div class="profile-card-6"><img src="images/2.jpeg" class="img img-responsive"/>
-         <div class="profile-overview">
-            <div class="profile-overview">
-                <div class="row text-center">
-                    <div class="col-xs-4">
+    <div calssName="col-md-3">
+     <div calssName="profile-card-6"><img src="images/2.jpeg" calssName="img img-responsive"/>
+         <div calssName="profile-overview">
+            <div calssName="profile-overview">
+                <div calssName="row text-center">
+                    <div calssName="col-xs-4">
                         <h3>12000+</h3>
                         <p>Shop</p>
                     </div>
@@ -77,12 +77,12 @@ function Categories(){
         </div>
      </div>
     </div>
-    <div class="col-md-3">
-     <div class="profile-card-6"><img src="images/2.jpeg" class="img img-responsive"/>
-         <div class="profile-overview">
-            <div class="profile-overview">
-                <div class="row text-center">
-                    <div class="col-xs-4">
+    <div className="col-md-3">
+     <div className="profile-card-6"><img src="images/2.jpeg" className="img img-responsive"/>
+         <div className="profile-overview">
+            <div className="profile-overview">
+                <div className="row text-center">
+                    <div className="col-xs-4">
                         <h3>12000+</h3>
                         <p>House</p>
                     </div>

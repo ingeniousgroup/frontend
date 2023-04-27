@@ -1,21 +1,28 @@
 
 import Navbar from "../Headers.js/Navbar/navbar";
 
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import RecommendedProperties from "../House/RecommendedProperties";
 import Categories from "../House/Categories/categories";
 
 import PostProperty from "../House/PostProperty/post/postProperty";
 import Flate from "../House/PostPropertyForms/Flate/Flate";
 import { Route, Routes } from "react-router";
-import PropertyLocation from "../House/PostProperty/PropertyLocation/propertyLocation";
-import ImagePost from "../House/PostProperty/PostImage/ImagePost";
+import { useEffect } from "react";
+import { fetchPropertyList } from "../../redux-config/PropertySlice";
+import Property from "../House/Property/property";
+
 
 function Home(){
+  const dispatch = useDispatch();
+  useEffect(()=>{
+    dispatch(fetchPropertyList());
+  },[]);
   return <>
     <Navbar/>
     <div style={{marginTop:"100px"}}>
-
+   {/* <RecommendedProperties/> */}
+   <Property/>
     </div>
     
     <Routes>

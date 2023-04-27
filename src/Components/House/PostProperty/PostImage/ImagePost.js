@@ -57,19 +57,21 @@ function ImagePost() {
                     </div>
                 </div>
                 <div className='row mt-5 imagerow'>
-                    <div class="upload">
-                        <div class="upload-files">
+                    <div className="upload">
+                        <div className="upload-files">
                             <header>
                                 <p>
-                                    <i class="fa fa-cloud-upload" aria-hidden="true"></i>
-                                    <span class="up">up</span>
-                                    <span class="load">&nbsp;load</span>
+                                    <i className="fa fa-cloud-upload" aria-hidden="true"></i>
+                                    <span className="up">up</span>
+                                    <span className="load">&nbsp;load</span>
                                 </p>
                             </header>
-                            <div class="body" id="drop">
-                                <i class="fa fa-file-text-o pointer-none" aria-hidden="true" ></i>
-                                <p class="pointer-none">
-                                    <input type="file"  name="filename" onClick={uploadimage} />
+
+                            <div className="body" id="drop">
+                                <i className="fa fa-file-text-o pointer-none" aria-hidden="true" ></i>
+                                <p className="pointer-none">
+                                    <input type="file" id="myFile" name="filename" onClick={uploadimage} />
+
                                     <button className='uploadphoto'>
                                         <label for='myFile' onClick={uploadimage}>upload</label>
                                     </button> files here <br /> or  to begin the upload
@@ -78,12 +80,12 @@ function ImagePost() {
 
                             </div>
                             <footer>
-                                <div class="divider">
+                                <div className="divider">
                                     <span>FILES</span>
                                 </div>
-                                <div class="list-files">
+                                <div className="list-files">
                                 </div>
-                                <button class="importar">UPDATE FILES</button>
+                                <button className="importar">UPDATE FILES</button>
                             </footer>
                         </div>
                     </div>

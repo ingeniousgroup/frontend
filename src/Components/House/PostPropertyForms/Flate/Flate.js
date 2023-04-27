@@ -1,6 +1,8 @@
 import { useRef, useState } from "react";
 import "./Flate.css";
+
 import { useLocation, useNavigate } from "react-router-dom";
+
 function Flate(){
   
   const typeOfPropertyDetails = useLocation();
