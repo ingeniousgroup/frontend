@@ -35,6 +35,7 @@ function Navbar (){
                 <li>
                   <button className="postPropertyButton" onClick={propertyPost}>
                     Post property
+            
                   </button>
                 </li>
                 <li>
