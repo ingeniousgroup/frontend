@@ -12,6 +12,7 @@ import { useEffect } from "react";
 import { fetchPropertyList } from "../../redux-config/PropertySlice";
 import Property from "../House/Property/property";
 
+
 function Home(){
   const dispatch = useDispatch();
   useEffect(()=>{
@@ -40,6 +41,9 @@ function Home(){
         <Route path="/office" element={<Flate/>}/>  
         <Route path="/other" element={<Flate/>}/>
         <Route path="/flat" element={<Flate/>}/>
+        <Route path="/CurrentLocation" element={<PropertyLocation/>}/>
+        <Route path="/uploadImage" element={<ImagePost/>}/>
+        
     </Routes>
     {/* <ImagePost/> */}
 

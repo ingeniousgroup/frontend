@@ -1,6 +1,11 @@
 import { useRef, useState } from "react";
 import "./Flate.css";
+
+import { useLocation, useNavigate } from "react-router-dom";
+
 function Flate(){
+  
+  const typeOfPropertyDetails = useLocation();
 
   let room = useRef("");
   let noOfBathoom = useRef("");
@@ -12,6 +17,7 @@ function Flate(){
   let [furnshing, setFurnshing] = useState("furnished");
   let [floor,setFloor] = useState([]);
   
+  const navigate = useNavigate();
   function bedroom(no){
    for( var i = 1 ; i<=4;i++){
     if(i == no){ 
@@ -85,10 +91,12 @@ function Flate(){
     console.log(room);
     console.log(noOfBathoom);
     console.log(balconies);
-    console.log(carpetArea.current.value);
+    console.log(carpetArea);
     console.log(otherRoom);
     console.log(furnshing);
     console.log(floor);
+    const ActualHouseDetails = {room,noOfBathoom,balconies,carpetArea,otherRoom,furnshing,floor};
+    navigate("/CurrentLocation",{state:{ActualHouseDetails,typeOfPropertyDetails}});
   }
     return <>
     <div className="mtt"></div>
@@ -178,7 +186,7 @@ function Flate(){
              <div className="row">
                <div className="carpetArea ml-4 ">
                 <div className="inputArea   ">
-                  <input ref={carpetArea} type="text"  placeholder="Carpet Area"/>
+                  <input onChange={(event)=>{carpetArea=event.target.value}} type="text"  placeholder="Carpet Area"/>
                 </div>
                 <div className="carpetAreaDD ">
 
@@ -267,7 +275,7 @@ function Flate(){
               </div>
             </div>
             <div className="submitBtnDiv">
-              <button onClick={submit} className="submitbtn">
+              <button onClick={submit} className='continue'>
                 Continue
               </button>
             </div>

@@ -6,7 +6,7 @@ const store = configureStore({
     reducer:{
         user: UserSlice,
         property:PropertySlice
-    }
+    }    
 });
 
 export default store;

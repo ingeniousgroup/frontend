@@ -1,17 +1,26 @@
-import { Route, Routes, useNavigate } from 'react-router';
+import { Route, Routes, useNavigate,useLocation } from 'react-router';
 import './propertyLocation.css'
 import Flate from '../../PostPropertyForms/Flate/Flate';
+import { useRef } from 'react';
 
 function PropertyLocation(props) {
-    console.log("conponent load...");
+
+    const HouseAllDetails = useLocation();
+    
+
     const navigate = useNavigate();
+    let latitude = useRef('');
+    let longitude = useRef('');
     const findCurrentLocation = () => {
         navigator.geolocation.getCurrentPosition((position) => {
+            latitude = position.coords.latitude;
+            longitude = position.coords.longitude;
             document.getElementById('demo').defaultValue = position.coords.latitude;
         });
     }
     const PropertyDetails = () => {
-        navigate("/" + props.property);
+        const currentLocation = {latitude,longitude};
+        navigate("/uploadImage",{state:{currentLocation,HouseAllDetails}});
     }
     return <>
         <div className='row  inner'>
