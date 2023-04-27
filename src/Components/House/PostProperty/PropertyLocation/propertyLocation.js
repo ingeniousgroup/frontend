@@ -48,7 +48,7 @@ function PropertyLocation(props) {
                                 <option value='delhi' />
                             </datalist>
                             <span className='locationFinder'>
-                                <i class="fa fa-map-marker ms-1" aria-hidden="true" ></i>
+                                <i className="fa fa-map-marker ms-1" aria-hidden="true" ></i>
                                 <label onClick={findCurrentLocation} className='find'>
                                     Find My Location
                                 </label>

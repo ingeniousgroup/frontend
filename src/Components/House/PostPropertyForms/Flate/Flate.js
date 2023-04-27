@@ -1,7 +1,5 @@
 import { useRef, useState } from "react";
-import Navbar from "../../../Headers.js/Navbar/navbar";
 import "./Flate.css";
-import PropertyLocation from "../../PostProperty/PropertyLocation/propertyLocation";
 function Flate(){
 
   let room = useRef("");
@@ -93,8 +91,6 @@ function Flate(){
     console.log(floor);
   }
     return <>
-
-    <Navbar/>
     <div className="mtt"></div>
       <div className="row ">
         

@@ -31,14 +31,14 @@ function HouseDescription() {
                             <div className='row ' id='desc'>
                                 <div className='col-md-6 text-left  p-2'>
                                     <p>
-                                        <i class="fa fa-snowflake-o" aria-hidden="true"></i>
+                                        <i className="fa fa-snowflake-o" aria-hidden="true"></i>
                                         <span className='ms-2 config' >Configuration</span>
                                     </p>
                                     <p className='ms-5 contant'>
                                         2 bedroom, 2 bathrooms
                                     </p><hr/>
                                     <p>
-                                        <i class="fa fa-map-marker ms-1" aria-hidden="true"></i>
+                                        <i className="fa fa-map-marker ms-1" aria-hidden="true"></i>
                                         <span className='ms-2 config' >Area</span>
                                     </p>
                                     <p className='ms-5 contant'>
@@ -51,7 +51,7 @@ function HouseDescription() {
                                         Semi-furnished
                                     </p><hr/>
                                     <p>
-                                        <i class="fa fa-calendar ms-1"></i>
+                                        <i className="fa fa-calendar ms-1"></i>
                                         <span className='ms-2 config' >Available Date</span>
                                     </p>
                                     <p className='ms-5 contant'>
@@ -63,24 +63,24 @@ function HouseDescription() {
                                         <span className='ms-2 config' >Rent</span>
                                     </p>
                                     <p className='ms-5 contant'>
-                                        <i class="fa fa-inr" aria-hidden="true"></i> 1500/-
+                                        <i className="fa fa-inr" aria-hidden="true"></i> 1500/-
                                     </p><hr/>
                                     <p>
-                                        <i class="fa fa-map-marker ms-1" aria-hidden="true"></i>
+                                        <i className="fa fa-map-marker ms-1" aria-hidden="true"></i>
                                         <span className='ms-2 config' >Address</span>
                                     </p>
                                     <p className='ms-5 contant'>
                                         vijay nagar,indore
                                     </p><hr/>
                                     <p>
-                                        <i class="fa fa-calendar ms-1"></i>
+                                        <i className="fa fa-calendar ms-1"></i>
                                         <span className='ms-2 config' >Available For</span>
                                     </p>
                                     <p className='ms-5 contant'>
                                          family only
                                     </p><hr/>
                                     <p>
-                                        <i class="fa fa-calendar ms-1"></i>
+                                        <i className="fa fa-calendar ms-1"></i>
                                         <span className='ms-2 config' >Posted On</span>
                                     </p>
                                     <p className='ms-5 contant'>

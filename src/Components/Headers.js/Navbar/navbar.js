@@ -35,13 +35,14 @@ function Navbar (){
                 <li>
                   <button className="postPropertyButton" onClick={propertyPost}>
                     Post property
+            
                   </button>
                 </li>
                 <li>
                   <a href="#contact">Contact</a>
                 </li>
                 <li className="userIconStyle">
-                <i class="fa fa-user-circle-o" aria-hidden="true" ></i>
+                <i className="fa fa-user-circle-o" aria-hidden="true" ></i>
                 </li>
               </ul>
             </div>

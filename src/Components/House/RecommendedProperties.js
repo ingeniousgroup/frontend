@@ -1,4 +1,12 @@
+import axios from "axios";
+import { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
+import apiEndPoint from "../../redux-config/WebApi/api";
+
 function RecommendedProperties(){
+  const {propertyList,isLoding,error} = useSelector((state)=>state.property);
+  console.log(propertyList);
+  
    return <div className="row">
     <div className="col-12 p-4">
         <h1>Recommended Properties</h1>
@@ -13,7 +21,7 @@ function RecommendedProperties(){
       <div className="profile-username">Deposite 12000 per month</div>
       <div className="profile-icons">
       <a href="#">
-         <i class="fa fa-heart" aria-hidden="true"></i>
+         <i className="fa fa-heart" aria-hidden="true"></i>
         </a>
       </div>
 
@@ -34,7 +42,7 @@ function RecommendedProperties(){
       <div className="profile-username">Deposite 12000 per month</div>
       <div className="profile-icons">
       <a href="#">
-         <i class="fa fa-heart" aria-hidden="true"></i>
+         <i className="fa fa-heart" aria-hidden="true"></i>
         </a>
       </div>
 
@@ -55,7 +63,7 @@ function RecommendedProperties(){
       <div className="profile-username">Deposite 12000 per month</div>
       <div className="profile-icons">
       <a href="#">
-         <i class="fa fa-heart" aria-hidden="true"></i>
+         <i className="fa fa-heart" aria-hidden="true"></i>
         </a>
       </div>
 
@@ -76,7 +84,7 @@ function RecommendedProperties(){
       <div className="profile-username">Deposite 12000 per month</div>
       <div className="profile-icons">
       <a href="#">
-         <i class="fa fa-heart" aria-hidden="true"></i>
+         <i className="fa fa-heart" aria-hidden="true"></i>
         </a>
       </div>
 
@@ -97,7 +105,7 @@ function RecommendedProperties(){
       <div className="profile-username">Deposite 12000 per month</div>
       <div className="profile-icons">
       <a href="#">
-         <i class="fa fa-heart" aria-hidden="true"></i>
+         <i className="fa fa-heart" aria-hidden="true"></i>
         </a>
       </div>
 

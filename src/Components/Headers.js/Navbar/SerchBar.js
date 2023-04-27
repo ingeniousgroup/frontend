@@ -39,7 +39,7 @@ function SearchBar(){
                    <div className="col-7 searchBarDiv">
                     <div className="row">
                       <div className="col-2  serchIconStyle">
-                        <i class="fa fa-search" aria-hidden="true"></i>
+                        <i className="fa fa-search" aria-hidden="true"></i>
                       </div>
                       <div className="col-10 ">
                         <input className="searchInputStyle" placeholder="Serch Anything"/>
