@@ -3,8 +3,8 @@ import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import apiEndPoint from "../../redux-config/WebApi/api";
 
-function RecommendedProperties(){
-  const {propertyList,isLoding,error} = useSelector((state)=>state.property);
+function NearByHouse(){
+  const {propertyList,isLoding,error} = useSelector();
   console.log(propertyList);
   
    return <div className="row">
@@ -119,4 +119,4 @@ function RecommendedProperties(){
 </div>
 
 }
-export default RecommendedProperties;
+export default NearByHouse;
