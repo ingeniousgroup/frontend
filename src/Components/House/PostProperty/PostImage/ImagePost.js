@@ -15,6 +15,7 @@ function ImagePost() {
 
     const uploadimage = (event) => {
         imagesUrlArray = "https://images.wallpaperscraft.com/image/single/sofa_fireplace_furniture_75511_1920x1080.jpg";
+
     }
 
     const DetaileWithLocation = useLocation();
@@ -39,7 +40,7 @@ function ImagePost() {
           }
     }
     return <>
-        <div className='row  inner'>
+        <div className='row mb-2 inner'>
             <div className='col-md-3  bg-c'>
 
             </div>
@@ -70,7 +71,7 @@ function ImagePost() {
                             <div className="body" id="drop">
                                 <i className="fa fa-file-text-o pointer-none" aria-hidden="true" ></i>
                                 <p className="pointer-none">
-                                    <input type="file" id="myFile" name="filename" onClick={uploadimage} />
+                                    <input type="file" id="myFile" name="filename" onClick={uploadimage} multiple />
 
                                     <button className='uploadphoto'>
                                         <label for='myFile' onClick={uploadimage}>upload</label>
@@ -97,7 +98,7 @@ function ImagePost() {
                 </div>
                 <div className='row mt-4 '>
                     <div className='col-md-12 imgcontinue ms-2'>
-                        <Link to='/home'>
+                        <Link to='/'>
                             <button className='continue' style={{ marginLeft: "-330px" }} onClick={Submit}>
                                 Continue
                             </button>

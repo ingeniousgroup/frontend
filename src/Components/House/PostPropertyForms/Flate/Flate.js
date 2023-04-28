@@ -100,7 +100,7 @@ function Flate(){
   }
     return <>
     <div className="mtt"></div>
-      <div className="row ">
+      <div className="row mb-2">
         
         <div className="col-3 bg-c"></div>
         <div className="col-6 p-4 ">

@@ -6,18 +6,19 @@ import Home from '../../../Home/Home';
 import PropertyLocation from '../PropertyLocation/propertyLocation';
 import Navbar from '../../../Headers.js/Navbar/navbar';
 import { Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 function PostProperty() {
     const [propertyType, setPropertyType] = useState("");
     let PropertyDetails = useRef("");
     const navigate = useNavigate();
-
+    const {currentUser} = useSelector((state)=>state.user);
     const setPropertyDetails = (event) => {
         PropertyDetails = event.target.name;
         navigate('/' + event.target.name, { state: { propertyType,PropertyDetails } });
     }
     return <>
-        <div className='row inner'>
+        <div className='row inner mb-5'>
             <div className='col-md-3  bg-c'>
 
             </div>
@@ -28,7 +29,7 @@ function PostProperty() {
                         </div> */}
                     <div className='col-md-12 '>
                         <h4 className='welcome fs-3'>
-                            Welcome back Mr.Andrew Aderson<br />
+                            Welcome back Mr.{currentUser.name.toUpperCase()}<br />
                             fill out basic details
                         </h4>
                     </div>

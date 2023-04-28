@@ -23,7 +23,7 @@ function PropertyLocation(props) {
         navigate("/uploadImage",{state:{currentLocation,HouseAllDetails}});
     }
     return <>
-        <div className='row  inner'>
+        <div className='row mb-2 inner'>
             <div className='col-md-3  bg-c'>
 
             </div>

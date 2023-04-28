@@ -15,6 +15,8 @@ import ImagePost from "../House/PostProperty/PostImage/ImagePost";
 import Signin from "../User/signin";
 import Signup from "../User/signup";
 import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
+import HouseDescription from "../House/HouseDescription/HouseDescription";
+import ViweProfile from "../User/ViewProfile/viewProfile";
 
 function Home(){
   const dispatch = useDispatch();
@@ -39,19 +41,20 @@ function Home(){
       </Route> */}
         <Route path="/" element={<Property/>}/>
         <Route path="/propertypost" element={<ProtectedRoute><PostProperty/></ProtectedRoute>}/>
-        <Route path="/villa" element={<Flate/>}/>
-        <Route path="/plot" element={<Flate/>}/>
-        <Route path="/formHouse" element={<Flate/>}/>
-        <Route path="/office" element={<Flate/>}/>  
-        <Route path="/other" element={<Flate/>}/>
-        <Route path="/flat" element={<Flate/>}/>
-        <Route path="/CurrentLocation" element={<PropertyLocation/>}/>
-        <Route path="/uploadImage" element={<ImagePost/>}/>
+        <Route path="/villa" element={<ProtectedRoute><Flate/></ProtectedRoute>}/>
+        <Route path="/plot" element={<ProtectedRoute><Flate/></ProtectedRoute>}/>
+        <Route path="/formHouse" element={<ProtectedRoute><Flate/></ProtectedRoute>}/>
+        <Route path="/office" element={<ProtectedRoute><Flate/></ProtectedRoute>}/>  
+        <Route path="/other" element={<ProtectedRoute><Flate/></ProtectedRoute>}/>
+        <Route path="/flat" element={<ProtectedRoute><Flate/></ProtectedRoute>}/>
+        <Route path="/CurrentLocation" element={<ProtectedRoute><PropertyLocation/></ProtectedRoute>}/>
+        <Route path="/uploadImage" element={<ProtectedRoute><ImagePost/></ProtectedRoute>}/>
         <Route path="/signin" element={<Signin/>}/>
         <Route path="/signup" element={<Signup/>}/>
-        
+        <Route path="viewProfile" element={<HouseDescription/>}/>
     </Routes>
-    {/* <ImagePost/> */}
+        
+        <ViweProfile/>
 
   </>
 }

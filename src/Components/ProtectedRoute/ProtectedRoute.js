@@ -5,8 +5,8 @@ function ProtectedRoute({children}){
     const {currentUser} = useSelector((state)=>state.user);
     if(!currentUser)
         return <Navigate to='/signin'/>
-
-    return children;
+    else if(currentUser.role == "Owner")
+        return children;
 }
 
 export default ProtectedRoute;
