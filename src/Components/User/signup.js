@@ -12,6 +12,7 @@ function Signup() {
     const [latitude, setLatitude] = useState(null);
     const [longitude, setLongitude] = useState(null);
     
+    const navigate = useNavigate();
 
     useEffect(() => {
         navigator.geolocation.getCurrentPosition((position) => {
@@ -24,8 +25,11 @@ function Signup() {
         try{ 
             event.preventDefault();
             let response = await axios.post(api.OWNER_SIGNUP,{name,email,password,contact,role,latitude,longitude});
-            if(response.data.status)
+            if(response.data.status){
                 console.log(response.data);
+                window.alert("signup success");
+                navigate('/signin');
+            }
         }
         catch(err){
             console.log(err);

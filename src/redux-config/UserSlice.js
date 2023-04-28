@@ -11,10 +11,12 @@ const Slice = createSlice({
             console.log(data)
             state.currentUser = data;
             console.log(state.currentUser)
+        },
+        removeUser:(state,action)=>{
+            state.currentUser = null;
         }
     }
 });
 
-export const {setUser} = Slice.actions;
+export const {setUser,removeUser} = Slice.actions;
 export default Slice.reducer;
-    
