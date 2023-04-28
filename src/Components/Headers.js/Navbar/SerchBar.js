@@ -1,11 +1,27 @@
+import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { setLocation } from "../../../redux-config/locationSlice";
+
 function SearchBar(){
+  
+  const dispatch = useDispatch();
+  const navigate =  useNavigate();
+    const nearBySearch = ()=>{
+      navigator.geolocation.getCurrentPosition((position) => {
+        let latitude = position.coords.latitude;
+        let longitude = position.coords.longitude;
+        dispatch(setLocation({latitude,longitude}));
+        navigate("/nearByhouse");
+    });
+
+    }
     return <>
     
     <div className="searchBarSection m-auto">
               <div className="categriesInSearchBar">
                 <div className="row ">
                    <div className="col-2 categriesInSearchBartextdiv ">
-                       <span>House</span>
+                       <span >House</span>
                    </div>
                    <div className="col-2 categriesInSearchBartextdiv">
                        <span>Flate</span>
@@ -47,7 +63,7 @@ function SearchBar(){
                     </div>
                    </div>
                    <div className="col-1 serchBarImgDiv ">
-                      <img className="serchBarImg" src="images/gpsImage.png"/>
+                     <span onClick={nearBySearch}> <img className="serchBarImg" src="images/gpsImage.png"/></span>
                    </div>
                   
                    <div className="col-2 searchBarButton">
