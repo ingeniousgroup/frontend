@@ -29,7 +29,7 @@ function Home(){
   return <>
     <Navbar/>
     <div style={{marginTop:"100px"}}>
-    <Property/>
+    {/* <Property/> */}
    {/* <RecommendedProperties/> */}
    
     </div>
@@ -43,7 +43,7 @@ function Home(){
         <Route path="office" element={<Flate/>}/>  
         <Route path="other" element={<Flate/>}/>
       </Route> */}
-
+        <Route path="/" element={<Property/>}/>
         <Route path="/propertypost" element={<PostProperty/>}/>
         <Route path="/villa" element={<Flate/>}/>
         <Route path="/plot" element={<Flate/>}/>
@@ -64,10 +64,10 @@ function Home(){
         <Route path="/uploadImage" element={<ProtectedRoute><ImagePost/></ProtectedRoute>}/>
         <Route path="/signin" element={<Signin/>}/>
         <Route path="/signup" element={<Signup/>}/>
-        <Route path="viewProfile" element={<HouseDescription/>}/>
+        <Route path="/viewDiscription" element={<HouseDescription/>}/>
     </Routes>
         
-        <ViweProfile/>
+        {/* <ViweProfile/> */}
 
   </>
 }

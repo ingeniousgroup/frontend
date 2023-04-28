@@ -1,6 +1,8 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 import apiEndPoint from "./WebApi/api";
+
+
 export const nearByHouse =createAsyncThunk ("nearByHouse/fetchNearByHouse",async()=>{
     let response = await axios.post(apiEndPoint.NEAR_BY_HOUSE_LIST,{});
     return response.data;

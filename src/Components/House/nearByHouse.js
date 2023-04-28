@@ -1,12 +1,7 @@
-import axios from "axios";
-import { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
 import apiEndPoint from "../../redux-config/WebApi/api";
 
 function NearByHouse(){
-  const {propertyList,isLoding,error} = useSelector();
-  console.log(propertyList);
-  
+
    return <div className="row">
     <div className="col-12 p-4">
         <h1>Recommended Properties</h1>

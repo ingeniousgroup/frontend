@@ -1,9 +1,12 @@
 import { useState } from 'react';
 import './HouseDescription.css';
 import { eventWrapper } from '@testing-library/user-event/dist/utils';
+import { useLocation } from 'react-router';
 
 function HouseDescription() {
-    const [image , setImage] = useState('/images/home1.jpg');
+    
+    const {state} =  useLocation();
+    const [image , setImage] = useState(state.property.imagesUrlArray[0]);
     const [image2 , setImage2] = useState('/images/home2.jpg');
     const [image3 , setImage3] = useState('/images/home3.jpg');
 
@@ -63,14 +66,14 @@ function HouseDescription() {
                                         <span className='ms-2 config' >Rent</span>
                                     </p>
                                     <p className='ms-5 contant'>
-                                        <i className="fa fa-inr" aria-hidden="true"></i> 1500/-
+                                        <i className="fa fa-inr" aria-hidden="true"></i>{state.property.rent}
                                     </p><hr/>
                                     <p>
                                         <i className="fa fa-map-marker ms-1" aria-hidden="true"></i>
                                         <span className='ms-2 config' >Address</span>
                                     </p>
                                     <p className='ms-5 contant'>
-                                        vijay nagar,indore
+                                    {state.property.address}
                                     </p><hr/>
                                     <p>
                                         <i className="fa fa-calendar ms-1"></i>
@@ -84,7 +87,7 @@ function HouseDescription() {
                                         <span className='ms-2 config' >Posted On</span>
                                     </p>
                                     <p className='ms-5 contant'>
-                                         17 - mar - 22
+                                    {state.property.date}
                                     </p><hr/>
                                 </div>
                                 <div className='row mt-2' id='down'>
@@ -93,7 +96,8 @@ function HouseDescription() {
                                             <u>About Property</u>
                                         </h4>
                                         <p>
-                                        I want to rent out a 2 bhk apartment available in db pride,talawali chanda, <br/>indore.Located in a serene place, it has a super built-Up area of 600 <br/>sq.Ft. It is an attractive and a newly constructed property. 
+                                        {state.property.description}
+                                        {/* I want to rent out a 2 bhk apartment available in db pride,talawali chanda, <br/>indore.Located in a serene place, it has a super built-Up area of 600 <br/>sq.Ft. It is an attractive and a newly constructed property.  */}
                                         </p>
                                     </div>
                             </div>
