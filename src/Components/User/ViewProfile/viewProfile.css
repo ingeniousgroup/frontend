@@ -1,0 +1,8 @@
+.profileDiv{
+    display: flex;
+    justify-content: center;
+}
+.profileHeading{
+    font-size: 3vh;
+    font-family: candera;
+}

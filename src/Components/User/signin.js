@@ -14,8 +14,11 @@ function Signin() {
         try {
             event.preventDefault();
             let response = await axios.post(api.OWNER_SIGNIN,{email,password});
-            dispatch(setUser(response.data.user));
-            navigate("/");
+            if(response.data.status){
+                dispatch(setUser(response.data.user));
+                window.alert("signin success")
+                navigate("/");
+            }
         } catch (error) {
             console.log(error);
         }
