@@ -8,7 +8,7 @@ import PropertyLocation from "../House/PostProperty/PropertyLocation/propertyLoc
 import PostProperty from "../House/PostProperty/post/postProperty";
 import Flate from "../House/PostPropertyForms/Flate/Flate";
 import { Route, Routes } from "react-router";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { fetchPropertyList } from "../../redux-config/PropertySlice";
 import Property from "../House/Property/property";
 import NearByHouse from "../House/nearByHouse";
@@ -19,18 +19,27 @@ import Signup from "../User/signup";
 import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
 import HouseDescription from "../House/HouseDescription/HouseDescription";
 import ViweProfile from "../User/ViewProfile/viewProfile";
-
-
+import NavebarNext from "../Headers.js/Navbar/navbarNext";
 function Home(){
+  const [pixelFlag,setPixelFlag] = useState(false);
+  window.onscroll = ()=>{
+        if (window.scrollY>= 20 ) {
+          setPixelFlag(true);
+        }
+        else {
+          setPixelFlag(false)
+        }
+  }
   const dispatch = useDispatch();
   useEffect(()=>{
     dispatch(fetchPropertyList());
   },[]);
+
+  
   return <>
-    <Navbar/>
+    <NavebarNext/>
+    {/* <Navbar/> */}
     <div style={{marginTop:"100px"}}>
-    <Property/>
-   {/* <RecommendedProperties/> */}
    
     </div>
     
@@ -43,7 +52,7 @@ function Home(){
         <Route path="office" element={<Flate/>}/>  
         <Route path="other" element={<Flate/>}/>
       </Route> */}
-
+{/* 
         <Route path="/propertypost" element={<PostProperty/>}/>
         <Route path="/villa" element={<Flate/>}/>
         <Route path="/plot" element={<Flate/>}/>
@@ -51,8 +60,8 @@ function Home(){
         <Route path="/office" element={<Flate/>}/>  
         <Route path="/other" element={<Flate/>}/>
         <Route path="/flat" element={<Flate/>}/>
-        <Route path="/nearByHouse" element={<NearByHouse />}/>
-        <Route path="/" element={<Property/>}/>
+        <Route path="/nearByHouse" element={<NearByHouse />}/>*/}
+        <Route path="/" element={<Property/>}/> 
         <Route path="/propertypost" element={<ProtectedRoute><PostProperty/></ProtectedRoute>}/>
         <Route path="/villa" element={<ProtectedRoute><Flate/></ProtectedRoute>}/>
         <Route path="/plot" element={<ProtectedRoute><Flate/></ProtectedRoute>}/>
@@ -64,11 +73,8 @@ function Home(){
         <Route path="/uploadImage" element={<ProtectedRoute><ImagePost/></ProtectedRoute>}/>
         <Route path="/signin" element={<Signin/>}/>
         <Route path="/signup" element={<Signup/>}/>
-        <Route path="viewProfile" element={<HouseDescription/>}/>
+        <Route path="viewProfile" element={<ProtectedRoute><ViweProfile/></ProtectedRoute>}/>
     </Routes>
-        
-        <ViweProfile/>
-
   </>
 }
 
