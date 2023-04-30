@@ -35,6 +35,16 @@
     position: sticky;
     top: 0;
     z-index: 1;
+    animation: vijay;
+    animation-duration: 2s;
+}
+@keyframes vijay {
+    0%{
+      margin-top: 500px;
+    }
+    100%{
+        margin-top: 0px;
+    }
 }
 .logo{
     font-family: Comic Sans MS;

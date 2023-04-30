@@ -105,10 +105,10 @@ function Navbar() {
                   </div>
                 </div> */}
                 <div className='col-md-1'>
-                  <div className='share'>
-                    <div class="fab no ms-3" data-hover='SignIn' onClick={signipUser}></div>
-                    <div class="fab no ms-3" data-hover='SignUp' onClick={signupUser}></div>
-                    <div class="fab no ms-3" data-hover='Profile' onClick={viewProfile}></div>
+                  <div className='share ms-3'>
+                    <div class="fab no " data-hover='SignIn' onClick={signipUser}></div>
+                    <div class="fab no " data-hover='SignUp' onClick={signupUser}></div>
+                    <div class="fab no " data-hover='Profile' onClick={viewProfile}></div>
                   </div>
                 </div>
               </li>

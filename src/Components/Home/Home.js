@@ -20,10 +20,12 @@ import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
 import HouseDescription from "../House/HouseDescription/HouseDescription";
 import ViweProfile from "../User/ViewProfile/viewProfile";
 import NavebarNext from "../Headers.js/Navbar/navbarNext";
+import Subscription from "../House/subscription/subscription";
+import subscriptionProtected from "../subscriptionProtected/subscriptionProtected";
 function Home(){
   const [pixelFlag,setPixelFlag] = useState(false);
   window.onscroll = ()=>{
-        if (window.scrollY>= 20 ) {
+        if (window.scrollY>= 200 ) {
           setPixelFlag(true);
         }
         else {
@@ -37,11 +39,11 @@ function Home(){
 
   
   return <>
+    {/* {pixelFlag && <NavebarNext/>}
+    {pixelFlag && <Navbar/>} */}
     <NavebarNext/>
-    {/* <Navbar/> */}
-    <div style={{marginTop:"100px"}}>
-   
-    </div>
+    <div style={{marginTop:"20px"}}>
+   </div>
     
     <Routes>
       {/* <Route path="/propertypost" element={<PostProperty/>}>
@@ -73,7 +75,9 @@ function Home(){
         <Route path="/uploadImage" element={<ProtectedRoute><ImagePost/></ProtectedRoute>}/>
         <Route path="/signin" element={<Signin/>}/>
         <Route path="/signup" element={<Signup/>}/>
-        <Route path="viewProfile" element={<ProtectedRoute><ViweProfile/></ProtectedRoute>}/>
+        <Route path="/viewProfile" element={<ProtectedRoute><ViweProfile/></ProtectedRoute>}/>
+        <Route path="/takeSubscription" element={<ProtectedRoute><Subscription/></ProtectedRoute>}/>
+           
     </Routes>
   </>
 }
