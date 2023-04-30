@@ -572,19 +572,19 @@
 .fab:before{
     content: attr(data-hover);
     visibility: hidden;
-    opacity: 0;
-    /* width: max-content; */
-    background-color: rgb(71, 71, 71);
-    color: #fff;
+    background-color:rgb(0, 166, 255);
+    color: #ffffff;
     text-align: center;
     border-radius: 10px 0px 10px 10px;
     font-size: 2vh;
+    font-family: Comic Sans MS;
     padding: 5px 5px;
     transition: opacity 1.5s ease-in-out;
     position: absolute;
     z-index: 1;
     left: -8vh;
     top: 4vh;
+
 }
 .fab:hover:before {
   opacity: 1;
@@ -617,7 +617,6 @@
 	 transform: rotate(45deg);
 }
  .share.active:after {
-
 	 width: 48px;
 	 height: 48px;
 }
@@ -630,24 +629,24 @@
 }
  .fab:nth-child(1) {
   background-color: white; 
-  background-image: url("../images/login1.png");
+  background-image: url("../images/login.png");
   background-repeat: no-repeat;
   background-size: cover;
-  top: 122px;
+  top: 140px;
 }
  .fab:nth-child(2) {
 	background-color: white; 
-  background-image: url("../images/logout1.png");
+  background-image: url("../images/add-friend.png");
   background-repeat: no-repeat;
   background-size: cover;
-	 top: 190px;
+	 top: 202px;
 }
  .fab:nth-child(3) {
 	background-color: white; 
-  background-image: url("../images/viewprofile.png");
+  background-image: url("../images/pro1");
   background-repeat: no-repeat;
   background-size: cover; 
-  top: 260px;
+  top: 265px;
 }
  .fab.active {
 	 animation: 0.48s up forwards;

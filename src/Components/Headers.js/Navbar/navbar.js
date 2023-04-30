@@ -26,6 +26,9 @@ function Navbar() {
   const signupUser = () => {
     navigate("/signup")
   }
+  const signipUser = () => {
+    navigate("/signin")
+  }
   const viewProfile = () => {
     navigate("/viewProfile");
   }
@@ -101,12 +104,13 @@ function Navbar() {
                     </ul>
                   </div>
                 </div> */}
-                <div class="share ms-2" >
-                  <Link to='/signin'><div class="fab no" data-hover='Signup'></div></Link>
-                  <div class="fab no" data-hover='signin' onClick={signupUser}></div>
-                  <div class="fab no" data-hover='profile' onClick={viewProfile}></div>
+                <div className='col-md-1'>
+                  <div className='share'>
+                    <div class="fab no ms-3" data-hover='SignIn' onClick={signipUser}></div>
+                    <div class="fab no ms-3" data-hover='SignUp' onClick={signupUser}></div>
+                    <div class="fab no ms-3" data-hover='Profile' onClick={viewProfile}></div>
+                  </div>
                 </div>
-
               </li>
             </ul>
           </div>

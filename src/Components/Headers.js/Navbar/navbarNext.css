@@ -1,0 +1,45 @@
+.centerspace{
+    display: flex;
+    justify-content: center;
+}
+.inputfield{
+    width: 90% !important;
+    height: 100% !important;
+    margin-left: -3.6vh !important;
+    border-radius: 0vh 1vh 1vh 0vh !important;
+    border: 0 !important;
+    border: 1px solid black !important;
+}
+.option{
+    font-size: 2vh;
+    height: 100%;
+    background-color: white;
+    border-radius: 1vh 0vh 0 1vh ;
+    border: 0;
+    border: 1px solid #000;
+}
+.searchicon{
+    margin-left: -5vh !important;
+    position: relative !important;
+}
+.icon{
+    position: absolute !important;
+    margin-top: -2vh !important;
+    font-size: 2vh !important;
+    margin-left: 1vh;
+}
+.main1{
+    background-color: #abe9cd;
+    background-image: linear-gradient(350deg, #abe9cd 10%, #3eadcf 60%);
+    box-shadow: 5px 1px 5px black;
+    position: sticky;
+    top: 0;
+    z-index: 1;
+}
+.logo{
+    font-family: Comic Sans MS;
+    font-weight: 700;
+}
+.post{
+    box-shadow: 3px 2px 5px black ;
+}

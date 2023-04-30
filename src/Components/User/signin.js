@@ -55,7 +55,7 @@ function Signin() {
                         />
                         <br />
                         <br />
-                        <input type="checkbox" id="check" className="mt-1" />
+                        <input type="radio" id="check1" className="mt-1" />
                         <small> Remember Password</small>
                         <br />
                         <br />

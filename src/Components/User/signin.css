@@ -5,9 +5,9 @@
     height: 64.5vh;
     /* border: 1px solid; */
 }
-#email,#pass,#check,#login,#name,#contact{
-    background-color: transparent;
-    margin-left: 10vh;
+#email,#pass,#check1,#login,#name,#contact{
+    background-color: transparent ;
+    margin-left: 10vh ;
 }
 #logimg{
     margin-top: 0.05vh;

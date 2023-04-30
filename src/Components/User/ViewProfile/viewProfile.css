@@ -1,8 +1,41 @@
+.profileMain{
+    padding: 8vh;
+    margin-top: -14vh;
+}
+.rowmain{
+    height: 80vh;
+}
 .profileDiv{
     display: flex;
     justify-content: center;
 }
 .profileHeading{
     font-size: 3vh;
-    font-family: candera;
+    font-family: candara;
+}
+.inside1,.inside2{
+    height: 38vh;
+    margin-top: 8px;
+    width: 100%;
+}
+.rowData,.rowDataDown{
+    box-shadow: 3px 2px 4px black;
+    border-radius: 40px;
+    background-color: linen;
+    /* padding: 5px 5px 5px 5px ; */
+}
+.rowData{
+    background-color: beige;
+}
+.leftSide{
+    box-shadow: 2px 2px 5px black;
+}
+.rightSide{
+    height: 80vh;
+    margin-left: 13vh;
+    box-shadow: 2px 2px 5px black;
+    overflow-x: hidden;
+    overflow-y: auto;
+    text-align:justify;
+    scrollbar-width: none;
 }
