@@ -3,6 +3,7 @@ export default {
     OWNER_SIGNUP: '/owner/signup',
     PROPERTY_LIST:'/property/list',
     NEAR_BY_HOUSE_LIST:'/property/nearByHouse',
+    ADD_TO_WISHLIST:'/tenant/addToWishList',
     POST_PROPERTY:'/owner/addproperty',
     REQUEST_BY_TENANTS:'/owner/houseRequestFromTenant',
     VIEW_PROPPERTY_OF_OWNER:'/owner/view_porperty',

@@ -1,12 +1,37 @@
 
+import axios from "axios";
 import { useSelector } from "react-redux";
+import apiEndPoint from "../../../redux-config/WebApi/api";
+import { useNavigate } from "react-router";
+
 
 function Property(){
+  const {currentUser} = useSelector(state=>state.user);
+  const navigate = useNavigate();
+  
+  const viewDescription = (property)=>{
+    navigate("/viewDiscription",{state:{
+      property : property
+    }});
+  }
+
+  const signinUser = () => {
+    navigate("/signin");
+  }
+
+  const addToCart = async (property)=>{
+    alert(property._id);
+    let response = await axios.post(apiEndPoint.ADD_TO_WISHLIST,{userId:currentUser._id,propertyId:property._id});
+    if(response.data.status)
+      alert("Added To Cart");
+    else
+      alert("already Added In cart");  
+  }
   const {propertyList,isLoding,error} = useSelector((state)=>state.property);
   console.log(propertyList);
   return <div className="container"> <div className="row" >
     {!error&&propertyList.map((property,index)=><div key={index} className="col-md-3">
-    <div className="profile-card-2">
+    <div className="profile-card-2" onClick={()=>viewDescription(property)}>
       <img
         src={property.imagesUrlArray[0]}
         className="img img-responsive"
@@ -15,9 +40,8 @@ function Property(){
       <div className="profile-name">{property.rent}</div>
       <div className="profile-username">Deposite {property.rent} per month</div>
       <div className="profile-icons">
-      <a href="#">
-         <i className="fa fa-heart" aria-hidden="true"></i>
-        </a>
+      {currentUser&&<a onClick={()=>addToCart(property)}><i className="fa fa-heart" aria-hidden="true"></i></a>}
+      {!currentUser&&<a onClick={signinUser}><i className="fa fa-heart" aria-hidden="true"></i></a>}
       </div>
 
     </div>
@@ -27,7 +51,7 @@ function Property(){
           <h4 >{property.houseCategory.toUpperCase()}</h4>
       </div>
       <div className="vierMoreButtomDiv col text-right">
-        <a type="button" class="btn-view">More...</a>
+        <a onClick={()=>viewDescription(property)} type="button" class="btn-view">More...</a>
       </div>
       <div className="text-address ">
        <p >{property.address.substring(0,30).toUpperCase()}..</p>

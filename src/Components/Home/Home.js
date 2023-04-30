@@ -42,9 +42,10 @@ function Home(){
     {/* {pixelFlag && <NavebarNext/>}
     {pixelFlag && <Navbar/>} */}
     <NavebarNext/>
-    <div style={{marginTop:"20px"}}>
-   </div>
-    
+
+    {/* <Navbar/> */}
+    <div style={{marginTop:"100px"}}>
+    </div>    
     <Routes>
       {/* <Route path="/propertypost" element={<PostProperty/>}>
         <Route path="flat" element={<Flate/>}/>
@@ -54,7 +55,10 @@ function Home(){
         <Route path="office" element={<Flate/>}/>  
         <Route path="other" element={<Flate/>}/>
       </Route> */}
+        <Route path="/" element={<Property/>}/>
+
 {/* 
+>>>>>>> 29164a7e937bb4cc479779f9e9158cb8467b713a
         <Route path="/propertypost" element={<PostProperty/>}/>
         <Route path="/villa" element={<Flate/>}/>
         <Route path="/plot" element={<Flate/>}/>
@@ -75,10 +79,18 @@ function Home(){
         <Route path="/uploadImage" element={<ProtectedRoute><ImagePost/></ProtectedRoute>}/>
         <Route path="/signin" element={<Signin/>}/>
         <Route path="/signup" element={<Signup/>}/>
+        <Route path="/viewDiscription" element={<HouseDescription/>}/>
+    
+        
+        {/* <ViweProfile/> */}
+
+        <Route path="viewProfile" element={<ProtectedRoute><ViweProfile/></ProtectedRoute>}/>
         <Route path="/viewProfile" element={<ProtectedRoute><ViweProfile/></ProtectedRoute>}/>
         <Route path="/takeSubscription" element={<ProtectedRoute><Subscription/></ProtectedRoute>}/>
            
+
     </Routes>
+
   </>
 }
 
