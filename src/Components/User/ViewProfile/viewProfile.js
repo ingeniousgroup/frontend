@@ -1,12 +1,17 @@
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import './viewProfile.css';
 import { useEffect, useState } from 'react';
+import { fetchRequestByTenant} from '../../../redux-config/requestByTenantSlice';
+import { currentUser } from '../../../redux-config/UserSlice';
+import { viewProperty } from '../../../redux-config/propertyOfOwnerSlice';
+import { setLocation } from '../../../redux-config/locationSlice';
+import { useLocation } from 'react-router-dom';
 
 function ViweProfile() {
     const { currentUser } = useSelector((state) => state.user);
     const [ownerFunctionality, setOwnerFunctionality] = useState('');
-
-    
+    const {tenantRequest,isLoading,error} = useSelector((state)=>state.tenantRequest);
+    // console.log(tenantRequest[0].result[0]._id);
     return <>
         <div className='profileMain'>
             <div className='row rowmain'>
@@ -97,15 +102,15 @@ function ViweProfile() {
                         </div>
                         }
                         {ownerFunctionality == "details" && <div className='inside2 p-4'>
-                            <div className='row rowDataDown mt-1 mb-1'>
+                            {/* {tenantRequest.map((data,index)=> <div className='row rowDataDown mt-1 mb-1'>
                                 <div className='col-md-3 p-1 text-center'>
-                                    <img src='/images/login.png' height='60' width='60' />
+                                    <img src={data.imagesUrlArray} height='60' width='60' />
                                 </div>
                                 <div className='col-md-3 p-3 text-center'>
-                                    Flat/Villa
+                                    {data.houseCategory}
                                 </div>
                                 <div className='col-md-3 p-3 text-center'>
-                                    Raj Mohalla,indore
+                                    {data.address}
                                 </div>
                                 <div className='col-md-3 p-3 text-center'>
                                     <button className='btn btn-outline-success '>
@@ -115,7 +120,8 @@ function ViweProfile() {
                                         Reject
                                     </button>
                                 </div>
-                            </div>
+                            </div>)} */}
+                            
                         </div>
                         }
                     </div>
