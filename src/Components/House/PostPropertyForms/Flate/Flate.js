@@ -7,19 +7,20 @@ function Flate(){
   
   const typeOfPropertyDetails = useLocation();
 
-  let room = useRef("");
-  let noOfBathoom = useRef("");
-  let balconies = useRef("");
-  let carpetArea = useRef("");
-  let totalfloor = useRef(""); 
-  let onFloor = useRef("");
-  let [otherRoom, setOtherRoom] = useState([]);
-  let [furnshing, setFurnshing] = useState("furnished");
-  let [floor,setFloor] = useState([]);
+  const [room , setRoom] = useState();
+  let [noOfBathoom,setNoOfBathoom] = useState();
+  let [balconies,setBalconies] = useState(0);
+  let carpetArea = useRef();
+  let totalfloor = useRef(); 
+  let onFloor = useRef();
+  let [otherRoom ,setOtherRoom] = useState([]);
+  let [furnshing,setFurnish] = useState("furnished");
+  let floor = useRef();
   
   const navigate = useNavigate();
   function bedroom(no){
-   for( var i = 1 ; i<=4;i++){
+    setRoom(no*1);
+    for( var i = 1 ; i<=4;i++){
     if(i == no){ 
       var obj =document.getElementById("bedroombtn"+no);
       obj.style.backgroundColor = "white";
@@ -30,7 +31,7 @@ function Flate(){
       obj.style.color = "white";
     }
    }
-   room = no*1;
+   console.log(room);
   }
   function bathroom(no){
     for( var i = 1 ; i<=4;i++){
@@ -44,7 +45,8 @@ function Flate(){
        obj.style.color = "white";
      }
     }
-    noOfBathoom = no*1;
+    setNoOfBathoom(no*1);
+    console.log(noOfBathoom);
     // alert(noOfBathoom);
   }
   function balconiesFunction(no){
@@ -60,41 +62,35 @@ function Flate(){
      }
     }
     if(no==5)
-     balconies = "3++";
+     setBalconies("3++");
     else
-     balconies = no-1;
-
-    //  console.log(balconies);
+     setBalconies(no-1);
+     
+     console.log(balconies);
   }
   function carpetAreaFun(event){
-    console.log(carpetArea.current.value);
+    carpetArea(event.target.value);
+    console.log(carpetArea);
   }
   const handleChange = (e) => {
-    const { value, checked } = e.target;    
+    const { value, checked } = e.target;
     if (checked) 
-      otherRoom = [...otherRoom,value];
+      setOtherRoom([...otherRoom,value]);
     else
-      otherRoom = otherRoom.filter((e)=> e !== value);
+      setOtherRoom(otherRoom.filter((e)=> e !== value));
     console.log(otherRoom);
   }
   const furnshingChange = (e)=>{
     alert(e.target.id);
-    setFurnshing(e.target.id);
+    setFurnish(e.target.id);
+    console.log(furnshing);
   }
   const noOffloor = (event)=>{
-    alert("no ... "+event.target.value*1)
-    for (let i = 1 ; i <= event.target.value*1; i++){
-      console.log("---"+i)
-    }
+    floor = event.target.value;
+    console.log(floor);
   }
   const submit = ()=>{
-    console.log(room);
-    console.log(noOfBathoom);
-    console.log(balconies);
-    console.log(carpetArea);
-    console.log(otherRoom);
-    console.log(furnshing);
-    console.log(floor);
+    carpetArea = carpetArea.value;
     const ActualHouseDetails = {room,noOfBathoom,balconies,carpetArea,otherRoom,furnshing,floor};
     navigate("/CurrentLocation",{state:{ActualHouseDetails,typeOfPropertyDetails}});
   }
@@ -186,7 +182,7 @@ function Flate(){
              <div className="row">
                <div className="carpetArea ml-4 ">
                 <div className="inputArea   ">
-                  <input onChange={(event)=>{carpetArea=event.target.value}} type="text"  placeholder="Carpet Area"/>
+                  <input ref={(area)=>{carpetArea=area}} type="text"  placeholder="Carpet Area"/>
                 </div>
                 <div className="carpetAreaDD ">
 
@@ -259,7 +255,7 @@ function Flate(){
               <div className="col-6  row flor-input">
                 <div className="bg-border">
                  <small className="col-8">Total Floor</small>
-                 <input onKeyUp={noOffloor} className="floor-input col-8" type="text"/>  
+                 <input  onChange={noOffloor} className="floor-input col-8" type="text"/>  
                  </div>
               </div>
               <div className="col-6  row ">

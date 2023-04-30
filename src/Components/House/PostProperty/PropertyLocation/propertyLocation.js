@@ -7,7 +7,7 @@ function PropertyLocation(props) {
 
     const HouseAllDetails = useLocation();
     
-
+    console.log(HouseAllDetails.state);
     const navigate = useNavigate();
     let latitude = useRef('');
     let longitude = useRef('');
