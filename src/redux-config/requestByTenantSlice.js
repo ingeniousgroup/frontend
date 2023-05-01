@@ -4,7 +4,7 @@ import axios from "axios";
 
 export const fetchRequestByTenant = createAsyncThunk("owner/houseRequestFromTenant", async (currentUser) => {
     let response = await axios.post(api.REQUEST_BY_TENANTS, {userId:currentUser._id});
-    console.log("=====================================================")
+    console.log("view request of tenant wala response");
     console.log(response);
     if(response)
         return response.data;

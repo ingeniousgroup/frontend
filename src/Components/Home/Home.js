@@ -22,6 +22,7 @@ import ViweProfile from "../User/ViewProfile/viewProfile";
 import NavebarNext from "../Headers.js/Navbar/navbarNext";
 import Subscription from "../House/subscription/subscription";
 import subscriptionProtected from "../subscriptionProtected/subscriptionProtected";
+import Plot from "../House/PostPropertyForms/plots/plot";
 function Home(){
   const [pixelFlag,setPixelFlag] = useState(false);
   window.onscroll = ()=>{
@@ -42,9 +43,8 @@ function Home(){
     {/* {pixelFlag && <NavebarNext/>}
     {pixelFlag && <Navbar/>} */}
     <NavebarNext/>
-
     {/* <Navbar/> */}
-    <div style={{marginTop:"100px"}}>
+    <div style={{marginTop:"2px"}}>
     </div>    
     <Routes>
       {/* <Route path="/propertypost" element={<PostProperty/>}>
@@ -55,7 +55,7 @@ function Home(){
         <Route path="office" element={<Flate/>}/>  
         <Route path="other" element={<Flate/>}/>
       </Route> */}
-        <Route path="/" element={<Property/>}/>
+        {/* <Route path="/" element={<Property/>}/> */}
 
 {/* 
 >>>>>>> 29164a7e937bb4cc479779f9e9158cb8467b713a

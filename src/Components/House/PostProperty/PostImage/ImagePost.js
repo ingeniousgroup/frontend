@@ -23,19 +23,20 @@ function ImagePost() {
     let otherRoom = DetaileWithLocation.state.HouseAllDetails.state.ActualHouseDetails.otherRoom;
 
     
+    
     const { currentUser } = useSelector((state) => state.user);
 
     const uploadimage = (event) => {
-        imagesUrlArray = "https://images.unsplash.com/photo-1615874959474-d609969a20ed?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=580&q=80";
+        imagesUrlArray = "https://img.freepik.com/free-photo/modern-residential-district-with-green-roof-balcony-generated-by-ai_188544-10276.jpg?w=1060&t=st=1682890708~exp=1682891308~hmac=3bf637652884945afcd833e1882257b7de99c59aae56292a4705946707a2d430";
     }
 
     const latitude = DetaileWithLocation.state.currentLocation.latitude;
     const longitude = DetaileWithLocation.state.currentLocation.longitude;
 
     userId = currentUser._id;
-    address = 'shudama nagar,indore';
-    description = "Simple data, or facts, about the property such as the street address, number of bedrooms and bathrooms, square footage and asking price.";
-    rent = "2000";
+    address = 'geeta bhawan ,indore';
+    description = " This property offers 1,160 square feet of living space and a lot size of 5,499 square feet";
+    rent = "3000";
     status = "true";
     houseCategory = DetaileWithLocation.state.HouseAllDetails.state.typeOfPropertyDetails.state.PropertyDetails;
     const Submit = async () => {

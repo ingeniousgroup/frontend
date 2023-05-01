@@ -34,7 +34,9 @@ function NavebarNext() {
         navigate("/signin")
     }
     const viewProfile = () => {
-        dispatch(fetchRequestByTenant(currentUser));
+        
+        dispatch(viewProperty(currentUser));
+        // dispatch(fetchRequestByTenant(currentUser));
         navigate("/viewProfile");
     }
 

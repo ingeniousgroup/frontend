@@ -1,0 +1,68 @@
+#img {
+
+    width: 60%;
+    height: 150px;
+    border-radius: 50%;
+    text-align: center;
+
+}
+#imgVerify{
+    width: 40%;
+    height: 150px;
+    border-radius: 10%;
+    text-align: center;
+
+}
+
+#imgdiv {
+    text-align: center;
+}
+
+#heading {
+    font-weight: 600;
+    font-size: 23px;
+    color: rgb(90, 81, 73);
+    margin-left: 65px;
+}
+
+#info {
+    font-size: 16px;
+    font-weight: 600;
+    line-height:2 ;
+    color: rgb(98, 91, 83);
+    text-align: center;
+}
+#label{
+    font-size: 16px;
+    color: rgb(120, 117, 113);
+}
+#email{
+    border: none;
+    border-bottom: 2px solid rgb(201, 187, 170);
+    
+
+}
+input[type='email']{
+    border: none;
+    border-bottom: 2px solid rgb(201, 187, 170);
+
+}
+#btn{
+    text-align: center;
+    
+}
+#btn >a{
+  height: 35px;
+  width: 190px;
+  text-align: center;
+  border-radius: 10px;
+}
+input:focus { 
+    outline: none !important;
+    border-color: #f1f3f5;
+    box-shadow: 0 0 10px #719ECE;
+ }
+
+ input[type=text]{
+    margin-left: 50px;
+ }
