@@ -6,7 +6,7 @@ import { removeUser } from "../../../redux-config/UserSlice";
 import $ from 'jquery';
 import { useEffect, useRef } from "react";
 import { Navigate } from "react-router-dom";
-function Navbar() {
+function Navbar( {search}) {
   useEffect(() => {
     $(".share").on("click", function (e) {
       $(".fab").removeClass("no");
@@ -32,24 +32,7 @@ function Navbar() {
   const viewProfile = () => {
     navigate("/viewProfile");
   }
-  // const IconChange = ()=>{
-  //   let element = document.getElementsByClassName("share");
-  //   console.log(element)
-  //   var reveal = $('.share');
-  //   reveal.css('margin', '10px');
-  //   var resulte = window.getComputedStyle(reveal[0], null).getPropertyValue("background-image");
-  //   if(imageUrl != resulte)
-  //     imageUrl = '../images/logo.png';
-
-
-
-  // }
-  // $(function() {
-  //   $('.share').click(function() {
-  //     $(this).css('background-image', 'url('+imageUrl+')');
-  //   });
-  // })
-
+  
   return <header className="main-header">
     <div className="container-fluid">
       <div className="navbardivBackgroundColor">
@@ -116,7 +99,7 @@ function Navbar() {
           </div>
         </nav>
         <div className="navbarHelpdiv">
-          <SearchBar />
+          <SearchBar search={search} />
         </div>
       </div>
     </div>

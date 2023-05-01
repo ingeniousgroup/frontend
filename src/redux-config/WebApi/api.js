@@ -8,5 +8,6 @@ export default {
     REQUEST_BY_TENANTS:'/owner/houseRequestFromTenant',
     VIEW_PROPPERTY_OF_OWNER:'/owner/view_porperty',
     TAKE_SUBSCRIPTION:'/owner/subscription',
-    POST_PROPERTY_DETAILS:'/owner/propertyDetails'
+    POST_PROPERTY_DETAILS:'/owner/propertyDetails',
+    SEARCH:'/tenant/search'
 }

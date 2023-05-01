@@ -9,8 +9,8 @@
   }
   
   .parent button {
-    background-color: #2775ea;
-    color: white;
+    background-color: white;
+    color: black;
     border: none;
     padding: 5px;
     font-size: 12px;
@@ -22,7 +22,7 @@
   }
   
   .parent button:active {
-    background-color: #2775ea;
+    background-color: white;
     box-shadow: 0 0 2px darkslategray;
     transform: translateY(2px);
   }

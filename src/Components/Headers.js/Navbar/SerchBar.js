@@ -1,39 +1,51 @@
+import { event } from "jquery";
+import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { setLocation } from "../../../redux-config/locationSlice";
 
-function SearchBar(){
-  
-  const dispatch = useDispatch();
+function SearchBar({search}){
+  // alert(search);
   const navigate =  useNavigate();
     const nearBySearch = ()=>{
       navigator.geolocation.getCurrentPosition((position) => {
         let latitude = position.coords.latitude;
         let longitude = position.coords.longitude;
-        dispatch(setLocation({latitude,longitude}));
-        navigate("/nearByhouse");
+        // dispatch(setLocation({latitude,longitude}));
+        navigate("/nearByhouse",{state:{
+          latitude,
+          longitude
+        }});
     });
-
+    }
+    const [searchText, setSearchText] = useState("");
+    const [category,setCategory] = useState("");
+    const handleEvent=(event)=>{
+      setSearchText(event.target.value);
+      search(searchText);
+    }
+    
+    const changeCategory = (category)=>{
+      // alert(category)
+       setCategory(category);
     }
     return <>
-    
     <div className="searchBarSection m-auto">
               <div className="categriesInSearchBar">
                 <div className="row ">
                    <div className="col-2 categriesInSearchBartextdiv ">
-                       <span >House</span>
+                       <span onClick={()=>changeCategory("house")} >House</span>
                    </div>
                    <div className="col-2 categriesInSearchBartextdiv">
-                       <span>Flate</span>
+                       <span onClick={()=>changeCategory("flate")}>Flate</span>
                    </div>
                    <div className="col-2 categriesInSearchBartextdiv">
-                       <span>Office</span>
+                       <span onClick={()=>changeCategory("office")}>Office</span>
                    </div>
                    <div className="col-2 categriesInSearchBartextdiv">
-                       <span>Shop</span>
+                       <span onClick={()=>changeCategory("shop")} >Shop</span>
                    </div>
                    <div className="col-2 categriesInSearchBartextdiv">
-                       <span>Apartment</span>
+                       <span onClick={()=>changeCategory("apartment")}>Apartment</span>
                    </div>
                 </div>
               </div>
@@ -58,7 +70,10 @@ function SearchBar(){
                         <i className="fa fa-search" aria-hidden="true"></i>
                       </div>
                       <div className="col-10 ">
-                        <input className="searchInputStyle" placeholder="Serch Anything"/>
+                        <input  className="searchInputStyle"  
+                         placeholder="Search property"        
+                         value={searchText}
+                         onChange={(event)=>handleEvent(event)}/>
                       </div>
                     </div>
                    </div>
@@ -69,6 +84,7 @@ function SearchBar(){
                    <div className="col-2 searchBarButton">
                      <button className="btn btn-primary">Search</button>
                    </div>
+                   
                 </div>
               </div>
           </div>

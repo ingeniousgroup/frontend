@@ -23,12 +23,12 @@ function Flate(){
     for( var i = 1 ; i<=4;i++){
     if(i == no){ 
       var obj =document.getElementById("bedroombtn"+no);
-      obj.style.backgroundColor = "white";
-      obj.style.color = "black";
-    }else{
-      var obj =document.getElementById("bedroombtn"+i);
       obj.style.backgroundColor = "#2775ea";
       obj.style.color = "white";
+    }else{
+      var obj =document.getElementById("bedroombtn"+i);
+      obj.style.backgroundColor = "white";
+      obj.style.color = "black";
     }
    }
    console.log(room);
@@ -37,12 +37,12 @@ function Flate(){
     for( var i = 1 ; i<=4;i++){
      if(i == no){ 
        var obj =document.getElementById("bathroombtn"+no);
-       obj.style.backgroundColor = "white";
-       obj.style.color = "black";
-     }else{
-       var obj =document.getElementById("bathroombtn"+i);
        obj.style.backgroundColor = "#2775ea";
        obj.style.color = "white";
+     }else{
+       var obj =document.getElementById("bathroombtn"+i);
+       obj.style.backgroundColor = "white";
+       obj.style.color = "black";
      }
     }
     setNoOfBathoom(no*1);
@@ -53,12 +53,12 @@ function Flate(){
     for( var i = 1 ; i<=5;i++){
      if(i == no){ 
        var obj =document.getElementById("balconiesbtn"+no);
-       obj.style.backgroundColor = "white";
-       obj.style.color = "black";
-     }else{
-       var obj =document.getElementById("balconiesbtn"+i);
        obj.style.backgroundColor = "#2775ea";
        obj.style.color = "white";
+     }else{
+       var obj =document.getElementById("balconiesbtn"+i);
+       obj.style.backgroundColor = "white";
+       obj.style.color = "black";
      }
     }
     if(no==5)
