@@ -4,13 +4,11 @@ import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
 function SearchBar({search}){
-  // alert(search);
   const navigate =  useNavigate();
     const nearBySearch = ()=>{
       navigator.geolocation.getCurrentPosition((position) => {
         let latitude = position.coords.latitude;
         let longitude = position.coords.longitude;
-        // dispatch(setLocation({latitude,longitude}));
         navigate("/nearByhouse",{state:{
           latitude,
           longitude
@@ -25,7 +23,6 @@ function SearchBar({search}){
     }
     
     const changeCategory = (category)=>{
-      // alert(category)
        setCategory(category);
     }
     return <>
@@ -84,7 +81,7 @@ function SearchBar({search}){
                    <div className="col-2 searchBarButton">
                      <button className="btn btn-primary">Search</button>
                    </div>
-                   
+
                 </div>
               </div>
           </div>
