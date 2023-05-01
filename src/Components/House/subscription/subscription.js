@@ -4,7 +4,7 @@ function Subscription() {
     <div className='container'>
       <div className='row mt-5 '>
         <div className=' col-lg-4'>
-          <div className="card" style={{ width: "24rem" }}>
+          <div className="card" id="card" style={{ width: "24rem" }}>
             <div className="head">
               <p id="type">Basic</p>
               <p id="rs">$0.00</p>
@@ -26,7 +26,7 @@ function Subscription() {
 
         </div>
         <div className=' col-lg-4'>
-          <div className="card" style={{ width: "24rem" }}>
+          <div className="card" id="card" style={{ width: "24rem" }}>
             <div className="head">
               <p id="type">Extended</p>
               <p id="rs">$199.00</p>
@@ -52,7 +52,7 @@ function Subscription() {
         </div>
 
         <div className=' col-lg-4'>
-          <div className="card" style={{ width: "24rem" }}>
+          <div className="card" id="card" style={{ width: "24rem" }}>
             <div className="head">
               <p id="type">Proffesional</p>
               <p id="rs">$399.00</p>
@@ -67,7 +67,7 @@ function Subscription() {
                 Properties are visible for 90 days</p>
                 <p id="detail2">unlimited listening</p>
                 <p id="detail2">24/7 Support</p>
-                <a href="#" className="btnbtn "><input className='form-check-input me-2' type='checkbox'></input>
+                <a href="#" id="btnbtn "><input className='form-check-input me-2' type='checkbox'></input>
                   Buy this Package
                 </a>
 
