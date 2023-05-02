@@ -47,7 +47,6 @@ function Flate(){
     }
     setNoOfBathoom(no*1);
     console.log(noOfBathoom);
-    // alert(noOfBathoom);
   }
   function balconiesFunction(no){
     for( var i = 1 ; i<=5;i++){
@@ -81,7 +80,6 @@ function Flate(){
     console.log(otherRoom);
   }
   const furnshingChange = (e)=>{
-    alert(e.target.id);
     setFurnish(e.target.id);
     console.log(furnshing);
   }
@@ -95,7 +93,6 @@ function Flate(){
     navigate("/CurrentLocation",{state:{ActualHouseDetails,typeOfPropertyDetails}});
   }
     return <>
-    <div className="mtt"></div>
       <div className="row mb-2">
         
         <div className="col-3 bg-c"></div>

@@ -680,3 +680,9 @@
 		 top: 0;
 	}
 }
+
+.bg-c{
+  background: url('../images/side3.webp');
+  background-repeat: inherit;
+  background-size: cover;
+}

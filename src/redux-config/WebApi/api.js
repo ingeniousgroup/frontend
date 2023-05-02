@@ -9,5 +9,6 @@ export default {
     VIEW_PROPPERTY_OF_OWNER:'/owner/view_porperty',
     TAKE_SUBSCRIPTION:'/owner/subscription',
     POST_PROPERTY_DETAILS:'/owner/propertyDetails',
-    SEARCH:'/tenant/search'
+    SEARCH:'/tenant/search',
+    REMOVE_PROPERTY_OF_OWNER:'/owner/removePropertyById'
 }

@@ -25,6 +25,9 @@ import Subscription from "../House/subscription/subscription";
 import subscriptionProtected from "../subscriptionProtected/subscriptionProtected";
 import axios from "axios";
 import apiEndPoint from "../../redux-config/WebApi/api";
+
+import Plot from "../House/PostPropertyForms/plots/plot";
+
 function Home(){
 
   const [pixelFlag,setPixelFlag] = useState(false);
@@ -63,15 +66,15 @@ function Home(){
         }
   }
   return <>
-    {/* {pixelFlag && <NavebarNext/>}
-    {pixelFlag && <Navbar/>} */}
-    <NavebarNext/>
+  <NavebarNext/>
+
 
     <Navbar search = {search}/>
     <div style={{marginTop:"100px"}}>
     </div>    
     <Routes>
-    <Route path="/" element={<Property propertyList={propertyList}/>}/>
+      <Route path="/" element={<Property propertyList={propertyList}/>}/>
+   
 
         <Route path="/" element={<Property/>}/> 
         <Route path="/propertypost" element={<ProtectedRoute><PostProperty/></ProtectedRoute>}/>
@@ -93,7 +96,7 @@ function Home(){
            
 
     </Routes>
-
+    
   </>
 }
 
