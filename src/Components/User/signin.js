@@ -14,6 +14,7 @@ function Signin() {
         try {
             event.preventDefault();
             let response = await axios.post(api.OWNER_SIGNIN,{email,password});
+            console.log(response);
             if(response.data.status){
                 dispatch(setUser(response.data.user));
                 window.alert("signin success")
@@ -55,7 +56,7 @@ function Signin() {
                         />
                         <br />
                         <br />
-                        <small> Forgot Password</small>
+                        <Link to='/forgotPassword'><small className='offset-5 text-danger'> Forgot Password ?</small></Link>
                         <br />
                         <br />
                         <button

@@ -26,13 +26,13 @@
     background-color: beige;
 }
 .leftSide{
-    box-shadow: 3px 3px 5px black;
+    box-shadow: 3px 3px 10px black;
     
 }
 .rightSide{
     height: 80vh;
     margin-left: 13vh;
-    box-shadow: 3px 3px 5px black;
+    box-shadow: 3px 3px 10px black;
     overflow-x: hidden;
     overflow-y: auto;
     text-align:justify;

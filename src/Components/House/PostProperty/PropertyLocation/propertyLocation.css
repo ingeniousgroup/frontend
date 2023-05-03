@@ -16,3 +16,11 @@
 .find{
     cursor: pointer;
 }
+#textarea{
+    width: 50%;
+    height: 7vh;
+}
+#textarea1,#textarea2{
+    width: 50%;
+    height: 9vh;
+}

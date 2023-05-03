@@ -302,3 +302,24 @@
 .uploadphoto:hover{
     background-color: rgb(235, 255, 222);
 }
+#renting{
+    margin-left: 23vh;
+    margin-top: 3vh;
+    margin-bottom: 5vh;
+}
+#rentinput{
+    width: 20%;
+    border: 0;
+    border-bottom: 2px solid black;
+    margin-left: -1vh !important;
+    outline: none;
+    /* background-color: red; */
+}
+.sless{
+    margin-left: 0vh;
+    font-size: 3.5vh;
+}
+#rs{
+    margin-left: 8vh;
+    /* background-color: blue; */
+}

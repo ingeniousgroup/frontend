@@ -21,8 +21,6 @@ import HouseDescription from "../House/HouseDescription/HouseDescription";
 import ViweProfile from "../User/ViewProfile/viewProfile";
 import NavebarNext from "../Headers.js/Navbar/navbarNext";
 import Subscription from "../House/subscription/subscription";
-import subscriptionProtected from "../subscriptionProtected/subscriptionProtected";
-import Plot from "../House/PostPropertyForms/plots/plot";
 function Home(){
   const [pixelFlag,setPixelFlag] = useState(false);
   window.onscroll = ()=>{
@@ -80,6 +78,7 @@ function Home(){
         <Route path="/signin" element={<Signin/>}/>
         <Route path="/signup" element={<Signup/>}/>
         <Route path="/viewDiscription" element={<HouseDescription/>}/>
+        {/* <Route path="forgotPassword" element={<NewPassword/>}/> */}
     
         
         {/* <ViweProfile/> */}
