@@ -9,8 +9,11 @@ import { Navigate, useLocation, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import api from '../../../redux-config/WebApi/api';
 import { current } from '@reduxjs/toolkit';
+import setProperty from "../../../redux-config/propertyOfOwnerSlice"
 
 function ViweProfile() {
+    const dispatch=useDispatch();
+
     const { currentUser } = useSelector((state) => state.user);
     const [ownerFunctionality, setOwnerFunctionality] = useState('');
     const navigate = useNavigate();
@@ -21,14 +24,22 @@ function ViweProfile() {
             console.log(element._id);
         }
     }
+
+
     const removeProperty = async (propertyId) => {
         if (window.confirm("are you sure ?")) {
             try {
                 let response = await axios.post(api.REMOVE_PROPERTY_OF_OWNER, { propertyId: propertyId });
-                if (response.data.status) {
-                    window.alert("ho gai delete");
+                window.alert(response.data.message);
+                  data.findIndex((data,index)=>{
+                    if(data._id==propertyId){
+                       data.splice(index,1);
+                       dispatch(setProperty([...data]));
+                    }
+
+                  })
                     
-                }
+                
             }
             catch (err) {
                 console.log(err);

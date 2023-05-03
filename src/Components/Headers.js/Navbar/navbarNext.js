@@ -76,19 +76,19 @@ function NavebarNext() {
                             </div>
                         </div>
                         <div className='col-md-3 '>
-                            <div className='row ' style={{marginLeft:"-80px"}}>
-                            <div className='col-md-6 text-end'>
+                            <div className='row ms-5' style={{marginLeft:"-80px"}}>
+                            <div className='col-md-6 text-end '>
                                 <button onClick={propertyPost} className='btn  rounded-pill btn-light mt-1 post'>
                                     Post Property
                                 </button>
                             </div>
-                            <div className='col-md-6 text-start '>
-                                {subscription && <button onClick={takeSubscription} className='btn bg-danger text-white rounded-pill btn-light mt-1 post'>
+                            <div className='col-md-6'>
+                                {subscription && <button onClick={takeSubscription} className='btn bg-danger text-white rounded-pill btn-light mt-1 '>
                                     expire Subscription
                                 </button>
                                 }
                                 {!subscription && <button onClick={takeSubscription} className='btn  rounded-pill btn-light mt-1 post'>
-                                    Take Subscription
+                                     Subscription
                                 </button>
                                 }
                             </div>

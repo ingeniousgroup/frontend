@@ -682,7 +682,8 @@
 }
 
 .bg-c{
-  background: url('../images/side3.webp');
+  /* background: url('../images/side3.webp');
   background-repeat: inherit;
-  background-size: cover;
+  background-size: cover; */
+  background-color: white !important;
 }

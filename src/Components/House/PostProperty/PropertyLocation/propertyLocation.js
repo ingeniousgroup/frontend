@@ -2,6 +2,7 @@ import { Route, Routes, useNavigate,useLocation } from 'react-router';
 import './propertyLocation.css'
 import Flate from '../../PostPropertyForms/Flate/Flate';
 import { useRef } from 'react';
+import { event } from 'jquery';
 
 function PropertyLocation(props) {
 
@@ -9,8 +10,11 @@ function PropertyLocation(props) {
     
     console.log(HouseAllDetails.state);
     const navigate = useNavigate();
-    let latitude = useRef('');
-    let longitude = useRef('');
+    let latitude = useRef();
+    let longitude = useRef();
+    let userAddress = useRef();
+    let userDescription = useRef();
+
     const findCurrentLocation = () => {
         navigator.geolocation.getCurrentPosition((position) => {
             latitude = position.coords.latitude;
@@ -19,7 +23,7 @@ function PropertyLocation(props) {
         });
     }
     const PropertyDetails = () => {
-        const currentLocation = {latitude,longitude};
+        const currentLocation = {latitude,longitude,userDescription,userAddress};
         navigate("/uploadImage",{state:{currentLocation,HouseAllDetails}});
     }
     return <>
@@ -40,7 +44,7 @@ function PropertyLocation(props) {
                         </h6>
                     </div>
                 </div>
-                <div className='row mt-5'>
+                <div className='row mt-5 '>
                     <div className='col-md-12 ms-2'>
                         <span>
                             <input type="text" list="browsers" className="locationfinder" id='demo' />
@@ -65,8 +69,26 @@ function PropertyLocation(props) {
                         </span>
                     </div>
                 </div>
-                <div className='row mt-4'>
+                <div className='row mt-4 '>
                     <div className='col-md-12  ms-2'>
+                    <h4 className='mt-4 welcome fs-4'>Fill Up Your Address</h4>
+                    <h6 className='mess mt-3 mb-4 ms-2'>
+                            Enter full address to attract whit <br />New user & customer
+                        </h6>
+                    <div className='mt-5'>
+                        <input onChange={(event)=>{userAddress=event.target.value}} id='textarea1' placeholder='Your Full Address Here' type='text'/>
+                    </div>
+                    </div>
+                </div>
+                <div className='row mt-4 '>
+                    <div className='col-md-12  ms-2'>
+                    <h4 className='mt-4 welcome fs-4'>Add Some Description About Property</h4>
+                    <h6 className='mess mt-3 mb-4 ms-2'>
+                            List your property description for better <br />experience & connections
+                        </h6>
+                    <div className='mt-5'>
+                        <input onChange={(event)=>{userDescription=event.target.value}} id='textarea2' placeholder='Your Property Description Here' type='text'/>
+                    </div>
                     </div>
                 </div>
                 <div className='row mt-4'>
