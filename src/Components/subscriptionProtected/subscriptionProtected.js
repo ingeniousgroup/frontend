@@ -1,10 +1,11 @@
 import { useSelector } from "react-redux";
-import { Navigate } from "react-router-dom";
+import { Navigate, useNavigate } from "react-router-dom";
 
 function SubscriptionProtected({children}){
-    const {subscription,isSubscription} = useSelector((state)=>state.subscription)
-    if(!isSubscription)
-        return <Navigate to='/takeSubscription'/>
+    const navigate = useNavigate();
+    const {subscription} = useSelector((state)=>state.ownerSubscription)
+    if(!subscription)
+        return navigate('/takeSubscription');
     return children;
 }
 
