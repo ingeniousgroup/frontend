@@ -5,20 +5,30 @@ import { setUser } from '../../redux-config/UserSlice';
 import axios from 'axios';
 import { Link, useNavigate } from 'react-router-dom';
 import api from '../../redux-config/WebApi/api';
+import { tenantRequest } from '../../redux-config/tenantRequestSlice';
+import { showSubscription } from '../../redux-config/subscriptionSlice';
 function Signin() {
     const [email,setEmail] = useState("");
     const [password,setPassword] = useState("");
     const dispatch = useDispatch();
     const navigate = useNavigate();
+    const {currentUser} = useSelector((state)=>state.user);
     const handleSubmit = async (event)=>{
         try {
             event.preventDefault();
             let response = await axios.post(api.OWNER_SIGNIN,{email,password});
             console.log(response);
             if(response.data.status){
-                dispatch(setUser(response.data.user));
-                window.alert("signin success")
-                navigate("/");
+                let done = await dispatch(setUser(response.data.user));
+                if(done){
+                    dispatch(tenantRequest());
+                    dispatch(showSubscription(response.data.user));
+                    window.alert("signin success")
+                    navigate("/");
+                    
+                }
+                
+                
             }
         } catch (error) {
             console.log(error);

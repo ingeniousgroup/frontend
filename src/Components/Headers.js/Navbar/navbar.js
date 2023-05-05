@@ -50,7 +50,7 @@ function Navbar() {
   //   });
   // })
 
-  return <header className="main-header">
+  return <header className="main-header" style={{marginBottom:"10vh"}}>
     <div className="container-fluid">
       <div className="navbardivBackgroundColor">
         <nav className="navbar navbar-expand-lg main-nav px-0 ">

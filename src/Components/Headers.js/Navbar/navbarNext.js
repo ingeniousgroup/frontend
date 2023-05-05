@@ -4,9 +4,8 @@ import { useEffect } from 'react';
 import $ from 'jquery';
 import { useDispatch, useSelector } from 'react-redux';
 import { removeUser } from '../../../redux-config/UserSlice';
-import { fetchRequestByTenant } from '../../../redux-config/requestByTenantSlice';
 import { viewProperty } from '../../../redux-config/propertyOfOwnerSlice';
-import { createSubscription } from '../../../redux-config/subscriptionSlice';
+import { createSubscription, showSubscription } from '../../../redux-config/subscriptionSlice';
 function NavebarNext() {
 
     useEffect(() => {
@@ -18,11 +17,11 @@ function NavebarNext() {
     }, []);
 
     const navigate = useNavigate();
-    const propertyPost = () => {
-        navigate("/propertypost");
+    const propertyPost = async() => {
+        navigate("/propertypost");   
     }
     const { currentUser } = useSelector((state) => state.user);
-    const {subscription} = useSelector((state) => state.subscription)
+    const {subscription} = useSelector((state) => state.ownerSubscription)
     const dispatch = useDispatch();
     const signout = () => {
         dispatch(removeUser());
@@ -30,18 +29,15 @@ function NavebarNext() {
     const signupUser = () => {
         navigate("/signup")
     }
-    const signipUser = () => {
+    const signinUser = () => {
         navigate("/signin")
     }
-    const viewProfile = () => {
-        
-        dispatch(viewProperty(currentUser));
-        // dispatch(fetchRequestByTenant(currentUser));
+    const viewProfile =() => {
+         dispatch(viewProperty(currentUser));
         navigate("/viewProfile");
     }
 
-    const takeSubscription = ()=>{
-        dispatch(createSubscription(currentUser));
+    const takeSubscription = async()=>{
         navigate("/takeSubscription");
     }
     return <>
@@ -83,20 +79,21 @@ function NavebarNext() {
                                 </button>
                             </div>
                             <div className='col-md-6'>
-                                {subscription && <button onClick={takeSubscription} className='btn bg-danger text-white rounded-pill btn-light mt-1 '>
-                                    expire Subscription
-                                </button>
-                                }
                                 {!subscription && <button onClick={takeSubscription} className='btn  rounded-pill btn-light mt-1 post'>
                                      Subscription
                                 </button>
+                                }
+                                {
+                                    subscription && <button className='btn post rounded-pill mt-1 btn-light' style={{backgroundColor:"yellow"}}>
+                                        want Expire ?
+                                    </button>
                                 }
                             </div>
                             </div>
                         </div>
                         <div className='col-md-1'>
                             <div className='share ms-3'>
-                                <div class="fab no " data-hover='SignIn' onClick={signipUser}></div>
+                                <div class="fab no " data-hover='SignIn' onClick={signinUser}></div>
                                 <div class="fab no " data-hover='SignUp' onClick={signupUser}></div>
                                 <div class="fab no " data-hover='Profile' onClick={viewProfile}></div>
                             </div>

@@ -9,5 +9,6 @@ export default {
     VIEW_PROPPERTY_OF_OWNER:'/owner/view_porperty',
     TAKE_SUBSCRIPTION:'/owner/subscription',
     POST_PROPERTY_DETAILS:'/owner/propertyDetails',
-    REMOVE_PROPERTY_OF_OWNER:'/owner/removePropertyById'
+    REMOVE_PROPERTY_OF_OWNER:'/owner/removePropertyById',
+    SHOW_SUBSCRIPTION : '/owner/showSubscription'
 }

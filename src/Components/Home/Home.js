@@ -21,10 +21,12 @@ import HouseDescription from "../House/HouseDescription/HouseDescription";
 import ViweProfile from "../User/ViewProfile/viewProfile";
 import NavebarNext from "../Headers.js/Navbar/navbarNext";
 import Subscription from "../House/subscription/subscription";
+import SubscriptionProtected from "../subscriptionProtected/subscriptionProtected";
+import { showSubscription } from "../../redux-config/subscriptionSlice";
 function Home(){
   const [pixelFlag,setPixelFlag] = useState(false);
   window.onscroll = ()=>{
-        if (window.scrollY>= 200 ) {
+        if (window.scrollY>= 450 ) {
           setPixelFlag(true);
         }
         else {
@@ -32,41 +34,20 @@ function Home(){
         }
   }
   const dispatch = useDispatch();
+  const {currentUser} = useSelector((state)=>state.user);
   useEffect(()=>{
     dispatch(fetchPropertyList());
   },[]);
 
-  
   return <>
-    {/* {pixelFlag && <NavebarNext/>}
-    {pixelFlag && <Navbar/>} */}
-    <NavebarNext/>
-    {/* <Navbar/> */}
-    <div style={{marginTop:"2px"}}>
+    {pixelFlag && <NavebarNext/>}
+    {!pixelFlag && <Navbar/>}
+    <div style={{marginTop:"102px"}}>
     </div>    
     <Routes>
-      {/* <Route path="/propertypost" element={<PostProperty/>}>
-        <Route path="flat" element={<Flate/>}/>
-        <Route path="villa" element={<Flate/>}/>
-        <Route path="plot" element={<Flate/>}/>
-        <Route path="formHouse" element={<Flate/>}/>
-        <Route path="office" element={<Flate/>}/>  
-        <Route path="other" element={<Flate/>}/>
-      </Route> */}
-        {/* <Route path="/" element={<Property/>}/> */}
-
-{/* 
->>>>>>> 29164a7e937bb4cc479779f9e9158cb8467b713a
-        <Route path="/propertypost" element={<PostProperty/>}/>
-        <Route path="/villa" element={<Flate/>}/>
-        <Route path="/plot" element={<Flate/>}/>
-        <Route path="/formHouse" element={<Flate/>}/>
-        <Route path="/office" element={<Flate/>}/>  
-        <Route path="/other" element={<Flate/>}/>
-        <Route path="/flat" element={<Flate/>}/>
-        <Route path="/nearByHouse" element={<NearByHouse />}/>*/}
+      
         <Route path="/" element={<Property/>}/> 
-        <Route path="/propertypost" element={<ProtectedRoute><PostProperty/></ProtectedRoute>}/>
+        <Route path="/propertypost" element={<ProtectedRoute><SubscriptionProtected><PostProperty/></SubscriptionProtected></ProtectedRoute>}/>
         <Route path="/villa" element={<ProtectedRoute><Flate/></ProtectedRoute>}/>
         <Route path="/plot" element={<ProtectedRoute><Flate/></ProtectedRoute>}/>
         <Route path="/formHouse" element={<ProtectedRoute><Flate/></ProtectedRoute>}/>
@@ -78,12 +59,6 @@ function Home(){
         <Route path="/signin" element={<Signin/>}/>
         <Route path="/signup" element={<Signup/>}/>
         <Route path="/viewDiscription" element={<HouseDescription/>}/>
-        {/* <Route path="forgotPassword" element={<NewPassword/>}/> */}
-    
-        
-        {/* <ViweProfile/> */}
-
-        <Route path="viewProfile" element={<ProtectedRoute><ViweProfile/></ProtectedRoute>}/>
         <Route path="/viewProfile" element={<ProtectedRoute><ViweProfile/></ProtectedRoute>}/>
         <Route path="/takeSubscription" element={<ProtectedRoute><Subscription/></ProtectedRoute>}/>
            
