@@ -5,6 +5,7 @@ import { setUser } from '../../redux-config/UserSlice';
 import axios from 'axios';
 import { Link, useNavigate } from 'react-router-dom';
 import api from '../../redux-config/WebApi/api';
+import { wishList } from '../../redux-config/wishListSlice';
 function Signin() {
     const [email,setEmail] = useState("");
     const [password,setPassword] = useState("");
@@ -16,6 +17,7 @@ function Signin() {
             let response = await axios.post(api.OWNER_SIGNIN,{email,password});
             if(response.data.status){
                 dispatch(setUser(response.data.user));
+                dispatch(wishList(response.data.user));
                 window.alert("signin success")
                 navigate("/");
             }

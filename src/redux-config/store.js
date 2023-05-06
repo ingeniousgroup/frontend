@@ -6,6 +6,7 @@ import locationSlice from "./locationSlice";
 import requestByTenantSlice from "./requestByTenantSlice";
 import propertyOfOwnerSlice from "./propertyOfOwnerSlice";
 import subscriptionSlice from "./subscriptionSlice";
+import wishListSlice from "./wishListSlice";
 console.log("store in...");
 const store = configureStore({
     reducer:{
@@ -15,7 +16,8 @@ const store = configureStore({
         location : locationSlice,
         tenantRequest:requestByTenantSlice,
         ownerProperty:propertyOfOwnerSlice,
-        subscription:subscriptionSlice
+        subscription:subscriptionSlice,
+        wishList:wishListSlice,
     }
 });
 

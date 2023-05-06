@@ -16,11 +16,11 @@ function ViweProfile() {
     const navigate = useNavigate();
     const data = useSelector((state) => state.ownerProperty);
 
-    for (let ele of data.ownerProperty) {
-        for (let element of ele) {
-            console.log(element._id);
-        }
-    }
+    // for (let ele of data.ownerProperty) {
+    //     for (let element of ele) {
+    //         console.log(element._id);
+    //     }
+    // }
     const removeProperty = async (propertyId) => {
         if (window.confirm("are you sure ?")) {
             try {

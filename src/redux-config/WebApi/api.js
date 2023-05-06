@@ -10,5 +10,6 @@ export default {
     TAKE_SUBSCRIPTION:'/owner/subscription',
     POST_PROPERTY_DETAILS:'/owner/propertyDetails',
     SEARCH:'/tenant/search',
-    REMOVE_PROPERTY_OF_OWNER:'/owner/removePropertyById'
+    REMOVE_PROPERTY_OF_OWNER:'/owner/removePropertyById',
+    VIEW_WISHLIST:'/tenant/viewWishlist'
 }

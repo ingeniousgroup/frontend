@@ -27,6 +27,8 @@ import axios from "axios";
 import apiEndPoint from "../../redux-config/WebApi/api";
 
 import Plot from "../House/PostPropertyForms/plots/plot";
+import TenantProfile from "../User/ViewProfile/tenantProfile";
+import Furnishing from "../House/Categories/Furnishing";
 
 function Home(){
 
@@ -67,16 +69,15 @@ function Home(){
   }
   return <>
   <NavebarNext/>
+  
+  
+  
 
-
-    <Navbar search = {search}/>
-    <div style={{marginTop:"100px"}}>
-    </div>    
+    {/* <Navbar search = {search}/> */}
+    {/* <TenantProfile/> */}
+    <div style={{marginTop:"100px"}}></div>    
     <Routes>
-      <Route path="/" element={<Property propertyList={propertyList}/>}/>
-   
-
-        <Route path="/" element={<Property/>}/> 
+        <Route path="/" element={<Property propertyList={propertyList}/>}/>
         <Route path="/propertypost" element={<ProtectedRoute><PostProperty/></ProtectedRoute>}/>
         <Route path="/villa" element={<ProtectedRoute><Flate/></ProtectedRoute>}/>
         <Route path="/plot" element={<ProtectedRoute><Flate/></ProtectedRoute>}/>
@@ -92,11 +93,10 @@ function Home(){
         <Route path="viewProfile" element={<ProtectedRoute><ViweProfile/></ProtectedRoute>}/>
         <Route path="/viewProfile" element={<ProtectedRoute><ViweProfile/></ProtectedRoute>}/>
         <Route path="/takeSubscription" element={<ProtectedRoute><Subscription/></ProtectedRoute>}/>
+        <Route path="/viewTenantProfile" element={<ProtectedRoute><TenantProfile/></ProtectedRoute>}/>
         <Route path="/nearByhouse" element={<NearByHouse/>}/>
-           
-
     </Routes>
-    
+
   </>
 }
 

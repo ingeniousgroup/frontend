@@ -1,5 +1,6 @@
 import { event } from "jquery";
-import { useState } from "react";
+import debounce from "lodash.debounce";
+import { useCallback, useState } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
@@ -17,11 +18,45 @@ function SearchBar({search}){
     }
     const [searchText, setSearchText] = useState("");
     const [category,setCategory] = useState("");
+   
+    const debounce = (func, wait) => {
+      let timeout;
+    
+      // This is the function that is returned and will be executed many times
+      // We spread (...args) to capture any number of parameters we want to pass
+      return function executedFunction(...args) {
+    
+        // The callback function to be executed after 
+        // the debounce time has elapsed
+        const later = () => {
+          // null timeout to indicate the debounce ended
+          timeout = null;
+          
+          // Execute the callback
+          func(...args);
+        };
+        // This will reset the waiting every function execution.
+        // This is the step that prevents the function from
+        // being executed because it will never reach the 
+        // inside of the previous setTimeout  
+        clearTimeout(timeout);
+        
+        // Restart the debounce waiting period.
+        // setTimeout returns a truthy value (it differs in web vs Node)
+        timeout = setTimeout(later, wait);
+      };
+    };
+    
+    var returnedFunction = debounce(function() {
+      // All the taxing stuff you do
+    }, 250);
+
     const handleEvent=(event)=>{
+      // handler(event);
       setSearchText(event.target.value);
       search(searchText);
     }
-    
+   
     const changeCategory = (category)=>{
        setCategory(category);
     }
@@ -70,7 +105,7 @@ function SearchBar({search}){
                         <input  className="searchInputStyle"  
                          placeholder="Search property"        
                          value={searchText}
-                         onChange={(event)=>handleEvent(event)}/>
+                         onChange={handleEvent}/>
                       </div>
                     </div>
                    </div>

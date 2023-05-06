@@ -34,7 +34,8 @@ function Property({propertyList}){
  
   return <div className="container"> <div className="row" >
     {!error&&propertyList.map((property,index)=><div key={index} className="col-md-3">
-    <div className="profile-card-2" onClick={()=>viewDescription(property)}>
+      {/* onClick={()=>viewDescription(property)} */}
+    <div className="profile-card-2" >
       <img
         src={property.imagesUrlArray[0]}
         className="img img-responsive"
