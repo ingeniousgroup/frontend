@@ -18,9 +18,13 @@ function ViweProfile() {
     const { currentUser } = useSelector((state) => state.user);
     const [ownerFunctionality, setOwnerFunctionality] = useState('');
     const navigate = useNavigate();
+
+    const data = useSelector((state) => state.ownerProperty);
+
     const {properties} = useSelector((state) => state.ownerProperty);
     const {requestTenant} = useSelector((state)=>state.requestTenants);
     console.log(requestTenant);
+
     const removeProperty = async (propertyId) => {
         if (window.confirm("are you sure ?")) {
             try {

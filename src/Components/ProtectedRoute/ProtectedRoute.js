@@ -5,7 +5,7 @@ function ProtectedRoute({children}){
     const {currentUser} = useSelector((state)=>state.user);
     if(!currentUser)
         return <Navigate to='/signin'/>
-    else if(currentUser.role == "Owner")
+    else if(currentUser.role == "Owner"||currentUser.role=="Tenant")
         return children;
 }
 

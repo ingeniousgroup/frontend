@@ -1,17 +1,9 @@
-/**
- * index.scss
- * - Add any styles you want here!
- */
 
-
-  /* main-header start */
-  /* [data-target="#mainMenu"] {
-    position: relative;
-   
-  } */
 
   body{
-    background-color: whitesmoke;
+    font-family: 'Muli', sans-serif !important;
+
+    /* background-image: linear-gradient(to right top, #f0f9ff, #b8dfff, #82c2ff, #4fa3ff, #1683fb, #4680f9, #607df6, #747af2, #9d99f6, #c0bafa, #e1dcfd, #ffffff); */
   }
 
   #mainMenu li > a {

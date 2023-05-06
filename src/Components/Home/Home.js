@@ -1,4 +1,5 @@
 
+
 import Navbar from "../Headers.js/Navbar/navbar";
 
 import { useDispatch, useSelector } from "react-redux";
@@ -21,11 +22,43 @@ import HouseDescription from "../House/HouseDescription/HouseDescription";
 import ViweProfile from "../User/ViewProfile/viewProfile";
 import NavebarNext from "../Headers.js/Navbar/navbarNext";
 import Subscription from "../House/subscription/subscription";
+import apiEndPoint from "../../redux-config/WebApi/api";
+
+import Plot from "../House/PostPropertyForms/plots/plot";
+import TenantProfile from "../User/ViewProfile/tenantProfile";
+import Furnishing from "../House/Categories/Furnishing";
 import SubscriptionProtected from "../subscriptionProtected/subscriptionProtected";
 import { showSubscription } from "../../redux-config/subscriptionSlice";
 import ViewProfileNext from "../User/ViewProfile/viewProfileNext";
 function Home(){
+
   const [pixelFlag,setPixelFlag] = useState(false);
+  const [searchText,setSerachText] = useState("");
+  const [propertyList, setPropertyList] = useState([]);
+
+  const loadProperty =async(searchText)=>{
+    try {
+      var response ;
+      if(!searchText)
+         response = await axios.get(apiEndPoint.PROPERTY_LIST);
+      else
+        response = await axios.post(apiEndPoint.SEARCH,{address: searchText}); 
+      if(response.data.status){
+        setPropertyList(response.data.property);
+        console.log(propertyList)
+      }
+    } catch (err) {
+      // setError("Oops somthing went Wrong");
+    }
+  }
+  const search = searchText =>{
+    setSerachText(searchText);
+  }
+
+  useEffect(()=>{
+     loadProperty(searchText);
+  },[searchText]);
+
   window.onscroll = ()=>{
         if (window.scrollY>= 450 ) {
           setPixelFlag(true);
@@ -34,11 +67,6 @@ function Home(){
           setPixelFlag(false)
         }
   }
-  const dispatch = useDispatch();
-  const {currentUser} = useSelector((state)=>state.user);
-  useEffect(()=>{
-    dispatch(fetchPropertyList());
-  },[]);
 
   return <>
     {pixelFlag && <NavebarNext/>}
@@ -62,8 +90,8 @@ function Home(){
         <Route path="/viewDiscription" element={<HouseDescription/>}/>
         <Route path="/viewProfile" element={<ProtectedRoute><ViewProfileNext/></ProtectedRoute>}/>
         <Route path="/takeSubscription" element={<ProtectedRoute><Subscription/></ProtectedRoute>}/>
-           
-
+        <Route path="/viewTenantProfile" element={<ProtectedRoute><TenantProfile/></ProtectedRoute>}/>
+        <Route path="/nearByhouse" element={<NearByHouse/>}/>
     </Routes>
 
   </>
