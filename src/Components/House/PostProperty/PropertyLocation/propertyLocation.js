@@ -1,30 +1,30 @@
 import { Route, Routes, useNavigate,useLocation } from 'react-router';
 import './propertyLocation.css'
 import Flate from '../../PostPropertyForms/Flate/Flate';
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 import { event } from 'jquery';
 
 function PropertyLocation(props) {
 
     const HouseAllDetails = useLocation();
-    
-    console.log(HouseAllDetails.state);
     const navigate = useNavigate();
-    let latitude = useRef();
-    let longitude = useRef();
-    let userAddress = useRef();
-    let userDescription = useRef();
+    var userAddress
+    var userDescription
+    var locationTag 
 
     const findCurrentLocation = () => {
         navigator.geolocation.getCurrentPosition((position) => {
-            latitude = position.coords.latitude;
-            longitude = position.coords.longitude;
-            document.getElementById('demo').defaultValue = position.coords.latitude;
+            document.getElementById('demo5').defaultValue = position.coords.latitude+"/"+position.coords.longitude;
+            locationTag =  position.coords.latitude+"/"+position.coords.longitude;
         });
     }
     const PropertyDetails = () => {
-        const currentLocation = {latitude,longitude,userDescription,userAddress};
+        const currentLocation = {locationTag,userDescription,userAddress};
+        window.alert(userAddress);
         navigate("/uploadImage",{state:{currentLocation,HouseAllDetails}});
+    }
+    const selectCity = (event)=>{
+        locationTag = event.target.value;
     }
     return <>
         <div className='row mb-2 inner'>
@@ -47,8 +47,8 @@ function PropertyLocation(props) {
                 <div className='row mt-5 '>
                     <div className='col-md-12 ms-2'>
                         <span>
-                            <input type="text" list="browsers" className="locationfinder" id='demo' />
-                            <datalist id='browsers'>
+                            <input type="text"  onChange={selectCity} list="browsers" className="locationfinder" id='demo5'/>
+                            <datalist id='browsers' >
                                 <option value='indore' />
                                 <option value='mumbai' />
                                 <option value='bhopal' />

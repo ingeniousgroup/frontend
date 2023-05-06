@@ -7,6 +7,24 @@ import { useSelector } from 'react-redux';
 
 function ImagePost() {
     const DetaileWithLocation = useLocation();
+    let locationTag = DetaileWithLocation.state.currentLocation.locationTag;
+    let latilongi = locationTag?.split('/');
+    var locationAddress 
+    var latitude
+    var longitude
+    if(latilongi?.length == 2){
+         latitude = latilongi[0];
+         longitude = latilongi[1];
+        locationAddress = {latitude,longitude};
+        console.log(";;;;");
+        console.log(locationAddress);
+        console.log(";;;;");
+    }
+    else{
+        locationAddress = latilongi[0];
+    }
+
+    const { currentUser } = useSelector((state) => state.user);
     let imagesUrlArray = {};
     let userId = useRef();
     let houseCategory = useRef();
@@ -20,27 +38,21 @@ function ImagePost() {
     let otherRoom = DetaileWithLocation.state.HouseAllDetails.state.ActualHouseDetails.otherRoom;
     let address = DetaileWithLocation.state.currentLocation.userAddress;
     let description = DetaileWithLocation.state.currentLocation.userDescription;
+    userId = currentUser._id;
+    status = "true";
     
 
-    const { currentUser } = useSelector((state) => state.user);
-
     const uploadimage = (event) => {
-        console.log(event.target.files);
         imagesUrlArray = (Array.from(event.target.files));
+        console.log(locationAddress);
     }
 
     
-    const latitude = DetaileWithLocation.state.currentLocation.latitude;
-    const longitude = DetaileWithLocation.state.currentLocation.longitude;
-    userId = currentUser._id;
-    status = "true";
+
     houseCategory = DetaileWithLocation.state.HouseAllDetails.state.typeOfPropertyDetails.state.PropertyDetails;
     const Submit = async () => {
         let formData = new FormData();
-        imagesUrlArray.map((f) => {
-            console.log("9");
-            console.log(f);
-            console.log("9");
+        imagesUrlArray?.map((f) => {
             formData.append('imagesUrlArray', f);
         })
 
@@ -56,12 +68,8 @@ function ImagePost() {
         formData.append("otherRoom",otherRoom);
         formData.append("address",address);
         formData.append("description",description);
-        formData.append("latitude",latitude);
-        formData.append("longitude",longitude);
-        console.log("vijju")
-        const formDataArray = Array.from(formData.entries());
-        console.log(formDataArray);
-        console.log("vijju")
+        formData.append("locationAddress",locationAddress);
+        
         try {
             let response = await axios.post(api.POST_PROPERTY, formData);
             if (response.data.status) {

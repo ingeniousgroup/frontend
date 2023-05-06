@@ -23,6 +23,7 @@ import NavebarNext from "../Headers.js/Navbar/navbarNext";
 import Subscription from "../House/subscription/subscription";
 import SubscriptionProtected from "../subscriptionProtected/subscriptionProtected";
 import { showSubscription } from "../../redux-config/subscriptionSlice";
+import ViewProfileNext from "../User/ViewProfile/viewProfileNext";
 function Home(){
   const [pixelFlag,setPixelFlag] = useState(false);
   window.onscroll = ()=>{
@@ -59,7 +60,7 @@ function Home(){
         <Route path="/signin" element={<Signin/>}/>
         <Route path="/signup" element={<Signup/>}/>
         <Route path="/viewDiscription" element={<HouseDescription/>}/>
-        <Route path="/viewProfile" element={<ProtectedRoute><ViweProfile/></ProtectedRoute>}/>
+        <Route path="/viewProfile" element={<ProtectedRoute><ViewProfileNext/></ProtectedRoute>}/>
         <Route path="/takeSubscription" element={<ProtectedRoute><Subscription/></ProtectedRoute>}/>
            
 
