@@ -5,6 +5,8 @@ import { setUser } from '../../redux-config/UserSlice';
 import axios from 'axios';
 import { Link, useNavigate } from 'react-router-dom';
 import api from '../../redux-config/WebApi/api';
+
+import { wishList } from '../../redux-config/wishListSlice';
 import { tenantRequest } from '../../redux-config/tenantRequestSlice';
 import { showSubscription } from '../../redux-config/subscriptionSlice';
 function Signin() {
@@ -22,13 +24,11 @@ function Signin() {
                 let done = await dispatch(setUser(response.data.user));
                 if(done){
                     dispatch(tenantRequest());
+                    dispatch(wishList(response.data.user));
                     dispatch(showSubscription(response.data.user));
                     window.alert("signin success")
                     navigate("/");
-                    
-                }
-                
-                
+                }                
             }
         } catch (error) {
             console.log(error);

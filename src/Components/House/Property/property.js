@@ -3,9 +3,15 @@ import axios from "axios";
 import { useSelector } from "react-redux";
 import apiEndPoint from "../../../redux-config/WebApi/api";
 import { useNavigate } from "react-router";
-function Property(){
+import { useState } from "react";
+
+
+function Property({propertyList}){
+
   const {currentUser} = useSelector(state=>state.user);
   const navigate = useNavigate();
+  const [error, setError] = useState("");
+  const [isLoading,setIsLoading]= useState(true);
   
   const viewDescription = (property)=>{
     navigate("/viewDiscription",{state:{
@@ -25,11 +31,11 @@ function Property(){
     else
       alert("already Added In cart");  
   }
-  const {propertyList,isLoding,error} = useSelector((state)=>state.property);
-  console.log(propertyList);
+ 
   return <div className="container"> <div className="row" >
     {!error&&propertyList.map((property,index)=><div key={index} className="col-md-3">
-    <div className="profile-card-2" onClick={()=>viewDescription(property)}>
+      {/* onClick={()=>viewDescription(property)} */}
+    <div className="profile-card-2" >
       <img
         src={apiEndPoint.PORT + property.imagesUrlArray[0]}
         className="img img-responsive"

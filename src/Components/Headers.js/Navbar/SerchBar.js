@@ -1,39 +1,83 @@
+import { event } from "jquery";
+import debounce from "lodash.debounce";
+import { useCallback, useState } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { setLocation } from "../../../redux-config/locationSlice";
 
-function SearchBar(){
-  
-  const dispatch = useDispatch();
+function SearchBar({search}){
   const navigate =  useNavigate();
     const nearBySearch = ()=>{
       navigator.geolocation.getCurrentPosition((position) => {
         let latitude = position.coords.latitude;
         let longitude = position.coords.longitude;
-        dispatch(setLocation({latitude,longitude}));
-        navigate("/nearByhouse");
+        navigate("/nearByhouse",{state:{
+          latitude,
+          longitude
+        }});
     });
+    }
+    const [searchText, setSearchText] = useState("");
+    const [category,setCategory] = useState("");
+   
+    const debounce = (func, wait) => {
+      let timeout;
+    
+      // This is the function that is returned and will be executed many times
+      // We spread (...args) to capture any number of parameters we want to pass
+      return function executedFunction(...args) {
+    
+        // The callback function to be executed after 
+        // the debounce time has elapsed
+        const later = () => {
+          // null timeout to indicate the debounce ended
+          timeout = null;
+          
+          // Execute the callback
+          func(...args);
+        };
+        // This will reset the waiting every function execution.
+        // This is the step that prevents the function from
+        // being executed because it will never reach the 
+        // inside of the previous setTimeout  
+        clearTimeout(timeout);
+        
+        // Restart the debounce waiting period.
+        // setTimeout returns a truthy value (it differs in web vs Node)
+        timeout = setTimeout(later, wait);
+      };
+    };
+    
+    var returnedFunction = debounce(function() {
+      // All the taxing stuff you do
+    }, 250);
 
+    const handleEvent=(event)=>{
+      // handler(event);
+      setSearchText(event.target.value);
+      search(searchText);
+    }
+   
+    const changeCategory = (category)=>{
+       setCategory(category);
     }
     return <>
-    
     <div className="searchBarSection m-auto">
               <div className="categriesInSearchBar">
                 <div className="row ">
                    <div className="col-2 categriesInSearchBartextdiv ">
-                       <span >House</span>
+                       <span onClick={()=>changeCategory("house")} >House</span>
                    </div>
                    <div className="col-2 categriesInSearchBartextdiv">
-                       <span>Flate</span>
+                       <span onClick={()=>changeCategory("flate")}>Flate</span>
                    </div>
                    <div className="col-2 categriesInSearchBartextdiv">
-                       <span>Office</span>
+                       <span onClick={()=>changeCategory("office")}>Office</span>
                    </div>
                    <div className="col-2 categriesInSearchBartextdiv">
-                       <span>Shop</span>
+                       <span onClick={()=>changeCategory("shop")} >Shop</span>
                    </div>
                    <div className="col-2 categriesInSearchBartextdiv">
-                       <span>Apartment</span>
+                       <span onClick={()=>changeCategory("apartment")}>Apartment</span>
                    </div>
                 </div>
               </div>
@@ -58,7 +102,10 @@ function SearchBar(){
                         <i className="fa fa-search" aria-hidden="true"></i>
                       </div>
                       <div className="col-10 ">
-                        <input className="searchInputStyle" placeholder="Serch Anything"/>
+                        <input  className="searchInputStyle"  
+                         placeholder="Search property"        
+                         value={searchText}
+                         onChange={handleEvent}/>
                       </div>
                     </div>
                    </div>
@@ -69,6 +116,7 @@ function SearchBar(){
                    <div className="col-2 searchBarButton">
                      <button className="btn btn-primary">Search</button>
                    </div>
+
                 </div>
               </div>
           </div>

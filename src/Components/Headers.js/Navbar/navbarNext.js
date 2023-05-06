@@ -5,7 +5,9 @@ import $ from 'jquery';
 import { useDispatch, useSelector } from 'react-redux';
 import { removeUser } from '../../../redux-config/UserSlice';
 import { viewProperty } from '../../../redux-config/propertyOfOwnerSlice';
+import { wishList } from '../../../redux-config/wishListSlice';
 import { createSubscription, showSubscription } from '../../../redux-config/subscriptionSlice';
+
 function NavebarNext() {
 
     useEffect(() => {
@@ -23,6 +25,8 @@ function NavebarNext() {
     const { currentUser } = useSelector((state) => state.user);
     const {subscription} = useSelector((state) => state.ownerSubscription)
     const dispatch = useDispatch();
+
+    
     const signout = () => {
         dispatch(removeUser());
         window.location.reload();
@@ -34,14 +38,34 @@ function NavebarNext() {
     const signinUser = () => {
         navigate("/signin")
     }
+
     const viewProfile =() => {
         dispatch(viewProperty(currentUser));
         // dispatch()
         navigate("/viewProfile");
     }
 
-    const takeSubscription = async()=>{
+
+    const viewTenantProfile = () => {
+        dispatch(wishList(currentUser));
+        navigate("/viewTenantProfile");        
+    }
+
+    const takeSubscription = ()=>{
+        dispatch(createSubscription(currentUser));
         navigate("/takeSubscription");
+    }
+
+    const conditionalRendar = ()=>{
+        if(currentUser){
+        if(currentUser.role == "Owner")
+          return <div class="fab no" data-hover='Profile' onClick={viewProfile}></div>
+        else
+          return <div class="fab no" data-hover='Profile' onClick={viewTenantProfile}  ></div>  
+        }
+        else
+         return <div class="fab no" data-hover='Profile' onClick={viewProfile}></div> 
+
     }
     return <>
         <div className='p-1 pb-2 main1'>
@@ -96,10 +120,8 @@ function NavebarNext() {
                         </div>
                         <div className='col-md-1'>
                             <div className='share ms-3'>
-                                {!currentUser &&<div class="fab no " data-hover='SignIn' onClick={signinUser}></div>}
-                                {currentUser && <div class="fab no " data-hover='SigOut' onClick={signout}></div>}
-                                {/* <div class="fab no " data-hover='SignUp' onClick={signupUser}></div> */}
-                                <div class="fab no " data-hover='Profile' onClick={viewProfile}></div>
+                                {conditionalRendar()}
+              
                             </div>
                         </div>
                     </div>
