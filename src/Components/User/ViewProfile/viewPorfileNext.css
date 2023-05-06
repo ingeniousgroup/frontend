@@ -1,0 +1,105 @@
+.sidebar{
+    height: 95vh;
+    top: 70%;
+}
+.profileArea{
+    height: 30vh;
+    width: 100%;
+    margin-left: 0.75vh;
+    display: flex;
+    justify-content: left;
+}
+.photo{
+    height: 23vh;
+    width: 70%;
+    margin-left: -5vh !important;
+    margin-top: 2vh;
+}
+.link ,.link2,.link3,.link1{
+    height: 7vh;
+    text-align: center;
+    margin-top: 1vh;
+    line-height: 3.8vh;
+}
+.lin{
+    margin-top: 4vh !important;
+}
+.l{
+    text-decoration: none;
+    font-size: 2.5vh;
+}
+
+.link:hover,.link1:hover,.link2:hover,.link3:hover{
+    background-color: #439ff6;
+    color: white;
+}
+.proLast{
+    height: 29%;
+    margin-left: 0.75vh;
+    width: 100%;
+    overflow: hidden;
+}
+#img{
+    height: 23vh;
+    margin-top: -1vh;
+    width: 80%;
+    margin-left: 1vh;
+}
+.acti{
+    background-color: rgb(34, 226, 31);
+    width: 100%;
+    color: white;
+    border-radius: 1vh;
+    height: 6vh;
+    margin-left: -2vh !important;
+}
+#downphoto{
+    height: 26vh;
+    width: 60vh;
+    margin-top: -3vh;
+    overflow: hidden;
+    margin-left: -5vh;
+}
+.staticTop{
+    height: 25vh;
+    width: 95%;
+    margin-left: 3.9vh;
+    border-radius: 3vh;
+}
+.common{
+    height: 20.7vh;
+}
+.all,.all1{
+    height: 10vh;
+    border-radius: 3vh;
+}
+.all1{
+    padding: 1.2vh;
+}
+.all{
+    background-color: yellow;
+}
+#topPhoto{
+    height: 40vh;
+    margin-top: -9vh;
+}
+.heading{
+    font-family: Comic Sans ms;
+}
+.dataPhoto{
+    height: 23vh;
+    border-bottom: 1px solid #000;
+    box-shadow: 2px 1px 3px black;
+}
+.name{
+    margin-left: -5vh;
+}
+.rightside{
+    overflow-x: hidden;
+    overflow-y: auto;
+    text-align:justify;
+    scrollbar-width: none;
+}
+#img1{
+    border-radius: 2vh;
+}

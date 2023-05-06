@@ -5,21 +5,30 @@ import { setUser } from '../../redux-config/UserSlice';
 import axios from 'axios';
 import { Link, useNavigate } from 'react-router-dom';
 import api from '../../redux-config/WebApi/api';
+
 import { wishList } from '../../redux-config/wishListSlice';
+import { tenantRequest } from '../../redux-config/tenantRequestSlice';
+import { showSubscription } from '../../redux-config/subscriptionSlice';
 function Signin() {
     const [email,setEmail] = useState("");
     const [password,setPassword] = useState("");
     const dispatch = useDispatch();
     const navigate = useNavigate();
+    const {currentUser} = useSelector((state)=>state.user);
     const handleSubmit = async (event)=>{
         try {
             event.preventDefault();
             let response = await axios.post(api.OWNER_SIGNIN,{email,password});
+            console.log(response);
             if(response.data.status){
-                dispatch(setUser(response.data.user));
-                dispatch(wishList(response.data.user));
-                window.alert("signin success")
-                navigate("/");
+                let done = await dispatch(setUser(response.data.user));
+                if(done){
+                    dispatch(tenantRequest());
+                    dispatch(wishList(response.data.user));
+                    dispatch(showSubscription(response.data.user));
+                    window.alert("signin success")
+                    navigate("/");
+                }                
             }
         } catch (error) {
             console.log(error);
@@ -57,7 +66,7 @@ function Signin() {
                         />
                         <br />
                         <br />
-                        <small> Forgot Password</small>
+                        <Link to='/forgotPassword'><small className='offset-5 text-danger'> Forgot Password ?</small></Link>
                         <br />
                         <br />
                         <button

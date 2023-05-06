@@ -4,12 +4,9 @@ import { useEffect } from 'react';
 import $ from 'jquery';
 import { useDispatch, useSelector } from 'react-redux';
 import { removeUser } from '../../../redux-config/UserSlice';
-import { fetchRequestByTenant } from '../../../redux-config/requestByTenantSlice';
 import { viewProperty } from '../../../redux-config/propertyOfOwnerSlice';
-import { createSubscription } from '../../../redux-config/subscriptionSlice';
 import { wishList } from '../../../redux-config/wishListSlice';
-
-
+import { createSubscription, showSubscription } from '../../../redux-config/subscriptionSlice';
 
 function NavebarNext() {
 
@@ -22,35 +19,36 @@ function NavebarNext() {
     }, []);
 
     const navigate = useNavigate();
-    const propertyPost = () => {
-        navigate("/propertypost");
+    const propertyPost = async() => {
+        navigate("/propertypost");   
     }
     const { currentUser } = useSelector((state) => state.user);
-    const {subscription} = useSelector((state) => state.subscription)
+    const {subscription} = useSelector((state) => state.ownerSubscription)
     const dispatch = useDispatch();
 
     
     const signout = () => {
         dispatch(removeUser());
+        window.location.reload();
+        
     }
     const signupUser = () => {
         navigate("/signup")
     }
-    const signipUser = () => {
+    const signinUser = () => {
         navigate("/signin")
     }
-    const viewProfile = () => {
+
+    const viewProfile =() => {
         dispatch(viewProperty(currentUser));
-        // dispatch(fetchRequestByTenant(currentUser));
+        // dispatch()
         navigate("/viewProfile");
     }
 
+
     const viewTenantProfile = () => {
         dispatch(wishList(currentUser));
-        navigate("/viewTenantProfile");
-       
-        // dispatch(fetchRequestByTenant(currentUser));
-        
+        navigate("/viewTenantProfile");        
     }
 
     const takeSubscription = ()=>{
@@ -101,31 +99,29 @@ function NavebarNext() {
                             </div>
                         </div>
                         <div className='col-md-3 '>
-                            <div className='row ' style={{marginLeft:"-80px"}}>
-                            <div className='col-md-6 text-end'>
+                            <div className='row ms-5' style={{marginLeft:"-80px"}}>
+                            <div className='col-md-6 text-end '>
                                 <button onClick={propertyPost} className='btn  rounded-pill btn-light mt-1 post'>
                                     Post Property
                                 </button>
                             </div>
-                            <div className='col-md-6 text-start '>
-                                {subscription && <button onClick={takeSubscription} className='btn bg-danger text-white rounded-pill btn-light mt-1 post'>
-                                    expire Subscription
+                            <div className='col-md-6'>
+                                {!subscription && <button onClick={takeSubscription} className='btn  rounded-pill btn-light mt-1 post'>
+                                     Subscription
                                 </button>
                                 }
-                                {!subscription && <button onClick={takeSubscription} className='btn  rounded-pill btn-light mt-1 post'>
-                                    Take Subscription
-                                </button>
+                                {
+                                    subscription && <button className='btn post rounded-pill mt-1 btn-light' style={{backgroundColor:"yellow"}}>
+                                        want Expire ?
+                                    </button>
                                 }
                             </div>
                             </div>
                         </div>
                         <div className='col-md-1'>
                             <div className='share ms-3'>
-                                <div class="fab no " data-hover='SignIn' onClick={signipUser}></div>
-                                <div class="fab no " data-hover='SignUp' onClick={signupUser}></div>
                                 {conditionalRendar()}
-                                {/* {currentUser&&{currentUser.role=="Owner"&&<div class="fab no " data-hover='Profile' onClick={viewProfile}></div>}
-                                {currentUser.role=="tenant"&&<div class="fab no " data-hover='Profile'  ></div>}} */}
+              
                             </div>
                         </div>
                     </div>

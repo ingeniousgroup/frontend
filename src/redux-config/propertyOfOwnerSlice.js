@@ -1,17 +1,23 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import api from "./WebApi/api";
 import axios from "axios";
+import { data } from "jquery";
 
 export const viewProperty = createAsyncThunk("owner/houseRequestFromTenant", async (currentUser) => {
     let response = await axios.post(api.VIEW_PROPPERTY_OF_OWNER, {userId:currentUser._id});
-    if(response)
+    console.log("mohit")
+    console.log(response.data.property);
+    console.log("mohit")
+    if(response.data.status)
         return response.data.property;
+    else
+       console.log("kuch ho gaya re bhai..........");
 });
 
 const slice = createSlice({
-    name: 'ownerProperty',
+    name: 'ownerkiProperty',
     initialState: {
-        ownerProperty: [],
+        properties: [],
         isLoading: false,
         error: null
     },
@@ -19,7 +25,11 @@ const slice = createSlice({
         builder.addCase(viewProperty.pending, (state, action) => {
             state.isLoading = true;
         }).addCase(viewProperty.fulfilled, (state, action) => {
-            state.ownerProperty.push(action.payload);
+            console.log("*")
+            console.log(action.payload);
+            let data = action.payload;
+            console.log("*");
+            state.properties = data;
             state.isLoading = false;
         }).addCase(viewProperty.rejected, (state, action) => {
             state.isLoading = false;

@@ -10,7 +10,7 @@ import { useSelector } from 'react-redux';
 
 function PostProperty() {
     const [propertyType, setPropertyType] = useState("");
-    let PropertyDetails = useRef("");
+    let PropertyDetails
     const navigate = useNavigate();
     const {currentUser} = useSelector((state)=>state.user);
     const setPropertyDetails = (event) => {

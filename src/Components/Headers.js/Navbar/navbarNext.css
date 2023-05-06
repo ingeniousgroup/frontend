@@ -29,6 +29,7 @@
     margin-left: 1vh;
 }
 .main1{
+    margin-top: 40vh !important;
     background-color: #abe9cd;
     background-image: linear-gradient(350deg, #abe9cd 10%, #3eadcf 60%);
     box-shadow: 5px 1px 5px black;
@@ -36,14 +37,21 @@
     top: 0;
     z-index: 1;
     animation: vijay;
-    animation-duration: 2s;
+    animation-duration: 3s;
 }
 @keyframes vijay {
     0%{
-      margin-top: 500px;
+      visibility: initial;
+      background: transparent;
+      margin-top: 0px;
+      color: transparent !important;
+      border: none !important;
     }
     100%{
+        background-color: #abe9cd;
+        background-image: linear-gradient(350deg, #abe9cd 10%, #3eadcf 60%);
         margin-top: 0px;
+        transform: background 3s ease;
     }
 }
 .logo{
