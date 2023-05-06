@@ -1,6 +1,15 @@
 
+import { useEffect, useState } from "react";
 import "./categories.css"
+import { useDispatch, useSelector } from "react-redux";
+import { fetchCategoryCount } from "../../../redux-config/categoryCountSlice";
 function Categories(){
+  const dispatch = useDispatch();
+  const {categoryCount} = useSelector(state=>state.categoryCount);
+  var category =  categoryCount.category;
+  useEffect(()=>{
+    dispatch(fetchCategoryCount());
+  },[])
    return<>
   <div className="background" />
   <div className="background-texture" />
@@ -23,7 +32,7 @@ function Categories(){
           </div>
           <h5 className="carousel-item__details--title">Apartment</h5>
           <h6 className="carousel-item__details--subtitle">
-            Date and Duration
+            {category?.flate}+
           </h6>
         </div>
       </div>
@@ -40,7 +49,7 @@ function Categories(){
           </div>
           <h5 className="carousel-item__details--title">Villas</h5>
           <h6 className="carousel-item__details--subtitle">
-            Date and Duration
+            {category?.villa}+
           </h6>
         </div>
       </div>
@@ -57,7 +66,7 @@ function Categories(){
           </div>
           <h5 className="carousel-item__details--title">Offices</h5>
           <h6 className="carousel-item__details--subtitle">
-            Date and Duration
+            {category?.office}+
           </h6>
         </div>
       </div>
@@ -74,7 +83,7 @@ function Categories(){
           </div>
           <h5 className="carousel-item__details--title">Shops </h5>
           <h6 className="carousel-item__details--subtitle">
-            Date and Duration
+            {category?.farmhouse}+
           </h6>
         </div>
       </div>
@@ -91,7 +100,7 @@ function Categories(){
           </div>
           <h5 className="carousel-item__details--title">Lands/Plot</h5>
           <h6 className="carousel-item__details--subtitle">
-            Date and Duration
+            {category?.plot}+
           </h6>
         </div>
       </div>

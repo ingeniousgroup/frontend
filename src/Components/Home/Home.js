@@ -13,7 +13,7 @@ import { useEffect, useState } from "react";
 import { fetchPropertyList } from "../../redux-config/PropertySlice";
 import Property from "../House/Property/property";
 import NearByHouse from "../House/nearByHouse";
-
+import axios from "axios";
 import ImagePost from "../House/PostProperty/PostImage/ImagePost";
 import Signin from "../User/signin";
 import Signup from "../User/signup";
@@ -45,7 +45,6 @@ function Home(){
         response = await axios.post(apiEndPoint.SEARCH,{address: searchText}); 
       if(response.data.status){
         setPropertyList(response.data.property);
-        console.log(propertyList)
       }
     } catch (err) {
       // setError("Oops somthing went Wrong");
@@ -70,12 +69,12 @@ function Home(){
 
   return <>
     {pixelFlag && <NavebarNext/>}
-    {!pixelFlag && <Navbar/>}
-    <div style={{marginTop:"102px"}}>
+    {!pixelFlag && <Navbar search={search}/>}
+    <div style={{marginTop:"102px"}}>      
     </div>    
+    
     <Routes>
-      
-        <Route path="/" element={<Property/>}/> 
+        <Route path="/" element={<Property propertyList={propertyList}/>}/> 
         <Route path="/propertypost" element={<ProtectedRoute><SubscriptionProtected><PostProperty/></SubscriptionProtected></ProtectedRoute>}/>
         <Route path="/villa" element={<ProtectedRoute><Flate/></ProtectedRoute>}/>
         <Route path="/plot" element={<ProtectedRoute><Flate/></ProtectedRoute>}/>

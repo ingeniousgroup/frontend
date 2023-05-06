@@ -7,6 +7,7 @@ import propertyOfOwnerSlice from "./propertyOfOwnerSlice";
 import subscriptionSlice from "./subscriptionSlice";
 import wishListSlice from "./wishListSlice";
 import tenantRequestSlice from "./tenantRequestSlice";
+import categoryCountSlice from "./categoryCountSlice";
 console.log("store in...");
 const store = configureStore({
     reducer:{
@@ -18,7 +19,8 @@ const store = configureStore({
         subscription:subscriptionSlice,
         wishList:wishListSlice,
         ownerSubscription:subscriptionSlice,
-        requestTenants:tenantRequestSlice
+        requestTenants:tenantRequestSlice,
+        categoryCount:categoryCountSlice
     }
 });
 
