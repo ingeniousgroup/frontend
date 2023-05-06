@@ -8,12 +8,15 @@ function ViewProfileNext() {
     let [behave,setBehave] = useState();
     const {currentUser} = useSelector((state)=>state.user);
     const {properties} = useSelector((state) => state.ownerProperty);
+    const {requestTenant} = useSelector((state)=>state.requestTenants);
     const navigate = useNavigate();
     const dispatch = useDispatch();
     const ownerFunctionality = (identify) => {
-        if(identify == 'request')
+        if(identify == 'request'){
             dispatch(tenantRequest(currentUser));
+        }
         setBehave(identify)
+
     }
 
     const viewDescription = (property) => {
@@ -83,7 +86,7 @@ function ViewProfileNext() {
                             <div className='col-4 p-3 common'>
                                 <div className='row p-3 total'>
                                     <div className='col-5 bg-c all1 text-center '>
-                                        <h5 className='fs-5 fw-3'>Total Property</h5>
+                                        <h5 className='fs-5 fw-3 ' id='totalproperty'>Total Property</h5>
                                     </div>
                                     <div className='ms-4 col-5  p-3 all text-center'>
                                         <h4>{properties.length}</h4>
@@ -102,10 +105,10 @@ function ViewProfileNext() {
                                 <img src={data.imagesUrlArray[0]} height={130} id='img1' width={230} onClick={() => viewDescription(data)}/>
                             </div>
                             <div className='col-3  pt-4'>
-                                <h6 className='fs-5'>{data.description.substring(0,70)+"......"}</h6>
+                                <h6 className='fs-6'>{data.description.substring(0,70)+"......"}</h6>
                             </div>
                             <div className='col-3  p-3'>
-                                <p className='fs-4'>{data.address}</p>
+                                <p className='fs-5'>{data.address}</p>
                                 <p className='text-danger'>Posted At : {data.date}</p>
                             </div>
                             <div className='col-3  p-5'>
@@ -114,7 +117,24 @@ function ViewProfileNext() {
                         </div>)}
                         </>}
                         {behave == 'request' && <>
-                        <h1>request</h1>
+                        {requestTenant?.map((data,indext)=><div className='row mt-2 dataPhoto p-3'>
+                            <div className='col-3 '>
+                                <img src={data.propertyId.imagesUrlArray[0]} height={130} id='img1' width={230} onClick={() => viewDescription(data)}/>
+                            </div>
+                            <div className='col-3  pt-4'>
+                                <h6 className='fs-6'>{data.userId.name}</h6>
+                                <h6 className='fs-6'>{data.userId.contact}</h6>
+                                <h6 className='fs-6'>{data.userId.email}</h6>
+                            </div>
+                            <div className='col-3  p-3'>
+                                <p className='fs-4'>{}</p>
+                                <p className='text-danger'>Requested At : {data.date}</p>
+                            </div>
+                            <div className='col-3  p-5'>
+                                <button className='btn btn-outline-success'>Accept</button>
+                                <button className='btn btn-outline-danger ms-2'>Reject</button>
+                            </div>
+                        </div>)}
                         </>}
                     </div>
                 </div>

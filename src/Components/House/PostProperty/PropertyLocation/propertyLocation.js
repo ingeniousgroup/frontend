@@ -20,7 +20,6 @@ function PropertyLocation(props) {
     }
     const PropertyDetails = () => {
         const currentLocation = {locationTag,userDescription,userAddress};
-        window.alert(userAddress);
         navigate("/uploadImage",{state:{currentLocation,HouseAllDetails}});
     }
     const selectCity = (event)=>{

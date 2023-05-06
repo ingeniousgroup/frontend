@@ -15,10 +15,6 @@ function ImagePost() {
     if(latilongi?.length == 2){
          latitude = latilongi[0];
          longitude = latilongi[1];
-        locationAddress = {latitude,longitude};
-        console.log(";;;;");
-        console.log(locationAddress);
-        console.log(";;;;");
     }
     else{
         locationAddress = latilongi[0];
@@ -69,6 +65,8 @@ function ImagePost() {
         formData.append("address",address);
         formData.append("description",description);
         formData.append("locationAddress",locationAddress);
+        formData.append("latitude",latitude);
+        formData.append("longitue",longitude);
         
         try {
             let response = await axios.post(api.POST_PROPERTY, formData);

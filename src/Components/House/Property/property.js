@@ -3,8 +3,6 @@ import axios from "axios";
 import { useSelector } from "react-redux";
 import apiEndPoint from "../../../redux-config/WebApi/api";
 import { useNavigate } from "react-router";
-
-
 function Property(){
   const {currentUser} = useSelector(state=>state.user);
   const navigate = useNavigate();
@@ -33,9 +31,9 @@ function Property(){
     {!error&&propertyList.map((property,index)=><div key={index} className="col-md-3">
     <div className="profile-card-2" onClick={()=>viewDescription(property)}>
       <img
-        src={property.imagesUrlArray[0]}
+        src={apiEndPoint.PORT + property.imagesUrlArray[0]}
         className="img img-responsive"
-        alt="image nahi hai"
+        alt="IMAGES NOT FOUND"
       />
       <div className="profile-name">{property.rent}</div>
       <div className="profile-username">Deposite {property.rent} per month</div>

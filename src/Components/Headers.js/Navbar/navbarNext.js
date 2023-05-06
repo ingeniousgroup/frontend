@@ -87,8 +87,8 @@ function NavebarNext() {
                                 </button>
                                 }
                                 {
-                                    subscription && <button className='btn post rounded-pill mt-1 btn-light' style={{backgroundColor:"yellow"}}>
-                                        want Expire ?
+                                    subscription && <button className='btn post rounded-pill mt-1 btn-light' >
+                                        Subscribed
                                     </button>
                                 }
                             </div>

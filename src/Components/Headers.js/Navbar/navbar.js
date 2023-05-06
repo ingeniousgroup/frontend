@@ -60,7 +60,8 @@ function Navbar() {
       <div className="navbardivBackgroundColor">
         <nav className="navbar navbar-expand-lg main-nav px-0 ">
           <div className="navbar-brand" >
-            <img src="images/logo.png" className="logoImg" />
+            <h4>KirayeWala</h4>
+            {/* <img src="images/logo.png" className="logoImg" /> */}
             {/* <span> Kirayewala</span> */}
           </div>
           <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#mainMenu" aria-controls="mainMenu" aria-expanded="false" aria-label="Toggle navigation">

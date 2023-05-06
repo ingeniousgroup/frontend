@@ -24,45 +24,45 @@ import Subscription from "../House/subscription/subscription";
 import SubscriptionProtected from "../subscriptionProtected/subscriptionProtected";
 import { showSubscription } from "../../redux-config/subscriptionSlice";
 import ViewProfileNext from "../User/ViewProfile/viewProfileNext";
-function Home(){
-  const [pixelFlag,setPixelFlag] = useState(false);
-  window.onscroll = ()=>{
-        if (window.scrollY>= 450 ) {
-          setPixelFlag(true);
-        }
-        else {
-          setPixelFlag(false)
-        }
+function Home() {
+  const [pixelFlag, setPixelFlag] = useState(false);
+  window.onscroll = () => {
+    if (window.scrollY >= 450) {
+      setPixelFlag(true);
+    }
+    else {
+      setPixelFlag(false)
+    }
   }
   const dispatch = useDispatch();
-  const {currentUser} = useSelector((state)=>state.user);
-  useEffect(()=>{
+  const { currentUser } = useSelector((state) => state.user);
+  useEffect(() => {
     dispatch(fetchPropertyList());
-  },[]);
+  }, []);
 
   return <>
-    {pixelFlag && <NavebarNext/>}
-    {!pixelFlag && <Navbar/>}
-    <div style={{marginTop:"102px"}}>
-    </div>    
+    {pixelFlag && <NavebarNext />}
+    {!pixelFlag && <Navbar />}
+    <div style={{ marginTop: "102px" }}>
+    </div>
     <Routes>
-      
-        <Route path="/" element={<Property/>}/> 
-        <Route path="/propertypost" element={<ProtectedRoute><SubscriptionProtected><PostProperty/></SubscriptionProtected></ProtectedRoute>}/>
-        <Route path="/villa" element={<ProtectedRoute><Flate/></ProtectedRoute>}/>
-        <Route path="/plot" element={<ProtectedRoute><Flate/></ProtectedRoute>}/>
-        <Route path="/formHouse" element={<ProtectedRoute><Flate/></ProtectedRoute>}/>
-        <Route path="/office" element={<ProtectedRoute><Flate/></ProtectedRoute>}/>  
-        <Route path="/other" element={<ProtectedRoute><Flate/></ProtectedRoute>}/>
-        <Route path="/flat" element={<ProtectedRoute><Flate/></ProtectedRoute>}/>
-        <Route path="/CurrentLocation" element={<ProtectedRoute><PropertyLocation/></ProtectedRoute>}/>
-        <Route path="/uploadImage" element={<ProtectedRoute><ImagePost/></ProtectedRoute>}/>
-        <Route path="/signin" element={<Signin/>}/>
-        <Route path="/signup" element={<Signup/>}/>
-        <Route path="/viewDiscription" element={<HouseDescription/>}/>
-        <Route path="/viewProfile" element={<ProtectedRoute><ViewProfileNext/></ProtectedRoute>}/>
-        <Route path="/takeSubscription" element={<ProtectedRoute><Subscription/></ProtectedRoute>}/>
-           
+
+      <Route path="/" element={<Property />} />
+      <Route path="/propertypost" element={<ProtectedRoute><SubscriptionProtected><PostProperty /></SubscriptionProtected></ProtectedRoute>} />
+      <Route path="/villa" element={<ProtectedRoute><Flate /></ProtectedRoute>} />
+      <Route path="/plot" element={<ProtectedRoute><Flate /></ProtectedRoute>} />
+      <Route path="/formHouse" element={<ProtectedRoute><Flate /></ProtectedRoute>} />
+      <Route path="/office" element={<ProtectedRoute><Flate /></ProtectedRoute>} />
+      <Route path="/other" element={<ProtectedRoute><Flate /></ProtectedRoute>} />
+      <Route path="/flat" element={<ProtectedRoute><Flate /></ProtectedRoute>} />
+      <Route path="/CurrentLocation" element={<ProtectedRoute><PropertyLocation /></ProtectedRoute>} />
+      <Route path="/uploadImage" element={<ProtectedRoute><ImagePost /></ProtectedRoute>} />
+      <Route path="/signin" element={<Signin />} />
+      <Route path="/signup" element={<Signup />} />
+      <Route path="/viewDiscription" element={<HouseDescription />} />
+      <Route path="/viewProfile" element={<ProtectedRoute><ViewProfileNext /></ProtectedRoute>} />
+      <Route path="/takeSubscription" element={<ProtectedRoute><Subscription /></ProtectedRoute>} />
+
 
     </Routes>
 

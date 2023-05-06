@@ -2,7 +2,7 @@ import { useState } from 'react';
 import './HouseDescription.css';
 import { eventWrapper } from '@testing-library/user-event/dist/utils';
 import { useLocation } from 'react-router';
-
+import api from '../../../redux-config/WebApi/api';
 function HouseDescription() {
     
     const {state} =  useLocation();
@@ -20,7 +20,7 @@ function HouseDescription() {
                 <div id='main' className='col-lg-8 col-md-8 text-center mt-2'>
                     <div className='row'>
                         <div className='col-md-6 p-2'>
-                            <img  src={image} className="logimg" height={400} width="100%" />
+                            <img  src={api.PORT + image} className="logimg" height={400} width="100%" />
                             <div className='row mt-2'>
                                 <div className='col-md-6'>
                                     <img onClick={change} src={image2} className="logimg" height={150} width="100%" />
