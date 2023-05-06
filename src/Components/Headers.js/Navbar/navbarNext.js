@@ -58,18 +58,16 @@ function NavebarNext() {
 
     const conditionalRendar = ()=>{
         if(currentUser){
-        if(currentUser.role == "Owner")
-          return <div class="fab no" data-hover='Profile' onClick={viewProfile}></div>
-        else
-          return <div class="fab no" data-hover='Profile' onClick={viewTenantProfile}  ></div>  
+           if(!currentUser.role == "Owner")
+            return<div><div class="fab no" data-hover='Profile' onClick={viewTenantProfile}></div><div class="fab no" data-hover='Profile' onClick={signout}></div></div>
+            
         }
         else
-         return <div class="fab no" data-hover='Profile' onClick={viewProfile}></div> 
-
+         return<div class="fab no" data-hover='Profile' onClick={signinUser}></div> 
     }
     return <>
         <div className='p-1 pb-2 main1'>
-            <div className='row mt-2 m'>
+            <div className='row mt-2'>
                 <div className='col-md-12'>
                     <div className='row'>
                         <div className='col-md-2 text-white logo text-center fs-2'>
@@ -120,8 +118,9 @@ function NavebarNext() {
                         </div>
                         <div className='col-md-1'>
                             <div className='share ms-3'>
-                                {conditionalRendar()}
-              
+                                {!currentUser &&<div class="fab no " data-hover='SignIn' onClick={signinUser}></div>}
+                                {currentUser && <div class="fab no " data-hover='SigOut' onClick={signout}></div>}
+                                <div class="fab no " data-hover='Profile' onClick={viewTenantProfile}></div>
                             </div>
                         </div>
                     </div>

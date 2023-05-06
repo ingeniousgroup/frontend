@@ -96,7 +96,6 @@ function TenantProfile(){
         
         <div className="fixDiv">
           {propertyList.map((property)=><div  class="center mt-5 p-2"><div class="article-card">
-            {/* {console.log(count++)} */}
             {console.log(property.propertyId)}
             <div className="row "
             >

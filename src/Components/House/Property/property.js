@@ -4,6 +4,8 @@ import { useSelector } from "react-redux";
 import apiEndPoint from "../../../redux-config/WebApi/api";
 import { useNavigate } from "react-router";
 import { useState } from "react";
+import Categories from "../Categories/categories";
+import Furnishing from "../Categories/Furnishing";
 
 
 function Property({propertyList}){
@@ -12,6 +14,7 @@ function Property({propertyList}){
   const navigate = useNavigate();
   const [error, setError] = useState("");
   const [isLoading,setIsLoading]= useState(true);
+  const [disable,setDisable] = useState(true);
   
   const viewDescription = (property)=>{
     navigate("/viewDiscription",{state:{
@@ -32,17 +35,18 @@ function Property({propertyList}){
       alert("already Added In cart");  
   }
  
-  return <div className="container"> <div className="row" >
+  return<>{disable &&<div><Categories/><Furnishing/></div>} <div className="container"> 
+  <div className="row" >
     {!error&&propertyList.map((property,index)=><div key={index} className="col-md-3">
-      {/* onClick={()=>viewDescription(property)} */}
+      {/*  */}
     <div className="profile-card-2" >
       <img
         src={property.imagesUrlArray[0]}
         className="img img-responsive"
-        alt="image nahi hai"
+        alt="Image Not Found !"
       />
-      <div className="profile-name">{property.rent}</div>
-      <div className="profile-username">Deposite {property.rent} per month</div>
+      <div className="profile-name" onClick={()=>viewDescription(property)}>{property.rent}</div>
+      <div className="profile-username" onClick={()=>viewDescription(property)}>Deposite {property.rent} per month</div>
       <div className="profile-icons">
       {currentUser&&<a onClick={()=>addToCart(property)}><i className="fa fa-heart" aria-hidden="true"></i></a>}
       {!currentUser&&<a onClick={signinUser}><i className="fa fa-heart" aria-hidden="true"></i></a>}
@@ -69,5 +73,6 @@ function Property({propertyList}){
 
  </div>
 </div>
+</>
 }
 export default Property;
