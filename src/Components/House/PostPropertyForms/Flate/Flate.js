@@ -10,12 +10,12 @@ function Flate(){
   const [room , setRoom] = useState();
   let [noOfBathoom,setNoOfBathoom] = useState();
   let [balconies,setBalconies] = useState(0);
-  let carpetArea = useRef();
-  let totalfloor = useRef(); 
-  let onFloor = useRef();
+  let carpetArea
+  let totalfloor 
+  let onFloor
   let [otherRoom ,setOtherRoom] = useState([]);
   let [furnshing,setFurnish] = useState("furnished");
-  let floor = useRef();
+  let floor 
   
   const navigate = useNavigate();
   function bedroom(no){

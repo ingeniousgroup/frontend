@@ -25,6 +25,8 @@ function NavebarNext() {
     const dispatch = useDispatch();
     const signout = () => {
         dispatch(removeUser());
+        window.location.reload();
+        
     }
     const signupUser = () => {
         navigate("/signup")
@@ -33,7 +35,8 @@ function NavebarNext() {
         navigate("/signin")
     }
     const viewProfile =() => {
-         dispatch(viewProperty(currentUser));
+        dispatch(viewProperty(currentUser));
+        // dispatch()
         navigate("/viewProfile");
     }
 
@@ -93,8 +96,9 @@ function NavebarNext() {
                         </div>
                         <div className='col-md-1'>
                             <div className='share ms-3'>
-                                <div class="fab no " data-hover='SignIn' onClick={signinUser}></div>
-                                <div class="fab no " data-hover='SignUp' onClick={signupUser}></div>
+                                {!currentUser &&<div class="fab no " data-hover='SignIn' onClick={signinUser}></div>}
+                                {currentUser && <div class="fab no " data-hover='SigOut' onClick={signout}></div>}
+                                {/* <div class="fab no " data-hover='SignUp' onClick={signupUser}></div> */}
                                 <div class="fab no " data-hover='Profile' onClick={viewProfile}></div>
                             </div>
                         </div>

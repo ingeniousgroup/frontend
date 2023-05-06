@@ -20,15 +20,20 @@ function Navbar() {
   }
   const { currentUser } = useSelector((state) => state.user);
   const dispatch = useDispatch();
+  
   const signout = () => {
     dispatch(removeUser());
+    window.location.reload();
   }
+  
   const signupUser = () => {
     navigate("/signup")
   }
-  const signipUser = () => {
+  
+  const signinUser = () => {
     navigate("/signin")
   }
+  
   const viewProfile = () => {
     navigate("/viewProfile");
   }
@@ -106,9 +111,10 @@ function Navbar() {
                 </div> */}
                 <div className='col-md-1'>
                   <div className='share ms-3'>
-                    <div class="fab no " data-hover='SignIn' onClick={signipUser}></div>
-                    <div class="fab no " data-hover='SignUp' onClick={signupUser}></div>
-                    <div class="fab no " data-hover='Profile' onClick={viewProfile}></div>
+                      {!currentUser &&<div class="fab no " data-hover='SignIn' onClick={signinUser}></div>}
+                      {currentUser && <div class="fab no " data-hover='SigOut' onClick={signout}></div>}
+                      {/* <div class="fab no " data-hover='SignUp' onClick={signupUser}></div> */}
+                      <div class="fab no " data-hover='Profile' onClick={viewProfile}></div>
                   </div>
                 </div>
               </li>

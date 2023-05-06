@@ -5,7 +5,7 @@ import { useSelector } from "react-redux";
 
 export const tenantRequest = createAsyncThunk("owner/tenantRequest", async (currentUser) => {
     let response = await axios.post(api.REQUEST_BY_TENANTS, {ownerId:currentUser._id});
-    
+    console.log(response.data.result);
     if(response.data.status)
         return response.data.result;
     else
@@ -23,8 +23,7 @@ const slice = createSlice({
         builder.addCase(tenantRequest.pending, (state, action) => {
             state.isLoading = true;
         }).addCase(tenantRequest.fulfilled, (state, action) => {
-            let data = action.payload;
-            state.requestTenant = data;
+            state.requestTenant = action.payload;
             state.isLoading = false;
         }).addCase(tenantRequest.rejected, (state, action) => {
             state.isLoading = false;
