@@ -43,7 +43,7 @@ function Home(){
         response = await axios.post(apiEndPoint.SEARCH,{address: searchText}); 
       if(response.data.status){
         setPropertyList(response.data.property);
-        // console.log(propertyList)
+
       }
     } catch (err) {
       // setError("Oops somthing went Wrong");

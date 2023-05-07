@@ -40,12 +40,11 @@ function Navbar( {search}) {
   return <header className="main-header" style={{marginBottom:"10vh"}}>
 
     <div className="container-fluid">
-      <div className="navbardivBackgroundColor">
+      <div className="navbardivBackgroundColor" >
         <nav className="navbar navbar-expand-lg main-nav px-0 ">
           <div className="navbar-brand" >
             <h4>KirayeWala</h4>
-            {/* <img src="images/logo.png" className="logoImg" /> */}
-            {/* <span> Kirayewala</span> */}
+
           </div>
           <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#mainMenu" aria-controls="mainMenu" aria-expanded="false" aria-label="Toggle navigation">
             <span className="icon-bar icon-bar-1" />
@@ -73,26 +72,6 @@ function Navbar( {search}) {
                 <a href="#contact">Contact</a>
               </li>
               <li className="userIconStyle">
-
-                {/* <div class="btn-group dropleft" style={{ marginTop: "-1vh" }}>
-                  <button type="button" class="btn  dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <i className="fa fa-user-circle-o icon" aria-hidden="true" ></i>
-                  </button>
-                  <div class="dropdown-menu drop1" style={{ minWidth: "9vh" }}>
-                    <ul>
-                      {!currentUser && <Link to='/signin'>
-                        <li style={{ marginLeft: "-2vh", marginTop: "1vh" }}>
-                          signin
-                        </li>
-                      </Link>}
-                      {currentUser && <div onClick={signout}>
-                        <li style={{ marginLeft: "-3vh", marginTop: "1vh", cursor: "pointer" }}>
-                          signout
-                        </li>
-                      </div>}
-                    </ul>
-                  </div>
-                </div> */}
                 <div className='col-md-1'>
                   <div className='share ms-3'>
                       {!currentUser &&<div class="fab no " data-hover='SignIn' onClick={signinUser}></div>}

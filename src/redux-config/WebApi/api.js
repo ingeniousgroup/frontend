@@ -13,5 +13,6 @@ export default {
     SEARCH:'/tenant/search',
     REMOVE_PROPERTY_OF_OWNER:'/owner/removePropertyById',
     VIEW_WISHLIST:'/tenant/viewWishlist',
-    SHOW_SUBSCRIPTION : '/owner/showSubscription'
+    SHOW_SUBSCRIPTION : '/owner/showSubscription',
+    CATEGORY_COUNT:'/property/categoryCount'
 }

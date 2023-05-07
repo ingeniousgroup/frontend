@@ -104,6 +104,7 @@
   }
 
   .fixDiv{
+    margin-top: -12%;
     height: 350px;
     width: 400px;
     position: fixed;
@@ -117,7 +118,6 @@
   }
   .fixDiv { overflow: -moz-scrollbars-none; }
   .fixDiv { -ms-overflow-style: none; }
-
   .profile{
     background-color: #BA68C8;
   }
