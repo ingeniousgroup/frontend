@@ -35,15 +35,17 @@ function Property({propertyList}){
       alert("already Added In cart");  
   }
  
-  return<>{disable &&<div><Categories/><Furnishing/></div>} <div className="container"> 
+ return <><div><Categories/><Furnishing/></div> <div className="container"> <div className="row" >
+ // return<>{disable &&<div><Categories/><Furnishing/></div>} <div className="container"> 
   <div className="row" >
     {!error&&propertyList.map((property,index)=><div key={index} className="col-md-3">
       {/*  */}
     <div className="profile-card-2" >
       <img
-        src={property.imagesUrlArray[0]}
+        src={apiEndPoint.PORT + property.imagesUrlArray[0]}
         className="img img-responsive"
-        alt="Image Not Found !"
+        alt="IMAGES NOT FOUND"
+
       />
       <div className="profile-name" onClick={()=>viewDescription(property)}>{property.rent}</div>
       <div className="profile-username" onClick={()=>viewDescription(property)}>Deposite {property.rent} per month</div>

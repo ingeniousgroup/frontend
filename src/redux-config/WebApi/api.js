@@ -1,4 +1,5 @@
 export default {
+    PORT : 'http://localhost:3000/upload/',
     OWNER_SIGNIN: '/owner/signin',
     OWNER_SIGNUP: '/owner/signup',
     PROPERTY_LIST:'/property/list',
