@@ -4,6 +4,8 @@ import { useSelector } from "react-redux";
 import apiEndPoint from "../../../redux-config/WebApi/api";
 import { useNavigate } from "react-router";
 import { useState } from "react";
+import Categories from "../Categories/categories";
+import Furnishing from "../Categories/Furnishing";
 
 
 function Property({propertyList}){
@@ -32,7 +34,7 @@ function Property({propertyList}){
       alert("already Added In cart");  
   }
  
-  return <div className="container"> <div className="row" >
+  return <><div><Categories/><Furnishing/></div> <div className="container"> <div className="row" >
     {!error&&propertyList.map((property,index)=><div key={index} className="col-md-3">
       {/* onClick={()=>viewDescription(property)} */}
     <div className="profile-card-2" >
@@ -69,5 +71,6 @@ function Property({propertyList}){
 
  </div>
 </div>
+</>
 }
 export default Property;

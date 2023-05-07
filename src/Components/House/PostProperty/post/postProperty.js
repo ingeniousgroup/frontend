@@ -20,7 +20,7 @@ function PostProperty() {
     return <>
         <div className='row inner mb-5'>
             <div className='col-md-3  bg-c'>
-
+            
             </div>
             <div className='col-md-6 p-4'>
                 <div className='row'>

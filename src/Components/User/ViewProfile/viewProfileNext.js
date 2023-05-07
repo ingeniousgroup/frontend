@@ -3,7 +3,7 @@ import './viewPorfileNext.css';
 import { useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { tenantRequest } from '../../../redux-config/tenantRequestSlice';
-
+import api from '../../../redux-config/WebApi/api';
 function ViewProfileNext() {
     let [behave,setBehave] = useState();
     const {currentUser} = useSelector((state)=>state.user);
@@ -16,7 +16,6 @@ function ViewProfileNext() {
             dispatch(tenantRequest(currentUser));
         }
         setBehave(identify)
-
     }
 
     const viewDescription = (property) => {
@@ -36,7 +35,7 @@ function ViewProfileNext() {
                         </span>
                         <span className='ms-2 ' style={{ marginTop: "6.5vh" }}>
                             <h3 className='name fs-3'>
-                                {currentUser.name.toUpperCase()+"..."}
+                                {currentUser.name+"..."}
                             </h3>
                             <label className=' mt-3 acti text-center p-2'>
                             <i class="fa fa-check fs-5 ms-3" aria-hidden="true">ACTIVE</i>   
@@ -50,9 +49,9 @@ function ViewProfileNext() {
                                 Your Property
                             </div>
                         </Link>
-                        <Link className='l' onClick={() => ownerFunctionality("update")}>
+                        <Link className='l' onClick={() => ownerFunctionality("wishlist")}>
                             <div className=' link1 p-2'>
-                                Update Property
+                                Recent Users
                             </div>
                         </Link>
                         <Link className='l' onClick={() => ownerFunctionality("request")}>
@@ -96,19 +95,30 @@ function ViewProfileNext() {
                         </div>
                     </div>
                     <div className='mt-3 container-fluid  text-center rightside p-3'>
-                        {behave == 'update' && <>
-                        ?
+                        {behave == 'wishlist' && <>
+                        <div className='container mt-5 bg-warning'>
+                            <div className='row'>
+                                <div className='col-6'>
+                                    <h4>
+                                        your wishList is here ..........
+                                    </h4>
+                                </div>
+                                <div className='col-6'>
+                                    <h4>total wishList items...........</h4>
+                                </div>
+                            </div>
+                        </div>
                         </>}
                         {behave == 'details' && <>
                         {properties?.map((data,indext)=><div className='row mt-2 dataPhoto p-3'>
                             <div className='col-3 '>
-                                <img src={data.imagesUrlArray[0]} height={130} id='img1' width={230} onClick={() => viewDescription(data)}/>
+                                <img src={api.PORT + data.imagesUrlArray[0]} height={130} id='img1' width={230} onClick={() => viewDescription(data)}/>
                             </div>
                             <div className='col-3  pt-4'>
                                 <h6 className='fs-6'>{data.description.substring(0,70)+"......"}</h6>
                             </div>
                             <div className='col-3  p-3'>
-                                <p className='fs-5'>{data.address}</p>
+                                <p className='fs-5'><i class="fa fa-map-marker fs-3" aria-hidden="true"></i>{data.address}</p>
                                 <p className='text-danger'>Posted At : {data.date}</p>
                             </div>
                             <div className='col-3  p-5'>
@@ -119,7 +129,7 @@ function ViewProfileNext() {
                         {behave == 'request' && <>
                         {requestTenant?.map((data,indext)=><div className='row mt-2 dataPhoto p-3'>
                             <div className='col-3 '>
-                                <img src={data.propertyId.imagesUrlArray[0]} height={130} id='img1' width={230} onClick={() => viewDescription(data)}/>
+                                <img src={data.propertyId.imagesUrlArray[0]} height={130} id='img1' width={230} />
                             </div>
                             <div className='col-3  pt-4'>
                                 <h6 className='fs-6'>{data.userId.name}</h6>
