@@ -14,5 +14,10 @@ export default {
     REMOVE_PROPERTY_OF_OWNER:'/owner/removePropertyById',
     VIEW_WISHLIST:'/tenant/viewWishlist',
     SHOW_SUBSCRIPTION : '/owner/showSubscription',
+<<<<<<< HEAD
+    REMOVE_PROPERTY_DETAILS: '/owner/removePropertyDetails',
+    DELETE_TENANT_REQUEST:'/owner/deleteTenantRequest'
+=======
     CATEGORY_COUNT:'/property/categoryCount'
+>>>>>>> 7b5c306a4a792b64703d0c2f48fcce37e15bb2ea
 }

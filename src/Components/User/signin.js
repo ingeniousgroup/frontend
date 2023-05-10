@@ -9,6 +9,8 @@ import api from '../../redux-config/WebApi/api';
 import { wishList } from '../../redux-config/wishListSlice';
 import { tenantRequest } from '../../redux-config/tenantRequestSlice';
 import { showSubscription } from '../../redux-config/subscriptionSlice';
+import WithGoogle from '../ExtraServices/GoogleSignIn';
+
 function Signin() {
     const [email,setEmail] = useState("");
     const [password,setPassword] = useState("");
@@ -54,6 +56,7 @@ function Signin() {
                             id="email"
                             name="email"
                             placeholder="  email......"
+                            required
                         />
                         <br />
                         <br />
@@ -63,6 +66,7 @@ function Signin() {
                             id="pass"
                             name="password"
                             placeholder="  password ......"
+                            required
                         />
                         <br />
                         <br />
@@ -85,7 +89,7 @@ function Signin() {
                         <span>
                             <i className="fa fa-facebook-square ms-4" aria-hidden="true" />{" "}
                             <i className="fa fa-twitter" aria-hidden="true" />
-                            <i className="fa fa-google-plus" aria-hidden="true" />
+                            
                         </span>
                         <Link className='ms-5' to="/signup">
                             <small>New User ?</small>
