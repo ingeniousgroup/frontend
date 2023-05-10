@@ -55,8 +55,7 @@ function NavebarNext() {
         dispatch(createSubscription(currentUser));
         navigate("/takeSubscription");
     }
-
-    const conditionalRendar = () => {
+const conditionalRendar = () => {
         if (currentUser) {
             if (currentUser.role == "Owner")
                 return <div class="fab no" data-hover='Profile' onClick={viewProfile}></div>
@@ -65,11 +64,10 @@ function NavebarNext() {
         }
         else
             return <div class="fab no" data-hover='Profile' onClick={viewProfile}></div>
-
-    }
+}
     return <>
         <div className='p-1 pb-2 main1'>
-            <div className='row mt-2 m'>
+            <div className='row mt-2'>
                 <div className='col-md-12'>
                     <div className='row'>
                         <div className='col-md-2 text-white logo text-center fs-2'>
@@ -124,6 +122,7 @@ function NavebarNext() {
                                 {currentUser && <div class="fab no " data-hover='SigOut' onClick={signout}></div>}
                                 {/* <div class="fab no " data-hover='SignUp' onClick={signupUser}></div> */}
                                 <div class="fab no " data-hover='Profile' onClick={viewProfile}></div>
+
                             </div>
                         </div>
                     </div>
