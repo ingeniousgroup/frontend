@@ -12,6 +12,16 @@ export const tenantRequest = createAsyncThunk("owner/tenantRequest", async (curr
        console.log("something went wrong inside tenant slice");
 });
 
+export const removeTenantRequest = createAsyncThunk("owner/tenantRequest", async (data) => {
+    console.log(data._id);
+    let response = axios.post(api.DELETE_TENANT_REQUEST,{id:data._id});
+    console.log(response.data.result);
+    if(response.data.status)
+        return response.data.result;
+    else
+       console.log("something went wrong inside tenant slice");
+});
+
 const slice = createSlice({
     name: 'tenantRe',
     initialState: {

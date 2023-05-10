@@ -7,7 +7,6 @@ import propertyOfOwnerSlice from "./propertyOfOwnerSlice";
 import subscriptionSlice from "./subscriptionSlice";
 import wishListSlice from "./wishListSlice";
 import tenantRequestSlice from "./tenantRequestSlice";
-console.log("store in...");
 const store = configureStore({
     reducer:{
         user: UserSlice,
