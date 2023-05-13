@@ -3,35 +3,55 @@ import './signin.css';
 import { Link, useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import api from '../../redux-config/WebApi/api';
+import validation from "../ExtraServices/Validataions/Input_Validations"
+import Swal from 'sweetalert2';
+
+
 function Signup() {
-    const [name,setName] = useState("");
-    const [email,setEmail] = useState("");
-    const [password,setPassword] = useState("");
-    const [contact,setContact] = useState("");
-    const [role,setRole] = useState("");
+    const [name, setName] = useState("");
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    const [contact, setContact] = useState("");
+    const [role, setRole] = useState("");
     const [latitude, setLatitude] = useState(null);
     const [longitude, setLongitude] = useState(null);
-    
+
+    // const [emailError, setEmailError] = useState(false);
+    // const [passwordError, setPasswordError] = useState(false);
+    // const [nameError,setNameError] = useState(true);
+    // const [contactError , setContacctError] = useState(false);
     const navigate = useNavigate();
 
     useEffect(() => {
         navigator.geolocation.getCurrentPosition((position) => {
-        setLatitude(position.coords.latitude);
-        setLongitude(position.coords.longitude);
+            setLatitude(position.coords.latitude);
+            setLongitude(position.coords.longitude);
         });
     }, []);
-
-    const handleSubmit = async (event)=>{
-        try{ 
+    const [abc, setAbc] = useState();
+    const userNameEvent = async (event) => {
+        setName(event.target.value);
+        }
+    const handleSubmit = async (event) => {
+        try {
             event.preventDefault();
-            let response = await axios.post(api.OWNER_SIGNUP,{name,email,password,contact,role,latitude,longitude});
-            if(response.data.status){
+            let response = await axios.post(api.OWNER_SIGNUP, { name, email, password, contact, role, latitude, longitude });
+            if (response.data.status) {
                 console.log(response.data);
-                window.alert("signup success");
+                Swal.fire({
+                    icon: 'success',
+                    timer: 2500,
+                    title: 'Sign-In Successfully ',
+                    confirmButtonColor: '#3085d6',
+                    showConfirmButton: false,
+                    timerProgressBar: true,
+                    position: 'top',
+                    toast: true,
+                })
                 navigate('/signin');
             }
         }
-        catch(err){
+        catch (err) {
             console.log(err);
         }
     }
@@ -50,7 +70,8 @@ function Signup() {
                         </h1>
                         <br />
                         <input
-                            onChange={(event)=>setName(event.target.value)}
+                            required
+                            onChange={userNameEvent}
                             type="text"
                             id="name"
                             name="name"
@@ -59,7 +80,8 @@ function Signup() {
                         <br />
                         <br />
                         <input
-                            onChange={(event)=>setEmail(event.target.value)}
+                            required
+                            onChange={(event) => setEmail(event.target.value)}
                             type="text"
                             id="email"
                             name="email"
@@ -68,7 +90,8 @@ function Signup() {
                         <br />
                         <br />
                         <input
-                            onChange={(event)=>setPassword(event.target.value)}
+                            required
+                            onChange={(event) => setPassword(event.target.value)}
                             type="password"
                             id="pass"
                             name="password"
@@ -77,15 +100,15 @@ function Signup() {
                         <br />
                         <br />
                         <input
-                            onChange={(event)=>setContact(event.target.value)}
+                            required
+                            onChange={(event) => setContact(event.target.value)}
                             type="text"
                             id="contact"
                             name="contact"
                             placeholder=" Contact......"
                         />
                         <br />
-                        <br />
-                        <select onChange={(event)=>setRole(event.target.value)} style={{marginLeft:"10vh",marginTop:"2vh",backgroundColor:"white"}}>
+                        <select className='btn btn rounded-pill border w-50' required onChange={(event) => setRole(event.target.value)} style={{ marginLeft: "10.5vh", marginTop: "4vh", backgroundColor: "white" }}>
                             <option id='null'>
                                 Select Role
                             </option>
@@ -103,7 +126,7 @@ function Signup() {
                             onclick="on()"
                             className="btn btn-outline-dark rounded-pill mt-4">
                             Sign Up
-                        </button><br/><br/><br/>
+                        </button><br /><br /><br />
                         <span id="with">
                             <b>SignUp With</b>
                         </span>
@@ -118,7 +141,7 @@ function Signup() {
                         <br />
                         <br />
                     </form>
-                    <hr /><br/>
+                    <hr /><br />
                 </div>
             </div>
         </section>

@@ -48,8 +48,7 @@
     background-color: #2a52be;
   }
   #card:hover{
-    transform: scale(1.2); 
-  
+    transform: scale(1.12);
   }
   .head:hover #info{
     color: white;
