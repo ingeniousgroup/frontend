@@ -1,113 +1,291 @@
-import { useState } from 'react';
-import './HouseDescription.css';
-import { eventWrapper } from '@testing-library/user-event/dist/utils';
-import { useLocation } from 'react-router';
+import { useEffect, useRef, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import "./HouseDescription.css";
+import { useLocation } from "react-router";
+import axios from "axios";
+import api from "../../../redux-config/WebApi/api";
+import { useSelector } from "react-redux";
 
 function HouseDescription() {
-    
-    const {state} =  useLocation();
-    const [image , setImage] = useState(state.property.imagesUrlArray[0]);
-    const [image2 , setImage2] = useState('/images/home2.jpg');
-    const [image3 , setImage3] = useState('/images/home3.jpg');
+  // var otp;
+  var { currentUser } = useSelector((state) => state.user);
+  const navigate = useNavigate();
+  const { state } = useLocation();
+  const [image, setImage] = useState(state.property.imagesUrlArray[0]);
+  const [image2, setImage2] = useState(state.property.imagesUrlArray[1]);
+  const [image3, setImage3] = useState(state.property.imagesUrlArray[2]);
+  // var otp = useRef("");
+  const [otp,setOtp] = useState("");
+  var message;
+  const [otpflage, setOtpflage] = useState(false);
+  const [propertyDetails, setPropertyDetails] = useState({});
 
-    const change = (event)=>{
-        setImage(event.target.src);
-        
+  useEffect(() => {
+    if (state == {}) {
+      // let response = axios.post(api);
     }
-    return <>
-        <div className='container ' id='outer'>
-            <div className='row'>
-                <div id='main' className='col-lg-8 col-md-8 text-center mt-2'>
-                    <div className='row'>
-                        <div className='col-md-6 p-2'>
-                            <img  src={image} className="logimg" height={400} width="100%" />
-                            <div className='row mt-2'>
-                                <div className='col-md-6'>
-                                    <img onClick={change} src={image2} className="logimg" height={150} width="100%" />
-                                </div>
-                                <div className='col-md-6'>
-                                    <img onClick={change} src={image3} className="logimg" height={150} width="100%" />
-                                </div>
-                            </div>
-                        </div>
-                        <div className='col-md-6 p-3' id='side'>
-                            <div className='row ' id='desc'>
-                                <div className='col-md-6 text-left  p-2'>
-                                    <p>
-                                        <i className="fa fa-snowflake-o" aria-hidden="true"></i>
-                                        <span className='ms-2 config' >Configuration</span>
-                                    </p>
-                                    <p className='ms-5 contant'>
-                                        2 bedroom, 2 bathrooms
-                                    </p><hr/>
-                                    <p>
-                                        <i className="fa fa-map-marker ms-1" aria-hidden="true"></i>
-                                        <span className='ms-2 config' >Area</span>
-                                    </p>
-                                    <p className='ms-5 contant'>
-                                        15 / 40 <span className='text-info ms-2'>(in feet)</span>
-                                    </p><hr/>
-                                    <p>
-                                        <span className='ms-2 config' >Furnishing</span>
-                                    </p>
-                                    <p className='ms-5 contant'>
-                                        Semi-furnished
-                                    </p><hr/>
-                                    <p>
-                                        <i className="fa fa-calendar ms-1"></i>
-                                        <span className='ms-2 config' >Available Date</span>
-                                    </p>
-                                    <p className='ms-5 contant'>
-                                        16 - may -23
-                                    </p><hr/>
-                                </div>
-                                <div className='col-md-6 text-left p-2'>
-                                    <p>
-                                        <span className='ms-2 config' >Rent</span>
-                                    </p>
-                                    <p className='ms-5 contant'>
-                                        <i className="fa fa-inr" aria-hidden="true"></i>{state.property.rent}
-                                    </p><hr/>
-                                    <p>
-                                        <i className="fa fa-map-marker ms-1" aria-hidden="true"></i>
-                                        <span className='ms-2 config' >Address</span>
-                                    </p>
-                                    <p className='ms-5 contant'>
-                                    {state.property.address}
-                                    </p><hr/>
-                                    <p>
-                                        <i className="fa fa-calendar ms-1"></i>
-                                        <span className='ms-2 config' >Available For</span>
-                                    </p>
-                                    <p className='ms-5 contant'>
-                                         family only
-                                    </p><hr/>
-                                    <p>
-                                        <i className="fa fa-calendar ms-1"></i>
-                                        <span className='ms-2 config' >Posted On</span>
-                                    </p>
-                                    <p className='ms-5 contant'>
-                                    {state.property.date}
-                                    </p><hr/>
-                                </div>
-                                <div className='row mt-2' id='down'>
-                                    <div className='col-md-12'>
-                                        <h4 className='text-left mb-4 '>
-                                            <u>About Property</u>
-                                        </h4>
-                                        <p>
-                                        {state.property.description}
-                                        {/* I want to rent out a 2 bhk apartment available in db pride,talawali chanda, <br/>indore.Located in a serene place, it has a super built-Up area of 600 <br/>sq.Ft. It is an attractive and a newly constructed property.  */}
-                                        </p>
-                                    </div>
-                            </div>
-                            </div>
-                        </div>
-                    </div>
+  }, []);
+
+  const change = (event) => {
+    setImage(event.target.src);
+  };
+
+  const sendOtp = async () => {
+    try {
+     var o = generateOTP();
+      setOtpflage(true);
+      setOtp(o);
+      console.log(otp + " -----1");
+      // var response = await axios.post(api.SEND_OTP,{email:currentUser.email,otp});
+      // if(response.data.status)
+      // alert("otp send successfully");
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  console.log(otp +"-----2");
+  const checkUser = () => {
+    if (!currentUser) navigate("/signin");
+    else {
+      var modal = document.querySelector(".modal");
+      modal.style.display = "block";
+    }
+  };
+
+  const verifyOtp = async() => {
+    var o1 = document.getElementById("1").value;
+    var o2 = document.getElementById("2").value;
+    var o3 = document.getElementById("3").value;
+    var o4 = document.getElementById("4").value;
+    var o = o1 + o2 + o3 + o4;
+    if (otp == o) {
+      // let msg = document.getElementById("message").value;
+      let response = await axios.post(api.HOUSE_REQUEST, {
+        userId: currentUser._id,
+        propertyId: state.property._id,
+        message: "messsssssssageeeee",
+        status: true,
+      });
+      console.log(response.data);
+      if (response.data.status) 
+        alert("Request Send Successfully...");
+        navigate("/");
+    }
+  };
+  function generateOTP() {
+    var digits = "0123456789";
+    let OTP = "";
+    for (let i = 0; i < 4; i++) {
+      OTP += digits[Math.floor(Math.random() * 10)];
+    }
+    return OTP;
+  }
+  return (
+    <>
+      <div className="container">
+        <div className="row  main-container">
+          <div className="col-5 image-man-div">
+            <div className="row border">
+              <div className="col-12 ">
+                <div className="main-img-div">
+                  <img onClick={change} src={image} className="logimg" />
                 </div>
+              </div>
+              <div className="row border mt-4">
+                <div className="col-4 my-img p-1">
+                  <img onClick={change} src={image2} className="logimg" />
+                </div>
+                <div className="col-4 my-img p-1 ">
+                  <img onClick={change} src={image3} className="logimg" />
+                </div>
+                {/* <div className='col-4 my-img p-1'>
+                         <img onClick={change} src={image3} className="logimg" />      
+                         </div> */}
+              </div>
             </div>
+          </div>
+
+          <div className="col-7 discription-div">
+            <div className="row">
+              <div className="col-6">
+                <h1>House for rent</h1>
+                <span className="house-rent">{state.property.rent}</span>
+                <small>Rent</small>
+              </div>
+              <div className="col-6">
+                <div className="row">
+                  <div className="col-6 offset-6">
+                    <a onClick={checkUser} className="btn-connect">
+                      <span></span>
+                      <span></span>
+                      <span></span>
+                      <span></span>
+                      <h6>
+                        Connect Now
+                        <i
+                          class="fa fa-arrow-circle-o-right"
+                          aria-hidden="true"
+                        ></i>
+                      </h6>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <br />
+            <hr />
+            <div className="row mt-2">
+              <div className="col-6 mt-4">
+                <h6 className="config">Configuration</h6>
+                <span className="config-data">2 bedroom , 2 bathrooms</span>
+              </div>
+              <div className="col-6 mt-4">
+                <h6 className="config">Rent</h6>
+                <span className="config-data">{state.property.rent}</span>
+              </div>
+              <div className="col-6 mt-4">
+                <h6 className="config">Area</h6>
+                <span className="config-data">Indore</span>
+              </div>
+              <div className="col-6 mt-4">
+                <h6 className="config">Address</h6>
+                <span className="config-data">{state.property.address}</span>
+              </div>
+              <div className="col-6 mt-4">
+                <h6 className="config">Furnishing</h6>
+                <span className="config-data">Semi Furnished</span>
+              </div>
+              <div className="col-6 mt-4">
+                <h6 className="config">Posted By on date</h6>
+                <span className="config-data">{state.property.date}</span>
+              </div>
+              <div className="col-12 mt-4">
+                <h6 className="config">Description</h6>
+                <span className="config-data">
+                  moruhg fkengkr fnrihvv iubcub jeruoebg fjbjvkbrj
+                </span>
+              </div>
+            </div>
+          </div>
         </div>
+      </div>
+      <div
+        className="modal"
+        id="sampleModalLg"
+        tabIndex={-1}
+        role="dialog"
+        aria-labelledby="abc"
+        aria-hidden="true"
+      >
+        <div className="modal-dialog modal-lg" role="document">
+          <div className="modal-content">
+            <div className="modal-header">
+              <h5 className="modal-title" id="abc">
+                KirayeWala
+              </h5>
+              <button
+                type="button"
+                className="close"
+                data-dismiss="modal"
+                aria-label="Close"
+              />
+            </div>
+            <div className="modal-body">
+              {!otpflage && (
+                <div className="container contact-form">
+                  <form method="post">
+                    <h3>Sent enquiry to Owner</h3>
+                    <div className="row">
+                      <div className="col-md-6">
+                        <div className="form-group mt-2">
+                          <input
+                            type="text"
+                            name="txtName"
+                            className="form-control"
+                            placeholder="Your Name *"
+                            defaultValue=""
+                          />
+                        </div>
+                        <div className="form-group mt-2">
+                          <input
+                            type="text"
+                            name="txtEmail"
+                            className="form-control"
+                            placeholder="Your Email *"
+                            defaultValue=""
+                          />
+                        </div>
+                        <div className="form-group mt-2">
+                          <input
+                            type="text"
+                            name="txtPhone"
+                            className="form-control"
+                            placeholder="Your Phone Number *"
+                            defaultValue=""
+                          />
+                        </div>
+                        <div className="form-group mt-3">
+                          <span className="btnContact" onClick={sendOtp}>
+                            {" "}
+                            Submit
+                          </span>
+                        </div>
+                      </div>
+                      <div className="col-md-6">
+                        <div className="form-group">
+                          <textarea
+                            name="txtMsg"
+                            className="form-control"
+                            placeholder="Your Message *"
+                            style={{ width: "100%", height: 150 }}
+                            defaultValue={""}
+                            onChange={(event) => (message = event.target.value)}
+                            id="message"
+                          />
+                        </div>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+              )}
+              {otpflage && (
+                <div className="d-flex justify-content-center align-items-center container">
+                  <div className="card py-5 px-3">
+                    <h5 className="m-0">Mobile phone verification</h5>
+                    <span className="mobile-text">
+                      Enter the code we just send on your Email
+                      <b className="text-danger">{currentUser?.email}</b>
+                    </span>
+                    <div className="d-flex flex-row mt-5">
+                      <input type="text" className="form-control" id="1" />
+                      <input type="text" className="form-control" id="2" />
+                      <input type="text" className="form-control" id="3" />
+                      <input type="text" className="form-control" id="4" />
+                    </div>
+                    <div className="text-center mt-5">
+                      <span className="d-block mobile-text">
+                        Don't receive the code?
+                      </span>
+                      <span className="font-weight-bold text-danger cursor">
+                        Resend
+                      </span>
+                    </div>
+                    <br />
+
+                    <button onClick={verifyOtp}>Submit</button>
+                  </div>
+                </div>
+              )}
+            </div>
+            <div className="modal-footer">
+              {/* <div>Owner Name :-  Mohit Rajput</div> */}
+            </div>
+          </div>
+        </div>
+      </div>
     </>
+  );
 }
 
 export default HouseDescription;
