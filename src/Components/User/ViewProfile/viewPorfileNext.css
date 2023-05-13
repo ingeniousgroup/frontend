@@ -80,8 +80,8 @@
     background-color: yellow;
 }
 #topPhoto{
-    height: 40vh;
-    margin-top: -9vh;
+    height: 30vh;
+    margin-top: -5vh;
 }
 .heading{
     font-family: Comic Sans ms;
@@ -95,11 +95,13 @@
     margin-left: -5vh;
 }
 .rightside{
-    overflow-x: hidden;
-    overflow-y: auto;
-    text-align:justify;
+    height: 450px;
+    scroll-behavior: smooth;
+    overflow-y: scroll;
     scrollbar-width: none;
+
 }
 #img1{
     border-radius: 2vh;
+    box-shadow: 4px 4px 4px ;
 }

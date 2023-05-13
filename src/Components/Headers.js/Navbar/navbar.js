@@ -44,7 +44,7 @@ function Navbar( {search}) {
         <nav className="navbar navbar-expand-lg main-nav px-0 ">
           <div className="navbar-brand" >
             <h4>KirayeWala</h4>
-            {/* <img src="images/logo.png" width={400} height={150} className="logoImg" /> */}
+
           </div>
           <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#mainMenu" aria-controls="mainMenu" aria-expanded="false" aria-label="Toggle navigation">
             <span className="icon-bar icon-bar-1" />

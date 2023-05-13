@@ -19,18 +19,18 @@ function NavebarNext() {
     }, []);
 
     const navigate = useNavigate();
-    const propertyPost = async() => {
-        navigate("/propertypost");   
+    const propertyPost = async () => {
+        navigate("/propertypost");
     }
     const { currentUser } = useSelector((state) => state.user);
-    const {subscription} = useSelector((state) => state.ownerSubscription)
+    const { subscription } = useSelector((state) => state.ownerSubscription)
     const dispatch = useDispatch();
 
-    
+
     const signout = () => {
         dispatch(removeUser());
         window.location.reload();
-        
+
     }
     const signupUser = () => {
         navigate("/signup")
@@ -39,7 +39,7 @@ function NavebarNext() {
         navigate("/signin")
     }
 
-    const viewProfile =() => {
+    const viewProfile = () => {
         dispatch(viewProperty(currentUser));
         // dispatch()
         navigate("/viewProfile");
@@ -48,23 +48,23 @@ function NavebarNext() {
 
     const viewTenantProfile = () => {
         dispatch(wishList(currentUser));
-        navigate("/viewTenantProfile");        
+        navigate("/viewTenantProfile");
     }
 
-    const takeSubscription = ()=>{
+    const takeSubscription = () => {
         dispatch(createSubscription(currentUser));
         navigate("/takeSubscription");
     }
-
-    const conditionalRendar = ()=>{
-        if(currentUser){
-           if(!currentUser.role == "Owner")
-            return<div><div class="fab no" data-hover='Profile' onClick={viewTenantProfile}></div><div class="fab no" data-hover='Profile' onClick={signout}></div></div>
-            
+const conditionalRendar = () => {
+        if (currentUser) {
+            if (currentUser.role == "Owner")
+                return <div class="fab no" data-hover='Profile' onClick={viewProfile}></div>
+            else
+                return <div class="fab no" data-hover='Profile' onClick={viewTenantProfile}  ></div>
         }
         else
-         return<div class="fab no" data-hover='Profile' onClick={signinUser}></div> 
-    }
+            return <div class="fab no" data-hover='Profile' onClick={viewProfile}></div>
+}
     return <>
         <div className='p-1 pb-2 main1'>
             <div className='row mt-2'>
@@ -97,30 +97,32 @@ function NavebarNext() {
                             </div>
                         </div>
                         <div className='col-md-3 '>
-                            <div className='row ms-5' style={{marginLeft:"-80px"}}>
-                            <div className='col-md-6 text-end '>
-                                <button onClick={propertyPost} className='btn  rounded-pill btn-light mt-1 post'>
-                                    Post Property
-                                </button>
-                            </div>
-                            <div className='col-md-6'>
-                                {!subscription && <button onClick={takeSubscription} className='btn  rounded-pill btn-light mt-1 post'>
-                                     Subscription
-                                </button>
-                                }
-                                {
-                                    subscription && <button className='btn post rounded-pill mt-1 btn-light' style={{backgroundColor:"yellow"}}>
-                                        want Expire ?
+                            <div className='row ms-5' style={{ marginLeft: "-80px" }}>
+                                <div className='col-md-6 text-end '>
+                                    <button onClick={propertyPost} className='btn  rounded-pill btn-light mt-1 post'>
+                                        Post Property
                                     </button>
-                                }
-                            </div>
+                                </div>
+                                <div className='col-md-6'>
+                                    {!subscription && <button onClick={takeSubscription} className='btn  rounded-pill btn-light mt-1 post'>
+                                        Subscription
+                                    </button>
+                                    }
+                                    {
+                                        subscription && <button className='btn post rounded-pill mt-1 btn-light' >
+                                            Subscribed
+                                        </button>
+                                    }
+                                </div>
                             </div>
                         </div>
                         <div className='col-md-1'>
                             <div className='share ms-3'>
-                                {!currentUser &&<div class="fab no " data-hover='SignIn' onClick={signinUser}></div>}
+                                {!currentUser && <div class="fab no " data-hover='SignIn' onClick={signinUser}></div>}
                                 {currentUser && <div class="fab no " data-hover='SigOut' onClick={signout}></div>}
-                                <div class="fab no " data-hover='Profile' onClick={viewTenantProfile}></div>
+                                {/* <div class="fab no " data-hover='SignUp' onClick={signupUser}></div> */}
+                                <div class="fab no " data-hover='Profile' onClick={viewProfile}></div>
+
                             </div>
                         </div>
                     </div>

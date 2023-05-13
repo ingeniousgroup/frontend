@@ -1,4 +1,5 @@
 export default {
+    PORT : 'http://localhost:3000/upload/',
     OWNER_SIGNIN: '/owner/signin',
     OWNER_SIGNUP: '/owner/signup',
     PROPERTY_LIST:'/property/list',
@@ -15,5 +16,11 @@ export default {
     SHOW_SUBSCRIPTION : '/owner/showSubscription',
     CATEGORY_COUNT:'/property/categoryCount',
     SEND_OTP:'/tenant/sendOtp',
-    HOUSE_REQUEST:'/tenant/houseRequest'
+    HOUSE_REQUEST:'/tenant/houseRequest',
+    REMOVE_PROPERTY_DETAILS: '/owner/removePropertyDetails',
+    DELETE_TENANT_REQUEST:'/owner/deleteTenantRequest',
+    CATEGORY_COUNT:'/property/categoryCount',
+    VIEW_ADMIN:'/owner/viewAdmin',
+    UPDATE_BALANCE:'/owner/updateBalance',
+    EMAIL_SEND:'/tenant/sendOtp'
 }

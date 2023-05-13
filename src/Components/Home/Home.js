@@ -1,5 +1,3 @@
-
-
 import Navbar from "../Headers.js/Navbar/navbar";
 
 import { useDispatch, useSelector } from "react-redux";
@@ -45,6 +43,7 @@ function Home(){
         response = await axios.post(apiEndPoint.SEARCH,{address: searchText}); 
       if(response.data.status){
         setPropertyList(response.data.property);
+
       }
     } catch (err) {
       // setError("Oops somthing went Wrong");

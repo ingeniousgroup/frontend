@@ -4,6 +4,7 @@ import { useRef, useState } from 'react';
 import api from '../../../../redux-config/WebApi/api';
 import axios from 'axios';
 import { useSelector } from 'react-redux';
+import Swal from 'sweetalert2';
 
 function ImagePost() {
     const DetaileWithLocation = useLocation();
@@ -15,10 +16,6 @@ function ImagePost() {
     if(latilongi?.length == 2){
          latitude = latilongi[0];
          longitude = latilongi[1];
-        locationAddress = {latitude,longitude};
-        console.log(";;;;");
-        console.log(locationAddress);
-        console.log(";;;;");
     }
     else{
         locationAddress = latilongi[0];
@@ -69,6 +66,8 @@ function ImagePost() {
         formData.append("address",address);
         formData.append("description",description);
         formData.append("locationAddress",locationAddress);
+        formData.append("latitude",latitude);
+        formData.append("longitue",longitude);
         
         try {
             let response = await axios.post(api.POST_PROPERTY, formData);
@@ -76,8 +75,20 @@ function ImagePost() {
                 console.log("property saved successfull");
                 let propertyID = response.data.addproperty._id;
                 let nextResponse = await axios.post(api.POST_PROPERTY_DETAILS, { userId, balconies, carpetArea, floor, furnshing, noOfBathoom, otherRoom, propertyID });
-                if (nextResponse)
+                if (nextResponse){
                     console.log("property details are also saved successfully.............");
+                    Swal.fire({
+                        icon: 'success',
+                        timer:2500,
+                        title: 'Property Post Successfully ',
+                        confirmButtonColor: '#3085d6',
+                        showConfirmButton:false,
+                        timerProgressBar:true,
+                        position:'top',
+                        toast:true,
+                    })
+                }
+                    
             }
         }
         catch (err) {
