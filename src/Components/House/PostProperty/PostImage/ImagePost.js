@@ -4,6 +4,7 @@ import { useRef, useState } from 'react';
 import api from '../../../../redux-config/WebApi/api';
 import axios from 'axios';
 import { useSelector } from 'react-redux';
+import Swal from 'sweetalert2';
 
 function ImagePost() {
     const DetaileWithLocation = useLocation();
@@ -74,8 +75,20 @@ function ImagePost() {
                 console.log("property saved successfull");
                 let propertyID = response.data.addproperty._id;
                 let nextResponse = await axios.post(api.POST_PROPERTY_DETAILS, { userId, balconies, carpetArea, floor, furnshing, noOfBathoom, otherRoom, propertyID });
-                if (nextResponse)
+                if (nextResponse){
                     console.log("property details are also saved successfully.............");
+                    Swal.fire({
+                        icon: 'success',
+                        timer:2500,
+                        title: 'Property Post Successfully ',
+                        confirmButtonColor: '#3085d6',
+                        showConfirmButton:false,
+                        timerProgressBar:true,
+                        position:'top',
+                        toast:true,
+                    })
+                }
+                    
             }
         }
         catch (err) {

@@ -9,6 +9,8 @@ import api from '../../redux-config/WebApi/api';
 import { wishList } from '../../redux-config/wishListSlice';
 import { tenantRequest } from '../../redux-config/tenantRequestSlice';
 import { showSubscription } from '../../redux-config/subscriptionSlice';
+import Swal from 'sweetalert2';
+import Validation from '../ExtraServices/Validataions/Input_Validations';
 import WithGoogle from '../ExtraServices/GoogleSignIn';
 
 function Signin() {
@@ -17,30 +19,49 @@ function Signin() {
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const {currentUser} = useSelector((state)=>state.user);
+
     const handleSubmit = async (event)=>{
         try {
             event.preventDefault();
             let response = await axios.post(api.OWNER_SIGNIN,{email,password});
-            console.log(response);
             if(response.data.status){
                 let done = await dispatch(setUser(response.data.user));
                 if(done){
                     dispatch(tenantRequest());
                     dispatch(wishList(response.data.user));
                     dispatch(showSubscription(response.data.user));
-                    window.alert("signin success")
+                    Swal.fire({
+                        icon: 'success',
+                        timer:2500,
+                        title: 'Sign-In Successfully ',
+                        confirmButtonColor: '#3085d6',
+                        showConfirmButton:false,
+                        timerProgressBar:true,
+                        position:'top',
+                        toast:true,
+                    })
                     navigate("/");
                 }                
             }
         } catch (error) {
             console.log(error);
+            Swal.fire({
+                icon: 'error',
+                timer:2500,
+                text: 'Something Went Wrong !.',
+                confirmButtonColor: '#3085d6',
+                showConfirmButton:false,
+                timerProgressBar:true,
+                position:'top',
+                toast:true,
+            })
         }
     }
     return <>
         <section className="section container">
             <div className="row " style={{ boxShadow: "5px 8px 15px black" }}>
                 <div className="col-md-6 p-0">
-                    <img src="/images/icon2.jpg" id="logimg" height={491} width="100%" alt="" />
+                    <img src="/images/icon2.jpg" id="logimg" height={493} width="100%" alt="" />
                 </div>
                 <div className="col-md-6" id="sec">
                     <br />
@@ -70,7 +91,7 @@ function Signin() {
                         />
                         <br />
                         <br />
-                        <Link to='/forgotPassword'><small className='offset-5 text-danger'> Forgot Password ?</small></Link>
+                        <Link to="/signup"><small className='offset-6 text-primary'> New User ?</small></Link>
                         <br />
                         <br />
                         <button
@@ -82,19 +103,10 @@ function Signin() {
                         </button>
                         <br />
                         <br />
-                        <br />
-                        <span id="with">
-                            <b>SignIn With</b>
-                        </span>
-                        <span>
-                            <i className="fa fa-facebook-square ms-4" aria-hidden="true" />{" "}
-                            <i className="fa fa-twitter" aria-hidden="true" />
-                            
-                        </span>
-                        <Link className='ms-5' to="/signup">
-                            <small>New User ?</small>
-                        </Link>
-                        <br />
+                        <div style={{marginLeft:"5.8vh"}}>
+                        <WithGoogle/>
+                        </div>
+                        <br/>
                         <br />
                     </form>
                     <hr />

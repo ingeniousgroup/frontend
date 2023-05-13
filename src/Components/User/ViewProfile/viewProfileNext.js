@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { removeTenantRequest, tenantRequest } from '../../../redux-config/tenantRequestSlice';
 import api from '../../../redux-config/WebApi/api';
 import axios from 'axios';
+import Swal from 'sweetalert2';
 function ViewProfileNext() {
     let [behave, setBehave] = useState('');
     const { currentUser } = useSelector((state) => state.user);
@@ -43,15 +44,45 @@ function ViewProfileNext() {
     }
 
     const removeProperty = async (data) => {
-        if (window.confirm("are you sure to delete this property")) {
-            let response = await axios.post(api.REMOVE_PROPERTY_OF_OWNER, { _id: data._id });
-            if (response.data.status) {
-                let responseAgain = await axios.post(api.REMOVE_PROPERTY_DETAILS, { propertyID: data._id });
-                if (responseAgain.data.status) {
-                    setAllProperty(prevItems => prevItems.filter(item => item !== data));
+        Swal.fire({
+            title: "Are you sure?",
+            icon: "question",
+            buttons: true,
+            dangerMode: true,
+            confirmButtonColor: '#3085d6',
+            showCancelButton:true,
+            cancelButtonColor: '#d33',
+        })
+            .then(async(willDelete) => {
+                if (willDelete.isConfirmed) {
+                    setTimeout(() => {
+                        Swal.fire({
+                            title:"deleted",
+                            icon: "success",
+                            buttons: false,
+                        });
+                    }, 300)
+                    let response = await axios.post(api.REMOVE_PROPERTY_OF_OWNER, { _id: data._id });
+                    if (response.data.status) {
+                        let responseAgain = await axios.post(api.REMOVE_PROPERTY_DETAILS, { propertyID: data._id });
+                        if (responseAgain.data.status) {
+                            setAllProperty(prevItems => prevItems.filter(item => item !== data));
+                        }
+                    }
+                } else {
+                    setTimeout(() => {
+                    }, 1000)
+
+                    setTimeout(() => {
+                        Swal.fire({
+                            title:"Your Property is safe",
+                            icon: 'error',
+                            buttons: false
+                        });
+                    }, 300);
+
                 }
-            }
-        }
+            });
 
     }
     return <>
@@ -78,7 +109,7 @@ function ViewProfileNext() {
                                 Your Property
                             </div>
                         </Link>
-                        <Link className='l' onClick={() => ownerFunctionality("wishlist")}>
+                        <Link className='l' onClick={() => ownerFunctionality('')}>
                             <div className=' link1 p-2'>
                                 Recent Users
                             </div>
@@ -132,7 +163,7 @@ function ViewProfileNext() {
                                 <p>
                                     you can manage your profile and your dashboard
                                 </p>
-                                <img src='/images/wel.avif' width={800} height={300}/>
+                                <img src='/images/wel.avif' width={800} height={300} />
                             </center>
                         </>}
                         {behave == 'wishlist' && <>
