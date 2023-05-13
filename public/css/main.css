@@ -5,7 +5,9 @@
   }
 
   .navbardivBackgroundColor{
-   
+   background: url("../images/background.jpg");
+   background-repeat: inherit;
+   background-size: cover;
   }
   #mainMenu li > a {
     font-size: 16px;
