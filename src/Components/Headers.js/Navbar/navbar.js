@@ -6,6 +6,7 @@ import { removeUser } from "../../../redux-config/UserSlice";
 import $ from 'jquery';
 import { useEffect, useRef } from "react";
 import { Navigate } from "react-router-dom";
+import Waves from "../../waves";
 function Navbar( {search}) {
   useEffect(() => {
     $(".share").on("click", function (e) {
@@ -41,13 +42,11 @@ function Navbar( {search}) {
       navigate("/viewTenantProfile");
   }
   return <header className="main-header" style={{marginBottom:"10vh"}}>
-
     <div className="container-fluid">
       <div className="navbardivBackgroundColor" >
         <nav className="navbar navbar-expand-lg main-nav px-0 ">
           <div className="navbar-brand" >
             <h4>KirayeWala</h4>
-
           </div>
           <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#mainMenu" aria-controls="mainMenu" aria-expanded="false" aria-label="Toggle navigation">
             <span className="icon-bar icon-bar-1" />

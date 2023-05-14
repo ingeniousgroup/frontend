@@ -15,10 +15,6 @@ function HouseDescription() {
   const [image, setImage] = useState(state.property.imagesUrlArray[0]);
   const [image2, setImage2] = useState(state.property.imagesUrlArray[1]);
   const [image3, setImage3] = useState(state.property.imagesUrlArray[2]);
-
-  
-  console.log(state.property);
-  // var otp = useRef("");
   const [otp,setOtp] = useState("");
   var message;
   const [otpflage, setOtpflage] = useState(false);
@@ -29,10 +25,6 @@ function HouseDescription() {
       // let response = axios.post(api);
     }
   }, []);
-
-  const change = (event) => {
-    setImage(event.target.src);
-  };
 
   const sendOtp = async () => {
     try {
@@ -86,6 +78,11 @@ function HouseDescription() {
     }
     return OTP;
   }
+  const change = (event) => {
+    let temp = document.getElementById("topImage").src;
+    document.getElementById("topImage").src = event.target.src;
+    event.target.src = temp;
+  };
   return (
     <>
     <NavebarNext/>
@@ -95,7 +92,7 @@ function HouseDescription() {
             <div className="row mb-5 ">
               <div className="col-12 ">
                 <div className="main-img-div">
-                  <img onClick={change} src={api.PORT+ state.property?.imagesUrlArray[0]} className="logimg"/>
+                  <img onClick={change} src={api.PORT+ state.property?.imagesUrlArray[0]} className="logimg" id="topImage"/>
                 </div>
               </div>
               <div className="row mt-3 offset-1" >

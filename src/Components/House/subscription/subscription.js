@@ -6,6 +6,7 @@ import { useEffect } from 'react';
 import axios from 'axios';
 import Swal from 'sweetalert2';
 import api from '../../../redux-config/WebApi/api';
+import NavebarNext from '../../Headers.js/Navbar/navbarNext';
 function Subscription() {
   const navigate = useNavigate();
   const { currentUser } = useSelector((state) => state.user);
@@ -100,13 +101,11 @@ function Subscription() {
     loadScript("https://checkout.razorpay.com/v1/checkout.js");
   }, []);
   return <>
-    <div style={{ marginTop: "110px" }}>
-
-    </div>
-    <div className='container p-4' style={{ marginBottom: "10vh" }}>
-      <div className='row  '>
+    <NavebarNext/>
+    <div className='container p-5 mt-2' style={{ marginBottom: "10vh" }}>
+      <div className='row'>
         <div className=' col-lg-4'>
-          <div className="card " id="card" style={{ width: "24rem" }}>
+          <div className="" id="card" style={{ width: "24rem" }}>
             <div className="head">
               <p id="type">Basic</p>
               <p style={{ marginLeft: "2vh" }} id="rs"><i class="fa fa-inr fs-1" aria-hidden="true"></i>799/-</p>
@@ -128,7 +127,7 @@ function Subscription() {
 
         </div>
         <div className=' col-lg-4'>
-          <div className="card" id="card" style={{ width: "24rem" }}>
+          <div className="" id="card" style={{ width: "24rem" }}>
             <div className="head">
               <p id="type">Extended</p>
               <p style={{ marginLeft: "2vh" }} id="rs"><i class="fa fa-inr fs-1" aria-hidden="true"></i>399/-</p>
@@ -154,7 +153,7 @@ function Subscription() {
         </div>
 
         <div className=' col-lg-4'>
-          <div className="card" id="card" style={{ width: "24rem" }}>
+          <div className="" id="card" style={{ width: "24rem" }}>
             <div className="head">
               <p id="type">Proffesional</p>
               <p style={{ marginLeft: "2vh" }} id="rs"><i class="fa fa-inr fs-1" aria-hidden="true"></i>1999/-</p>
