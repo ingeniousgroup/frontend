@@ -3,6 +3,7 @@ import './propertyLocation.css'
 import Flate from '../../PostPropertyForms/Flate/Flate';
 import { useRef, useState } from 'react';
 import { event } from 'jquery';
+import NavebarNext from '../../../Headers.js/Navbar/navbarNext';
 
 function PropertyLocation(props) {
 
@@ -26,6 +27,7 @@ function PropertyLocation(props) {
         locationTag = event.target.value;
     }
     return <>
+    <NavebarNext/>
         <div className='row mb-2 inner'>
             <div className='col-md-3  bg-c'>
 

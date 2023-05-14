@@ -5,6 +5,7 @@ import { useLocation } from "react-router";
 import axios from "axios";
 import api from "../../../redux-config/WebApi/api";
 import { useSelector } from "react-redux";
+import NavebarNext from "../../Headers.js/Navbar/navbarNext";
 
 function HouseDescription() {
   // var otp;
@@ -14,6 +15,9 @@ function HouseDescription() {
   const [image, setImage] = useState(state.property.imagesUrlArray[0]);
   const [image2, setImage2] = useState(state.property.imagesUrlArray[1]);
   const [image3, setImage3] = useState(state.property.imagesUrlArray[2]);
+
+  
+  console.log(state.property);
   // var otp = useRef("");
   const [otp,setOtp] = useState("");
   var message;
@@ -58,15 +62,17 @@ function HouseDescription() {
     var o3 = document.getElementById("3").value;
     var o4 = document.getElementById("4").value;
     var o = o1 + o2 + o3 + o4;
-    if (otp == o) {
+    if (true) {
+      window.alert("true me aa gaye")
       // let msg = document.getElementById("message").value;
       let response = await axios.post(api.HOUSE_REQUEST, {
         userId: currentUser._id,
         propertyId: state.property._id,
         message: "messsssssssageeeee",
         status: true,
+        ownerId:state.property.userId
       });
-      console.log(response.data);
+      console.log(response);
       if (response.data.status) 
         alert("Request Send Successfully...");
         navigate("/");
@@ -82,21 +88,22 @@ function HouseDescription() {
   }
   return (
     <>
-      <div className="container">
+    <NavebarNext/>
+      <div className="container mt-5">
         <div className="row  main-container">
           <div className="col-5 image-man-div">
-            <div className="row border">
+            <div className="row mb-5 ">
               <div className="col-12 ">
                 <div className="main-img-div">
-                  <img onClick={change} src={image} className="logimg" />
+                  <img onClick={change} src={api.PORT+ state.property?.imagesUrlArray[0]} className="logimg"/>
                 </div>
               </div>
-              <div className="row border mt-4">
-                <div className="col-4 my-img p-1">
-                  <img onClick={change} src={image2} className="logimg" />
+              <div className="row mt-3 offset-1" >
+                <div className="col-5  my-img p-1" style={{marginLeft:"-3.5vh"}}>
+                  <img onClick={change} src={api.PORT+state.property?.imagesUrlArray[1]} className="logimg" />
                 </div>
-                <div className="col-4 my-img p-1 ">
-                  <img onClick={change} src={image3} className="logimg" />
+                <div className="col-5 ms-5 my-img p-1 ">
+                  <img onClick={change} src={api.PORT+state.property?.imagesUrlArray[2]} className="logimg" />
                 </div>
                 {/* <div className='col-4 my-img p-1'>
                          <img onClick={change} src={image3} className="logimg" />      
@@ -109,7 +116,7 @@ function HouseDescription() {
             <div className="row">
               <div className="col-6">
                 <h1>House for rent</h1>
-                <span className="house-rent">{state.property.rent}</span>
+                <span className="house-rent">{state.property?.rent}</span>
                 <small>Rent</small>
               </div>
               <div className="col-6">

@@ -35,7 +35,10 @@ function Navbar( {search}) {
   }
   
   const viewProfile = () => {
-    navigate("/viewProfile");
+    if(currentUser?.role == "Owner")
+      navigate("/viewProfile");
+    else
+      navigate("/viewTenantProfile");
   }
   return <header className="main-header" style={{marginBottom:"10vh"}}>
 
@@ -52,24 +55,21 @@ function Navbar( {search}) {
             <span className="icon-bar icon-bar-3" />
           </button>
           <div className="collapse navbar-collapse" id="mainMenu">
-            <ul className="navbar-nav ml-auto  f1">
+            <ul className="navbar-nav ml-auto  f1 " style={{fontWeight:"700"}}>
               <li>
-                <Link to='/' className=" active-first">Home</Link>
+                <Link to='/' className=" active-first fs-5 text-uppercase">Home</Link>
               </li>
               <li>
-                <a href="#about">About </a>
+                <a href="#about" className="fs-5 text-uppercase ">About </a>
               </li>
               <li>
-                <a href="#service">Services</a>
+                <a href="#service" className="fs-5 text-uppercase">Services</a>
               </li>
               <li>
-                <button className="postPropertyButton" onClick={propertyPost}>
-                  Post property
-
-                </button>
+                <Link onClick={propertyPost} className="fs-5 text-uppercase">Post Property </Link>
               </li>
               <li>
-                <a href="#contact">Contact</a>
+                <a href="#contact" className="fs-5 text-uppercase">Contact</a>
               </li>
               <li className="userIconStyle">
                 <div className='col-md-1'>

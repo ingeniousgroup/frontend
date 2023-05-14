@@ -1,5 +1,7 @@
 import { useSelector } from "react-redux";
 import "./tenantProfile.css";
+import Navbar from "../../Headers.js/Navbar/navbar";
+import NavebarNext from "../../Headers.js/Navbar/navbarNext";
 function TenantProfile(){
     var {propertyList} =useSelector((state)=>state.wishList);
     var {currentUser} = useSelector((state)=>state.user);
@@ -16,7 +18,10 @@ function TenantProfile(){
       document.getElementsByClassName("email").disabled = false
     });
   }
-    return <><div className="container rounded ">
+    return <>
+    <NavebarNext/>
+    <div style={{height:"80px"}}></div>
+    <div className="container rounded ">
   <div className="row border">
     <div className="col-md-3 border-right profile">
       <div className="d-flex flex-column align-items-center text-center ">
@@ -95,7 +100,7 @@ function TenantProfile(){
         <h4>Houses you Liked..</h4>
         
         <div className="fixDiv">
-          {propertyList.map((property)=><div  className="center mt-5 p-2"><div className="article-card">
+          {propertyList?.map((property)=><div  className="center mt-5 p-2"><div className="article-card">
             {console.log(property.propertyId)}
             <div className="row "
             >

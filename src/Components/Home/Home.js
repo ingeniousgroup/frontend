@@ -29,8 +29,8 @@ import SubscriptionProtected from "../subscriptionProtected/subscriptionProtecte
 import { showSubscription } from "../../redux-config/subscriptionSlice";
 import ViewProfileNext from "../User/ViewProfile/viewProfileNext";
 function Home(){
-
-  const [pixelFlag,setPixelFlag] = useState(false);
+  
+  const [flag, setFlag] = useState(true);
   const [searchText,setSerachText] = useState("");
   const [propertyList, setPropertyList] = useState([]);
 
@@ -38,9 +38,12 @@ function Home(){
     try {
       var response ;
       if(!searchText)
-         response = await axios.get(apiEndPoint.PROPERTY_LIST);
-      else
+          response = await axios.get(apiEndPoint.PROPERTY_LIST);
+      else{
+        setFlag(false);
         response = await axios.post(apiEndPoint.SEARCH,{address: searchText}); 
+      }
+        
       if(response.data.status){
         setPropertyList(response.data.property);
 
@@ -57,21 +60,9 @@ function Home(){
      loadProperty(searchText);
   },[searchText]);
 
-  window.onscroll = ()=>{
-        if (window.scrollY>= 450 ) {
-          setPixelFlag(true);
-        }
-        else {
-          setPixelFlag(false)
-        }
-  }
+  
 
   return <>
-    {pixelFlag && <NavebarNext/>}
-    {!pixelFlag && <Navbar search={search}/>}
-    <div style={{marginTop:"102px"}}>      
-    </div>    
-    
     <Routes>
         <Route path="/" element={<Property propertyList={propertyList}/>}/> 
         <Route path="/propertypost" element={<ProtectedRoute><SubscriptionProtected><PostProperty/></SubscriptionProtected></ProtectedRoute>}/>

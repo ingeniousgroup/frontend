@@ -12,6 +12,7 @@ import { showSubscription } from '../../redux-config/subscriptionSlice';
 import Swal from 'sweetalert2';
 import Validation from '../ExtraServices/Validataions/Input_Validations';
 import WithGoogle from '../ExtraServices/GoogleSignIn';
+import NavebarNext from '../Headers.js/Navbar/navbarNext';
 
 function Signin() {
     const [email,setEmail] = useState("");
@@ -59,14 +60,15 @@ function Signin() {
         }
     }
     return <>
+    <NavebarNext/>
         <section className="section container">
             <div className="row " style={{ boxShadow: "5px 8px 15px black" }}>
-                <div className="col-md-6 p-0">
-                    <img src="/images/icon2.jpg" id="logimg" height={493} width="100%" alt="" />
+                <div className="col-md-6 p-0 ">
+                    <img src="/images/icon2.jpg" id="logimg" height="100%" width="100%" alt="Image Loading" />
                 </div>
                 <div className="col-md-6" id="sec">
                     <br />
-                    <hr />
+                    <hr className='text-white'/>
                     <form onSubmit={handleSubmit}>
                         <h1 id="log">
                             <b>Login Here</b>
@@ -77,7 +79,7 @@ function Signin() {
                             type="text"
                             id="email"
                             name="email"
-                            placeholder="  email......"
+                            placeholder="Enter email here"
                             required
                         />
                         <br />
@@ -87,12 +89,12 @@ function Signin() {
                             type="password"
                             id="pass"
                             name="password"
-                            placeholder="  password ......"
+                            placeholder="Enter password here"
                             required
                         />
                         <br />
                         <br />
-                        <Link to="/signup"><small className='offset-6 text-primary'> New User ?</small></Link>
+                        <Link to="/signup"><small className='offset-8 text-primary'> New User ?</small></Link>
                         <br />
                         <br />
                         <button
@@ -104,13 +106,13 @@ function Signin() {
                         </button>
                         <br />
                         <br />
+                        <br/>
                         <div style={{marginLeft:"5.8vh"}}>
                         <WithGoogle/>
                         </div>
-                        <br/>
                         <br />
                     </form>
-                    <hr />
+                    <hr className='text-white' />
                     <br />
                 </div>
             </div>

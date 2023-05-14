@@ -66,9 +66,9 @@ const conditionalRendar = () => {
             return <div className="fab no" data-hover='Profile' onClick={viewProfile}></div>
 }
     return <>
-        <div className='p-1 pb-2 main1'>
+        <div className='p-1 pb-2 main1 '>
             <div className='row mt-2'>
-                <div className='col-md-12'>
+                <div className='col-md-12 container-fluid'>
                     <div className='row'>
                         <div className='col-md-2 text-white logo text-center fs-2'>
                             <Link className='text-white' to='/'>KirayeWala</Link>
