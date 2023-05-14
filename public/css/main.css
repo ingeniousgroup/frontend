@@ -4,11 +4,7 @@
     font-family: 'Muli', sans-serif;
   }
 
-  .navbardivBackgroundColor{
-   background: url("../images/background.jpg");
-   background-repeat: inherit;
-   background-size: cover;
-  }
+  
   #mainMenu li > a {
     font-size: 16px;
     letter-spacing: 1px;
@@ -669,7 +665,9 @@
 }
 
 .bg-c{
-  background: url('../images/side3.webp');
-  background-repeat: inherit;
-  background-size: cover;
+  background: url('../images/young-tree-growing-vertical.png');
+  background-repeat: repeat-y;
+  padding: 5vh;
+  background-size: contain;
+  opacity: 70%;
 }

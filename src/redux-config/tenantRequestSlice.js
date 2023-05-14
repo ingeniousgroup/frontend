@@ -3,8 +3,17 @@ import api from "./WebApi/api";
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { useSelector } from "react-redux";
 
+// export const tenantRequest = createAsyncThunk("owner/tenantRequest", async (currentUser) => {
+//     let response = await axios.post(api.REQUEST_BY_TENANTS, {ownerId:currentUser._id});
+//     console.log(response.data.result);
+//     if(response.data.status)
+//         return response.data.result;
+//     else
+//        console.log("something went wrong inside tenant slice");
+// });
+
 export const tenantRequest = createAsyncThunk("owner/tenantRequest", async (currentUser) => {
-    let response = await axios.post(api.REQUEST_BY_TENANTS, {ownerId:currentUser._id});
+    let response = await axios.post(api.REQUEST_BY_TENANTS,{ownerId:currentUser._id});
     console.log(response.data.result);
     if(response.data.status)
         return response.data.result;
