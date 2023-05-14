@@ -25,6 +25,7 @@ function Signin() {
             event.preventDefault();
             let response = await axios.post(api.OWNER_SIGNIN,{email,password});
             if(response.data.status){
+                console.log(response.data.user);
                 let done = await dispatch(setUser(response.data.user));
                 if(done){
                     dispatch(tenantRequest());

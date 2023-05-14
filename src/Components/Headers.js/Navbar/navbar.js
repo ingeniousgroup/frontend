@@ -74,10 +74,10 @@ function Navbar( {search}) {
               <li className="userIconStyle">
                 <div className='col-md-1'>
                   <div className='share ms-3'>
-                      {!currentUser &&<div class="fab no " data-hover='SignIn' onClick={signinUser}></div>}
-                      {currentUser && <div class="fab no " data-hover='SigOut' onClick={signout}></div>}
-                      {/* <div class="fab no " data-hover='SignUp' onClick={signupUser}></div> */}
-                      <div class="fab no " data-hover='Profile' onClick={viewProfile}></div>
+                      {!currentUser &&<div className="fab no " data-hover='SignIn' onClick={signinUser}></div>}
+                      {currentUser && <div className="fab no " data-hover='SigOut' onClick={signout}></div>}
+                      {/* <div className="fab no " data-hover='SignUp' onClick={signupUser}></div> */}
+                      <div className="fab no " data-hover='Profile' onClick={viewProfile}></div>
                   </div>
                 </div>
               </li>

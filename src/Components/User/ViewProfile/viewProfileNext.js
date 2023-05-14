@@ -98,7 +98,7 @@ function ViewProfileNext() {
                                 {currentUser.name + "..."}
                             </h3>
                             <label className=' mt-3 acti text-center p-2'>
-                                <i class="fa fa-check fs-5 ms-3" aria-hidden="true">ACTIVE</i>
+                                <i className="fa fa-check fs-5 ms-3" aria-hidden="true">ACTIVE</i>
                             </label>
                         </span>
 
@@ -186,13 +186,13 @@ function ViewProfileNext() {
                                     <img src={api.PORT + data.imagesUrlArray[0]} height={130} id='img1' width={200} onClick={() => viewDescription(data)} />
                                 </div>
                                 <div className='col-2  pt-4 text-left' style={{ marginLeft: "85px" }}>
-                                    <h6 className='fs-6'><i class="fa fa-list-ul fs-5 text-primary" aria-hidden="true"></i>
+                                    <h6 className='fs-6'><i className="fa fa-list-ul fs-5 text-primary" aria-hidden="true"></i>
                                         {data.description.substring(0, 70) + "......"}</h6>
                                 </div>
                                 <div className='col-3  p-3'>
-                                    <p className='fs-5'><i class="fa fa-street-view fs-3" aria-hidden="true"></i>
+                                    <p className='fs-5'><i className="fa fa-street-view fs-3" aria-hidden="true"></i>
                                         {data.address}</p>
-                                    <p className='text-danger'><i class="fa fa-clock-o" aria-hidden="true"></i>
+                                    <p className='text-danger'><i className="fa fa-clock-o" aria-hidden="true"></i>
                                         Posted At : {data.date}</p>
                                 </div>
                                 <div className='col-4 pt-5'>

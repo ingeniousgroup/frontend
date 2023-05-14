@@ -123,7 +123,7 @@ function HouseDescription() {
                       <h6>
                         Connect Now
                         <i
-                          class="fa fa-arrow-circle-o-right"
+                          className="fa fa-arrow-circle-o-right"
                           aria-hidden="true"
                         ></i>
                       </h6>

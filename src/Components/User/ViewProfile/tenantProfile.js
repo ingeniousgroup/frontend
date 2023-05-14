@@ -95,7 +95,7 @@ function TenantProfile(){
         <h4>Houses you Liked..</h4>
         
         <div className="fixDiv">
-          {propertyList.map((property)=><div  class="center mt-5 p-2"><div class="article-card">
+          {propertyList.map((property)=><div  className="center mt-5 p-2"><div className="article-card">
             {console.log(property.propertyId)}
             <div className="row "
             >
@@ -105,8 +105,8 @@ function TenantProfile(){
                 <div className="col-4 text-center">
                     <span className="rent-span text-black p-1">{property.propertyId.rent}</span>
                     <div className="row">
-                      <i class="fa fa-heart text-danger p-1  " aria-hidden="true"></i>
-                      <i class="fa fa-arrow-circle-o-right p-1 " aria-hidden="true"></i>
+                      <i className="fa fa-heart text-danger p-1  " aria-hidden="true"></i>
+                      <i className="fa fa-arrow-circle-o-right p-1 " aria-hidden="true"></i>
                     </div>
                 </div>
             </div>
