@@ -29,29 +29,26 @@
     margin-left: 1vh;
 }
 .main1{
-    margin-top: 40vh !important;
-    background-color: #abe9cd;
-    background-image: linear-gradient(350deg, #abe9cd 10%, #3eadcf 60%);
+    /* 40vh height dena hai isme mt-40vh */
+    margin-top: 0vh !important;
+    background-color: #3eadcf;
     box-shadow: 5px 1px 5px black;
     position: sticky;
     top: 0;
     z-index: 1;
     animation: vijay;
-    animation-duration: 3s;
+    animation-duration: 4s;
 }
 @keyframes vijay {
     0%{
       visibility: initial;
       background: transparent;
-      margin-top: 0px;
       color: transparent !important;
       border: none !important;
     }
     100%{
-        background-color: #abe9cd;
-        background-image: linear-gradient(350deg, #abe9cd 10%, #3eadcf 60%);
-        margin-top: 0px;
-        transform: background 3s ease;
+        background-color: #3eadcf;
+        transform: background 4s ease;
     }
 }
 .logo{

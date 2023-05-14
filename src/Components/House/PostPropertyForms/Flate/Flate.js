@@ -2,6 +2,7 @@ import { useRef, useState } from "react";
 import "./Flate.css";
 
 import { useLocation, useNavigate } from "react-router-dom";
+import NavebarNext from "../../../Headers.js/Navbar/navbarNext";
 
 function Flate(){
   
@@ -93,6 +94,7 @@ function Flate(){
     navigate("/CurrentLocation",{state:{ActualHouseDetails,typeOfPropertyDetails}});
   }
     return <>
+    <NavebarNext/>
       <div className="row mb-2">
         
         <div className="col-3 bg-c"></div>
@@ -196,7 +198,7 @@ function Flate(){
             <h5 className="mt-4 mb-4">Other Rooms</h5>
             <div className="row d-flex justify-content-center">
               
-                <div className="card">
+                <div className="">
                    <div className="card-body text-center">
                         <label className="check">
 

@@ -5,6 +5,7 @@ import { useEffect, useState } from 'react';
 import api from '../../redux-config/WebApi/api';
 import validation from "../ExtraServices/Validataions/Input_Validations"
 import Swal from 'sweetalert2';
+import NavebarNext from '../Headers.js/Navbar/navbarNext';
 
 
 function Signup() {
@@ -56,58 +57,19 @@ function Signup() {
         }
     }
     return <>
+    <NavebarNext/>
         <section className="section container">
-            <div className="row " style={{ boxShadow: "5px 8px 15px black" }}>
+            <div className="row" style={{ boxShadow: "5px 8px 15px black" }}>
                 <div className="col-md-6 p-0">
-                    <img src="/images/icon2.jpg" id="logimg" height={584} width="100%" alt="" />
+                    <img src="/images/icon2.jpg" id="logimg" height="100%" width="100%" alt="" />
                 </div>
                 <div className="col-md-6" id="sec">
                     <br />
-                    <hr />
+                    <hr className='text-white'/>
                     <form onSubmit={handleSubmit}>
                         <h1 id="log">
                             <b>Register Here</b>
                         </h1>
-                        <br />
-                        <input
-                            required
-                            onChange={userNameEvent}
-                            type="text"
-                            id="name"
-                            name="name"
-                            placeholder=" Username......"
-                        />
-                        <br />
-                        <br />
-                        <input
-                            required
-                            onChange={(event) => setEmail(event.target.value)}
-                            type="text"
-                            id="email"
-                            name="email"
-                            placeholder=" email......"
-                        />
-                        <br />
-                        <br />
-                        <input
-                            required
-                            onChange={(event) => setPassword(event.target.value)}
-                            type="password"
-                            id="pass"
-                            name="password"
-                            placeholder=" password ......"
-                        />
-                        <br />
-                        <br />
-                        <input
-                            required
-                            onChange={(event) => setContact(event.target.value)}
-                            type="text"
-                            id="contact"
-                            name="contact"
-                            placeholder=" Contact......"
-                        />
-                        <br />
                         <select className='btn btn rounded-pill border w-50' required onChange={(event) => setRole(event.target.value)} style={{ marginLeft: "10.5vh", marginTop: "4vh", backgroundColor: "white" }}>
                             <option id='null'>
                                 Select Role
@@ -119,6 +81,47 @@ function Signup() {
                                 Tenant
                             </option>
                         </select>
+                        <br />
+                        <br />
+                        <input
+                            required
+                            onChange={userNameEvent}
+                            type="text"
+                            id="name"
+                            name="name"
+                            placeholder="Enter name"
+                        />
+                        <br />
+                        <br />
+                        <input
+                            required
+                            onChange={(event) => setEmail(event.target.value)}
+                            type="text"
+                            id="email"
+                            name="email"
+                            placeholder="Enter email"
+                        />
+                        <br />
+                        <br />
+                        <input
+                            required
+                            onChange={(event) => setPassword(event.target.value)}
+                            type="password"
+                            id="pass"
+                            name="password"
+                            placeholder="Enter password"
+                        />
+                        <br />
+                        <br />
+                        <input
+                            required
+                            onChange={(event) => setContact(event.target.value)}
+                            type="text"
+                            id="contact"
+                            name="contact"
+                            placeholder="Enter contact"
+                        />
+                        <br />
                         <br />
                         <button
                             type="submit"
@@ -141,7 +144,7 @@ function Signup() {
                         <br />
                         <br />
                     </form>
-                    <hr /><br />
+                    <hr className='text-white' /><br />
                 </div>
             </div>
         </section>

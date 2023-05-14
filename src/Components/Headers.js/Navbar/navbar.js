@@ -35,7 +35,10 @@ function Navbar( {search}) {
   }
   
   const viewProfile = () => {
-    navigate("/viewProfile");
+    if(currentUser?.role == "Owner")
+      navigate("/viewProfile");
+    else
+      navigate("/viewTenantProfile");
   }
   return <header className="main-header" style={{marginBottom:"10vh"}}>
 
