@@ -63,11 +63,12 @@
   .main-header {
     height: 330px;
     width: 100%;
-    background-image: url("/images/background.jpg");
-    background-repeat: no-repeat;
+    /* background-image: url("/images/1.jpg"); */
+    /* background-repeat: no-repeat;
     background-size: cover;
     -webkit-transition: all 0.4s ease;
-    transition: all 0.4s ease;
+    transition: all 0.4s ease; */
+    
   }
   
   .main-header.fixed-nav {

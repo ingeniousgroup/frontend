@@ -59,6 +59,19 @@
     border-radius: 3vh;
     margin-top: -4vh;
 }
+.staticTop1{
+    height: 16vh;
+    background-color: #439ff6;
+    width: 75%;
+    margin-left: 18vh;
+    border-radius: 3vh;
+    margin-top: -4vh;
+}
+.startDate , .endDate{
+    height: 20vh;
+
+}
+
 .common{
     height: 20.7vh;
 }

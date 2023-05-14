@@ -17,6 +17,7 @@ function ViewProfileNext() {
     const dispatch = useDispatch();
     const [allRequest, setAllRequest] = useState([]);
     const [allProperty, setAllProperty] = useState([]);
+    const [subscriptionData, setSubscriptionData] = useState('');
 
     useEffect(() => {
         setAllProperty(properties);
@@ -29,13 +30,18 @@ function ViewProfileNext() {
         }
     }
 
-    const ownerFunctionality = (identify) => {
+    const ownerFunctionality = async (identify) => {
         if (identify == 'request') {
             dispatch(tenantRequest(currentUser));
             setAllRequest(requestTenant);
             console.log("*")
             console.log(allRequest);
             console.log("*")
+        }
+        else if (identify == 'subscription') {
+            let response = await axios.post(api.SHOW_SUBSCRIPTION, { userId: currentUser._id })
+            console.log(response.data.subscriptionList);
+            setSubscriptionData(response.data.subscriptionList);
         }
         setBehave(identify)
     }
@@ -122,9 +128,9 @@ function ViewProfileNext() {
                                 <i class="fa fa-crosshairs"></i> All Requests
                             </div>
                         </Link>
-                        <Link className='l' onClick={() => ownerFunctionality('')}>
+                        <Link className='l' onClick={() => ownerFunctionality('subscription')}>
                             <div className=' link3 p-2 b-b-default'>
-                                <i class="fa fa-random"></i> Something
+                                <i class="fa fa-random"></i> Subscription
                             </div>
                         </Link>
                     </div>
@@ -161,7 +167,7 @@ function ViewProfileNext() {
                         {behave == 'profile' && <>
                             <div style={{ width: "100%" }}>
                                 <div class="">
-                                    <div class="row container d-flex justify-content-center">
+                                    <div class="row container-fluid d-flex justify-content-center">
                                         <div class="col-xl-11 col-md-12 mt-2">
                                             <div class=" user-card-full">
                                                 <div class="row m-l-0 m-r-0">
@@ -207,18 +213,43 @@ function ViewProfileNext() {
                                 </div>
                             </div>
                         </>}
-                        {behave == 'wishlist' && <>
-                            <div className='container mt-5 bg-warning'>
-                                <div className='row'>
-                                    <div className='col-6'>
-                                        <h4>
-                                            your wishList is here ..........
-                                        </h4>
-                                    </div>
-                                    <div className='col-6'>
-                                        <h4>total wishList items...........</h4>
+                        {behave == 'subscription' && <>
+                            <div className='container-fluid'>
+                                <div>
+                                    <div className='staticTop1 mt-4 shadow'>
+                                        <div className='row ms-5'>
+                                            <div className='col-4 common offset-1'>
+                                                <h1 className='mt-3 text-white heading ms-3 fs-2 '>
+                                                    Now you are Enjoying  <br />
+                                                </h1>
+                                            </div>
+                                            <div className='col-4 offset-1 p-3'>
+                                                <h1 className='mt-4 text-white heading ms-3 fs-2 '>
+                                                    <label><i class="fa fa-inr fs-2" aria-hidden="true"></i></label>{subscriptionData.subscriptionPrice}
+                                                </h1>
+                                            </div>
+                                        </div>
+                                        <div className='row '>
+                                            <div className='col-6  startDate p-3'>
+                                                <h5 className='mt-4 fs-4' style={{fontWeight:"600"}}>
+                                                    Your Subscription  Starts From !
+                                                </h5>
+                                                <h3 className='text-success'>
+                                                    {subscriptionData.startDate}
+                                                </h3>
+                                            </div>
+                                            <div className='col-6  endDate p-3'>
+                                                <h5 className='mt-4 fs-4'>
+                                                    <b>Your Subscription Expire At !</b>
+                                                </h5>
+                                                <h3 className='text-danger'>
+                                                    {subscriptionData.subscriptionExpiry}
+                                                </h3>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
+
                             </div>
                         </>}
                         {behave == 'details' && <>
@@ -239,13 +270,13 @@ function ViewProfileNext() {
                                 <div className='col-4 pt-4 ps-5 ms-1'>
                                     <button className='btn btn-danger' onClick={() => removeProperty(data)}>Remove Property</button>
                                     <button className='btn btn-primary ms-2' data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">Reviews</button>
-                                    <div class="collapse" id="collapseExample" style={{position:"relative"}}>
-                                    <div class="card card-body">
-                                        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
+                                    <div class="collapse" id="collapseExample" style={{ position: "relative" }}>
+                                        <div class="card card-body">
+                                            Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
+                                        </div>
                                     </div>
                                 </div>
-                                </div>
-                                
+
                             </div>)}
                         </>}
                         {behave == 'request' && <>

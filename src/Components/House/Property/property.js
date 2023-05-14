@@ -9,7 +9,6 @@ import Furnishing from "../Categories/Furnishing";
 import NavebarNext from "../../Headers.js/Navbar/navbarNext";
 import Navbar from "../../Headers.js/Navbar/navbar";
 
-
 function Property({ propertyList }) {
   const [flag, setFlag] = useState(true);
   const [pixelFlag,setPixelFlag] = useState(false);
@@ -65,6 +64,7 @@ function Property({ propertyList }) {
             src={apiEndPoint.PORT + property.imagesUrlArray[0]}
             className="img img-responsive"
             alt="IMAGES NOT FOUND"
+            onClick={() => viewDescription(property)}
           />
           <div className="profile-name">{property.rent}</div>
           <div className="profile-username">Deposite {property.rent} per month</div>

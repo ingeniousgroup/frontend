@@ -70,10 +70,10 @@ const conditionalRendar = () => {
             <div className='row mt-2'>
                 <div className='col-md-12'>
                     <div className='row'>
-                        <div className='col-md-2 text-white logo text-center fs-2'>
+                        <div className='col-md-2 text-white logo text-right fs-2'>
                             <Link className='text-white' to='/'>KirayeWala</Link>
                         </div>
-                        <div className='col-md-6 centerspace '>
+                        <div className='col-md-6 centerspace'>
                             <div className='row'>
                                 <div className='col-4  text-right'>
                                     <select className='option '>
@@ -96,23 +96,12 @@ const conditionalRendar = () => {
                                 </div>
                             </div>
                         </div>
-                        <div className='col-md-3 '>
+                        <div className='col-md-3'>
                             <div className='row ms-5' style={{ marginLeft: "-80px" }}>
-                                <div className='col-md-6 text-end '>
+                                <div className='col-md-6 text-end offset-5'>
                                     <button onClick={propertyPost} className='btn  rounded-pill btn-light mt-1 post'>
                                         Post Property
                                     </button>
-                                </div>
-                                <div className='col-md-6'>
-                                    {!subscription && <button onClick={takeSubscription} className='btn  rounded-pill btn-light mt-1 post'>
-                                        Subscription
-                                    </button>
-                                    }
-                                    {
-                                        subscription && <button className='btn post rounded-pill mt-1 btn-light' >
-                                            Subscribed
-                                        </button>
-                                    }
                                 </div>
                             </div>
                         </div>
