@@ -4,6 +4,7 @@
     font-family: 'Muli', sans-serif;
   }
 
+  
   #mainMenu li > a {
     font-size: 16px;
     letter-spacing: 1px;
@@ -62,13 +63,12 @@
   .main-header {
     height: 330px;
     width: 100%;
-    /* background-image: url("../images/image17.jpeg");
-     */
+    /* background-image: url("/images/1.jpg"); */
     /* background-repeat: no-repeat;
     background-size: cover;
     -webkit-transition: all 0.4s ease;
     transition: all 0.4s ease; */
-    background-color: black;
+    
   }
   
   .main-header.fixed-nav {
@@ -666,7 +666,9 @@
 }
 
 .bg-c{
-  background: url('../images/side3.webp');
-  background-repeat: inherit;
-  background-size: cover;
+  background: url('../images/young-tree-growing-vertical.png');
+  background-repeat: repeat-y;
+  padding: 5vh;
+  background-size: contain;
+  opacity: 70%;
 }

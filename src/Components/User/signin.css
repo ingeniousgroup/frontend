@@ -21,7 +21,6 @@
 }
 
 #log {
-
     margin-left: 6vh;
     font-size: 3.7vh;
     font-family: candara;
@@ -40,19 +39,11 @@
 #pass,
 #name,
 #contact {
-    width: 30vh;
+    width: 65%;
     background-color: transparent;
     border: 0;
     border-bottom: 2px solid;
 }
-
-#email:hover::placeholder,
-#pass:hover::placeholder,
-#name:hover::placeholder,
-#contact:hover::placeholder {
-    visibility: hidden;
-}
-
 .fa {
     margin-right: 1vh;
 }
@@ -62,14 +53,6 @@
     margin-left: 6vh;
     width: 30%;
 }
-
-#email:hover,
-#pass:hover,
-#name:hover,
-#contact:hover {
-    box-shadow: 1px 0px 2px;
-}
-
 
 /* -------------------------------------------------------------validation-------------------------------------------------- */
 

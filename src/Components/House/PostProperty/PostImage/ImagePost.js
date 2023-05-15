@@ -5,6 +5,7 @@ import api from '../../../../redux-config/WebApi/api';
 import axios from 'axios';
 import { useSelector } from 'react-redux';
 import Swal from 'sweetalert2';
+import NavebarNext from '../../../Headers.js/Navbar/navbarNext';
 
 function ImagePost() {
     const DetaileWithLocation = useLocation();
@@ -96,6 +97,7 @@ function ImagePost() {
         }
     }
     return <>
+    <NavebarNext/>
         <div className='row mb-2 inner'>
             <div className='col-md-3  bg-c'>
 

@@ -6,6 +6,7 @@ import axios from "axios";
 import api from "../../../redux-config/WebApi/api";
 import { useSelector } from "react-redux";
 import Swal from "sweetalert2";
+import NavebarNext from "../../Headers.js/Navbar/navbarNext";
 
 function HouseDescription() {
   var { currentUser } = useSelector((state) => state.user);
@@ -26,10 +27,6 @@ function HouseDescription() {
        console.log(err)
       })
   }, []);
-
-  const change = (event) => {
-    setImage(event.target.src);
-  };
 
   const sendOtp = async () => {
     try {
@@ -78,15 +75,16 @@ function HouseDescription() {
     var o3 = document.getElementById("3").value;
     var o4 = document.getElementById("4").value;
     var o = o1 + o2 + o3 + o4;
-    if (otp == o) {
+    if (true) {
+      window.alert("true me aa gaye")
       // let msg = document.getElementById("message").value;
       let response = await axios.post(api.HOUSE_REQUEST, {
         userId: currentUser._id,
         propertyId: state.property._id,
         message: message,
         status: true,
+        ownerId:state.property.userId
       });
-      console.log(response.data);
       if (response.data.status){
         Swal.fire({
           icon: 'success',
@@ -110,38 +108,29 @@ function HouseDescription() {
     }
     return OTP;
   }
+  const change = (event) => {
+    let temp = document.getElementById("topImage").src;
+    document.getElementById("topImage").src = event.target.src;
+    event.target.src = temp;
+  };
   return (
     <>
-      <div className="container">
-        <div className="row  main-container ">
-          <div className="col-12 d-1"></div>
-          <div className="col-5 image-man-div ">
-            <div className="row ">
+    <NavebarNext/>
+      <div className="container mt-5">
+        <div className="row  main-container">
+          <div className="col-5 image-man-div">
+            <div className="row mb-5 ">
               <div className="col-12 ">
                 <div className="main-img-div">
-                  <img
-                    onClick={change}
-                    src={api.PORT + image}
-                    width={400}
-                    height={350}
-                    className="logimg"
-                  />
+                  <img onClick={change} src={api.PORT+ state.property?.imagesUrlArray[0]} className="logimg" id="topImage"/>
                 </div>
               </div>
-              <div className="row  mt-4">
-                <div className="col-5 my-img ">
-                  <img
-                    onClick={change}
-                    src={api.PORT + image2}
-                    className="logimg"
-                  />
+              <div className="row mt-3 offset-1" >
+                <div className="col-5  my-img p-1" style={{marginLeft:"-3.5vh"}}>
+                  <img onClick={change} src={api.PORT+state.property?.imagesUrlArray[1]} className="logimg" />
                 </div>
-                <div className="col-5 my-img  ">
-                  <img
-                    onClick={change}
-                    src={api.PORT + image3}
-                    className="logimg"
-                  />
+                <div className="col-5 ms-5 my-img p-1 ">
+                  <img onClick={change} src={api.PORT+state.property?.imagesUrlArray[2]} className="logimg" />
                 </div>
               </div>
             </div>
@@ -151,7 +140,7 @@ function HouseDescription() {
             <div className="row">
               <div className="col-6">
                 <h1>House for rent</h1>
-                <span className="house-rent">{state.property.rent}</span>
+                <span className="house-rent">{state.property?.rent}</span>
                 <small>Rent</small>
               </div>
               <div className="col-6">

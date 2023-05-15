@@ -7,6 +7,7 @@ import PropertyLocation from '../PropertyLocation/propertyLocation';
 import Navbar from '../../../Headers.js/Navbar/navbar';
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
+import NavebarNext from '../../../Headers.js/Navbar/navbarNext';
 
 function PostProperty() {
     const [propertyType, setPropertyType] = useState("");
@@ -18,6 +19,7 @@ function PostProperty() {
         navigate('/' + event.target.name, { state: { propertyType,PropertyDetails } });
     }
     return <>
+    <NavebarNext/>
         <div className='row inner mb-5'>
             <div className='col-md-3  bg-c'>
             
