@@ -2,19 +2,19 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit"
 import api from "./WebApi/api";
 import axios from "axios";
 import { useSelector } from "react-redux";
+import { cssNumber } from "jquery";
 
-export const createSubscription = createAsyncThunk("owner/subscription", async (currentObject) => {
+export const createSubscription = createAsyncThunk("/owner/subscription", async (currentObject) => {
     let response = await axios.post(api.TAKE_SUBSCRIPTION, {userId:(currentObject.currentUser._id),subscriptionPrice:(currentObject.price)});
     if(response)
         return response.data;
 });
 
-export const showSubscription = createAsyncThunk("owner/showSubscrition",async(currentObject) => {
-    console.log("nandu")
-    console.log(currentObject);
-    console.log("nandu")
+export const showSubscription = createAsyncThunk(api.SHOW_SUBSCRIPTION,async(currentObject) => {
     let response = await axios.post(api.SHOW_SUBSCRIPTION, {userId:currentObject._id});
+    console.log("*");
     console.log(response);
+    console.log("*");
     if(response.data.status)
       return response.data;
 })

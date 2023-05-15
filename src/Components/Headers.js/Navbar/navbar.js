@@ -6,6 +6,7 @@ import { removeUser } from "../../../redux-config/UserSlice";
 import $ from 'jquery';
 import { useEffect, useRef } from "react";
 import { Navigate } from "react-router-dom";
+import Waves from "../../waves";
 function Navbar( {search}) {
   useEffect(() => {
     $(".share").on("click", function (e) {
@@ -41,13 +42,11 @@ function Navbar( {search}) {
       navigate("/viewTenantProfile");
   }
   return <header className="main-header" style={{marginBottom:"10vh"}}>
-
     <div className="container-fluid">
       <div className="navbardivBackgroundColor" >
-        <nav className="navbar navbar-expand-lg main-nav px-0 ">
+        <nav className="navbar navbar-expand-lg main-nav px-0 bg-dark container-fluid" style={{opacity:"60%"}}>
           <div className="navbar-brand" >
-            <h4>KirayeWala</h4>
-
+          <img src={require('./logo-black.png')} />
           </div>
           <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#mainMenu" aria-controls="mainMenu" aria-expanded="false" aria-label="Toggle navigation">
             <span className="icon-bar icon-bar-1" />
@@ -55,21 +54,21 @@ function Navbar( {search}) {
             <span className="icon-bar icon-bar-3" />
           </button>
           <div className="collapse navbar-collapse" id="mainMenu">
-            <ul className="navbar-nav ml-auto  f1 " style={{fontWeight:"700"}}>
+            <ul className="navbar-nav ml-auto  f1 " style={{fontWeight:"700",opacity:"100%"}}>
               <li>
-                <Link to='/' className=" active-first fs-5 text-uppercase">Home</Link>
+                <Link to='/' className=" active-first fs-5 font-weight-bold">Home</Link>
               </li>
               <li>
-                <a href="#about" className="fs-5 text-uppercase ">About </a>
+                <a href="#about" className="fs-5 font-weight-bold " style={{opacity:"400%",fontWeight : "600px"}}>About </a>
               </li>
               <li>
-                <a href="#service" className="fs-5 text-uppercase">Services</a>
+                <a href="#service" className="fs-5 font-weight-bold">Services</a>
               </li>
               <li>
-                <Link onClick={propertyPost} className="fs-5 text-uppercase">Post Property </Link>
+                <Link onClick={propertyPost} className="fs-5  font-weight-bold">Post Property </Link>
               </li>
               <li>
-                <a href="#contact" className="fs-5 text-uppercase">Contact</a>
+                <a href="#contact" className="fs-5 font-weight-bold ">Contact</a>
               </li>
               <li className="userIconStyle">
                 <div className='col-md-1'>
