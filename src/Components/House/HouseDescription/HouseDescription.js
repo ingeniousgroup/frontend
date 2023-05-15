@@ -15,7 +15,7 @@ function HouseDescription() {
   const [image, setImage] = useState(state.property.imagesUrlArray[0]);
   const [image2, setImage2] = useState(state.property.imagesUrlArray[1]);
   const [image3, setImage3] = useState(state.property.imagesUrlArray[2]);
-  const [otp,setOtp] = useState("");
+  const [otp, setOtp] = useState("");
   var message;
   const [otpflage, setOtpflage] = useState(false);
   const [propertyDetails, setPropertyDetails] = useState({});
@@ -28,7 +28,7 @@ function HouseDescription() {
 
   const sendOtp = async () => {
     try {
-     var o = generateOTP();
+      var o = generateOTP();
       setOtpflage(true);
       setOtp(o);
       console.log(otp + " -----1");
@@ -39,7 +39,7 @@ function HouseDescription() {
       console.log(error);
     }
   };
-  console.log(otp +"-----2");
+  console.log(otp + "-----2");
   const checkUser = () => {
     if (!currentUser) navigate("/signin");
     else {
@@ -48,7 +48,7 @@ function HouseDescription() {
     }
   };
 
-  const verifyOtp = async() => {
+  const verifyOtp = async () => {
     var o1 = document.getElementById("1").value;
     var o2 = document.getElementById("2").value;
     var o3 = document.getElementById("3").value;
@@ -62,12 +62,12 @@ function HouseDescription() {
         propertyId: state.property._id,
         message: "messsssssssageeeee",
         status: true,
-        ownerId:state.property.userId
+        ownerId: state.property.userId
       });
       console.log(response);
-      if (response.data.status) 
+      if (response.data.status)
         alert("Request Send Successfully...");
-        navigate("/");
+      navigate("/");
     }
   };
   function generateOTP() {
@@ -85,22 +85,22 @@ function HouseDescription() {
   };
   return (
     <>
-    <NavebarNext/>
+      <NavebarNext />
       <div className="container mt-5">
         <div className="row  main-container">
           <div className="col-5 image-man-div">
             <div className="row mb-5 ">
               <div className="col-12 ">
                 <div className="main-img-div">
-                  <img onClick={change} src={api.PORT+ state.property?.imagesUrlArray[0]} className="logimg" id="topImage"/>
+                  <img onClick={change} src={api.PORT + state.property?.imagesUrlArray[0]} className="logimg" id="topImage" />
                 </div>
               </div>
               <div className="row mt-3 offset-1" >
-                <div className="col-5  my-img p-1" style={{marginLeft:"-3.5vh"}}>
-                  <img onClick={change} src={api.PORT+state.property?.imagesUrlArray[1]} className="logimg" />
+                <div className="col-5  my-img p-1" style={{ marginLeft: "-3.5vh" }}>
+                  <img onClick={change} src={api.PORT + state.property?.imagesUrlArray[1]} className="logimg" />
                 </div>
                 <div className="col-5 ms-5 my-img p-1 ">
-                  <img onClick={change} src={api.PORT+state.property?.imagesUrlArray[2]} className="logimg" />
+                  <img onClick={change} src={api.PORT + state.property?.imagesUrlArray[2]} className="logimg" />
                 </div>
                 {/* <div className='col-4 my-img p-1'>
                          <img onClick={change} src={image3} className="logimg" />      
@@ -111,14 +111,13 @@ function HouseDescription() {
 
           <div className="col-7 discription-div">
             <div className="row">
-              <div className="col-6">
-                <h1>House for rent</h1>
-                <span className="house-rent">{state.property?.rent}</span>
-                <small>Rent</small>
+              <div className="col-6 p-2">
+                <h2><b>House for rent</b></h2>
+                <h3><i class="fa fa-inr fs-2 text-primary" aria-hidden="true"></i>{state.property?.rent} /-</h3>
               </div>
               <div className="col-6">
-                <div className="row">
-                  <div className="col-6 offset-6">
+                <div className="row p-4">
+                  <div className="col-6 offset-1">
                     <a onClick={checkUser} className="btn-connect">
                       <span></span>
                       <span></span>
@@ -141,34 +140,30 @@ function HouseDescription() {
             <hr />
             <div className="row mt-2">
               <div className="col-6 mt-4">
-                <h6 className="config">Configuration</h6>
-                <span className="config-data">2 bedroom , 2 bathrooms</span>
+              <h6 className="config fs-4"><i class="fa fa-tags fs-5 text-primary"></i>Configuration</h6>
+                <span className="fs-5 ms-4">2 bedroom , 2 bathrooms</span>
               </div>
               <div className="col-6 mt-4">
-                <h6 className="config">Rent</h6>
-                <span className="config-data">{state.property.rent}</span>
-              </div>
-              <div className="col-6 mt-4">
-                <h6 className="config">Area</h6>
-                <span className="config-data">Indore</span>
-              </div>
-              <div className="col-6 mt-4">
-                <h6 className="config">Address</h6>
-                <span className="config-data">{state.property.address}</span>
-              </div>
-              <div className="col-6 mt-4">
-                <h6 className="config">Furnishing</h6>
-                <span className="config-data">Semi Furnished</span>
-              </div>
-              <div className="col-6 mt-4">
-                <h6 className="config">Posted By on date</h6>
-                <span className="config-data">{state.property.date}</span>
-              </div>
-              <div className="col-12 mt-4">
-                <h6 className="config">Description</h6>
-                <span className="config-data">
-                  moruhg fkengkr fnrihvv iubcub jeruoebg fjbjvkbrj
+                <h6 className="config fs-4"><i class="fa fa-superpowers text-primary" aria-hidden="true"></i>Description</h6>
+                <span className="config-data ms-4">
+                  Amazing House .....
                 </span>
+              </div>
+              <div className="col-6 mt-4">
+                <h6 className="config fs-4"><i class="fa fa-location-arrow text-primary fs-4"></i>Area</h6>
+                <span className="config-data ms-4">Indore</span>
+              </div>
+              <div className="col-6 mt-4">
+                <h6 className="config fs-4"><i class="fa fa-map-marker text-primary fs-4"></i>Address</h6>
+                <span className="config-data ms-4">{state.property.address}</span>
+              </div>
+              <div className="col-6 mt-4">
+                <h6 className="config fs-4"><i class="fa fa-bed text-primary fs-4"></i>Furnishing</h6>
+                <span className="config-data ms-4">Semi Furnished</span>
+              </div>
+              <div className="col-6 mt-4">
+                <h6 className="config fs-4"><i class="fa fa-calendar-o text-primary fs-4"></i>Posted On</h6>
+                <span className="config-data ms-4">{state.property.date}</span>
               </div>
             </div>
           </div>

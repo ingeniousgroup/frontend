@@ -13,7 +13,7 @@ const store = configureStore({
     reducer:{
         user: UserSlice,
         property:PropertySlice,
-        nearByHouse : nearByHouseSlice,
+        nearByHouse:nearByHouseSlice,
         location : locationSlice,
         ownerProperty:propertyOfOwnerSlice,
         subscription:subscriptionSlice,

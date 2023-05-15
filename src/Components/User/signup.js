@@ -9,6 +9,7 @@ import NavebarNext from '../Headers.js/Navbar/navbarNext';
 
 
 function Signup() {
+    const [open, setOpen] = useState(false);
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
@@ -32,32 +33,33 @@ function Signup() {
     const [abc, setAbc] = useState();
     const userNameEvent = async (event) => {
         setName(event.target.value);
-        }
+    }
     const handleSubmit = async (event) => {
+        setOpen = true;
         try {
             event.preventDefault();
-            let response = await axios.post(api.OWNER_SIGNUP, { name, email, password, contact, role, latitude, longitude });
-            if (response.data.status) {
-                console.log(response.data);
-                Swal.fire({
-                    icon: 'success',
-                    timer: 2500,
-                    title: 'Sign-In Successfully ',
-                    confirmButtonColor: '#3085d6',
-                    showConfirmButton: false,
-                    timerProgressBar: true,
-                    position: 'top',
-                    toast: true,
-                })
-                navigate('/signin');
-            }
+            // let response = await axios.post(api.OWNER_SIGNUP, { name, email, password, contact, role, latitude, longitude });
+            // if (response.data.status) {
+            //     console.log(response.data);
+            //     Swal.fire({
+            //         icon: 'success',
+            //         timer: 2500,
+            //         title: 'Sign-In Successfully ',
+            //         confirmButtonColor: '#3085d6',
+            //         showConfirmButton: false,
+            //         timerProgressBar: true,
+            //         position: 'top',
+            //         toast: true,
+            //     })
+            //     navigate('/signin');
+            // }
         }
         catch (err) {
             console.log(err);
         }
     }
     return <>
-    <NavebarNext/>
+        <NavebarNext />
         <section className="section container">
             <div className="row" style={{ boxShadow: "5px 8px 15px black" }}>
                 <div className="col-md-6 p-0">
@@ -65,7 +67,7 @@ function Signup() {
                 </div>
                 <div className="col-md-6" id="sec">
                     <br />
-                    <hr className='text-white'/>
+                    <hr className='text-white' />
                     <form onSubmit={handleSubmit}>
                         <h1 id="log">
                             <b>Register Here</b>
@@ -125,9 +127,10 @@ function Signup() {
                         <br />
                         <button
                             type="submit"
+                            data-toggle="modal"
+                            data-target="#exampleModalCenter"
                             id="in"
-                            onclick="on()"
-                            className="btn btn-outline-dark rounded-pill mt-4">
+                            className="btn btn-outline-dark rounded-pill mt-4 view-modal">
                             Sign Up
                         </button><br /><br /><br />
                         <span id="with">
@@ -151,6 +154,32 @@ function Signup() {
         <br />
         <br />
         <br />
+        <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLongTitle">User verification</h5>
+                        <button type="button" class="close p-4" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true"><button className='btn btn-outline-danger'>X</button></span>
+                        </button>
+                    </div>
+                    <div class="modal-body p-4">
+                        <h2 className='ms-4 '><b>OTP SENT TO ...!</b></h2>
+                        <label className='ms-4 fs-5 text-danger'>{email}</label>
+                        <h6 className='fs-6 mt-3 ms-4'>
+                            Please enter the otp which has been send on your email id
+                        </h6>
+                        <img src="/images/email.png"/>
+                        <input className='offset-4 mt-3 otpinput' placeholder='enter otp here' type='text'/>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary">Save</button>
+                    </div>
+                </div>
+            </div>
+        </div>
     </>
+
+
 }
 export default Signup;

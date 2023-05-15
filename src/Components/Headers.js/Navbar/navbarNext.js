@@ -1,6 +1,6 @@
 import { Link, useNavigate } from 'react-router-dom';
 import './navbarNext.css';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import $ from 'jquery';
 import { useDispatch, useSelector } from 'react-redux';
 import { removeUser } from '../../../redux-config/UserSlice';
@@ -8,7 +8,7 @@ import { viewProperty } from '../../../redux-config/propertyOfOwnerSlice';
 import { wishList } from '../../../redux-config/wishListSlice';
 import { createSubscription, showSubscription } from '../../../redux-config/subscriptionSlice';
 
-function NavebarNext() {
+function NavebarNext({search}) {
 
     useEffect(() => {
         $(".share").on("click", function (e) {
@@ -23,9 +23,15 @@ function NavebarNext() {
         navigate("/propertypost");
     }
     const { currentUser } = useSelector((state) => state.user);
-    const { subscription } = useSelector((state) => state.ownerSubscription)
+    const { subscription } = useSelector((state) => state.ownerSubscription);
+    const [searchText, setSearchText] = useState("");
     const dispatch = useDispatch();
 
+    const handleEvent = (event) => {
+        // handler(event);
+        setSearchText(event.target.value);
+        search(searchText);
+    }
 
     const signout = () => {
         dispatch(removeUser());
@@ -55,7 +61,7 @@ function NavebarNext() {
         dispatch(createSubscription(currentUser));
         navigate("/takeSubscription");
     }
-const conditionalRendar = () => {
+    const conditionalRendar = () => {
         if (currentUser) {
             if (currentUser.role == "Owner")
                 return <div class="fab no" data-hover='Profile' onClick={viewProfile}></div>
@@ -64,7 +70,7 @@ const conditionalRendar = () => {
         }
         else
             return <div class="fab no" data-hover='Profile' onClick={viewProfile}></div>
-}
+    }
     return <>
         <div className='p-1 pb-2 main1'>
             <div className='row mt-2'>
@@ -89,7 +95,8 @@ const conditionalRendar = () => {
                                     </select>
                                 </div>
                                 <div className='col-8 text-left '>
-                                    <input type='text' className=' inputfield' placeholder='&nbsp;&nbsp;Search Something' />
+                                    <input value={searchText}
+                                        onChange={handleEvent} type='text' className=' inputfield' placeholder='&nbsp;&nbsp;Search Something' />
                                     <label className='searchicon'>
                                         <i class="fa fa-search icon" aria-hidden="true"></i>
                                     </label>

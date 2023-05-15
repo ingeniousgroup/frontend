@@ -9,7 +9,7 @@ import Furnishing from "../Categories/Furnishing";
 import NavebarNext from "../../Headers.js/Navbar/navbarNext";
 import Navbar from "../../Headers.js/Navbar/navbar";
 
-function Property({ propertyList }) {
+function Property({ propertyList ,search}) {
   const [flag, setFlag] = useState(true);
   const [pixelFlag,setPixelFlag] = useState(false);
   const { currentUser } = useSelector(state => state.user);
@@ -40,7 +40,7 @@ function Property({ propertyList }) {
 
   window.onscroll = () => {
     if (window.scrollY >= 450) {
-      
+      console.log(search);
       setPixelFlag(true);
     }
     else {
@@ -50,8 +50,8 @@ function Property({ propertyList }) {
 
   return <>
   {/* search={search}  ye navbar se nikala hai isko navbar me attach krna hai as a props */}
-    {pixelFlag && <NavebarNext />}
-    {!pixelFlag && <Navbar />}
+    {pixelFlag && <NavebarNext  search={search}/>}
+    {!pixelFlag && <Navbar search={search}/>}
     <div style={{ marginTop: "102px" }}>
       {flag && <div><Furnishing/></div>}
     </div>

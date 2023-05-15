@@ -53,6 +53,10 @@
     margin-left: 6vh;
     width: 30%;
 }
+.otpinput{
+    width: 30%;
+    height: 6vh;
+}
 
 /* -------------------------------------------------------------validation-------------------------------------------------- */
 
@@ -64,5 +68,11 @@
     10%, 30%, 50%, 70%, 90% { transform: translateX(-10px); }
     20%, 40%, 60%, 80% { transform: translateX(10px); }
     100% { transform: translateX(0); }
+  }
+  
+  .modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
   }
   

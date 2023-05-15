@@ -46,9 +46,9 @@ div img{
 
 .config{
     font-size: .8rem;
-    font-style: italic;
+    font-style: normal;
     font-weight: 500;
-    color: gray;
+    color: black;
 }
 
 .config-data{
