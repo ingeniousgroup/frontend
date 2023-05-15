@@ -64,17 +64,17 @@ function NavebarNext({search}) {
     const conditionalRendar = () => {
         if (currentUser) {
             if (currentUser.role == "Owner")
-                return <div class="fab no" data-hover='Profile' onClick={viewProfile}></div>
+                return <div className="fab no" data-hover='Profile' onClick={viewProfile}></div>
             else
-                return <div class="fab no" data-hover='Profile' onClick={viewTenantProfile}  ></div>
+                return <div className="fab no" data-hover='Profile' onClick={viewTenantProfile}  ></div>
         }
         else
-            return <div class="fab no" data-hover='Profile' onClick={viewProfile}></div>
-    }
+            return <div className="fab no" data-hover='Profile' onClick={viewProfile}></div>
+}
     return <>
-        <div className='p-1 pb-2 main1'>
+        <div className='p-1 pb-2 main1 '>
             <div className='row mt-2'>
-                <div className='col-md-12'>
+                <div className='col-md-12 container-fluid'>
                     <div className='row'>
                         <div className='col-md-2 text-white logo text-right fs-2'>
                             <Link className='text-white' to='/'>KirayeWala</Link>
@@ -98,7 +98,7 @@ function NavebarNext({search}) {
                                     <input value={searchText}
                                         onChange={handleEvent} type='text' className=' inputfield' placeholder='&nbsp;&nbsp;Search Something' />
                                     <label className='searchicon'>
-                                        <i class="fa fa-search icon" aria-hidden="true"></i>
+                                        <i className="fa fa-search icon" aria-hidden="true"></i>
                                     </label>
                                 </div>
                             </div>
@@ -114,10 +114,10 @@ function NavebarNext({search}) {
                         </div>
                         <div className='col-md-1'>
                             <div className='share ms-3'>
-                                {!currentUser && <div class="fab no " data-hover='SignIn' onClick={signinUser}></div>}
-                                {currentUser && <div class="fab no " data-hover='SigOut' onClick={signout}></div>}
-                                {/* <div class="fab no " data-hover='SignUp' onClick={signupUser}></div> */}
-                                <div class="fab no " data-hover='Profile' onClick={viewProfile}></div>
+                                {!currentUser && <div className="fab no " data-hover='SignIn' onClick={signinUser}></div>}
+                                {currentUser && <div className="fab no " data-hover='SigOut' onClick={signout}></div>}
+                                {/* <div className="fab no " data-hover='SignUp' onClick={signupUser}></div> */}
+                                <div className="fab no " data-hover='Profile' onClick={viewProfile}></div>
 
                             </div>
                         </div>

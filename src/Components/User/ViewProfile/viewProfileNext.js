@@ -266,7 +266,7 @@ function ViewProfileNext() {
                                 <div className='col-3  ps-5 pt-2'>
                                     <p className='fs-5'><i class="fa fa-street-view fs-3" aria-hidden="true"></i>
                                         {data.address}</p>
-                                    <p className='text-danger'><i class="fa fa-clock-o" aria-hidden="true"></i>
+                                    <p className='text-danger'><i className="fa fa-clock-o" aria-hidden="true"></i>
                                         Posted At : {data.date}</p>
                                 </div>
                                 <div className='col-4 pt-4 ps-5 ms-1'>

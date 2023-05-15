@@ -49,12 +49,12 @@ function SearchBar({search}){
     
     var returnedFunction = debounce(function() {
       // All the taxing stuff you do
-    }, 250);
+    }, 3000);
 
     const handleEvent=(event)=>{
       // handler(event);
       setSearchText(event.target.value);
-      search(searchText);
+      SearchBar(searchText);
     }
    
     const changeCategory = (category)=>{
