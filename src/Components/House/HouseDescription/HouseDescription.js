@@ -5,25 +5,26 @@ import { useLocation } from "react-router";
 import axios from "axios";
 import api from "../../../redux-config/WebApi/api";
 import { useSelector } from "react-redux";
+import Swal from "sweetalert2";
 
 function HouseDescription() {
-  // var otp;
   var { currentUser } = useSelector((state) => state.user);
   const navigate = useNavigate();
   const { state } = useLocation();
   const [image, setImage] = useState(state.property.imagesUrlArray[0]);
   const [image2, setImage2] = useState(state.property.imagesUrlArray[1]);
   const [image3, setImage3] = useState(state.property.imagesUrlArray[2]);
-  // var otp = useRef("");
-  const [otp,setOtp] = useState("");
-  var message;
+  const [message, setMessage] = useState("");
+  const [otp, setOtp] = useState("");
   const [otpflage, setOtpflage] = useState(false);
   const [propertyDetails, setPropertyDetails] = useState({});
 
   useEffect(() => {
-    if (state == {}) {
-      // let response = axios.post(api);
-    }
+      axios.post(api.PROPERTY_DETAILS,{propertyId:state.property._id}).then((result)=>{
+        setPropertyDetails(result.data.propertyDetails);
+      }).catch((err)=>{
+       console.log(err)
+      })
   }, []);
 
   const change = (event) => {
@@ -32,18 +33,29 @@ function HouseDescription() {
 
   const sendOtp = async () => {
     try {
-     var o = generateOTP();
+      var o = generateOTP();
       setOtpflage(true);
       setOtp(o);
-      console.log(otp + " -----1");
-      // var response = await axios.post(api.SEND_OTP,{email:currentUser.email,otp});
-      // if(response.data.status)
-      // alert("otp send successfully");
+      console.log(message);
+      var response = await axios.post(api.SEND_OTP,{email:currentUser.email,otp:o});
+      if(response.data.status){
+        Swal.fire({
+          icon: 'success',
+          timer:2500,
+          title: 'Otp Sent to your Email ',
+          confirmButtonColor: '#0078DB',
+          showConfirmButton:false,
+          timerProgressBar:true,
+          position:'top',
+          toast:true,
+        });
+      }
+      
     } catch (error) {
       console.log(error);
     }
   };
-  console.log(otp +"-----2");
+  console.log(otp + "-----2");
   const checkUser = () => {
     if (!currentUser) navigate("/signin");
     else {
@@ -52,7 +64,15 @@ function HouseDescription() {
     }
   };
 
-  const verifyOtp = async() => {
+  const close =()=>{
+    var modal = document.querySelector(".modal");
+    modal.style.display = "none";
+  }
+
+  const back = () => {
+    setOtpflage(!otpflage);
+  };
+  const verifyOtp = async () => {
     var o1 = document.getElementById("1").value;
     var o2 = document.getElementById("2").value;
     var o3 = document.getElementById("3").value;
@@ -63,13 +83,23 @@ function HouseDescription() {
       let response = await axios.post(api.HOUSE_REQUEST, {
         userId: currentUser._id,
         propertyId: state.property._id,
-        message: "messsssssssageeeee",
+        message: message,
         status: true,
       });
       console.log(response.data);
-      if (response.data.status) 
-        alert("Request Send Successfully...");
+      if (response.data.status){
+        Swal.fire({
+          icon: 'success',
+          timer:2500,
+          title: 'Request Send Successfully ',
+          confirmButtonColor: '#3085d6',
+          showConfirmButton:false,
+          timerProgressBar:true,
+          position:'top',
+          toast:true,
+        });
         navigate("/");
+       }
     }
   };
   function generateOTP() {
@@ -83,24 +113,36 @@ function HouseDescription() {
   return (
     <>
       <div className="container">
-        <div className="row  main-container">
-          <div className="col-5 image-man-div">
-            <div className="row border">
+        <div className="row  main-container ">
+          <div className="col-12 d-1"></div>
+          <div className="col-5 image-man-div ">
+            <div className="row ">
               <div className="col-12 ">
                 <div className="main-img-div">
-                  <img onClick={change} src={image} className="logimg" />
+                  <img
+                    onClick={change}
+                    src={api.PORT + image}
+                    width={400}
+                    height={350}
+                    className="logimg"
+                  />
                 </div>
               </div>
-              <div className="row border mt-4">
-                <div className="col-4 my-img p-1">
-                  <img onClick={change} src={image2} className="logimg" />
+              <div className="row  mt-4">
+                <div className="col-5 my-img ">
+                  <img
+                    onClick={change}
+                    src={api.PORT + image2}
+                    className="logimg"
+                  />
                 </div>
-                <div className="col-4 my-img p-1 ">
-                  <img onClick={change} src={image3} className="logimg" />
+                <div className="col-5 my-img  ">
+                  <img
+                    onClick={change}
+                    src={api.PORT + image3}
+                    className="logimg"
+                  />
                 </div>
-                {/* <div className='col-4 my-img p-1'>
-                         <img onClick={change} src={image3} className="logimg" />      
-                         </div> */}
               </div>
             </div>
           </div>
@@ -114,31 +156,29 @@ function HouseDescription() {
               </div>
               <div className="col-6">
                 <div className="row">
-                  <div className="col-6 offset-6">
-                    <a onClick={checkUser} className="btn-connect">
-                      <span></span>
-                      <span></span>
-                      <span></span>
-                      <span></span>
-                      <h6>
-                        Connect Now
-                        <i
-                          class="fa fa-arrow-circle-o-right"
-                          aria-hidden="true"
-                        ></i>
-                      </h6>
-                    </a>
+                  <div className="col-8 offset-2 ">
+                    <div className="row ">
+                      <div className="col-10 offset-1 req-con ">
+                        <div className="col-12 text-left req-d2 mt-1">
+                          {/* <img src="images/add-friend.png" width={40} height={40}></img> */}
+                          <span className="ml-3 p-4">Mohit Rajput</span>
+                          <div className="wrap mt-1 mb-1">
+                            <button onClick={checkUser} class="button-req">
+                              Connect Now
+                            </button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
-
-            <br />
-            <hr />
+            {/* <hr /> */}
             <div className="row mt-2">
               <div className="col-6 mt-4">
                 <h6 className="config">Configuration</h6>
-                <span className="config-data">2 bedroom , 2 bathrooms</span>
+                <span className="config-data">{propertyDetails.balconies} balconies, {propertyDetails.noOfBathoom} bathrooms</span>
               </div>
               <div className="col-6 mt-4">
                 <h6 className="config">Rent</h6>
@@ -146,7 +186,7 @@ function HouseDescription() {
               </div>
               <div className="col-6 mt-4">
                 <h6 className="config">Area</h6>
-                <span className="config-data">Indore</span>
+                <span className="config-data">{propertyDetails.carpetArea}  </span>
               </div>
               <div className="col-6 mt-4">
                 <h6 className="config">Address</h6>
@@ -154,7 +194,7 @@ function HouseDescription() {
               </div>
               <div className="col-6 mt-4">
                 <h6 className="config">Furnishing</h6>
-                <span className="config-data">Semi Furnished</span>
+                <span className="config-data">{propertyDetails.furnshing}</span>
               </div>
               <div className="col-6 mt-4">
                 <h6 className="config">Posted By on date</h6>
@@ -163,7 +203,7 @@ function HouseDescription() {
               <div className="col-12 mt-4">
                 <h6 className="config">Description</h6>
                 <span className="config-data">
-                  moruhg fkengkr fnrihvv iubcub jeruoebg fjbjvkbrj
+                  This is the location best for family you have to call once
                 </span>
               </div>
             </div>
@@ -180,16 +220,15 @@ function HouseDescription() {
       >
         <div className="modal-dialog modal-lg" role="document">
           <div className="modal-content">
-            <div className="modal-header">
+            <div className="modal-header bg-primary">
+              
               <h5 className="modal-title" id="abc">
                 KirayeWala
               </h5>
-              <button
-                type="button"
-                className="close"
-                data-dismiss="modal"
-                aria-label="Close"
-              />
+              <div className=" close" onClick={close}>
+                <i class="fa fa-times ml-2" aria-hidden="true"  data-dismiss="modal"
+                aria-label="Close"></i>
+              </div>
             </div>
             <div className="modal-body">
               {!otpflage && (
@@ -202,34 +241,28 @@ function HouseDescription() {
                           <input
                             type="text"
                             name="txtName"
-                            className="form-control"
+                            className="form-control input-req"
                             placeholder="Your Name *"
-                            defaultValue=""
+                            defaultValue={currentUser?.name}
                           />
                         </div>
                         <div className="form-group mt-2">
                           <input
                             type="text"
                             name="txtEmail"
-                            className="form-control"
+                            className="form-control input-req"
                             placeholder="Your Email *"
-                            defaultValue=""
+                            defaultValue={currentUser?.email}
                           />
                         </div>
                         <div className="form-group mt-2">
                           <input
                             type="text"
                             name="txtPhone"
-                            className="form-control"
+                            className="form-control input-req"
                             placeholder="Your Phone Number *"
-                            defaultValue=""
+                            defaultValue={currentUser?.contact}
                           />
-                        </div>
-                        <div className="form-group mt-3">
-                          <span className="btnContact" onClick={sendOtp}>
-                            {" "}
-                            Submit
-                          </span>
                         </div>
                       </div>
                       <div className="col-md-6">
@@ -240,10 +273,52 @@ function HouseDescription() {
                             placeholder="Your Message *"
                             style={{ width: "100%", height: 150 }}
                             defaultValue={""}
-                            onChange={(event) => (message = event.target.value)}
+                            onChange={(event) => (setMessage(event.target.value))}
                             id="message"
                           />
                         </div>
+                      </div>
+                      <div className="col-12">
+                        <label className="ml-1 mt-2">House for ?</label>
+                        <div class="customCheckBoxHolder mt-2">
+                          <input
+                            class="customCheckBoxInput"
+                            id="cCB1"
+                            type="checkbox"
+                          />
+                          <label class="customCheckBoxWrapper" for="cCB1">
+                            <div class="customCheckBox">
+                              <div class="inner">Family</div>
+                            </div>
+                          </label>
+
+                          <input
+                            class="customCheckBoxInput"
+                            id="cCB2"
+                            type="checkbox"
+                          />
+                          <label class="customCheckBoxWrapper" for="cCB2">
+                            <div class="customCheckBox">
+                              <div class="inner">Single</div>
+                            </div>
+                          </label>
+
+                          <input
+                            class="customCheckBoxInput"
+                            id="cCB3"
+                            type="checkbox"
+                          />
+                          <label class="customCheckBoxWrapper" for="cCB3">
+                            <div class="customCheckBox">
+                              <div class="inner">Batchlors</div>
+                            </div>
+                          </label>
+                        </div>
+                      </div>
+                      <div className="form-group mt-4 ">
+                        <span className="button-34 " onClick={sendOtp}>
+                          Submit
+                        </span>
                       </div>
                     </div>
                   </form>
@@ -273,13 +348,23 @@ function HouseDescription() {
                     </div>
                     <br />
 
-                    <button onClick={verifyOtp}>Submit</button>
+                    <button className="button-34 w-75 ml-5" onClick={verifyOtp}>
+                      Submit
+                    </button>
+                    <br />
                   </div>
                 </div>
               )}
-            </div>
-            <div className="modal-footer">
-              {/* <div>Owner Name :-  Mohit Rajput</div> */}
+              {otpflage && (
+                <div onClick={back} className="ml-5 back">
+                  <i class="fa fa-backward" aria-hidden="true"></i>{" "}
+                </div>
+              )}
+              {!otpflage && (
+                <div onClick={back} className="back text-right mr-5">
+                  <i class="fa fa-forward" aria-hidden="true"></i>{" "}
+                </div>
+              )}
             </div>
           </div>
         </div>

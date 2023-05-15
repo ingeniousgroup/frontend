@@ -22,5 +22,6 @@ export default {
     CATEGORY_COUNT:'/property/categoryCount',
     VIEW_ADMIN:'/owner/viewAdmin',
     UPDATE_BALANCE:'/owner/updateBalance',
-    EMAIL_SEND:'/tenant/sendOtp'
+    EMAIL_SEND:'/tenant/sendOtp',
+    PROPERTY_DETAILS:'property/propertyDetails'
 }

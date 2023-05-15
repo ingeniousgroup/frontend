@@ -37,7 +37,7 @@ function Home(){
   const loadProperty =async(searchText)=>{
     try {
       var response ;
-      if(!searchText)
+      if(!searchText||searchText=="")
          response = await axios.get(apiEndPoint.PROPERTY_LIST);
       else
         response = await axios.post(apiEndPoint.SEARCH,{address: searchText}); 
@@ -67,7 +67,8 @@ function Home(){
   }
 
   return <>
-    {pixelFlag && <NavebarNext/>}
+    {pixelFlag && <NavebarNext 
+    />}
     {!pixelFlag && <Navbar search={search}/>}
     <div style={{marginTop:"102px"}}>      
     </div>    

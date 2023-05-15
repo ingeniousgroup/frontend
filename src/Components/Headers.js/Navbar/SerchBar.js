@@ -116,7 +116,6 @@ function SearchBar({search}){
                    <div className="col-2 searchBarButton">
                      <button className="btn btn-primary">Search</button>
                    </div>
-
                 </div>
               </div>
           </div>
