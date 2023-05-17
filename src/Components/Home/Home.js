@@ -28,6 +28,7 @@ import Furnishing from "../House/Categories/Furnishing";
 import SubscriptionProtected from "../subscriptionProtected/subscriptionProtected";
 import { showSubscription } from "../../redux-config/subscriptionSlice";
 import ViewProfileNext from "../User/ViewProfile/viewProfileNext";
+import TenantProfile1 from "../User/ViewProfile/tenantProfile1";
 function Home(){
   
   const [flag, setFlag] = useState(true);
@@ -63,6 +64,7 @@ function Home(){
   
 
   return <>
+  
     <Routes>
         <Route path="/" element={<Property propertyList={propertyList}/>}/> 
         <Route path="/propertypost" element={<ProtectedRoute><SubscriptionProtected><PostProperty/></SubscriptionProtected></ProtectedRoute>}/>
@@ -79,7 +81,7 @@ function Home(){
         <Route path="/viewDiscription" element={<HouseDescription/>}/>
         <Route path="/viewProfile" element={<ProtectedRoute><ViewProfileNext/></ProtectedRoute>}/>
         <Route path="/takeSubscription" element={<ProtectedRoute><Subscription/></ProtectedRoute>}/>
-        <Route path="/viewTenantProfile" element={<ProtectedRoute><TenantProfile/></ProtectedRoute>}/>
+        <Route path="/viewTenantProfile" element={<ProtectedRoute><TenantProfile1/></ProtectedRoute>}/>
         <Route path="/nearByhouse" element={<NearByHouse/>}/>
     </Routes>
 

@@ -672,3 +672,7 @@
   background-size: contain;
   opacity: 70%;
 }
+
+.like-icon  :hover{
+  color: aqua !important ; 
+}

@@ -23,5 +23,7 @@ export default {
     VIEW_ADMIN:'/owner/viewAdmin',
     UPDATE_BALANCE:'/owner/updateBalance',
     EMAIL_SEND:'/tenant/sendOtp',
-    PROPERTY_DETAILS:'property/propertyDetails'
+    PROPERTY_DETAILS:'property/propertyDetails',
+    REMOVE_FROM_WISHLIST:'/tenant/removeFromWishList',
+    REQUEST_LIST:'/tenant/requestList'
 }
