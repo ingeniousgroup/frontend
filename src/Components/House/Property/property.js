@@ -1,4 +1,3 @@
-
 import axios from "axios";
 import { useSelector } from "react-redux";
 import apiEndPoint from "../../../redux-config/WebApi/api";
@@ -8,7 +7,6 @@ import Categories from "../Categories/categories";
 import Furnishing from "../Categories/Furnishing";
 import NavebarNext from "../../Headers.js/Navbar/navbarNext";
 import Navbar from "../../Headers.js/Navbar/navbar";
-
 function Property({ propertyList ,search}) {
   const [flag, setFlag] = useState(true);
   const [pixelFlag,setPixelFlag] = useState(false);

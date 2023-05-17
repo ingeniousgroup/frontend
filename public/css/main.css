@@ -68,7 +68,11 @@
     background-size: cover;
     -webkit-transition: all 0.4s ease;
     transition: all 0.4s ease; 
+   
     
+  }
+  .bgc{
+    background-color: rgba(0,0,0,0.6) !important;
   }
   
   .main-header.fixed-nav {
@@ -314,7 +318,7 @@
 .userIconStyle{
     margin-top: -1%;
     margin-left: -4%;
-    color: white;
+    color: white !important;
     font-size: 22px;
 }
 
@@ -576,7 +580,7 @@
 }
  .share {
   margin-top: 0;
-  background-image: url("../images/hamburger.png");
+  background-image: url("../images/Apartment.jpg");
   background-color: transparent;
   background-repeat: no-repeat;
   background-size: cover;

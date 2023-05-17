@@ -44,7 +44,7 @@ function Navbar( {search}) {
   return <header className="main-header" style={{marginBottom:"10vh"}}>
     <div className="container-fluid">
       <div className="navbardivBackgroundColor" >
-        <nav className="navbar navbar-expand-lg main-nav px-0 bg-dark container-fluid" style={{opacity:"60%"}}>
+        <nav className="navbar navbar-expand-lg main-nav px-0  container-fluid bgc">
           <div className="navbar-brand" >
           <img src={require('./logo-black.png')} />
           </div>
@@ -64,9 +64,9 @@ function Navbar( {search}) {
               <li>
                 <a href="#service" className="fs-5 font-weight-bold">Services</a>
               </li>
-              <li>
+              {currentUser?.role==='Tenant'?<></>:<li>
                 <Link onClick={propertyPost} className="fs-5  font-weight-bold">Post Property </Link>
-              </li>
+              </li>}
               <li>
                 <a href="#contact" className="fs-5 font-weight-bold ">Contact</a>
               </li>
