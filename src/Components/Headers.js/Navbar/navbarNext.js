@@ -8,7 +8,7 @@ import { viewProperty } from '../../../redux-config/propertyOfOwnerSlice';
 import { wishList } from '../../../redux-config/wishListSlice';
 import { createSubscription, showSubscription } from '../../../redux-config/subscriptionSlice';
 
-function NavebarNext({search}) {
+function NavebarNext({ search }) {
 
     useEffect(() => {
         $(".share").on("click", function (e) {
@@ -47,8 +47,10 @@ function NavebarNext({search}) {
 
     const viewProfile = () => {
         dispatch(viewProperty(currentUser));
-        // dispatch()
-        navigate("/viewProfile");
+        if(currentUser?.role == "Owner")
+          navigate("/viewProfile");
+        else
+          navigate("/viewTenantProfile");
     }
 
 
@@ -70,7 +72,8 @@ function NavebarNext({search}) {
         }
         else
             return <div className="fab no" data-hover='Profile' onClick={viewProfile}></div>
-}
+    }
+
     return <>
         <div className='p-1 pb-2 main1 '>
             <div className='row mt-2'>

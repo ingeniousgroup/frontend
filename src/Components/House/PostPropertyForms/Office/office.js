@@ -1,10 +1,10 @@
 import { useRef, useState } from "react";
-import "./Flate.css";
+import "./office.css";
 
 import { useLocation, useNavigate } from "react-router-dom";
 import NavebarNext from "../../../Headers.js/Navbar/navbarNext";
 
-function Flate() {
+function Office() {
 
   const typeOfPropertyDetails = useLocation();
 
@@ -95,15 +95,15 @@ function Flate() {
   }
   return <>
     <NavebarNext />
-    <div className="row mb-2" id="pura-component">
+    <div className="row mb-2">
 
       <div className="col-3 bg-c"></div>
       <div className="col-6 p-4 ">
 
       <label><img  style={{marginTop:"-8vh"}} src="/images/photoLogo.webp" height={100}/></label><label className="fs-3 p-4"><b>Tell us about your property</b><br/><small className="fs-5">yout property is valuable</small></label>
-        <h5 className="mt-4">Add Room Details</h5>
+        <h5 className="fs-5 mt-4">Add Office Details</h5>
         <div className="row">
-          <small>No. of Bedrooms</small>
+          <small className="mt-2 ">No. of cabins</small>
           <div className="col-6">
             <div className="row p-3">
 
@@ -125,6 +125,7 @@ function Flate() {
             </div>
           </div>
           <div className="col-6"></div>
+          <p className="p-style"></p>
         </div>
         <div className="row">
           <small>No. of Bathrooms</small>
@@ -149,6 +150,7 @@ function Flate() {
             </div>
           </div>
           <div className="col-6"></div>
+          <p className="p-style"></p>
         </div>
         <div className="row">
           <small>Balconies</small>
@@ -193,25 +195,25 @@ function Flate() {
             <div className="card-body text-center" style={{ padding: "0vh", marginLeft: "-25vh" }}>
               <label className="check" style={{ fontSize: "2.2vh" }}>
 
-                <input type="checkbox" name="otherroom" value="poojaRoom" onChange={handleChange} />
-                <span>Pooja Room</span>
+                <input type="checkbox" name="otherroom" value="meetingRoom" onChange={handleChange} />
+                <span>Meeting Room</span>
               </label>
               <label className="check" style={{ fontSize: "2.2vh" }}>
-                <input type="checkbox" name="otherroom" value="studyRoom" onChange={handleChange} />
+                <input type="checkbox" name="otherroom" value="ConferenceRoom" onChange={handleChange} />
 
-                <span>Study Room</span>
-              </label>
-
-              <label className="check" style={{ fontSize: "2.2vh" }}>
-
-                <input type="checkbox" name="otherroom" value="serventRoom" onChange={handleChange} />
-                <span>Servent Room</span>
+                <span>Conference Room</span>
               </label>
 
               <label className="check" style={{ fontSize: "2.2vh" }}>
 
                 <input type="checkbox" name="otherroom" value="storeRoom" onChange={handleChange} />
                 <span>Store Room</span>
+              </label>
+
+              <label className="check" style={{ fontSize: "2.2vh" }}>
+
+                <input type="checkbox" name="otherroom" value="liabrary" onChange={handleChange} />
+                <span>Liabrary </span>
               </label>
             </div>
           </div>
@@ -244,7 +246,7 @@ function Flate() {
         <div className="row">
           <div className="col-6 ms-3 row flor-input">
             <div className="bg-border">
-              <h6 className="col-8 fs-6">how many floors you have</h6>
+              <h6 className="col-9 fs-7">In which floor your property have</h6>
               <input onChange={noOffloor} className="floor-input col-8" type="text" placeholder="No. of floors"/>
             </div>
           </div>
@@ -260,4 +262,4 @@ function Flate() {
   </>
 }
 
-export default Flate;
+export default Office;
