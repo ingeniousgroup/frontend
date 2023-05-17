@@ -24,10 +24,40 @@ function ViewProfileNext() {
     }, [properties]);
 
     const rejectRequest = (data) => {
-        if (window.confirm("reject this request")) {
-            dispatch(removeTenantRequest(data));
-            setAllRequest(prevItems => prevItems.filter(item => item !== data));
-        }
+        Swal.fire({
+            title: "Are you sure to reject this request?",
+            icon: "question",
+            buttons: true,
+            dangerMode: true,
+            confirmButtonColor: '#3085d6',
+            showCancelButton: true,
+            cancelButtonColor: '#d33',
+        })
+            .then(async (willDelete) => {
+                if (willDelete.isConfirmed) {
+                    setTimeout(() => {
+                        Swal.fire({
+                            title: "deleted",
+                            icon: "success",
+                            buttons: false,
+                        });
+                    }, 300)
+                    dispatch(removeTenantRequest(data));
+                    setAllRequest(prevItems => prevItems.filter(item => item !== data));
+                } else {
+                    setTimeout(() => {
+                    }, 1000)
+
+                    setTimeout(() => {
+                        Swal.fire({
+                            title: "Request is safe",
+                            icon: 'error',
+                            buttons: false
+                        });
+                    }, 300);
+
+                }
+            });
     }
 
     const ownerFunctionality = async (identify) => {
@@ -56,7 +86,7 @@ function ViewProfileNext() {
 
     const removeProperty = async (data) => {
         Swal.fire({
-            title: "Are you sure?",
+            title: "Are you sure to remove this property?",
             icon: "question",
             buttons: true,
             dangerMode: true,
@@ -164,7 +194,7 @@ function ViewProfileNext() {
                         </div>
                     </div>
                     <div className='mt-3 container-fluid  text-center rightside p-3'>
-                        {behave == 'profile' && <>
+                        {(behave == 'profile' || behave == '') && <>
                             <div style={{ width: "100%" }}>
                                 <div class="">
                                     <div class="row container-fluid d-flex justify-content-center">
@@ -231,11 +261,11 @@ function ViewProfileNext() {
                                         </div>
                                         <div className='row '>
                                             <div className='col-6  startDate p-3'>
-                                                <h5 className='mt-4 fs-4' style={{fontWeight:"600"}}>
+                                                <h5 className='mt-4 fs-4' style={{ fontWeight: "600" }}>
                                                     Your Subscription  Starts From !
                                                 </h5>
                                                 <h3 className='text-success'>
-                                                <img src="/images/sand.gif" style={{width:"20%",marginRight:"7vh"}}/>
+                                                    <img src="/images/sand.gif" style={{ width: "20%", marginRight: "7vh" }} />
                                                     {subscriptionData.startDate}
                                                 </h3>
                                             </div>
@@ -244,7 +274,7 @@ function ViewProfileNext() {
                                                     <b>Your Subscription Expire At !</b>
                                                 </h5>
                                                 <h3 className='text-danger'>
-                                                    <img src="/images/sand.gif" style={{width:"20%",marginRight:"7vh"}}/>
+                                                    <img src="/images/sand.gif" style={{ width: "20%", marginRight: "7vh" }} />
                                                     {subscriptionData.subscriptionExpiry}
                                                 </h3>
                                             </div>

@@ -52,19 +52,18 @@ function Property({ propertyList ,search}) {
   }
 
   window.onscroll = () => {
-    if (window.scrollY >= 450) {
-      console.log(search);
-      setPixelFlag(true);
+    if (window.scrollY < 450) {
+      setPixelFlag(false);
     }
-    else {
-      setPixelFlag(false)
+    else{
+      setPixelFlag(true)
     }
   }
 
   return <>
   {/* search={search}  ye navbar se nikala hai isko navbar me attach krna hai as a props */}
     {pixelFlag && <NavebarNext  search={search}/>}
-    {!pixelFlag && <Navbar search={search}/>}
+     <Navbar search={search}/>
     <div style={{ marginTop: "102px" }}>
       {flag && <div><Furnishing/></div>}
     </div>
@@ -74,12 +73,12 @@ function Property({ propertyList ,search}) {
         {/* onClick={()=>viewDescription(property)} */}
         <div className="profile-card-2" >
           <img
-            src={apiEndPoint.PORT + property.imagesUrlArray[0]}
+            src={apiEndPoint.PORT + property.imagesUrlArray[1]}
             className="img img-responsive"
             alt="IMAGES NOT FOUND"
             onClick={() => viewDescription(property)}
           />
-          <div className="profile-name">{property.rent}</div>
+          <div className="profile-name fs-4 p-1"><i class="fa fa-inr fs-2" aria-hidden="true"></i><label style={{marginLeft:"-0.7vh"}}>{property.rent}</label></div>
           <div className="profile-username">Deposite {property.rent} per month</div>
           <div className="profile-icons">
             {(currentUser&&checkIfLike(property._id)) ? <a onClick={() => addToCart(property,index)}><i id={"like"+index} className="fa fa-heart like-icon" style={{color:'red'}} aria-hidden="true"></i></a> :(currentUser ? <a onClick={() => addToCart(property,index)}><i id={"like"+index} className="fa fa-heart like-icon" aria-hidden="true"></i></a>: !currentUser && <a onClick={signinUser}><i className="fa fa-heart like-icon" aria-hidden="true"></i></a> ) }
