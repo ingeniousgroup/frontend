@@ -22,5 +22,7 @@ export default {
     CATEGORY_COUNT:'/property/categoryCount',
     VIEW_ADMIN:'/owner/viewAdmin',
     UPDATE_BALANCE:'/owner/updateBalance',
-    EMAIL_SEND:'/tenant/sendOtp'
+    EMAIL_SEND:'/tenant/sendOtp',
+    USER_CHECK : '/user/checkUser',
+    USER_SINGIN : '/user/createUser'
 }

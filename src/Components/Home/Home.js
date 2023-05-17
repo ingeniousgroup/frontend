@@ -28,6 +28,7 @@ import Furnishing from "../House/Categories/Furnishing";
 import SubscriptionProtected from "../subscriptionProtected/subscriptionProtected";
 import { showSubscription } from "../../redux-config/subscriptionSlice";
 import ViewProfileNext from "../User/ViewProfile/viewProfileNext";
+import Office from "../House/PostPropertyForms/Office/office";
 function Home(){
   
   const [flag, setFlag] = useState(true);
@@ -64,12 +65,12 @@ function Home(){
 
   return <>
     <Routes>
-        <Route path="/" element={<Property propertyList={propertyList}/>}/> 
+        <Route path="/" element={<Property search={search} propertyList={propertyList}/>}/> 
         <Route path="/propertypost" element={<ProtectedRoute><SubscriptionProtected><PostProperty/></SubscriptionProtected></ProtectedRoute>}/>
         <Route path="/villa" element={<ProtectedRoute><Flate/></ProtectedRoute>}/>
         <Route path="/plot" element={<ProtectedRoute><Flate/></ProtectedRoute>}/>
         <Route path="/formHouse" element={<ProtectedRoute><Flate/></ProtectedRoute>}/>
-        <Route path="/office" element={<ProtectedRoute><Flate/></ProtectedRoute>}/>  
+        <Route path="/office" element={<ProtectedRoute><Office/></ProtectedRoute>}/>  
         <Route path="/other" element={<ProtectedRoute><Flate/></ProtectedRoute>}/>
         <Route path="/flat" element={<ProtectedRoute><Flate/></ProtectedRoute>}/>
         <Route path="/CurrentLocation" element={<ProtectedRoute><PropertyLocation/></ProtectedRoute>}/>

@@ -62,7 +62,7 @@ function NearByHouse(){
           <h4 >{property.houseCategory.toUpperCase()}</h4>
       </div>
       <div className="vierMoreButtomDiv col text-right">
-        <a  type="button" class="btn-view">More...</a>
+        <a  type="button" className="btn-view">More...</a>
       </div>
       <div className="text-address ">
        <p >{property.address.substring(0,30).toUpperCase()}..</p>

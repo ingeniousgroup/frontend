@@ -14,7 +14,7 @@ function Subscription() {
   const choosePackage = async (price) => {
     Swal.fire({
       text: 'This dialog uses a custom icon!',
-      iconHtml: '<i class="fa fa-ravelry" aria-hidden="true"></i>',
+      iconHtml: '<i className="fa fa-ravelry" aria-hidden="true"></i>',
       text: "Want to buy this pachage for 3 months ?",
       icon: "question",
       buttons: true,
@@ -108,7 +108,7 @@ function Subscription() {
           <div className="" id="card" style={{ width: "24rem" }}>
             <div className="head">
               <p id="type">Basic</p>
-              <p style={{ marginLeft: "2vh" }} id="rs"><i class="fa fa-inr fs-1" aria-hidden="true"></i>799/-</p>
+              <p style={{ marginLeft: "2vh" }} id="rs"><i className="fa fa-inr fs-1" aria-hidden="true"></i>799/-</p>
               <p id="info">Maintain the standard  <br />listening active for 30 days</p>
 
             </div>
@@ -130,7 +130,7 @@ function Subscription() {
           <div className="" id="card" style={{ width: "24rem" }}>
             <div className="head">
               <p id="type">Extended</p>
-              <p style={{ marginLeft: "2vh" }} id="rs"><i class="fa fa-inr fs-1" aria-hidden="true"></i>399/-</p>
+              <p style={{ marginLeft: "2vh" }} id="rs"><i className="fa fa-inr fs-1" aria-hidden="true"></i>399/-</p>
               <p id="info">it's basic and <br />
                 highlighted in the serach result</p>
 
@@ -156,7 +156,7 @@ function Subscription() {
           <div className="" id="card" style={{ width: "24rem" }}>
             <div className="head">
               <p id="type">Proffesional</p>
-              <p style={{ marginLeft: "2vh" }} id="rs"><i class="fa fa-inr fs-1" aria-hidden="true"></i>1999/-</p>
+              <p style={{ marginLeft: "2vh" }} id="rs"><i className="fa fa-inr fs-1" aria-hidden="true"></i>1999/-</p>
               <p id="info">Unlimited listening and availabilty for <br />month</p>
 
 
