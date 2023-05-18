@@ -7,7 +7,7 @@ function Furnishing(){
   </div>
   <div className="fur-container">
     <div className="fur-card">
-      <div className="card-image">
+      <div className="card-image" style={{borderRadius:'20px'}}>
         <img src="images/furnished.webp" />
       </div>
       <div className="card-text">
@@ -20,7 +20,7 @@ function Furnishing(){
       <div className="card-price">516+</div>
     </div>
     <div className="fur-card">
-      <div className="card-image">
+      <div className="card-image"style={{borderRadius:'20px'}}>
         <img src="images/semi.webp" />
       </div>
       <div className="card-text">
@@ -33,14 +33,14 @@ function Furnishing(){
       <div className="card-price">112+</div>
     </div>
     <div className="fur-card">
-      <div className="card-image">
+      <div className="card-image"style={{borderRadius:'20px'}}>
         <img src="images/unfun.webp" />
       </div>
       <div className="card-text">
         <p className="card-meal-type">Unfurnished</p>
         <h2 className="card-title">Un Furnished</h2>
         <p className="card-body">
-        Unfurnished property is less expensive than furnished houses since there are no furniture or appliances provided.
+        Unfurnished property is less expensive than furnished houses since there are appliances provided.
         </p>
       </div>
       <div className="card-price">420+</div>

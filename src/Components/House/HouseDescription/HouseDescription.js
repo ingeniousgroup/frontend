@@ -105,7 +105,7 @@ function HouseDescription() {
               {(!currentUser?.role == "Owner") && <div className="col-6">
                 <div className="row p-4">
                   <div className="col-6 offset-1">
-                    <a onClick={checkUser} className="btn-connect">
+                    <a onClick={checkUser} style={{cursor :'pointer'}} className="btn-connect">
                       <span></span>
                       <span></span>
                       <span></span>

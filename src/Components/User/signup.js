@@ -1,7 +1,7 @@
 import axios from 'axios';
 import './signin.css';
 import { Link, useNavigate } from 'react-router-dom';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import api from '../../redux-config/WebApi/api';
 import validation from "../ExtraServices/Validataions/Input_Validations"
 import Swal from 'sweetalert2';
@@ -17,13 +17,10 @@ function Signup() {
     const [role, setRole] = useState("");
     const [latitude, setLatitude] = useState(null);
     const [longitude, setLongitude] = useState(null);
-
-    // const [emailError, setEmailError] = useState(false);
-    // const [passwordError, setPasswordError] = useState(false);
-    // const [nameError,setNameError] = useState(true);
-    // const [contactError , setContacctError] = useState(false);
+    const [otp,setOtp] = useState(null);
+    var sendingDate = new Date().getMinutes() + 5;
+    var confirmOTP = useRef(0);
     const navigate = useNavigate();
-
     useEffect(() => {
         navigator.geolocation.getCurrentPosition((position) => {
             setLatitude(position.coords.latitude);
@@ -34,28 +31,99 @@ function Signup() {
     const userNameEvent = async (event) => {
         setName(event.target.value);
     }
+    function generateOTP() {
+        var digits = "0123456789";
+        let OTP = "";
+        for (let i = 0; i < 4; i++) {
+            OTP += digits[Math.floor(Math.random() * 10)];
+        }
+        return OTP;
+    };
     const handleSubmit = async (event) => {
-        setOpen = true;
+        setOpen(true);
+        event.preventDefault();
         try {
-            event.preventDefault();
-            // let response = await axios.post(api.OWNER_SIGNUP, { name, email, password, contact, role, latitude, longitude });
-            // if (response.data.status) {
-            //     console.log(response.data);
-            //     Swal.fire({
-            //         icon: 'success',
-            //         timer: 2500,
-            //         title: 'Sign-In Successfully ',
-            //         confirmButtonColor: '#3085d6',
-            //         showConfirmButton: false,
-            //         timerProgressBar: true,
-            //         position: 'top',
-            //         toast: true,
-            //     })
-            //     navigate('/signin');
-            // }
+            let newOtp = generateOTP();
+            setOtp(newOtp);
+            let response = await axios.post(api.USER_CHECK, { email, name, newOtp, status: true });
+            if (!response.data.status) {
+                Swal.fire({
+                    icon: 'error',
+                    timer: 2500,
+                    title: 'This user is already exists!!!',
+                    confirmButtonColor: '#3085d6',
+                    showConfirmButton: false,
+                    timerProgressBar: true,
+                    position: 'top',
+                    toast: true,
+                })
+                var modal = document.querySelector(".modal");
+                modal.style.display = "block";
+            }
         }
         catch (err) {
             console.log(err);
+        }
+    }
+    const otpVerification = async (otpVerify) => {
+        let currentDate = new Date().getMinutes();
+        console.log(sendingDate);
+        console.log(currentDate);
+
+        if (sendingDate >= currentDate) {
+            if (otpVerify == confirmOTP.current.value * 1) {
+                const response = await axios.post(api.OWNER_SIGNUP,{ name, email, contact, password, role,latitude,longitude});
+                console.log(response.data);
+                if (response.data.status) {
+                    Swal.fire({
+                        icon: 'success',
+                        timer: 2500,
+                        title: 'Sign-Up Successfully ',
+                        confirmButtonColor: '#3085d6',
+                        showConfirmButton: false,
+                        timerProgressBar: true,
+                        position: 'top',
+                        toast: true,
+                    })
+                    window.location.reload('/signin');
+                }
+                else {
+                    Swal.fire({
+                        icon: 'error',
+                        timer: 2500,
+                        title: 'Ohho Something went wrong',
+                        confirmButtonColor: '#3085d6',
+                        showConfirmButton: false,
+                        timerProgressBar: true,
+                        position: 'top',
+                        toast: true,
+                    })
+                }
+            }
+            else {
+                Swal.fire({
+                    icon: 'warning',
+                    timer: 2500,
+                    title: 'OTP Mis-metch ',
+                    confirmButtonColor: '#3085d6',
+                    showConfirmButton: false,
+                    timerProgressBar: true,
+                    position: 'top',
+                    toast: true,
+                })
+            }
+        }
+        else {
+            Swal.fire({
+                icon: 'warning',
+                timer: 2500,
+                title: 'OTP Expires!!!',
+                confirmButtonColor: '#3085d6',
+                showConfirmButton: false,
+                timerProgressBar: true,
+                position: 'top',
+                toast: true,
+            })
         }
     }
     return <>
@@ -156,7 +224,7 @@ function Signup() {
         <br />
         <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered" role="document">
-                <div class="modal-content">
+                <div class="modal-content centered">
                     <div class="modal-header">
                         <h5 class="modal-title" id="exampleModalLongTitle">User verification</h5>
                         <button type="button" class="close p-4" data-dismiss="modal" aria-label="Close">
@@ -169,11 +237,11 @@ function Signup() {
                         <h6 className='fs-6 mt-3 ms-4'>
                             Please enter the otp which has been send on your email id
                         </h6>
-                        <img src="/images/email.png"/>
-                        <input className='offset-4 mt-3 otpinput' placeholder='enter otp here' type='text'/>
+                        <img src="/images/email.png" />
+                        <input className='offset-4 mt-3 otpinput' ref={confirmOTP} placeholder='enter otp here' type='text' />
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-primary">Save</button>
+                        <button type="button" class="btn btn-primary" onClick={()=>otpVerification(otp)}>Save</button>
                     </div>
                 </div>
             </div>

@@ -24,5 +24,8 @@ export default {
     UPDATE_BALANCE:'/owner/updateBalance',
     EMAIL_SEND:'/tenant/sendOtp',
     USER_CHECK : '/user/checkUser',
-    USER_SINGIN : '/user/createUser'
+    USER_SINGIN : '/user/createUser',
+    PROPERTY_DETAILS:'property/propertyDetails',
+    REMOVE_FROM_WISHLIST:'/tenant/removeFromWishList',
+    REQUEST_LIST:'/tenant/requestList'
 }
