@@ -139,13 +139,6 @@ body {
     box-shadow: 0 8px 12px -8px rgba(0, 0, 0, 0.09);
     -webkit-transition: all 0.4s ease;
     transition: all 0.4s ease;
-    padding-left: 0;
-    padding-right: 0;
-    text-align: center;
-  }
-
-  .main-header .navbar-nav {
-    margin-top: 70px;
   }
 
   .main-header .navbar-nav li .nav-link {
@@ -268,14 +261,6 @@ body {
       background-color: #fff;
     }
     /*header ends*/
-
-  .main-header .navbar .navbar-toggler .icon-bar:first-child {
-    margin-top: 3px;
-  }
-
-  .main-header .navbar-toggler .icon-bar-1 {
-    width: 10px;
-    top: 0px;
   }
 
   .main-header .navbar-toggler .icon-bar-2 {
@@ -426,11 +411,6 @@ body {
   padding: 10px;
 }
 
-.userIconStyle{
-    margin-top: -1%;
-    margin-left: -4%;
-    color: white !important;
-    font-size: 22px;
 .serchBarImg {
   height: 40px;
   width: 40px;

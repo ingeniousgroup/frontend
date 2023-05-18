@@ -109,9 +109,9 @@ function NavebarNext({ search }) {
                         <div className='col-md-3'>
                             <div className='row ms-5' style={{ marginLeft: "-80px" }}>
                                 <div className='col-md-6 text-end offset-5'>
-                                    <button onClick={propertyPost} className='btn  rounded-pill btn-light mt-1 post'>
+                                    {currentUser?.role==='Tenant'?<></>:<button onClick={propertyPost} className='btn  rounded-pill btn-light mt-1 post'>
                                         Post Property
-                                    </button>
+                                    </button>}
                                 </div>
                             </div>
                         </div>
