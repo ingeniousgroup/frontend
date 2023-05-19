@@ -76,7 +76,7 @@ function Navbar( {search}) {
                 <Link to='/' className=" active-first fs-5 font-weight-bold">Home</Link>
               </li>
               <li>
-                <a href="#about" className="fs-5 font-weight-bold " style={{opacity:"400%",fontWeight : "600px"}}>About </a>
+                <Link to="/aboutUs" className="fs-5 font-weight-bold " style={{opacity:"400%",fontWeight : "600px"}}>About </Link>
               </li>
               <li>
                 <a href="#service" className="fs-5 font-weight-bold">Services</a>
