@@ -16,9 +16,7 @@ function Navbar( {search}) {
     });
   }, []);
   const navigate = useNavigate();
-  const propertyPost = () => {
-    navigate("/propertypost");
-  }
+  
   const { currentUser } = useSelector((state) => state.user);
   const dispatch = useDispatch();
   
@@ -62,17 +60,17 @@ function Navbar( {search}) {
                 <a href="#about" className="fs-5 font-weight-bold " style={{opacity:"400%",fontWeight : "600px"}}>About </a>
               </li>
               <li>
-                <a href="#service" className="fs-5 font-weight-bold">Services</a>
+                <Link to='/services' className="fs-5 font-weight-bold">Services</Link>
               </li>
               {currentUser?.role==='Tenant'?<></>:<li>
-                <Link onClick={propertyPost} className="fs-5  font-weight-bold">Post Property </Link>
+                <Link to='/propertypost' className="fs-5  font-weight-bold">Post Property </Link>
               </li>}
               <li>
                 <a href="#contact" className="fs-5 font-weight-bold ">Contact</a>
               </li>
               <li className="userIconStyle">
                 <div className='col-md-1'>
-                  <div className='share ms-3'>
+                  <div className='share ms-3 fa fa-bars mt-2'>
                       {!currentUser &&<div className="fab no " data-hover='SignIn' onClick={signinUser}></div>}
                       {currentUser && <div className="fab no " data-hover='SigOut' onClick={signout}></div>}
                       {/* <div className="fab no " data-hover='SignUp' onClick={signupUser}></div> */}

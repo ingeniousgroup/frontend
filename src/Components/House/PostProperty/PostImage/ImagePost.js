@@ -98,7 +98,7 @@ function ImagePost() {
     }
     return <>
     <NavebarNext/>
-        <div className='row mb-2 inner'>
+        <div className='row mb-2 inner bg-white'>
             <div className='col-md-3  bg-c'>
 
             </div>

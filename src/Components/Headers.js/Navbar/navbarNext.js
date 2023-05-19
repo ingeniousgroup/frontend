@@ -106,23 +106,35 @@ function NavebarNext({ search }) {
                                 </div>
                             </div>
                         </div>
-                        <div className='col-md-3'>
-                            <div className='row ms-5' style={{ marginLeft: "-80px" }}>
-                                <div className='col-md-6 text-end offset-5'>
+                        <div className='col-md-3 mt-0'>
+                            <div className='row ms-5 '>
+                                <div className='col-md-6 d-flex justify-content-start text-end'>
                                     {currentUser?.role==='Tenant'?<></>:<button onClick={propertyPost} className='btn  rounded-pill btn-light mt-1 post'>
                                         Post Property
                                     </button>}
                                 </div>
+                                <div className='col-md-3 d-flex justify-content-end text-end '>
+                                <Link to='/services' style={{textDecoration:"none",color:"black"}}>
+                                    <button className='btn  rounded-pill btn-light mt-1 post'>
+                                        Services
+                                    </button>
+                                    </Link>
+                                </div>
+                                <div className='col-md-3 d-flex justify-content-end'>
+                                    <button className='btn  rounded-pill btn-light mt-1 post'>
+                                        About
+                                    </button>
+                                </div>
                             </div>
                         </div>
                         <div className='col-md-1'>
-                            <div className='share ms-3'>
+                            <i className='share ms-3 fa fa-bars'>
                                 {!currentUser && <div className="fab no " data-hover='SignIn' onClick={signinUser}></div>}
                                 {currentUser && <div className="fab no " data-hover='SigOut' onClick={signout}></div>}
                                 {/* <div className="fab no " data-hover='SignUp' onClick={signupUser}></div> */}
                                 <div className="fab no " data-hover='Profile' onClick={viewProfile}></div>
 
-                            </div>
+                            </i>
                         </div>
                     </div>
                 </div>

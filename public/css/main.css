@@ -1,5 +1,6 @@
 body {
   font-family: 'Muli', sans-serif;
+  background-color: white !important;
 }
 
 
@@ -703,19 +704,17 @@ body {
 }
 
 .share {
-  margin-top: 0;
-  border-radius: 0%;
-  background-image: url("../images/whiteHamburgur.jpg");
-  background-color: transparent;
-  background-repeat: no-repeat;
-  background-size: cover;
+  margin-top: 5px;
+  /* background-image: url("../images/whiteHamburgur.jpg"); */
   position: relative;
+  font-size: 30px !important;
+  color: white;
 }
 
 .share:before,
 .share:after {
   content: '';
-  will-change: transform;
+  /* will-change: transform; */
 }
 
 .share:before {
@@ -728,11 +727,11 @@ body {
   transition: 0.39s;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
+  /* transform: translate(-50%, -50%); */
 }
 
 .share.active:before {
-  transform: rotate(45deg);
+  /* transform: rotate(45deg); */
 }
 
 .share.active:after {
@@ -812,7 +811,7 @@ body {
 }
 
 .bg-c {
-  background: url('../images/animated1.gif');
+  background: url('../images/part.png');
   padding: 5vh;
   background-size: contain;
   background-repeat: repeat-y;

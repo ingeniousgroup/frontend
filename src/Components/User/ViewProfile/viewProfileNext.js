@@ -23,6 +23,7 @@ function ViewProfileNext() {
         setAllProperty(properties);
     }, [properties]);
 
+    
     const rejectRequest = (data) => {
         Swal.fire({
             title: "Are you sure to reject this request?",
@@ -128,7 +129,7 @@ function ViewProfileNext() {
     }
     return <>
         <NavebarNext />
-        <div className='container-fluid'>
+        <div className='container-fluid viewProfile'>
             <div className=' row mb-5'>
                 <div className='col-2 border sidebar '>
                     <div className='profileArea p-3 ms-4 '>
@@ -193,7 +194,7 @@ function ViewProfileNext() {
                             </div>
                         </div>
                     </div>
-                    <div className='mt-3 container-fluid  text-center rightside p-3'>
+                    <div className='mt-3 container-fluid  text-center  p-3'>
                         {(behave == 'profile' || behave == '') && <>
                             <div style={{ width: "100%" }}>
                                 <div class="">
@@ -285,6 +286,7 @@ function ViewProfileNext() {
                             </div>
                         </>}
                         {behave == 'details' && <>
+                            <div className='rightside'>
                             {allProperty?.map((data, indext) => <div className='row dataPhoto p-3 mb-3 '>
                                 <div className='col-2 ps-4'>
                                     <img src={api.PORT + data.imagesUrlArray[0]} height={125} id='img1' width={230} onClick={() => viewDescription(data)} />
@@ -310,8 +312,10 @@ function ViewProfileNext() {
                                 </div>
 
                             </div>)}
+                            </div>
                         </>}
                         {behave == 'request' && <>
+                        <div className='rightside'>
                             {allRequest?.map((data, indext) => <div className='row mt-2 dataPhoto p-3'>
                                 <div className='col-3 '>
                                     <img src={api.PORT + data.propertyId?.imagesUrlArray[0]} height={130} id='img1' width={230} />
@@ -330,6 +334,7 @@ function ViewProfileNext() {
                                     <button className='btn btn-outline-danger ms-2' onClick={() => rejectRequest(data)}>Reject</button>
                                 </div>
                             </div>)}
+                            </div>
                         </>}
                     </div>
                 </div>
