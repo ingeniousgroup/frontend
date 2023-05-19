@@ -28,7 +28,8 @@ function HouseDescription() {
 
   const checkUser = async () => {
     Swal.fire({
-      title: "Are you sure to reject this request?",
+      title: "Are you intrested for this property ??",
+      text: "By performing this action Owner will get the request",
       icon: "question",
       buttons: true,
       dangerMode: true,

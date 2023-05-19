@@ -26,9 +26,6 @@ function Navbar( {search}) {
     window.location.reload();
   }
   
-  const signupUser = () => {
-    navigate("/signup")
-  }
   
   const signinUser = () => {
     Swal.fire({
@@ -74,7 +71,7 @@ function Navbar( {search}) {
                 <Link to='/' className=" active-first fs-5 font-weight-bold">Home</Link>
               </li>
               <li>
-                <a href="#about" className="fs-5 font-weight-bold " style={{opacity:"400%",fontWeight : "600px"}}>About </a>
+                <Link to="/aboutUs" className="fs-5 font-weight-bold " style={{opacity:"400%",fontWeight : "600px"}}>About </Link>
               </li>
               <li>
                 <Link to='/services' className="fs-5 font-weight-bold">Services</Link>
