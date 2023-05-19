@@ -61,7 +61,7 @@ function Navbar( {search}) {
       <div className="navbardivBackgroundColor" >
         <nav className="navbar navbar-expand-lg main-nav px-0  container-fluid bgc">
           <div className="navbar-brand" >
-          <img src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRPY36-ev8RAOnXC7MfOVMmpFHc6JkKFcJmzBARwa6GueWUY9rZRy8P9Wk-S8sIAp3uzps&usqp=CAU' style={{height:'100px'}}/>
+          {/* <img src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRPY36-ev8RAOnXC7MfOVMmpFHc6JkKFcJmzBARwa6GueWUY9rZRy8P9Wk-S8sIAp3uzps&usqp=CAU' style={{height:'100px'}}/> */}
           </div>
           <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#mainMenu" aria-controls="mainMenu" aria-expanded="false" aria-label="Toggle navigation">
             <span className="icon-bar icon-bar-1" />
