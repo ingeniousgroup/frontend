@@ -14,6 +14,7 @@ function WithGoogle() {
     return <>
         <GoogleOAuthProvider clientId="613439803904-sp1fhhh936cj70i9pjds2f1gndun9aj8.apps.googleusercontent.com">
             <GoogleLogin
+            
                 onSuccess={async credentialResponse => {
                     console.log(jwtDecode(credentialResponse.credential));
                     const credential = jwtDecode(credentialResponse.credential);
