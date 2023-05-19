@@ -89,6 +89,7 @@ function Home(){
         <Route path="/viewTenantProfile" element={<ProtectedRoute><TenantProfile1/></ProtectedRoute>}/>
         <Route path="/nearByhouse" element={<NearByHouse/>}/>
     </Routes>
+   
    <Footer/>
   </>
 }

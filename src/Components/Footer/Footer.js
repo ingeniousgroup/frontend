@@ -2,7 +2,7 @@ import './footer.css';
 import data from '../../details';
 function Footer (){
     return<>
-  <footer className="footer-distributed">
+  <footer className="footer-distributed mt-5">
     <div className="footer-left">
       <h3>
         {data.NAME}<span>Wala</span>
