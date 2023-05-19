@@ -7,6 +7,7 @@ import $ from 'jquery';
 import { useEffect, useRef } from "react";
 import { Navigate } from "react-router-dom";
 import Waves from "../../waves";
+import Swal from "sweetalert2";
 function Navbar( {search}) {
   useEffect(() => {
     $(".share").on("click", function (e) {
@@ -32,7 +33,23 @@ function Navbar( {search}) {
   }
   
   const signinUser = () => {
-    navigate("/signin")
+    Swal.fire({
+      title: "Who you are??",
+      icon: "question",
+      buttons: true,
+      dangerMode: true,
+      confirmButtonText:'Owner',
+      cancelButtonText:'Tenant',
+      confirmButtonColor: '#3085d6',
+      showCancelButton: true,
+      cancelButtonColor: '#d33',
+  })
+      .then(async (willDelete) => {
+          if (willDelete.isConfirmed)
+            navigate('/signin',{state:{status:true}});  
+          else
+            navigate('/signin',{state:{status:false}});
+      });
   }
   
   const viewProfile = () => {
@@ -46,7 +63,7 @@ function Navbar( {search}) {
       <div className="navbardivBackgroundColor" >
         <nav className="navbar navbar-expand-lg main-nav px-0  container-fluid bgc">
           <div className="navbar-brand" >
-          <img src={require('./logo-black.png')} />
+          <img src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRPY36-ev8RAOnXC7MfOVMmpFHc6JkKFcJmzBARwa6GueWUY9rZRy8P9Wk-S8sIAp3uzps&usqp=CAU' style={{height:'100px'}}/>
           </div>
           <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#mainMenu" aria-controls="mainMenu" aria-expanded="false" aria-label="Toggle navigation">
             <span className="icon-bar icon-bar-1" />
