@@ -30,6 +30,8 @@ import { showSubscription } from "../../redux-config/subscriptionSlice";
 import ViewProfileNext from "../User/ViewProfile/viewProfileNext";
 import TenantProfile1 from "../User/ViewProfile/tenantProfile1";
 import Office from "../House/PostPropertyForms/Office/office";
+import Services from "../Services/services";
+import CategoryProperty from "../categoryProperty/categoryProperty";
 function Home(){
   
   const [flag, setFlag] = useState(true);
@@ -84,6 +86,8 @@ function Home(){
         <Route path="/takeSubscription" element={<ProtectedRoute><Subscription/></ProtectedRoute>}/>
         <Route path="/viewTenantProfile" element={<ProtectedRoute><TenantProfile1/></ProtectedRoute>}/>
         <Route path="/nearByhouse" element={<NearByHouse/>}/>
+        <Route path="/services" element={<Services/>}/>
+        <Route path="/categoryProperty" element={<CategoryProperty/>}/>
     </Routes>
 
   </>

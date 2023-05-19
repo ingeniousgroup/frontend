@@ -25,7 +25,7 @@ function Property({ propertyList ,search}) {
   }
 
   const checkIfLike = (id) =>{
-   var w = pro.propertyList[0]?.find((item)=>item.propertyId._id==id);
+   var w = pro.propertyList[0]?.find((item)=>item.propertyId?._id==id);
    console.log(w);
      if(w){
       console.log("-----1")

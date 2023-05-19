@@ -95,7 +95,7 @@ function Flate() {
   }
   return <>
     <NavebarNext />
-    <div className="row mb-2" id="pura-component">
+    <div className="row mb-2 bg-white" id="pura-component">
 
       <div className="col-3 bg-c"></div>
       <div className="col-6 p-4 ">

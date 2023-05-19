@@ -39,18 +39,16 @@
     z-index: 1;
     width: 100%;
     animation: vijay;
-    animation-duration: 4s;
+    animation-duration: 1s;
 }
 @keyframes vijay {
     0%{
       visibility: initial;
       background: transparent;
-      color: transparent !important;
-      border: none !important;
+      box-shadow: none;
     }
     100%{
         background-color: #3eadcf;
-        transform: background 4s ease;
     }
 }
 .logo{
