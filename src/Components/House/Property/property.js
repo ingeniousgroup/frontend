@@ -19,7 +19,8 @@ function Property({ propertyList ,search}) {
   const viewDescription = (property) => {
     navigate("/viewDiscription", {
       state: {
-        property: property
+        property: property,
+        propertyList:propertyList
       }
     });
   }
