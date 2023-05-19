@@ -43,10 +43,9 @@ function Navbar( {search}) {
   }
   return <header className="main-header" style={{marginBottom:"10vh"}}>
     <div className="container-fluid">
-      <div className="navbardivBackgroundColor" >
-        <nav className="navbar navbar-expand-lg main-nav px-0 ">
+        <nav className="navbar navbar-expand-lg main-nav px-0  container-fluid bgc">
           <div className="navbar-brand" >
-            <h4>KirayeWala</h4>
+          <img src={require('./logo-black.png')} />
           </div>
           <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#mainMenu" aria-controls="mainMenu" aria-expanded="false" aria-label="Toggle navigation">
             <span className="icon-bar icon-bar-1" />
@@ -54,32 +53,29 @@ function Navbar( {search}) {
             <span className="icon-bar icon-bar-3" />
           </button>
           <div className="collapse navbar-collapse" id="mainMenu">
-            <ul className="navbar-nav ml-auto  f1">
+            <ul className="navbar-nav ml-auto  f1 " style={{fontWeight:"700",opacity:"100%"}}>
               <li>
-                <Link to='/' className=" active-first">Home</Link>
+                <Link to='/' className=" active-first fs-5 font-weight-bold">Home</Link>
               </li>
               <li>
-                <a href="#about">About </a>
+                <a href="#about" className="fs-5 font-weight-bold " style={{opacity:"400%",fontWeight : "600px"}}>About </a>
               </li>
               <li>
-                <a href="#service">Services</a>
+                <a href="#service" className="fs-5 font-weight-bold">Services</a>
               </li>
+              {currentUser?.role==='Tenant'?<></>:<li>
+                <Link onClick={propertyPost} className="fs-5  font-weight-bold">Post Property </Link>
+              </li>}
               <li>
-                <button className="postPropertyButton" onClick={propertyPost}>
-                  Post property
-
-                </button>
-              </li>
-              <li>
-                <a href="#contact">Contact</a>
+                <a href="#contact" className="fs-5 font-weight-bold ">Contact</a>
               </li>
               <li className="userIconStyle">
                 <div className='col-md-1'>
                   <div className='share ms-3'>
-                      {!currentUser &&<div class="fab no " data-hover='SignIn' onClick={signinUser}></div>}
-                      {currentUser && <div class="fab no " data-hover='SigOut' onClick={signout}></div>}
-                      {/* <div class="fab no " data-hover='SignUp' onClick={signupUser}></div> */}
-                      <div class="fab no " data-hover='Profile' onClick={viewProfile}></div>
+                      {!currentUser &&<div className="fab no " data-hover='SignIn' onClick={signinUser}></div>}
+                      {currentUser && <div className="fab no " data-hover='SigOut' onClick={signout}></div>}
+                      {/* <div className="fab no " data-hover='SignUp' onClick={signupUser}></div> */}
+                      <div className="fab no " data-hover='Profile' onClick={viewProfile}></div>
                   </div>
                 </div>
               </li>
@@ -90,8 +86,6 @@ function Navbar( {search}) {
           <SearchBar search={search} />
         </div>
       </div>
-    </div>
-    {/* /.container */}
   </header>
 }
 

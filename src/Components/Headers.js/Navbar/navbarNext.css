@@ -32,11 +32,13 @@
 .main1{
     /* 40vh height dena hai isme mt-40vh */
     margin-top: 0vh !important;
-    background-color: #3eadcf;
-    box-shadow: 5px 1px 5px black;
+    background-image: linear-gradient(30deg, #0048bd, #44a7fd);
+    /* box-shadow: 5px 1px 5px black; */
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
     position: sticky;
     top: 0;
     z-index: 1;
+    width: 100%;
     animation: vijay;
     animation-duration: 4s;
 }

@@ -180,28 +180,28 @@ function ViewProfileNext() {
                                                             <p>{currentUser.role}</p>
                                                         </div>
                                                     </div>
-                                                    <div class="col-sm-8 pt-5 bg-light border">
+                                                    <div class="col-sm-8 pt-2 bg-light border">
                                                         <div class="card-block">
                                                             <h5 class="m-b-20 p-b-5 b-b-default f-w-600">About Me</h5>
                                                             <div class="row">
                                                                 <div class="col-sm-6">
-                                                                    <p class="m-b-10 f-w-600 ">Email</p>
-                                                                    <h6 class="text-muted f-w-400">{currentUser.email}</h6>
+                                                                    <p class="m-b-10 f-w-600 fs-6">Email</p>
+                                                                    <h6 class="text-dark f-w-400 fs-6">{currentUser.email}</h6>
                                                                 </div>
                                                                 <div class="col-sm-6">
-                                                                    <p class="m-b-10 f-w-600">Phone</p>
-                                                                    <h6 class="text-muted f-w-400">{currentUser.contact}</h6>
+                                                                    <p class="m-b-10 f-w-600 fs-6">Phone</p>
+                                                                    <h6 class="text-dark f-w-400 fs-6">+91 {currentUser.contact}</h6>
                                                                 </div>
                                                             </div>
                                                             <h5 class="m-b-20 m-t-40 p-b-5 b-b-default f-w-600">Location</h5>
                                                             <div class="row">
                                                                 <div class="col-sm-6">
-                                                                    <p class="m-b-10 f-w-600">CurrentLocation</p>
-                                                                    <h6 class="text-muted f-w-400">Indore</h6>
+                                                                    <p class="m-b-10 f-w-600 fs-6">CurrentLocation</p>
+                                                                    <h6 class="text-dark f-w-400 fs-6">Indore</h6>
                                                                 </div>
                                                                 <div class="col-sm-6">
-                                                                    <p class="m-b-10 f-w-600">Check Your Properties</p>
-                                                                    <h6 class="text-muted f-w-400" onClick={() => ownerFunctionality("details")}><Link>Click Here</Link></h6>
+                                                                    <p class="m-b-10 f-w-600 fs-6">Check Your Properties</p>
+                                                                    <h6 class="text-dark f-w-400 fs-6" onClick={() => ownerFunctionality("details")}><Link>Click Here</Link></h6>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -224,8 +224,8 @@ function ViewProfileNext() {
                                                 </h1>
                                             </div>
                                             <div className='col-4 offset-1 p-3'>
-                                                <h1 className='mt-4 text-white heading ms-3 fs-2 '>
-                                                    <label><i class="fa fa-inr fs-2" aria-hidden="true"></i></label>{subscriptionData.subscriptionPrice}
+                                                <h1 className='mt-4 text-white heading ms-4 fs-2 '>
+                                                    <label><i class="fa fa-inr fs-2" aria-hidden="true"></i></label>{subscriptionData.subscriptionPrice} <label >pack !</label>
                                                 </h1>
                                             </div>
                                         </div>
@@ -235,6 +235,7 @@ function ViewProfileNext() {
                                                     Your Subscription  Starts From !
                                                 </h5>
                                                 <h3 className='text-success'>
+                                                <img src="/images/sand.gif" style={{width:"20%",marginRight:"7vh"}}/>
                                                     {subscriptionData.startDate}
                                                 </h3>
                                             </div>
@@ -243,6 +244,7 @@ function ViewProfileNext() {
                                                     <b>Your Subscription Expire At !</b>
                                                 </h5>
                                                 <h3 className='text-danger'>
+                                                    <img src="/images/sand.gif" style={{width:"20%",marginRight:"7vh"}}/>
                                                     {subscriptionData.subscriptionExpiry}
                                                 </h3>
                                             </div>
@@ -264,7 +266,7 @@ function ViewProfileNext() {
                                 <div className='col-3  ps-5 pt-2'>
                                     <p className='fs-5'><i class="fa fa-street-view fs-3" aria-hidden="true"></i>
                                         {data.address}</p>
-                                    <p className='text-danger'><i class="fa fa-clock-o" aria-hidden="true"></i>
+                                    <p className='text-danger'><i className="fa fa-clock-o" aria-hidden="true"></i>
                                         Posted At : {data.date}</p>
                                 </div>
                                 <div className='col-4 pt-4 ps-5 ms-1'>

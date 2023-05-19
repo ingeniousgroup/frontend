@@ -1,5 +1,7 @@
 import { useSelector } from "react-redux";
 import "./tenantProfile.css";
+import Navbar from "../../Headers.js/Navbar/navbar";
+import NavebarNext from "../../Headers.js/Navbar/navbarNext";
 function TenantProfile(){
     var {propertyList} =useSelector((state)=>state.wishList);
     var {currentUser} = useSelector((state)=>state.user);
@@ -16,7 +18,10 @@ function TenantProfile(){
       document.getElementsByClassName("email").disabled = false
     });
   }
-    return <><div className="container rounded ">
+    return <>
+    <NavebarNext/>
+    <div style={{height:"80px"}}></div>
+    <div className="container rounded ">
   <div className="row border">
     <div className="col-md-3 border-right profile">
       <div className="d-flex flex-column align-items-center text-center ">
@@ -105,8 +110,8 @@ function TenantProfile(){
                 <div className="col-4 text-center">
                     <span className="rent-span text-black p-1">{property.propertyId.rent}</span>
                     <div className="row">
-                      <i class="fa fa-heart text-danger p-1  " aria-hidden="true"></i>
-                      <i class="fa fa-arrow-circle-o-right p-1 " aria-hidden="true"></i>
+                      <i className="fa fa-heart text-danger p-1  " aria-hidden="true"></i>
+                      <i className="fa fa-arrow-circle-o-right p-1 " aria-hidden="true"></i>
                     </div>
                 </div>
             </div>

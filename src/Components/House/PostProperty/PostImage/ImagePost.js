@@ -150,7 +150,7 @@ function ImagePost() {
                     <div className='mt-4'>
                         <label className='welcome fs-3' id='renting'>
                             Property Rent
-                        </label ><i class="fa fa-inr fs-5" id='rs' aria-hidden="true"></i>
+                        </label ><i className="fa fa-inr fs-5" id='rs' aria-hidden="true"></i>
                         <input onChange={(event) => { rent = event.target.value }} className='ms-4 ' id='rentinput' type='text' /><label className='sless'>/-</label>
                     </div>
                 </div>
