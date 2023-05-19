@@ -28,9 +28,6 @@ function Navbar( {search}) {
     window.location.reload();
   }
   
-  const signupUser = () => {
-    navigate("/signup")
-  }
   
   const signinUser = () => {
     Swal.fire({

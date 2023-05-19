@@ -7,6 +7,7 @@ import { removeUser } from '../../../redux-config/UserSlice';
 import { viewProperty } from '../../../redux-config/propertyOfOwnerSlice';
 import { wishList } from '../../../redux-config/wishListSlice';
 import { createSubscription, showSubscription } from '../../../redux-config/subscriptionSlice';
+import Swal from 'sweetalert2';
 
 function NavebarNext({ search }) {
 
@@ -38,12 +39,25 @@ function NavebarNext({ search }) {
         window.location.reload();
 
     }
-    const signupUser = () => {
-        navigate("/signup")
-    }
     const signinUser = () => {
-        navigate("/signin")
-    }
+        Swal.fire({
+          title: "Who you are??",
+          icon: "question",
+          buttons: true,
+          dangerMode: true,
+          confirmButtonText:'Owner',
+          cancelButtonText:'Tenant',
+          confirmButtonColor: '#3085d6',
+          showCancelButton: true,
+          cancelButtonColor: '#d33',
+      })
+          .then(async (willDelete) => {
+              if (willDelete.isConfirmed)
+                navigate('/signin',{state:{status:true}});  
+              else
+                navigate('/signin',{state:{status:false}});
+          });
+      }
 
     const viewProfile = () => {
         dispatch(viewProperty(currentUser));
