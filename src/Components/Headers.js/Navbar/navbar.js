@@ -17,9 +17,7 @@ function Navbar( {search}) {
     });
   }, []);
   const navigate = useNavigate();
-  const propertyPost = () => {
-    navigate("/propertypost");
-  }
+  
   const { currentUser } = useSelector((state) => state.user);
   const dispatch = useDispatch();
   
@@ -60,7 +58,7 @@ function Navbar( {search}) {
       <div className="navbardivBackgroundColor" >
         <nav className="navbar navbar-expand-lg main-nav px-0  container-fluid bgc">
           <div className="navbar-brand" >
-          <img src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRPY36-ev8RAOnXC7MfOVMmpFHc6JkKFcJmzBARwa6GueWUY9rZRy8P9Wk-S8sIAp3uzps&usqp=CAU' style={{height:'100px'}}/>
+          {/* <img src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRPY36-ev8RAOnXC7MfOVMmpFHc6JkKFcJmzBARwa6GueWUY9rZRy8P9Wk-S8sIAp3uzps&usqp=CAU' style={{height:'100px'}}/> */}
           </div>
           <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#mainMenu" aria-controls="mainMenu" aria-expanded="false" aria-label="Toggle navigation">
             <span className="icon-bar icon-bar-1" />
@@ -76,17 +74,17 @@ function Navbar( {search}) {
                 <Link to="/aboutUs" className="fs-5 font-weight-bold " style={{opacity:"400%",fontWeight : "600px"}}>About </Link>
               </li>
               <li>
-                <a href="#service" className="fs-5 font-weight-bold">Services</a>
+                <Link to='/services' className="fs-5 font-weight-bold">Services</Link>
               </li>
               {currentUser?.role==='Tenant'?<></>:<li>
-                <Link onClick={propertyPost} className="fs-5  font-weight-bold">Post Property </Link>
+                <Link to='/propertypost' className="fs-5  font-weight-bold">Post Property </Link>
               </li>}
               <li>
                 <a href="#contact" className="fs-5 font-weight-bold ">Contact</a>
               </li>
               <li className="userIconStyle">
                 <div className='col-md-1'>
-                  <div className='share ms-3'>
+                  <div className='share ms-3 fa fa-bars mt-2'>
                       {!currentUser &&<div className="fab no " data-hover='SignIn' onClick={signinUser}></div>}
                       {currentUser && <div className="fab no " data-hover='SigOut' onClick={signout}></div>}
                       {/* <div className="fab no " data-hover='SignUp' onClick={signupUser}></div> */}

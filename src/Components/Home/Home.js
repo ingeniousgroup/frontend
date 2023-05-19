@@ -31,6 +31,8 @@ import ViewProfileNext from "../User/ViewProfile/viewProfileNext";
 import TenantProfile1 from "../User/ViewProfile/tenantProfile1";
 import Office from "../House/PostPropertyForms/Office/office";
 import AboutUs from "../aboutUS/about";
+import Services from "../Services/services";
+import CategoryProperty from "../categoryProperty/categoryProperty";
 function Home(){
   
   const [flag, setFlag] = useState(true);
@@ -86,6 +88,8 @@ function Home(){
         <Route path="/viewTenantProfile" element={<ProtectedRoute><TenantProfile1/></ProtectedRoute>}/>
         <Route path="/nearByhouse" element={<NearByHouse/>}/>
         <Route path="/aboutUs" element={<AboutUs/>}></Route>
+        <Route path="/services" element={<Services/>}/>
+        <Route path="/categoryProperty" element={<CategoryProperty/>}/>
     </Routes>
 
   </>

@@ -95,7 +95,7 @@ function Office() {
   }
   return <>
     <NavebarNext />
-    <div className="row mb-2">
+    <div className="row mb-2 bg-white">
 
       <div className="col-3 bg-c"></div>
       <div className="col-6 p-4 ">

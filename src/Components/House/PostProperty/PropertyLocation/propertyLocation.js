@@ -29,14 +29,15 @@ function PropertyLocation(props) {
     }
     return <>
     <NavebarNext/>
-        <div className='row mb-2 inner'>
+        <div className='row mb-2 inner bg-white'>
             <div className='col-md-3  bg-c'>
 
             </div>
             <div className='col-md-6 p-4'>
                 <div className='row'>
                     <div className='col-md-12 '>
-                        <h4 className='welcome fs-3'>
+                    <label><img  style={{marginTop:"-8vh"}} src="/images/photoLogo.webp" height={100}/></label><label className="fs-3 p-4"><b>Fill Your Accurate Location !</b><br/><small className="fs-5">about your location details</small></label>
+                        <h4 className='welcome fs-3 mt-3'>
                             Where your property Located ?
                         </h4>
                     </div>
