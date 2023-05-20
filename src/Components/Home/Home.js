@@ -29,6 +29,7 @@ import ViewProfileNext from "../User/ViewProfile/viewProfileNext";
 import TenantProfile1 from "../User/ViewProfile/tenantProfile1";
 import Spinner from "../Spinner/Spinner";
 import Footer from "../Footer/Footer";
+import ShopList from "../Footer/demo";
 function Home(){
   
   const [flag, setFlag] = useState(true);
@@ -89,7 +90,6 @@ function Home(){
         <Route path="/viewTenantProfile" element={<ProtectedRoute><TenantProfile1/></ProtectedRoute>}/>
         <Route path="/nearByhouse" element={<NearByHouse/>}/>
     </Routes>
-   
    <Footer/>
   </>
 }
