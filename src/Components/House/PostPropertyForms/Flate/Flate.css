@@ -1,7 +1,6 @@
 .bg-c{
  background-color: #f4f5f7;
 }
-
 .parent {
     display: flex;
     flex-direction: row;

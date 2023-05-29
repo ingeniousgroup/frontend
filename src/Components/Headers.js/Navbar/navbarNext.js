@@ -7,8 +7,9 @@ import { removeUser } from '../../../redux-config/UserSlice';
 import { viewProperty } from '../../../redux-config/propertyOfOwnerSlice';
 import { wishList } from '../../../redux-config/wishListSlice';
 import { createSubscription, showSubscription } from '../../../redux-config/subscriptionSlice';
+import Swal from 'sweetalert2';
 
-function NavebarNext({search}) {
+function NavebarNext({ search }) {
 
     useEffect(() => {
         $(".share").on("click", function (e) {
@@ -38,12 +39,25 @@ function NavebarNext({search}) {
         window.location.reload();
 
     }
-    const signupUser = () => {
-        navigate("/signup")
-    }
     const signinUser = () => {
-        navigate("/signin")
-    }
+        Swal.fire({
+          title: "Who you are??",
+          icon: "question",
+          buttons: true,
+          dangerMode: true,
+          confirmButtonText:'Owner',
+          cancelButtonText:'Tenant',
+          confirmButtonColor: '#3085d6',
+          showCancelButton: true,
+          cancelButtonColor: '#d33',
+      })
+          .then(async (willDelete) => {
+              if (willDelete.isConfirmed)
+                navigate('/signin',{state:{status:true}});  
+              else
+                navigate('/signin',{state:{status:false}});
+          });
+      }
 
     const viewProfile = () => {
         dispatch(viewProperty(currentUser));
@@ -72,7 +86,8 @@ function NavebarNext({search}) {
         }
         else
             return <div className="fab no" data-hover='Profile' onClick={viewProfile}></div>
-}
+    }
+
     return <>
         <div className='p-1 pb-2 main1 '>
             <div className='row mt-2'>
@@ -105,23 +120,35 @@ function NavebarNext({search}) {
                                 </div>
                             </div>
                         </div>
-                        <div className='col-md-3'>
-                            <div className='row ms-5' style={{ marginLeft: "-80px" }}>
-                                <div className='col-md-6 text-end offset-5'>
-                                    <button onClick={propertyPost} className='btn  rounded-pill btn-light mt-1 post'>
+                        <div className='col-md-3 mt-0'>
+                            <div className='row ms-5 '>
+                                <div className='col-md-6 d-flex justify-content-start text-end'>
+                                    {currentUser?.role==='Tenant'?<></>:<button onClick={propertyPost} className='btn  rounded-pill btn-light mt-1 post'>
                                         Post Property
+                                    </button>}
+                                </div>
+                                <div className='col-md-3 d-flex justify-content-end text-end '>
+                                <Link to='/services' style={{textDecoration:"none",color:"black"}}>
+                                    <button className='btn  rounded-pill btn-light mt-1 post'>
+                                        Services
+                                    </button>
+                                    </Link>
+                                </div>
+                                <div className='col-md-3 d-flex justify-content-end'>
+                                    <button className='btn  rounded-pill btn-light mt-1 post'>
+                                        About
                                     </button>
                                 </div>
                             </div>
                         </div>
                         <div className='col-md-1'>
-                            <div className='share ms-3'>
+                            <i className='share ms-3 fa fa-bars'>
                                 {!currentUser && <div className="fab no " data-hover='SignIn' onClick={signinUser}></div>}
                                 {currentUser && <div className="fab no " data-hover='SigOut' onClick={signout}></div>}
                                 {/* <div className="fab no " data-hover='SignUp' onClick={signupUser}></div> */}
                                 <div className="fab no " data-hover='Profile' onClick={viewProfile}></div>
 
-                            </div>
+                            </i>
                         </div>
                     </div>
                 </div>

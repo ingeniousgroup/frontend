@@ -3,7 +3,7 @@ import './signin.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { setUser } from '../../redux-config/UserSlice';
 import axios from 'axios';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import api from '../../redux-config/WebApi/api';
 
 import { wishList } from '../../redux-config/wishListSlice';
@@ -13,12 +13,12 @@ import Swal from 'sweetalert2';
 import Validation from '../ExtraServices/Validataions/Input_Validations';
 import WithGoogle from '../ExtraServices/GoogleSignIn';
 import NavebarNext from '../Headers.js/Navbar/navbarNext';
-
 function Signin() {
     const [email,setEmail] = useState("");
     const [password,setPassword] = useState("");
     const dispatch = useDispatch();
     const navigate = useNavigate();
+    const location = useLocation();
     const {currentUser} = useSelector((state)=>state.user);
 
     const handleSubmit = async (event)=>{
@@ -108,7 +108,7 @@ function Signin() {
                         <br />
                         <br/>
                         <div style={{marginLeft:"5.8vh"}}>
-                        <WithGoogle/>
+                        {location?.state?.status?<></>:<WithGoogle/>}
                         </div>
                         <br />
                     </form>

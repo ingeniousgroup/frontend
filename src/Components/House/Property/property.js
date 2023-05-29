@@ -22,17 +22,21 @@ function Property({ propertyList, search }) {
     navigate("/viewDiscription", {
       state: {
         property: property,
-      },
+        propertyList:propertyList
+      }
     });
   };
 
-  const checkIfLike = (id) => {
-    if(pro?.propertyList[0]?.length){
-    var w = pro?.propertyList[0]?.find((item) => item.propertyId._id == id);
-    if (w) return true;
+  const checkIfLike = (id) =>{
+   var w = pro.propertyList[0]?.find((item)=>item.propertyId?._id==id);
+   console.log(w);
+     if(w){
+      console.log("-----1")
+       return true;
+      } 
      return false;
    }
-  };
+  
   const signinUser = () => {
     navigate("/signin");
   };

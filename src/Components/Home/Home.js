@@ -29,7 +29,11 @@ import ViewProfileNext from "../User/ViewProfile/viewProfileNext";
 import TenantProfile1 from "../User/ViewProfile/tenantProfile1";
 import Spinner from "../Spinner/Spinner";
 import Footer from "../Footer/Footer";
-import ShopList from "../Footer/demo";
+import Office from "../House/PostPropertyForms/Office/office";
+import AboutUs from "../aboutUS/about";
+import Services from "../Services/services";
+import CategoryProperty from "../categoryProperty/categoryProperty";
+
 function Home(){
   
   const [flag, setFlag] = useState(true);
@@ -77,7 +81,7 @@ function Home(){
         <Route path="/villa" element={<ProtectedRoute><Flate/></ProtectedRoute>}/>
         <Route path="/plot" element={<ProtectedRoute><Flate/></ProtectedRoute>}/>
         <Route path="/formHouse" element={<ProtectedRoute><Flate/></ProtectedRoute>}/>
-        <Route path="/office" element={<ProtectedRoute><Flate/></ProtectedRoute>}/>  
+        <Route path="/office" element={<ProtectedRoute><Office/></ProtectedRoute>}/>  
         <Route path="/other" element={<ProtectedRoute><Flate/></ProtectedRoute>}/>
         <Route path="/flat" element={<ProtectedRoute><Flate/></ProtectedRoute>}/>
         <Route path="/CurrentLocation" element={<ProtectedRoute><PropertyLocation/></ProtectedRoute>}/>
@@ -89,6 +93,9 @@ function Home(){
         <Route path="/takeSubscription" element={<ProtectedRoute><Subscription/></ProtectedRoute>}/>
         <Route path="/viewTenantProfile" element={<ProtectedRoute><TenantProfile1/></ProtectedRoute>}/>
         <Route path="/nearByhouse" element={<NearByHouse/>}/>
+        <Route path="/aboutUs" element={<AboutUs/>}></Route>
+        <Route path="/services" element={<Services/>}/>
+        <Route path="/categoryProperty" element={<CategoryProperty/>}/>
     </Routes>
    <Footer/>
   </>

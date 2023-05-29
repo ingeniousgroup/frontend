@@ -24,20 +24,17 @@ function PostProperty() {
             <div className='col-md-3  bg-c'>
             
             </div>
-            <div className='col-md-6 p-4'>
+            <div className='col-md-6 p-4 bg-white'>
                 <div className='row'>
                     {/* <div className='col-md-12 text-center'>
                             <h4 className='bg-dark text-light fs-3'>Post Property</h4><hr/>
                         </div> */}
                     <div className='col-md-12 '>
-                        <h4 className='welcome fs-3'>
-                            Welcome back Mr.{currentUser.name.toUpperCase()}<br />
-                            fill out basic details
-                        </h4>
+                        <label><img  style={{marginTop:"-8vh"}} src="/images/photoLogo.webp" height={100}/></label><label className="fs-3 p-4"><b>Welcome back Mr.{currentUser.name.toUpperCase()}</b><br/><small className="fs-5">fill out basic details</small></label>
                     </div>
                 </div>
-                <div className='row mt-5'>
-                    <div className='col-md-12'>
+                <div className='row mt-3 '>
+                    <div className='col-md-12 '>
                         <p className='fs-5'>
                             <u>what kind of property do you have ?</u>
                         </p>
@@ -48,10 +45,6 @@ function PostProperty() {
                                 <div className='col-md-12 com-out-inner'>
                                     <button name='office' onClick={setPropertyDetails} className='ms-3 com-element' >
                                         Office
-                                    </button>
-
-                                    <button name='plot' onClick={setPropertyDetails} className='ms-3 com-element'>
-                                        Plot
                                     </button>
                                     <button name='other' onClick={setPropertyDetails} className='ms-3 com-element'>
                                         Others
@@ -70,7 +63,7 @@ function PostProperty() {
                                         Villa
                                     </button>
                                     <button name='formHouse' onClick={setPropertyDetails} className='ms-3 com-element2'>
-                                        FormHouse
+                                        FarmHouse
                                     </button>
                                 </div>
                             </div>

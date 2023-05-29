@@ -8,6 +8,7 @@ import NavebarNext from '../../../Headers.js/Navbar/navbarNext';
 function PropertyLocation(props) {
 
     const HouseAllDetails = useLocation();
+    console.log(HouseAllDetails);
     const navigate = useNavigate();
     var userAddress
     var userDescription
@@ -28,14 +29,15 @@ function PropertyLocation(props) {
     }
     return <>
     <NavebarNext/>
-        <div className='row mb-2 inner'>
+        <div className='row mb-2 inner bg-white'>
             <div className='col-md-3  bg-c'>
 
             </div>
             <div className='col-md-6 p-4'>
                 <div className='row'>
                     <div className='col-md-12 '>
-                        <h4 className='welcome fs-3'>
+                    <label><img  style={{marginTop:"-8vh"}} src="/images/photoLogo.webp" height={100}/></label><label className="fs-3 p-4"><b>Fill Your Accurate Location !</b><br/><small className="fs-5">about your location details</small></label>
+                        <h4 className='welcome fs-3 mt-3'>
                             Where your property Located ?
                         </h4>
                     </div>
@@ -74,7 +76,7 @@ function PropertyLocation(props) {
                     <div className='col-md-12  ms-2'>
                     <h4 className='mt-4 welcome fs-4'>Fill Up Your Address</h4>
                     <h6 className='mess mt-3 mb-4 ms-2'>
-                            Enter full address to attract whit <br />New user & customer
+                            Enter full address to attract with <br />New user & customer
                         </h6>
                     <div className='mt-5'>
                         <input onChange={(event)=>{userAddress=event.target.value}} id='textarea1' placeholder='Your Full Address Here' type='text'/>

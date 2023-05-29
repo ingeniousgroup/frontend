@@ -7,6 +7,7 @@ import $ from 'jquery';
 import { useEffect, useRef } from "react";
 import { Navigate } from "react-router-dom";
 import Waves from "../../waves";
+import Swal from "sweetalert2";
 function Navbar( {search}) {
   useEffect(() => {
     $(".share").on("click", function (e) {
@@ -16,9 +17,7 @@ function Navbar( {search}) {
     });
   }, []);
   const navigate = useNavigate();
-  const propertyPost = () => {
-    navigate("/propertypost");
-  }
+  
   const { currentUser } = useSelector((state) => state.user);
   const dispatch = useDispatch();
   
@@ -27,12 +26,25 @@ function Navbar( {search}) {
     window.location.reload();
   }
   
-  const signupUser = () => {
-    navigate("/signup")
-  }
   
   const signinUser = () => {
-    navigate("/signin")
+    Swal.fire({
+      title: "Who you are??",
+      icon: "question",
+      buttons: true,
+      dangerMode: true,
+      confirmButtonText:'Owner',
+      cancelButtonText:'Tenant',
+      confirmButtonColor: '#3085d6',
+      showCancelButton: true,
+      cancelButtonColor: '#d33',
+  })
+      .then(async (willDelete) => {
+          if (willDelete.isConfirmed)
+            navigate('/signin',{state:{status:true}});  
+          else
+            navigate('/signin',{state:{status:false}});
+      });
   }
   
   const viewProfile = () => {
@@ -45,7 +57,7 @@ function Navbar( {search}) {
     <div className="container-fluid">
         <nav className="navbar navbar-expand-lg main-nav px-0  container-fluid bgc">
           <div className="navbar-brand" >
-          <img src={require('./logo-black.png')} />
+          {/* <img src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRPY36-ev8RAOnXC7MfOVMmpFHc6JkKFcJmzBARwa6GueWUY9rZRy8P9Wk-S8sIAp3uzps&usqp=CAU' style={{height:'100px'}}/> */}
           </div>
           <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#mainMenu" aria-controls="mainMenu" aria-expanded="false" aria-label="Toggle navigation">
             <span className="icon-bar icon-bar-1" />
@@ -58,20 +70,20 @@ function Navbar( {search}) {
                 <Link to='/' className=" active-first fs-5 font-weight-bold">Home</Link>
               </li>
               <li>
-                <a href="#about" className="fs-5 font-weight-bold " style={{opacity:"400%",fontWeight : "600px"}}>About </a>
+                <Link to="/aboutUs" className="fs-5 font-weight-bold " style={{opacity:"400%",fontWeight : "600px"}}>About </Link>
               </li>
               <li>
-                <a href="#service" className="fs-5 font-weight-bold">Services</a>
+                <Link to='/services' className="fs-5 font-weight-bold">Services</Link>
               </li>
               {currentUser?.role==='Tenant'?<></>:<li>
-                <Link onClick={propertyPost} className="fs-5  font-weight-bold">Post Property </Link>
+                <Link to='/propertypost' className="fs-5  font-weight-bold">Post Property </Link>
               </li>}
               <li>
                 <a href="#contact" className="fs-5 font-weight-bold ">Contact</a>
               </li>
               <li className="userIconStyle">
                 <div className='col-md-1'>
-                  <div className='share ms-3'>
+                  <div className='share ms-3 fa fa-bars mt-2'>
                       {!currentUser &&<div className="fab no " data-hover='SignIn' onClick={signinUser}></div>}
                       {currentUser && <div className="fab no " data-hover='SigOut' onClick={signout}></div>}
                       {/* <div className="fab no " data-hover='SignUp' onClick={signupUser}></div> */}

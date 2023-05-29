@@ -28,5 +28,11 @@ export default {
     REQUEST_LIST:'/tenant/requestList',
     USER_CHECK : '/user/checkUser',
     USER_SINGIN : '/user/createUser',
-    SEARCH_WITH_CATEGORY:'/tenant/searchWithCategory'
+    SEARCH_WITH_CATEGORY:'/tenant/searchWithCategory',
+    USER_CHECK : '/user/checkUser',
+    USER_SINGIN : '/user/createUser',
+    PROPERTY_DETAILS:'property/propertyDetails',
+    REMOVE_FROM_WISHLIST:'/tenant/removeFromWishList',
+    REQUEST_LIST:'/tenant/requestList',
+    PROPERTY_BY_FURNISHING:'/owner/findPropertyByCategory'
 }
