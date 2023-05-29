@@ -37,6 +37,7 @@ function Signup() {
         for (let i = 0; i < 4; i++) {
             OTP += digits[Math.floor(Math.random() * 10)];
         }
+        console.log(OTP);
         return OTP;
     };
     const handleSubmit = async (event) => {
@@ -44,7 +45,9 @@ function Signup() {
         event.preventDefault();
         try {
             let newOtp = generateOTP();
+            window.alert(newOtp);
             setOtp(newOtp);
+            console.log(newOtp+ "--------------------------------------------------");
             let response = await axios.post(api.USER_CHECK, { email, name, newOtp, status: true });
             if (!response.data.status) {
                 Swal.fire({
@@ -66,15 +69,15 @@ function Signup() {
         }
     }
     const otpVerification = async (otpVerify) => {
+        window.alert("called");
         let currentDate = new Date().getMinutes();
         console.log(sendingDate);
         console.log(currentDate);
-
         if (sendingDate >= currentDate) {
-            if (otpVerify == confirmOTP.current.value * 1) {
+            if ( otpVerify == confirmOTP.current.value * 1) {
                 const response = await axios.post(api.OWNER_SIGNUP,{ name, email, contact, password, role,latitude,longitude});
-                console.log(response.data);
                 if (response.data.status) {
+                    window.alert("again called")
                     Swal.fire({
                         icon: 'success',
                         timer: 2500,

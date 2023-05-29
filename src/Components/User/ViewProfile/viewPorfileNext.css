@@ -31,7 +31,7 @@
 .link:hover,.link1:hover,.link2:hover,.link3:hover{
     background-color: #439ff6;
     color: white;
-    border-radius: 2vh 2vh 2vh 2vh;
+    border-radius:1vh;
 }
 .proLast{
     height: 29%;
