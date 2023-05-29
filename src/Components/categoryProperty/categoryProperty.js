@@ -88,7 +88,7 @@ looking for an organization where a can gain skills and experience  */}
                     <div onClick={() => categorySelect("office","c")} id='c' className=' mt-3 fs-5 shadow p-2 sideBarButtons'>
                         Office
                     </div>
-                    <div onClick={() => categorySelect("others","d")} id='d' className=' mt-3 fs-5 shadow p-2 sideBarButtons'>
+                    <div onClick={() => categorySelect("other","d")} id='d' className=' mt-3 fs-5 shadow p-2 sideBarButtons'>
                         Others
                     </div>
                     <div onClick={() => categorySelect("formHouse","e")} id='e' className=' mt-3 fs-5 shadow p-2 sideBarButtons'>

@@ -8,6 +8,7 @@
 .sideBarButtons{
     border-radius: 1vh;
     background-color: white;
+    cursor: pointer;
 }
 .nothingFound{
     display: flex;

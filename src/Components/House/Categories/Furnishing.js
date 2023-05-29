@@ -1,5 +1,23 @@
+import { useEffect, useState } from "react";
 import "./furnishing.css";
+import axios from "axios";
+import api from "../../../redux-config/WebApi/api";
 function Furnishing(){
+  const [furnished,setFurnished] = useState(0);
+  const [unFurnished,setUnFurnished] = useState(0);
+  const [semiFurnished,setSemiFurnished] = useState(0);
+
+  useEffect(()=>{
+    propertyCounter();
+  },[]);
+  const propertyCounter = async()=>{
+    let response = await axios.post(api.PROPERTY_BY_FURNISHING, { category: "semiFurnished" });
+    setSemiFurnished(response.data.propertyDetails.length);
+    let response1 = await axios.post(api.PROPERTY_BY_FURNISHING, { category: "furnished" });
+    setFurnished(response1.data.propertyDetails.length);
+    let response2 = await axios.post(api.PROPERTY_BY_FURNISHING, { category: "unFurnished" });
+    setUnFurnished(response2.data.propertyDetails.length);
+  }
   return <>
   <div id="fur-header">
     <h1>Home By Furnishing</h1>
@@ -11,13 +29,13 @@ function Furnishing(){
         <img src="images/furnished.webp" />
       </div>
       <div className="card-text">
-      <p className="card-meal-type">Semi Furnished</p>
+      <p className="card-meal-type">Furnished</p>
         <h2 className="card-title">Furnished</h2>
         <p className="card-body">
         A furnished room or house is available to be rented together with the furniture in it.
         </p>
       </div>
-      <div className="card-price">516+</div>
+      <div className="card-price">{semiFurnished-1}+</div>
     </div>
     <div className="fur-card">
       <div className="card-image"style={{borderRadius:'20px'}}>
@@ -30,7 +48,7 @@ function Furnishing(){
        Semi furnished house usually has some pieces of furniture.
         </p>
       </div>
-      <div className="card-price">112+</div>
+      <div className="card-price">{semiFurnished-1}+</div>
     </div>
     <div className="fur-card">
       <div className="card-image"style={{borderRadius:'20px'}}>
@@ -43,7 +61,7 @@ function Furnishing(){
         Unfurnished property is less expensive than furnished houses since there are appliances provided.
         </p>
       </div>
-      <div className="card-price">420+</div>
+      <div className="card-price">{unFurnished}+</div>
     </div>
     
   </div>
