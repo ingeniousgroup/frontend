@@ -17,14 +17,16 @@ const slice = createSlice({
         isLoading: false,
         error: null
     },
+    reducers:{
+        setWishList:(state,action)=>{
+          state.propertyList = action.payload
+        }
+    },
     extraReducers: (builder) => {
         builder.addCase(wishList.pending, (state, action) => {
             state.isLoading = true;
         }).addCase(wishList.fulfilled, (state, action) => {
-
-
             state.propertyList.push(action.payload);
-
             state.isLoading = false;
         }).addCase(wishList.rejected, (state, action) => {
             state.isLoading = false;
@@ -32,5 +34,5 @@ const slice = createSlice({
         })
     }
 });
-
+export const {setWishList} = slice.actions;
 export default slice.reducer;

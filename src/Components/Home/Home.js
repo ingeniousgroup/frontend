@@ -1,5 +1,4 @@
 import Navbar from "../Headers.js/Navbar/navbar";
-
 import { useDispatch, useSelector } from "react-redux";
 import RecommendedProperties from "../House/nearByHouse";
 import Categories from "../House/Categories/categories";
@@ -21,7 +20,6 @@ import ViweProfile from "../User/ViewProfile/viewProfile";
 import NavebarNext from "../Headers.js/Navbar/navbarNext";
 import Subscription from "../House/subscription/subscription";
 import apiEndPoint from "../../redux-config/WebApi/api";
-
 import Plot from "../House/PostPropertyForms/plots/plot";
 import TenantProfile from "../User/ViewProfile/tenantProfile";
 import Furnishing from "../House/Categories/Furnishing";
@@ -29,46 +27,54 @@ import SubscriptionProtected from "../subscriptionProtected/subscriptionProtecte
 import { showSubscription } from "../../redux-config/subscriptionSlice";
 import ViewProfileNext from "../User/ViewProfile/viewProfileNext";
 import TenantProfile1 from "../User/ViewProfile/tenantProfile1";
+import Spinner from "../Spinner/Spinner";
+import Footer from "../Footer/Footer";
 import Office from "../House/PostPropertyForms/Office/office";
 import AboutUs from "../aboutUS/about";
 import Services from "../Services/services";
 import CategoryProperty from "../categoryProperty/categoryProperty";
+
 function Home(){
   
   const [flag, setFlag] = useState(true);
   const [searchText,setSerachText] = useState("");
   const [propertyList, setPropertyList] = useState([]);
+  const [category,setCategory] = useState("");
 
-  const loadProperty =async(searchText)=>{
+  const loadProperty =async(searchText,category)=>{
     try {
       var response ;
-      if(!searchText)
+      if(searchText=="" && category == "")
           response = await axios.get(apiEndPoint.PROPERTY_LIST);
-      else{
-        setFlag(false);
+      else if(searchText&&category==""){
         response = await axios.post(apiEndPoint.SEARCH,{address: searchText}); 
+      }else if(searchText||category){
+        response = await axios.post(apiEndPoint.SEARCH_WITH_CATEGORY,{address:searchText,category:category}); 
       }
         
       if(response.data.status){
+        console.log(response.data.property)
         setPropertyList(response.data.property);
-
       }
     } catch (err) {
       // setError("Oops somthing went Wrong");
     }
   }
-  const search = searchText =>{
+  const search = (searchText , category) =>{
     setSerachText(searchText);
+    setCategory(category);
+    console.log(category);
+    console.log(searchText)
   }
 
   useEffect(()=>{
-     loadProperty(searchText);
-  },[searchText]);
+     loadProperty(searchText,category);
+  },[searchText,category]);
 
   
 
   return <>
-  
+     {/* <Spinner/> */}
     <Routes>
         <Route path="/" element={<Property search={search} propertyList={propertyList}/>}/> 
         <Route path="/propertypost" element={<ProtectedRoute><SubscriptionProtected><PostProperty/></SubscriptionProtected></ProtectedRoute>}/>
@@ -91,7 +97,7 @@ function Home(){
         <Route path="/services" element={<Services/>}/>
         <Route path="/categoryProperty" element={<CategoryProperty/>}/>
     </Routes>
-
+   <Footer/>
   </>
 }
 

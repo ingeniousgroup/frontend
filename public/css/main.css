@@ -130,7 +130,9 @@ body {
     
   }
   .bgc{
-    background-color: rgba(0,0,0,0.6) !important;
+    /* background-color: rgba(0,0,0,0.6) !important; */
+    background-image: linear-gradient(30deg, #0048bd, #44a7fd) !important;
+
   }
   
   .main-header.fixed-nav {

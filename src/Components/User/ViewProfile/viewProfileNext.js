@@ -61,7 +61,19 @@ function ViewProfileNext() {
             });
     }
 
-    const ownerFunctionality = async (identify) => {
+    const ownerFunctionality = async (identify,id) => {
+        document.getElementById('p').style.backgroundColor = "white";
+        document.getElementById('q').style.backgroundColor = "white";
+        document.getElementById('r').style.backgroundColor = "white";
+        document.getElementById('s').style.backgroundColor = "white";
+        document.getElementById('p').style.color = "black";
+        document.getElementById('q').style.color = "black";
+        document.getElementById('r').style.color = "black";
+        document.getElementById('s').style.color = "black";
+        let perform = document.getElementById(id);
+        perform.style.backgroundColor = "#439ff6";
+        perform.style.color = "white";
+        perform.style.borderRadius = "0.8vh";
         if (identify == 'request') {
             dispatch(tenantRequest(currentUser));
             setAllRequest(requestTenant);
@@ -144,23 +156,23 @@ function ViewProfileNext() {
 
                     </div><hr />
                     <div className='ms-2 profileContent p-4'>
-                        <Link className='l ' onClick={() => ownerFunctionality("details")}>
-                            <div className='b-b-default link p-2'>
+                        <Link className='l '  onClick={() => ownerFunctionality("details",'p')}>
+                            <div className='b-b-default link p-2' id='p'>
                                 <i class="fa fa-tags"></i>Your Property
                             </div>
                         </Link>
-                        <Link className='l' onClick={() => ownerFunctionality('profile')}>
-                            <div className=' link1 p-2 b-b-default'>
+                        <Link className='l'  onClick={() => ownerFunctionality('profile','q')}>
+                            <div className=' link1 p-2 b-b-default' id='q'>
                                 <i class="fa fa-user-circle-o"></i> View Profile
                             </div>
                         </Link>
-                        <Link className='l' onClick={() => ownerFunctionality("request")}>
-                            <div className=' link2 p-2 b-b-default'>
+                        <Link className='l'  onClick={() => ownerFunctionality("request",'r')}>
+                            <div className=' link2 p-2 b-b-default' id='r'>
                                 <i class="fa fa-crosshairs"></i> All Requests
                             </div>
                         </Link>
-                        <Link className='l' onClick={() => ownerFunctionality('subscription')}>
-                            <div className=' link3 p-2 b-b-default'>
+                        <Link className='l'  onClick={() => ownerFunctionality('subscription','s')}>
+                            <div className=' link3 p-2 b-b-default' id='s'>
                                 <i class="fa fa-random"></i> Subscription
                             </div>
                         </Link>

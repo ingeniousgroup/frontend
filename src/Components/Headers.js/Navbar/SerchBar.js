@@ -16,9 +16,8 @@ function SearchBar({search}){
         }});
     });
     }
-    const [searchText, setSearchText] = useState("");
     const [category,setCategory] = useState("");
-   
+
     const debounce = (func, wait) => {
       let timeout;
     
@@ -53,31 +52,45 @@ function SearchBar({search}){
 
     const handleEvent=(event)=>{
       // handler(event);
-      setSearchText(event.target.value);
-      SearchBar(searchText);
+      search(event.target.value, category);
+
     }
    
-    const changeCategory = (category)=>{
-       setCategory(category);
+    const changeColor = (no)=>{
+      for (var i = 1; i <= 5; i++) {
+        if (i == no) {
+          var obj = document.getElementById("cat" + no);
+          obj.style.color = "#2775ea";
+        } else {
+          var obj = document.getElementById("cat" + i);
+          obj.style.color = "gray";
+        }
+      }
+
+    }
+    const changeCategory = (category,no)=>{
+      changeColor(no);
+      // document.getElementById(category).style.color = "red";
+      setCategory(category);
     }
     return <>
     <div className="searchBarSection m-auto">
               <div className="categriesInSearchBar">
                 <div className="row ">
                    <div className="col-2 categriesInSearchBartextdiv ">
-                       <span onClick={()=>changeCategory("house")} >House</span>
+                       <span onClick={()=>changeCategory("house",1)} id="cat1" >Villa</span>
                    </div>
-                   <div className="col-2 categriesInSearchBartextdiv">
-                       <span onClick={()=>changeCategory("flate")}>Flate</span>
+                   <div className="col-2 categriesInSearchBartextdiv" >
+                       <span onClick={()=>changeCategory("flat",2)} id="cat2">Flate</span>
                    </div>
-                   <div className="col-2 categriesInSearchBartextdiv">
-                       <span onClick={()=>changeCategory("office")}>Office</span>
+                   <div className="col-2 categriesInSearchBartextdiv" >
+                       <span onClick={()=>changeCategory("office",3)} id="cat3">Office</span>
                    </div>
-                   <div className="col-2 categriesInSearchBartextdiv">
-                       <span onClick={()=>changeCategory("shop")} >Shop</span>
+                   <div className="col-2 categriesInSearchBartextdiv" >
+                       <span onClick={()=>changeCategory("formHouse",4)} id="cat4" >FarmHouse</span>
                    </div>
-                   <div className="col-2 categriesInSearchBartextdiv">
-                       <span onClick={()=>changeCategory("apartment")}>Apartment</span>
+                   <div className="col-2 categriesInSearchBartextdiv" >
+                       <span onClick={()=>changeCategory("others",5)} id="cat5">Other</span>
                    </div>
                 </div>
               </div>
@@ -104,7 +117,7 @@ function SearchBar({search}){
                       <div className="col-10 ">
                         <input  className="searchInputStyle"  
                          placeholder="Search property"        
-                         value={searchText}
+                         //  value={searchText}
                          onChange={handleEvent}/>
                       </div>
                     </div>

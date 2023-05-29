@@ -55,7 +55,6 @@ function Navbar( {search}) {
   }
   return <header className="main-header" style={{marginBottom:"10vh"}}>
     <div className="container-fluid">
-      <div className="navbardivBackgroundColor" >
         <nav className="navbar navbar-expand-lg main-nav px-0  container-fluid bgc">
           <div className="navbar-brand" >
           {/* <img src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRPY36-ev8RAOnXC7MfOVMmpFHc6JkKFcJmzBARwa6GueWUY9rZRy8P9Wk-S8sIAp3uzps&usqp=CAU' style={{height:'100px'}}/> */}
@@ -99,8 +98,6 @@ function Navbar( {search}) {
           <SearchBar search={search} />
         </div>
       </div>
-    </div>
-    {/* /.container */}
   </header>
 }
 

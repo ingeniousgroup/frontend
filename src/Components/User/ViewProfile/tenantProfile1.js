@@ -48,7 +48,7 @@ function TenantProfile1() {
   return (
     <>
       <NavebarNext />
-      <div className="mt-1"></div>
+      {/* <div className=""></div> */}
       <aside>
         <p> Menu </p>
         <a href="javascript:void(0)" onClick={() => tenantFunctions("profile")}>
