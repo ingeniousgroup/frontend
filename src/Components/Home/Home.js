@@ -97,7 +97,6 @@ function Home(){
         <Route path="/services" element={<Services/>}/>
         <Route path="/categoryProperty" element={<CategoryProperty/>}/>
     </Routes>
-   <Footer/>
   </>
 }
 

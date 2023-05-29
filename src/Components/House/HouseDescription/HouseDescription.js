@@ -7,6 +7,8 @@ import api from "../../../redux-config/WebApi/api";
 import { useSelector } from "react-redux";
 import NavebarNext from "../../Headers.js/Navbar/navbarNext";
 import Swal from "sweetalert2";
+import Footer from "../../Footer/Footer";
+import { event } from "jquery";
 
 function HouseDescription() {
   // var otp;
@@ -22,9 +24,19 @@ function HouseDescription() {
   const [otpflage, setOtpflage] = useState(false);
   const [propertyDetails, setPropertyDetails] = useState({});
 
-  useEffect(()=>{
-    console.log(state);
-  },[])
+  useEffect(() => {
+    proDetails();
+  }, []);
+  const proDetails = () => {
+    axios.post(api.PROPERTY_DETAILS, { propertyId: state.property._id }).then(result => {
+      setPropertyDetails(result.data.propertyDetails);
+      console.log(state.property);
+      console.log(result.data.propertyDetails)
+    }).catch(err => {
+      console.log(err);
+    })
+
+  }
 
   const checkUser = async () => {
     Swal.fire({
@@ -74,6 +86,9 @@ function HouseDescription() {
     document.getElementById("topImage").src = event.target.src;
     event.target.src = temp;
   };
+  const updated = () => {
+    window.alert("this feature is under working....");
+  }
   return (
     <>
       <NavebarNext />
@@ -106,7 +121,7 @@ function HouseDescription() {
               {(!currentUser?.role == "Owner") && <div className="col-6">
                 <div className="row p-4">
                   <div className="col-6 offset-1">
-                    <a onClick={checkUser} style={{cursor :'pointer'}} className="btn-connect">
+                    <a onClick={checkUser} style={{ cursor: 'pointer' }} className="btn-connect">
                       <span></span>
                       <span></span>
                       <span></span>
@@ -124,7 +139,7 @@ function HouseDescription() {
               </div>}
               {(currentUser?.role == "Owner") && <div className="col-6">
                 <div className="row p-4">
-                  <div className="col-6 offset-1">
+                  <div className="col-6 offset-1" onClick={updated}>
                     <a className="btn-connect">
                       <span></span>
                       <span></span>
@@ -132,7 +147,6 @@ function HouseDescription() {
                       <span></span>
                       <h6>
                         Update Property
-
                       </h6>
                     </a>
                   </div>
@@ -164,17 +178,17 @@ function HouseDescription() {
             <div className="row mt-2">
               <div className="col-6 mt-4">
                 <h6 className="config fs-4"><i class="fa fa-tags fs-5 text-primary"></i>Configuration</h6>
-                <span className="fs-5 ms-4">2 bedroom , 2 bathrooms</span>
+                <span className="fs-5 ms-4">balcony : {propertyDetails.balconies}<br/><span className="ms-4">Floors : </span>{propertyDetails.floor}</span>
               </div>
               <div className="col-6 mt-4">
                 <h6 className="config fs-4"><i class="fa fa-superpowers text-primary" aria-hidden="true"></i>Description</h6>
                 <span className="config-data ms-4">
-                  Amazing House .....
+                {state.property.description}
                 </span>
               </div>
               <div className="col-6 mt-4">
                 <h6 className="config fs-4"><i class="fa fa-location-arrow text-primary fs-4"></i>Area</h6>
-                <span className="config-data ms-4">Indore</span>
+                <span className="config-data ms-4">{state.property.locationAddress}</span>
               </div>
               <div className="col-6 mt-4">
                 <h6 className="config fs-4"><i class="fa fa-map-marker text-primary fs-4"></i>Address</h6>
@@ -182,7 +196,7 @@ function HouseDescription() {
               </div>
               <div className="col-6 mt-4">
                 <h6 className="config fs-4"><i class="fa fa-bed text-primary fs-4"></i>Furnishing</h6>
-                <span className="config-data ms-4">Semi Furnished</span>
+                <span className="config-data ms-4">{propertyDetails.furnshing}</span>
               </div>
               <div className="col-6 mt-4">
                 <h6 className="config fs-4"><i class="fa fa-calendar-o text-primary fs-4"></i>Posted On</h6>
@@ -192,7 +206,9 @@ function HouseDescription() {
           </div>
         </div>
       </div>
+      <Footer />
     </>
+
   );
 }
 

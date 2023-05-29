@@ -66,10 +66,10 @@ function ViewProfileNext() {
         document.getElementById('q').style.backgroundColor = "white";
         document.getElementById('r').style.backgroundColor = "white";
         document.getElementById('s').style.backgroundColor = "white";
-        document.getElementById('p').style.color = "black";
-        document.getElementById('q').style.color = "black";
-        document.getElementById('r').style.color = "black";
-        document.getElementById('s').style.color = "black";
+        document.getElementById('p').style.color = "#439ff6";
+        document.getElementById('q').style.color = "#439ff6";
+        document.getElementById('r').style.color = "#439ff6";
+        document.getElementById('s').style.color = "#439ff6";
         let perform = document.getElementById(id);
         perform.style.backgroundColor = "#439ff6";
         perform.style.color = "white";
@@ -244,7 +244,7 @@ function ViewProfileNext() {
                                                                 </div>
                                                                 <div class="col-sm-6">
                                                                     <p class="m-b-10 f-w-600 fs-6">Check Your Properties</p>
-                                                                    <h6 class="text-dark f-w-400 fs-6" onClick={() => ownerFunctionality("details")}><Link>Click Here</Link></h6>
+                                                                    <h6 class="text-dark f-w-400 fs-6" onClick={() => ownerFunctionality("details",'p')}><Link>Click Here</Link></h6>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -315,7 +315,6 @@ function ViewProfileNext() {
                                 </div>
                                 <div className='col-4 pt-4 ps-5 ms-1'>
                                     <button className='btn btn-danger' onClick={() => removeProperty(data)}>Remove Property</button>
-                                    <button className='btn btn-primary ms-2' data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">Reviews</button>
                                     <div class="collapse" id="collapseExample" style={{ position: "relative" }}>
                                         <div class="card card-body">
                                             Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.

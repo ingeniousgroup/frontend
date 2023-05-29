@@ -47,8 +47,9 @@ div img{
 .config{
   font-size: .8rem;
   font-style: normal;
-  font-weight: 500;
-  color: black;
+  font-weight: 600;
+  color: rgb(122, 121, 121);
+
 }
 
 .config-data{
