@@ -17,7 +17,7 @@ function Services() {
                             <h1 className='text-center mt-3 WildData'><b>Furnished !</b></h1>
                             <h5 className='mt-5 dataa'>
                                 A furnished room or house is available to be rented together with the furniture in it.
-                                furnished is very amazing home like you want.........
+                                furnished is very amazing home <b>click on image........</b>
                             </h5>
                         </div>
                         <div className='col-6 blue'>
@@ -36,13 +36,13 @@ function Services() {
                 <div className='col-5 border semi_furnishing shadow'>
                     <div className='row'>
                         <div className='col-6 blue'>
-                            <img onClick={()=>categoryClick("unfurnished")} src='/images/unfurnished.jpg' className='semifurImage' />
+                            <img onClick={()=>categoryClick("unFurnished")} src='/images/unfurnished.jpg' className='semifurImage' />
                         </div>
                         <div className='col-6 blue p-2'>
                             <h1 className='text-center mt-3 WildData'><b>Unfurnished!</b></h1>
                             <h5 className='mt-5 dataa'>
                                 A furnished room or house is available to be rented together with the furniture in it.
-                                furnished is very amazing home like you want.........
+                                furnished is very amazing home<b>click on image........</b>
                             </h5>
                         </div>
                     </div>
@@ -54,7 +54,7 @@ function Services() {
                         <div className='col-6 '>
                             <h1 className='text-center mt-3 WildData'><b>Semi-Furnished !</b></h1>
                             <h5 className='mt-5 dataa'>
-                                To the door of this, the twelfth house whose bell he had rung, came a housekeeper who made him think of an unwholesome, surfeited worm that had eaten its 
+                                To the door of this, the twelfth house whose bell he had rung, came a housekeeper who made him think of an unwholesome,<b>click on image........</b>
                             </h5>
                         </div>
                         <div className='col-6 blue'>
