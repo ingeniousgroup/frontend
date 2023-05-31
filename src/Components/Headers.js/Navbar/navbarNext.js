@@ -30,8 +30,9 @@ function NavebarNext({ search }) {
 
     const handleEvent = (event) => {
         // handler(event);
-        setSearchText(event.target.value);
-        search(searchText);
+        // setSearchText();
+        console.log(event.target.value);
+        search(event.target.value);
     }
 
     const signout = () => {
@@ -101,13 +102,13 @@ function NavebarNext({ search }) {
                                 <div className='col-4  text-right'>
                                     <select className='option '>
                                         <option>
-                                            indore
+                                            Indore
                                         </option>
                                         <option>
-                                            ujjain
+                                            Ujjain
                                         </option>
                                         <option>
-                                            bhopal
+                                            Bhopal
                                         </option>
                                     </select>
                                 </div>

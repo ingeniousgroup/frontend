@@ -18,12 +18,12 @@ function ViewProfileNext() {
     const [allRequest, setAllRequest] = useState([]);
     const [allProperty, setAllProperty] = useState([]);
     const [subscriptionData, setSubscriptionData] = useState('');
-
+    const [disableAction, setDisableAction] = useState(false);
     useEffect(() => {
         setAllProperty(properties);
     }, [properties]);
 
-    
+
     const rejectRequest = (data) => {
         Swal.fire({
             title: "Are you sure to reject this request?",
@@ -44,6 +44,7 @@ function ViewProfileNext() {
                         });
                     }, 300)
                     dispatch(removeTenantRequest(data));
+                    let response = await axios.post(api.UPDATE_REQUEST,{_id:data._id,status:true});
                     setAllRequest(prevItems => prevItems.filter(item => item !== data));
                 } else {
                     setTimeout(() => {
@@ -61,7 +62,7 @@ function ViewProfileNext() {
             });
     }
 
-    const ownerFunctionality = async (identify,id) => {
+    const ownerFunctionality = async (identify, id) => {
         document.getElementById('p').style.backgroundColor = "white";
         document.getElementById('q').style.backgroundColor = "white";
         document.getElementById('r').style.backgroundColor = "white";
@@ -82,8 +83,9 @@ function ViewProfileNext() {
             console.log("*")
         }
         else if (identify == 'subscription') {
+            console.log("called")
             let response = await axios.post(api.SHOW_SUBSCRIPTION, { userId: currentUser._id })
-            console.log(response.data.subscriptionList);
+            console.log(response);
             setSubscriptionData(response.data.subscriptionList);
         }
         setBehave(identify)
@@ -139,6 +141,49 @@ function ViewProfileNext() {
             });
 
     }
+    const acceptedRequest = async (index, data) => {
+        Swal.fire({
+            title: "Are you sure to accept this request....",
+            icon: "question",
+            buttons: true,
+            dangerMode: true,
+            confirmButtonColor: '#3085d6',
+            showCancelButton: true,
+            cancelButtonColor: '#d33',
+        })
+            .then(async (willDelete) => {
+                if (willDelete.isConfirmed) {
+                    setTimeout(() => {
+                        Swal.fire({
+                            title: "Request Acceped",
+                            icon: "success",
+                            buttons: false,
+                        });
+                    }, 300)
+                    document.getElementById("accept" + index).style.visibility = "hidden";
+                    let dom = document.getElementById("reject" + index);
+                    dom.innerHTML = "accepted";
+                    dom.style.border = "1px solid green";
+                    dom.style.color = "green";
+                    setDisableAction(true);
+                    setTimeout(() => {
+                        dispatch(removeTenantRequest(data));
+                        setAllRequest(prevItems => prevItems.filter(item => item !== data));
+                    }, 5000);
+                } else {
+                    setTimeout(() => {
+                    }, 1000)
+
+                    setTimeout(() => {
+                        Swal.fire({
+                            title: "Request Pending......",
+                            icon: 'error',
+                            buttons: false
+                        });
+                    }, 300);
+                }
+            });
+    }
     return <>
         <NavebarNext />
         <div className='container-fluid viewProfile'>
@@ -156,22 +201,22 @@ function ViewProfileNext() {
 
                     </div><hr />
                     <div className='ms-2 profileContent p-4'>
-                        <Link className='l '  onClick={() => ownerFunctionality("details",'p')}>
+                        <Link className='l ' onClick={() => ownerFunctionality("details", 'p')}>
                             <div className='b-b-default link p-2' id='p'>
                                 <i class="fa fa-tags"></i>Your Property
                             </div>
                         </Link>
-                        <Link className='l'  onClick={() => ownerFunctionality('profile','q')}>
+                        <Link className='l' onClick={() => ownerFunctionality('profile', 'q')}>
                             <div className=' link1 p-2 b-b-default' id='q'>
                                 <i class="fa fa-user-circle-o"></i> View Profile
                             </div>
                         </Link>
-                        <Link className='l'  onClick={() => ownerFunctionality("request",'r')}>
+                        <Link className='l' onClick={() => ownerFunctionality("request", 'r')}>
                             <div className=' link2 p-2 b-b-default' id='r'>
                                 <i class="fa fa-crosshairs"></i> All Requests
                             </div>
                         </Link>
-                        <Link className='l'  onClick={() => ownerFunctionality('subscription','s')}>
+                        <Link className='l' onClick={() => ownerFunctionality('subscription', 's')}>
                             <div className=' link3 p-2 b-b-default' id='s'>
                                 <i class="fa fa-random"></i> Subscription
                             </div>
@@ -244,7 +289,7 @@ function ViewProfileNext() {
                                                                 </div>
                                                                 <div class="col-sm-6">
                                                                     <p class="m-b-10 f-w-600 fs-6">Check Your Properties</p>
-                                                                    <h6 class="text-dark f-w-400 fs-6" onClick={() => ownerFunctionality("details",'p')}><Link>Click Here</Link></h6>
+                                                                    <h6 class="text-dark f-w-400 fs-6" onClick={() => ownerFunctionality("details", 'p')}><Link>Click Here</Link></h6>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -268,7 +313,7 @@ function ViewProfileNext() {
                                             </div>
                                             <div className='col-4 offset-1 p-3'>
                                                 <h1 className='mt-4 text-white heading ms-4 fs-2 '>
-                                                    <label><i class="fa fa-inr fs-2" aria-hidden="true"></i></label>{subscriptionData.subscriptionPrice} <label >pack !</label>
+                                                    <label><i class="fa fa-inr fs-2" aria-hidden="true"></i></label>{subscriptionData?.subscriptionPrice} <label >pack !</label>
                                                 </h1>
                                             </div>
                                         </div>
@@ -279,7 +324,7 @@ function ViewProfileNext() {
                                                 </h5>
                                                 <h3 className='text-success'>
                                                     <img src="/images/sand.gif" style={{ width: "20%", marginRight: "7vh" }} />
-                                                    {subscriptionData.startDate}
+                                                    {subscriptionData?.startDate}
                                                 </h3>
                                             </div>
                                             <div className='col-6  endDate p-3'>
@@ -288,7 +333,7 @@ function ViewProfileNext() {
                                                 </h5>
                                                 <h3 className='text-danger'>
                                                     <img src="/images/sand.gif" style={{ width: "20%", marginRight: "7vh" }} />
-                                                    {subscriptionData.subscriptionExpiry}
+                                                    {subscriptionData?.subscriptionExpiry}
                                                 </h3>
                                             </div>
                                         </div>
@@ -299,52 +344,52 @@ function ViewProfileNext() {
                         </>}
                         {behave == 'details' && <>
                             <div className='rightside'>
-                            {allProperty?.map((data, indext) => <div className='row dataPhoto p-3 mb-3 '>
-                                <div className='col-2 ps-4'>
-                                    <img src={api.PORT + data.imagesUrlArray[0]} height={125} id='img1' width={230} onClick={() => viewDescription(data)} />
-                                </div>
-                                <div className='col-2  pt-4 ps-5 text-left' style={{ marginLeft: "85px" }}>
-                                    <h6 className='fs-6'><i class="fa fa-list-ul fs-5 text-primary" aria-hidden="true"></i>
-                                        {data.description.substring(0, 70) + "......"}</h6>
-                                </div>
-                                <div className='col-3  ps-5 pt-2'>
-                                    <p className='fs-5'><i class="fa fa-street-view fs-3" aria-hidden="true"></i>
-                                        {data.address}</p>
-                                    <p className='text-danger'><i className="fa fa-clock-o" aria-hidden="true"></i>
-                                        Posted At : {data.date}</p>
-                                </div>
-                                <div className='col-4 pt-4 ps-5 ms-1'>
-                                    <button className='btn btn-danger' onClick={() => removeProperty(data)}>Remove Property</button>
-                                    <div class="collapse" id="collapseExample" style={{ position: "relative" }}>
-                                        <div class="card card-body">
-                                            Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
+                                {allProperty?.map((data, indext) => <div className='row dataPhoto p-3 mb-3 '>
+                                    <div className='col-2 ps-4'>
+                                        <img src={api.PORT + data.imagesUrlArray[0]} height={125} id='img1' width={230} onClick={() => viewDescription(data)} />
+                                    </div>
+                                    <div className='col-2  pt-4 ps-5 text-left' style={{ marginLeft: "85px" }}>
+                                        <h6 className='fs-6'><i class="fa fa-list-ul fs-5 text-primary" aria-hidden="true"></i>
+                                            {data.description.substring(0, 70) + "......"}</h6>
+                                    </div>
+                                    <div className='col-3  ps-5 pt-2'>
+                                        <p className='fs-5'><i class="fa fa-street-view fs-3" aria-hidden="true"></i>
+                                            {data.address}</p>
+                                        <p className='text-danger'><i className="fa fa-clock-o" aria-hidden="true"></i>
+                                            Posted At : {data.date}</p>
+                                    </div>
+                                    <div className='col-4 pt-4 ps-5 ms-1'>
+                                        <button className='btn btn-danger' onClick={() => removeProperty(data)}>Remove Property</button>
+                                        <div class="collapse" id="collapseExample" style={{ position: "relative" }}>
+                                            <div class="card card-body">
+                                                Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
 
-                            </div>)}
+                                </div>)}
                             </div>
                         </>}
                         {behave == 'request' && <>
-                        <div className='rightside'>
-                            {allRequest?.map((data, indext) => <div className='row mt-2 dataPhoto p-3'>
-                                <div className='col-3 '>
-                                    <img src={api.PORT + data.propertyId?.imagesUrlArray[0]} height={130} id='img1' width={230} />
-                                </div>
-                                <div className='col-3  pt-3'>
-                                    <h6 className='fs-6'>{data.userId.name}</h6>
-                                    <h6 className='fs-6'>{data.userId.contact}</h6>
-                                    <h6 className='fs-6'>{data.userId.email}</h6>
-                                </div>
-                                <div className='col-3 mt-3 pt-2'>
-                                    <p className='fs-4'>{ }</p>
-                                    <p className='text-danger'>Requested At : {data.date}</p>
-                                </div>
-                                <div className='col-3 pt-4 mt-2'>
-                                    <button className='btn btn-outline-success'>Accept</button>
-                                    <button className='btn btn-outline-danger ms-2' onClick={() => rejectRequest(data)}>Reject</button>
-                                </div>
-                            </div>)}
+                            <div className='rightside'>
+                                {allRequest?.map((data, indext) => <div className='row mt-2 dataPhoto p-3'>
+                                    <div className='col-3 '>
+                                        <img src={api.PORT + data.propertyId?.imagesUrlArray[0]} height={130} id='img1' width={230} />
+                                    </div>
+                                    <div className='col-3  pt-3'>
+                                        <h6 className='fs-6'>{data.userId.name}</h6>
+                                        <h6 className='fs-6'>{data.userId.contact}</h6>
+                                        <h6 className='fs-6'>{data.userId.email}</h6>
+                                    </div>
+                                    <div className='col-3 mt-3 pt-2'>
+                                        <p className='fs-4'>{ }</p>
+                                        <p className='text-danger'>Requested At : {data.date}</p>
+                                    </div>
+                                    <div className='col-3 pt-4 mt-2'>
+                                        <button className='btn btn-outline-success' id={"accept" + indext} onClick={() => acceptedRequest(indext, data)}>Accept</button>
+                                        <button disabled={disableAction} className='btn btn-outline-danger ms-2' id={"reject" + indext} onClick={() => rejectRequest(data)}>Reject</button>
+                                    </div>
+                                </div>)}
                             </div>
                         </>}
                     </div>

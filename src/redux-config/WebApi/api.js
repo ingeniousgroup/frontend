@@ -35,5 +35,6 @@ export default {
     REMOVE_FROM_WISHLIST:'/tenant/removeFromWishList',
     REQUEST_LIST:'/tenant/requestList',
     PROPERTY_BY_FURNISHING:'/owner/findPropertyByCategory',
-    PROPERTY_BY_CATEGORY:'/owner/findByCategory'
+    PROPERTY_BY_CATEGORY:'/owner/findByCategory',
+    UPDATE_REQUEST:'/owner/updateRequest'
 }

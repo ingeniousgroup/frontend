@@ -65,6 +65,7 @@ function HouseDescription() {
             status: true,
             ownerId: state.property.userId
           });
+
         } else {
           setTimeout(() => {
           }, 1000)
@@ -116,7 +117,7 @@ function HouseDescription() {
             <div className="row">
               <div className="col-6 p-2">
                 <h2><b>{state.property?.houseCategory.toUpperCase()} for rent</b></h2>
-                <h3><i class="fa fa-inr fs-2 text-primary" aria-hidden="true"></i>{state.property?.rent} /-</h3>
+                {(!currentUser || currentUser.role == "Tenant")&& <h3><i class="fa fa-inr fs-2 text-primary" aria-hidden="true"></i>{state.property?.rent} /-</h3>}
               </div>
               {(!currentUser?.role == "Owner") && <div className="col-6">
                 <div className="row p-4">
@@ -139,17 +140,7 @@ function HouseDescription() {
               </div>}
               {(currentUser?.role == "Owner") && <div className="col-6">
                 <div className="row p-4">
-                  <div className="col-6 offset-1" onClick={updated}>
-                    <a className="btn-connect">
-                      <span></span>
-                      <span></span>
-                      <span></span>
-                      <span></span>
-                      <h6>
-                        Update Property
-                      </h6>
-                    </a>
-                  </div>
+                <h3><i class="fa fa-inr fs-2 text-primary" aria-hidden="true"></i>{state.property?.rent} /-</h3>
                 </div>
               </div>}
               {(currentUser?.role == "Tenant") && <div className="col-6">
@@ -178,7 +169,7 @@ function HouseDescription() {
             <div className="row mt-2">
               <div className="col-6 mt-4">
                 <h6 className="config fs-4"><i class="fa fa-tags fs-5 text-primary"></i>Configuration</h6>
-                <span className="fs-5 ms-4">balcony : {propertyDetails.balconies}<br/><span className="ms-4">Floors : </span>{propertyDetails.floor}</span>
+                <span className="fs-5 ms-4">balcony : {propertyDetails.balconies} , <span className="">Floors : </span>{propertyDetails.floor}</span>
               </div>
               <div className="col-6 mt-4">
                 <h6 className="config fs-4"><i class="fa fa-superpowers text-primary" aria-hidden="true"></i>Description</h6>

@@ -1,6 +1,6 @@
 body {
   font-family: 'Muli', sans-serif;
-  background-color: white !important;
+  /* background-color: white !important; */
 }
 
 
@@ -14,11 +14,11 @@ body {
   z-index: 1;
   text-decoration: none;
 }
-
+/* 
 .main-header.fixed-nav #mainMenu li>a {
   color: #fff;
   text-decoration: none;
-}
+} */
 
 #mainMenu li:not(:last-of-type) {
   margin-right: 30px;
@@ -78,23 +78,23 @@ body {
   -webkit-transition: all 0.4s ease;
   transition: all 0.4s ease;
 }
-
+/* 
 .navbar-brand {
   color: #fff;
   background-color: #dc3545;
-}
+} */
 
-.navbar-brand span {
+/* .navbar-brand span {
   font-style: italic;
   font-weight: 500;
   font-size: 22px;
   text-shadow: 2px 2px 2px solid black;
-}
+} */
 
-.main-header .navbar-brand img {
+/* .main-header .navbar-brand img {
   max-width: 40px;
   animation: fadeInLeft 0.4s both 0.4s;
-}
+} */
 
 /* main-header end */
 @media (max-width: 991px) {
@@ -314,7 +314,8 @@ body {
   background-color: white;
   z-index: 1000;
   /* box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 2px 0px; */
-  box-shadow: rgba(0, 0, 0, 0.15) 0px 3px 3px 0px;
+  /* box-shadow: rgba(0, 0, 0, 0.15) 0px 3px 3px 0px; */
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
 }
 
 .categriesInSearchBar {
@@ -839,9 +840,9 @@ body {
 .logoimg-n{
  /* width: 100% !important;
  height: 100% !important; */
- margin-top: -4%;
+ margin-top: -2%;
  position: absolute;
- height: 160px;
- 
+ height: 150px;
+
  width:13%;
 }

@@ -1,4 +1,4 @@
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import "./tenantProfile1.css";
 import NavebarNext from "../../Headers.js/Navbar/navbarNext";
 import { useEffect, useState } from "react";
@@ -6,6 +6,7 @@ import api from "../../../redux-config/WebApi/api";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import RequestList from "./RequestList";
+import { removeUser } from "../../../redux-config/UserSlice";
 
 function TenantProfile1() {
   var { propertyList } = useSelector((state) => state.wishList);
@@ -14,6 +15,7 @@ function TenantProfile1() {
   propertyList = propertyList[0];
   const [propertyItem, setPropertyItem] = useState([]);
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   useEffect(() => {
     setPropertyItem(propertyList);
@@ -39,12 +41,15 @@ function TenantProfile1() {
       userId: currentUser._id,
       propertyId: id,
     });
-    console.log(response);
     if (response.data.status) {
-      alert("removed from wishList");
       setPropertyItem(p);
     }
   };
+
+  const signout = () => {
+    dispatch(removeUser());
+    window.location.reload();
+  }
   return (
     <>
       <NavebarNext />
@@ -66,20 +71,13 @@ function TenantProfile1() {
           <i className="fa fa-laptop" aria-hidden="true" />
           Request
         </a>
-        <a
-          href="javascript:void(0)"
-          onClick={() => tenantFunctions("wishList")}
-        >
-          <i className="fa fa-clone" aria-hidden="true" />
-          Shared with me
-        </a>
 
         <a
           href="javascript:void(0)"
-          onClick={() => tenantFunctions("wishList")}
+          onClick={signout}
         >
           <i className="fa fa-trash-o" aria-hidden="true" />
-          Trash
+          Logout
         </a>
       </aside>
       <div className="container container-div">

@@ -5,6 +5,7 @@ import {useNavigate} from "react-router";
 import {useState} from "react";
 import NavebarNext from "../../Headers.js/Navbar/navbarNext";
 import { setWishList } from "../../../redux-config/wishListSlice";
+import './SearchProperty.css'
 function SearchingProperty({ propertyList, search }) {
   
   const { currentUser } = useSelector((state) => state.user);
@@ -55,6 +56,14 @@ function SearchingProperty({ propertyList, search }) {
     <>
     <NavebarNext search={search} />
       <div className="container">
+      <div className="ripple-background">
+      <div className="circle xxlarge shade1" />
+      <div className="circle xlarge shade2" />
+      <div className="circle large shade3" />
+      <div className="circle mediun shade4" />
+      <div className="circle small shade5" />
+    </div>
+
         <div className="mt-5"></div>
         <div className="row">
           {!error &&

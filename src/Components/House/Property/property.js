@@ -45,7 +45,7 @@ function Property({ propertyList, search }) {
     let response = await axios.post(apiEndPoint.ADD_TO_WISHLIST, {
       userId: currentUser._id,
       propertyId: property._id,
-    });
+    }); 
     if (response.data.status) {
       document.getElementById("like" + index).style.color = "red";
       console.log(pro);
@@ -73,7 +73,7 @@ function Property({ propertyList, search }) {
     <>
       <Navbar search={search} />
       {/* search={search}  ye navbar se nikala hai isko navbar me attach krna hai as a props */}
-      <Navbar search={search} />
+      {/* <Navbar search={search} /> */}
       {pixelFlag && <NavebarNext search={search} />}
       {/* {!pixelFlag && } */}
       <div style={{ marginTop: "102px" }}>
@@ -102,7 +102,7 @@ function Property({ propertyList, search }) {
                     Deposite {property.rent} per month
                   </div>
                   <div className="profile-icons">
-                    {currentUser && checkIfLike(property._id) ? (
+                    {currentUser?.role!="Owner"  && checkIfLike(property._id) ? (
                       <a onClick={() => addToCart(property, index)}>
                         <i
                           id={"like" + index}
@@ -111,7 +111,7 @@ function Property({ propertyList, search }) {
                           aria-hidden="true"
                         ></i>
                       </a>
-                    ) : currentUser ? (
+                    ) : currentUser?.role!="Owner" ? (
                       <a onClick={() => addToCart(property, index)}>
                         <i
                           id={"like" + index}

@@ -8,6 +8,7 @@ import { useEffect, useRef } from "react";
 import { Navigate } from "react-router-dom";
 import Waves from "../../waves";
 import Swal from "sweetalert2";
+import { viewProperty } from "../../../redux-config/propertyOfOwnerSlice";
 function Navbar({ search }) {
   useEffect(() => {
     $(".share").on("click", function (e) {
@@ -45,6 +46,7 @@ function Navbar({ search }) {
   };
 
   const viewProfile = () => {
+    dispatch(viewProperty(currentUser));
     if (currentUser?.role == "Owner") navigate("/viewProfile");
     else navigate("/viewTenantProfile");
   };
