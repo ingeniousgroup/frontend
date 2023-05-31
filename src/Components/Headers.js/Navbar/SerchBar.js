@@ -1,138 +1,178 @@
-import { event } from "jquery";
-import debounce from "lodash.debounce";
-import { useCallback, useState } from "react";
-import { useDispatch } from "react-redux";
+import axios from "axios";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-function SearchBar({search}){
-  const navigate =  useNavigate();
-    const nearBySearch = ()=>{
-      navigator.geolocation.getCurrentPosition((position) => {
-        let latitude = position.coords.latitude;
-        let longitude = position.coords.longitude;
-        navigate("/nearByhouse",{state:{
-          latitude,
-          longitude
-        }});
+function SearchBar({ search }) {
+  const navigate = useNavigate();
+  const [latitude, setLatitude] = useState("");
+  const [longitude, setLongitude] = useState("");
+  const [city, setCity] = useState("");
+  const [placeholder, setPlacholder] = useState("");
+  const [text, setText] = useState("");
+  const nearBySearch = () => {
+    navigate("/nearByhouse", {
+      state: {
+        latitude,
+        longitude,
+      },
     });
+  };
+  const [category, setCategory] = useState("");
+  const handleEvent = (event) => {
+    setText(event.target.value);
+    // search(event.target.value, category);
+  };
+
+  const changeColor = (no) => {
+    for (var i = 1; i <= 5; i++) {
+      if (category == "")
+        document.getElementById("cat" + i).style.color = "gray";
+
+      if (i == no) document.getElementById("cat" + no).style.color = "#2775ea";
+      else document.getElementById("cat" + i).style.color = "gray";
     }
-    const [category,setCategory] = useState("");
+  };
+  const changeCategory = (category, no) => {
+    changeColor(no);
+    // document.getElementById(category).style.color = "red";
+    setCategory(category);
+  };
 
-    const debounce = (func, wait) => {
-      let timeout;
-    
-      // This is the function that is returned and will be executed many times
-      // We spread (...args) to capture any number of parameters we want to pass
-      return function executedFunction(...args) {
-    
-        // The callback function to be executed after 
-        // the debounce time has elapsed
-        const later = () => {
-          // null timeout to indicate the debounce ended
-          timeout = null;
-          
-          // Execute the callback
-          func(...args);
-        };
-        // This will reset the waiting every function execution.
-        // This is the step that prevents the function from
-        // being executed because it will never reach the 
-        // inside of the previous setTimeout  
-        clearTimeout(timeout);
-        
-        // Restart the debounce waiting period.
-        // setTimeout returns a truthy value (it differs in web vs Node)
-        timeout = setTimeout(later, wait);
-      };
-    };
-    
-    var returnedFunction = debounce(function() {
-      // All the taxing stuff you do
-    }, 3000);
+  const dynamicPlaceholder = () => {
+    let arr = [
+      "Search Indore..",
+      "Select Category",
+      "Search 5000",
+      "Shop",
+      "Farmhouse",
+    ];
+    let i = 0;
+    const interval = setInterval(() => {
+      i++;
+      if (i == 4) i = 0;
+      setPlacholder(arr[i]);
+    }, 2000);
+  };
 
-    const handleEvent=(event)=>{
-      // handler(event);
-      search(event.target.value, category);
+  const searching = () => {
+    search(text, category);
+    navigate("/searching");
+  };
 
-    }
-   
-    const changeColor = (no)=>{
-      for (var i = 1; i <= 5; i++) {
-        if (i == no) {
-          var obj = document.getElementById("cat" + no);
-          obj.style.color = "#2775ea";
-        } else {
-          var obj = document.getElementById("cat" + i);
-          obj.style.color = "gray";
-        }
+  useEffect(() => {
+    navigator.geolocation.getCurrentPosition(async (position) => {
+      setLatitude(position.coords.latitude);
+      setLongitude(position.coords.longitude);
+      let response = await axios.get(
+        "https://api.opencagedata.com/geocode/v1/json?q=" +
+          position.coords.latitude +
+          "+" +
+          position.coords.longitude +
+          "&key=87f70e732bbd44d984f351fc57d3e4cc"
+      );
+      console.log(response);
+      let arr = response.data.results[0].formatted.split(",");
+      console.log(arr.length);
+      let str = arr[arr.length - 3].trim();
+      console.log(str);
+      let i = 0;
+      for (i = 0; i < str.length; i++) {
+        if (str.charAt(i) == " ") break;
       }
+      str = str.slice(0, i);
+      setCity(str);
+    });
+    dynamicPlaceholder();
+  }, []);
 
-    }
-    const changeCategory = (category,no)=>{
-      changeColor(no);
-      // document.getElementById(category).style.color = "red";
-      setCategory(category);
-    }
-    return <>
-    <div className="searchBarSection m-auto">
-              <div className="categriesInSearchBar">
-                <div className="row ">
-                   <div className="col-2 categriesInSearchBartextdiv ">
-                       <span onClick={()=>changeCategory("house",1)} id="cat1" >Villa</span>
-                   </div>
-                   <div className="col-2 categriesInSearchBartextdiv" >
-                       <span onClick={()=>changeCategory("flat",2)} id="cat2">Flate</span>
-                   </div>
-                   <div className="col-2 categriesInSearchBartextdiv" >
-                       <span onClick={()=>changeCategory("office",3)} id="cat3">Office</span>
-                   </div>
-                   <div className="col-2 categriesInSearchBartextdiv" >
-                       <span onClick={()=>changeCategory("formHouse",4)} id="cat4" >FarmHouse</span>
-                   </div>
-                   <div className="col-2 categriesInSearchBartextdiv" >
-                       <span onClick={()=>changeCategory("others",5)} id="cat5">Other</span>
-                   </div>
-                </div>
-              </div>
-              <div className="searchBar">
-                <div className="row ">
-                   <div className="col-2">
-                   <div className="dropdown">
-                      <span className=" dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-expanded="false">
-                        <span>Top Cities</span>
-                      </span>
-                      <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                        <li><a className="dropdown-item" href="#">Australia</a></li>
-                        <li><a className="dropdown-item" href="#">India</a></li>
-                        <li><a className="dropdown-item" href="#">United States</a></li>
-                      </ul>
-                    </div>
-             
-                   </div>
-                   <div className="col-7 searchBarDiv">
-                    <div className="row">
-                      <div className="col-2  serchIconStyle">
-                        <i className="fa fa-search" aria-hidden="true"></i>
-                      </div>
-                      <div className="col-10 ">
-                        <input  className="searchInputStyle"  
-                         placeholder="Search property"        
-                         //  value={searchText}
-                         onChange={handleEvent}/>
-                      </div>
-                    </div>
-                   </div>
-                   <div className="col-1 serchBarImgDiv ">
-                     <span onClick={nearBySearch}> <img className="serchBarImg" src="images/gpsImage.png"/></span>
-                   </div>
-                  
-                   <div className="col-2 searchBarButton">
-                     <button className="btn btn-primary">Search</button>
-                   </div>
-                </div>
-              </div>
+  return (
+    <>
+      <div className="searchBarSection m-auto">
+        <div className="categriesInSearchBar">
+          <div className="row ">
+            <div className="col-2 categriesInSearchBartextdiv ">
+              <span onClick={() => changeCategory("house", 1)} id="cat1">
+                Villa
+              </span>
+            </div>
+            <div className="col-2 categriesInSearchBartextdiv">
+              <span onClick={() => changeCategory("flat", 2)} id="cat2">
+                Flate
+              </span>
+            </div>
+            <div className="col-2 categriesInSearchBartextdiv">
+              <span onClick={() => changeCategory("office", 3)} id="cat3">
+                Office
+              </span>
+            </div>
+            <div className="col-2 categriesInSearchBartextdiv">
+              <span onClick={() => changeCategory("formHouse", 4)} id="cat4">
+                FarmHouse
+              </span>
+            </div>
+            <div className="col-2 categriesInSearchBartextdiv">
+              <span onClick={() => changeCategory("others", 5)} id="cat5">
+                Other
+              </span>
+            </div>
           </div>
-          </>
+        </div>
+        <div className="searchBar">
+          <div className="row ">
+            <div className="col-2">
+              <center>
+                <h5 className="mt-3 ml-1 text-primary">
+                  {city}
+                  {"  "}
+                  <i class="fa fa-map-marker" aria-hidden="true"></i>
+                </h5>
+              </center>
+            </div>
+            <div className="col-7 searchBarDiv">
+              <div className="row">
+                <div className="col-2  serchIconStyle">
+                  <i className="fa fa-search" aria-hidden="true"></i>
+                </div>
+                <div className="col-10 ">
+                  {category && (
+                    <button
+                      onClick={() => setCategory("")}
+                      className="categoryButton"
+                    >
+                      {category}
+                      <span>
+                        <i
+                          class="fa fa-times text-dark ml-2"
+                          aria-hidden="true"
+                        ></i>{" "}
+                      </span>
+                    </button>
+                  )}
+                  <input
+                    className="searchInputStyle"
+                    placeholder={placeholder}
+                    // value={searchText}
+                    onChange={handleEvent}
+                  />
+                </div>
+              </div>
+            </div>
+            <div className="col-1 serchBarImgDiv ">
+              <span onClick={nearBySearch}>
+                {" "}
+                <img className="serchBarImg" src="images/gpsImage.png" />
+              </span>
+            </div>
+            <div className="col-2 searchBarButton">
+              <button onClick={searching} className="btn btn-primary">
+                Search
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </>
+  );
 }
 
 export default SearchBar;

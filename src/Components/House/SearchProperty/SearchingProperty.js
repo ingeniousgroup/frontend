@@ -1,15 +1,12 @@
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import apiEndPoint from "../../../redux-config/WebApi/api";
-import { useNavigate } from "react-router";
-import {useState } from "react";
-import Furnishing from "../Categories/Furnishing";
+import {useNavigate} from "react-router";
+import {useState} from "react";
 import NavebarNext from "../../Headers.js/Navbar/navbarNext";
-import Navbar from "../../Headers.js/Navbar/navbar";
 import { setWishList } from "../../../redux-config/wishListSlice";
-function Property({ propertyList, search }) {
-  const [flag, setFlag] = useState(true);
-  const [pixelFlag, setPixelFlag] = useState(false);
+function SearchingProperty({ propertyList, search }) {
+  
   const { currentUser } = useSelector((state) => state.user);
   var pro = useSelector((state) => state.wishList);
   const navigate = useNavigate();
@@ -28,12 +25,8 @@ function Property({ propertyList, search }) {
 
   const checkIfLike = (id) => {
     var w = pro.propertyList[0]?.find((item) => item.propertyId?._id == id);
-    console.log(w);
-    if (w) {
-      console.log("-----1");
-      return true;
-    }
-    return false;
+    if (w) return true;
+     return false;
   };
 
   const signinUser = () => {
@@ -41,14 +34,12 @@ function Property({ propertyList, search }) {
   };
 
   const addToCart = async (property, index) => {
-    console.log(property);
     let response = await axios.post(apiEndPoint.ADD_TO_WISHLIST, {
       userId: currentUser._id,
       propertyId: property._id,
     });
     if (response.data.status) {
       document.getElementById("like" + index).style.color = "red";
-      console.log(pro);
       dispatch(setWishList(pro.propertyList[0].push(property)));
     } else {
       document.getElementById("like" + index).style.color = "white";
@@ -60,35 +51,15 @@ function Property({ propertyList, search }) {
     }
   };
 
-  window.onscroll = () => {
-    if (window.scrollY >= 450) {
-      // console.log(search);
-      setPixelFlag(true);
-    } else {
-      setPixelFlag(false);
-    }
-  };
-
   return (
     <>
-      <Navbar search={search} />
-      {/* search={search}  ye navbar se nikala hai isko navbar me attach krna hai as a props */}
-      {pixelFlag && <NavebarNext search={search} />}
-      {/* {!pixelFlag && } */}
-      <div style={{ marginTop: "102px" }}>
-        {flag && (
-          <div>
-            <Furnishing />
-          </div>
-        )}
-      </div>
-
+    <NavebarNext search={search} />
       <div className="container">
+        <div className="mt-5"></div>
         <div className="row">
           {!error &&
             propertyList.map((property, index) => (
               <div key={index} className="col-md-3">
-                {/* onClick={()=>viewDescription(property)} */}
                 <div className="profile-card-2">
                   <img
                     src={apiEndPoint.PORT + property?.imagesUrlArray[0]}
@@ -163,4 +134,4 @@ function Property({ propertyList, search }) {
     </>
   );
 }
-export default Property;
+export default SearchingProperty;

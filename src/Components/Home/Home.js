@@ -33,6 +33,7 @@ import Office from "../House/PostPropertyForms/Office/office";
 import AboutUs from "../aboutUS/about";
 import Services from "../Services/services";
 import CategoryProperty from "../categoryProperty/categoryProperty";
+import SearchingProperty from "../House/SearchProperty/SearchingProperty";
 
 function Home(){
   
@@ -77,6 +78,7 @@ function Home(){
      {/* <Spinner/> */}
     <Routes>
         <Route path="/" element={<Property search={search} propertyList={propertyList}/>}/> 
+        <Route path="/searching" element = {<SearchingProperty search={search} propertyList={propertyList} />}/>
         <Route path="/propertypost" element={<ProtectedRoute><SubscriptionProtected><PostProperty/></SubscriptionProtected></ProtectedRoute>}/>
         <Route path="/villa" element={<ProtectedRoute><Flate/></ProtectedRoute>}/>
         <Route path="/plot" element={<ProtectedRoute><Flate/></ProtectedRoute>}/>
