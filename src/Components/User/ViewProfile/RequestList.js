@@ -42,19 +42,19 @@ function RequestList(){
                         <tr>
                           <th>#</th>
                           <th>PropertyName</th>
-                          <th>Age</th>
-                          <th>Job Title</th>
-                          <th>City</th>
+                          <th>Date</th>
+                          <th>Your Message</th>
+                          <th>Owner</th>
                           <th>Action</th>
                         </tr>
                       </thead>
                       <tbody>
                         {list?.map((item,index)=> <tr>
                           <td>{index+1}</td>
+                          <td>Plot</td>
                           <td>{item.date}</td>
-                          <td>31</td>
                           <td>{item.message}</td>
-                          <td>Sinaai-Waas</td>
+                          <td>Vijay Vishwkarma</td>
                           <td>
                             {/* <ul className="action-list">
                               <li>

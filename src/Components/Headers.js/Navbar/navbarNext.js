@@ -30,8 +30,9 @@ function NavebarNext({ search }) {
 
     const handleEvent = (event) => {
         // handler(event);
-        setSearchText(event.target.value);
-        search(searchText);
+        // setSearchText();
+        console.log(event.target.value);
+        search(event.target.value);
     }
 
     const signout = () => {
