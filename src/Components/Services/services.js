@@ -9,9 +9,9 @@ function Services() {
     }
     return <>
         <NavebarNext />
-        <div className='container-fluid serviceMain p-4 '>
+        <div className='container-fluid serviceMain p-4'>
             <div className='row d-flex justify-content-between p-3'>
-                <div className='col-5 border furnishing shadow'>
+                <div className='col-sm-12  col-lg-5 border furnishing shadow'>
                     <div className='row'>
                         <div className='col-6 p-3'>
                             <h1 className='text-center mt-3 WildData'><b>Furnished !</b></h1>
@@ -25,7 +25,7 @@ function Services() {
                         </div>
                     </div>
                 </div>
-                <div className='col-5 border'>
+                <div className=' col-sm-12 col-lg-5 border'>
 
                 </div>
             </div>

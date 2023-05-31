@@ -62,11 +62,11 @@ function Signin() {
     return <>
     <NavebarNext/>
         <section className="section container">
-            <div className="row " style={{ boxShadow: "5px 8px 15px black" }}>
+            <div className="row ">
                 <div className="col-md-6 p-0 ">
                     <img src="/images/icon2.jpg" id="logimg" height="100%" width="100%" alt="Image Loading" />
                 </div>
-                <div className="col-md-6" id="sec">
+                <div className="col-md-6 border" id="sec">
                     <br />
                     <hr className='text-white'/>
                     <form onSubmit={handleSubmit}>
