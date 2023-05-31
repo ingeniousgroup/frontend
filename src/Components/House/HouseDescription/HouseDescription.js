@@ -65,6 +65,7 @@ function HouseDescription() {
             status: true,
             ownerId: state.property.userId
           });
+          
         } else {
           setTimeout(() => {
           }, 1000)
@@ -178,7 +179,7 @@ function HouseDescription() {
             <div className="row mt-2">
               <div className="col-6 mt-4">
                 <h6 className="config fs-4"><i class="fa fa-tags fs-5 text-primary"></i>Configuration</h6>
-                <span className="fs-5 ms-4">balcony : {propertyDetails.balconies}<br/><span className="ms-4">Floors : </span>{propertyDetails.floor}</span>
+                <span className="fs-5 ms-4">balcony : {propertyDetails.balconies} , <span className="">Floors : </span>{propertyDetails.floor}</span>
               </div>
               <div className="col-6 mt-4">
                 <h6 className="config fs-4"><i class="fa fa-superpowers text-primary" aria-hidden="true"></i>Description</h6>

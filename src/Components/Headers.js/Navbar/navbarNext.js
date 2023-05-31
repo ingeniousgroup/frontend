@@ -101,13 +101,13 @@ function NavebarNext({ search }) {
                                 <div className='col-4  text-right'>
                                     <select className='option '>
                                         <option>
-                                            indore
+                                            Indore
                                         </option>
                                         <option>
-                                            ujjain
+                                            Ujjain
                                         </option>
                                         <option>
-                                            bhopal
+                                            Bhopal
                                         </option>
                                     </select>
                                 </div>
