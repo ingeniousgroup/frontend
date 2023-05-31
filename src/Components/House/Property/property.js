@@ -73,6 +73,7 @@ function Property({ propertyList, search }) {
     <>
       <Navbar search={search} />
       {/* search={search}  ye navbar se nikala hai isko navbar me attach krna hai as a props */}
+      {/* <Navbar search={search} /> */}
       {pixelFlag && <NavebarNext search={search} />}
       {/* {!pixelFlag && } */}
       <div style={{ marginTop: "102px" }}>

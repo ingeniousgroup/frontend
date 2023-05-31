@@ -21,6 +21,10 @@ import NavebarNext from "../Headers.js/Navbar/navbarNext";
 import Subscription from "../House/subscription/subscription";
 import apiEndPoint from "../../redux-config/WebApi/api";
 import Plot from "../House/PostPropertyForms/plots/plot";
+<<<<<<< HEAD
+=======
+// import TenantProfile from "../User/ViewProfile/tenantProfile";
+>>>>>>> f74f688c3041ee1c247271e0f27a01521a90c414
 import Furnishing from "../House/Categories/Furnishing";
 import SubscriptionProtected from "../subscriptionProtected/subscriptionProtected";
 import { showSubscription } from "../../redux-config/subscriptionSlice";
@@ -98,7 +102,6 @@ function Home(){
         <Route path="/services" element={<Services/>}/>
         <Route path="/categoryProperty" element={<CategoryProperty/>}/>
     </Routes>
-   <Footer/>
   </>
 }
 

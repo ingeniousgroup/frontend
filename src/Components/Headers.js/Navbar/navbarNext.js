@@ -102,13 +102,13 @@ function NavebarNext({ search }) {
                                 <div className='col-4  text-right'>
                                     <select className='option '>
                                         <option>
-                                            indore
+                                            Indore
                                         </option>
                                         <option>
-                                            ujjain
+                                            Ujjain
                                         </option>
                                         <option>
-                                            bhopal
+                                            Bhopal
                                         </option>
                                     </select>
                                 </div>
@@ -136,7 +136,7 @@ function NavebarNext({ search }) {
                                     </Link>
                                 </div>
                                 <div className='col-md-3 d-flex justify-content-end'>
-                                    <button className='btn  rounded-pill btn-light mt-1 post'>
+                                    <button className='btn  rounded-pill btn-light mt-1 post' onClick={()=>navigate("/aboutUs")}>
                                         About
                                     </button>
                                 </div>
