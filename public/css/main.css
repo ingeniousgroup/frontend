@@ -81,6 +81,7 @@ body {
 
 .navbar-brand {
   color: #fff;
+  background-color: #dc3545;
 }
 
 .navbar-brand span {
@@ -330,7 +331,7 @@ body {
 
 
 .categriesInSearchBar span {
-  color: grey;
+  color: black;
   font-size: 18px;
 }
 
@@ -417,6 +418,11 @@ body {
 .serchBarImg {
   height: 40px;
   width: 40px;
+}
+
+.serchBarImgDiv :hover {
+   box-shadow: rgba(3, 102, 214, 0.3) 0px 0px 0px 3px;
+   border-radius: 50%;
 }
 
 .searchBarButton {
@@ -822,4 +828,20 @@ body {
 
 .like-icon  :hover{
   color: aqua !important ; 
+}
+.categoryButton{
+  border-radius: 20px 20px;
+  padding: 1px 5px 1px 10px ;
+  border: 2px solid #44a7fd;
+  color: #0048bd;
+}
+
+.logoimg-n{
+ /* width: 100% !important;
+ height: 100% !important; */
+ margin-top: -4%;
+ position: absolute;
+ height: 160px;
+ 
+ width:13%;
 }
