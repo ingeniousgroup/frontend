@@ -21,7 +21,7 @@ import NavebarNext from "../Headers.js/Navbar/navbarNext";
 import Subscription from "../House/subscription/subscription";
 import apiEndPoint from "../../redux-config/WebApi/api";
 import Plot from "../House/PostPropertyForms/plots/plot";
-import TenantProfile from "../User/ViewProfile/tenantProfile";
+// import TenantProfile from "../User/ViewProfile/tenantProfile";
 import Furnishing from "../House/Categories/Furnishing";
 import SubscriptionProtected from "../subscriptionProtected/subscriptionProtected";
 import { showSubscription } from "../../redux-config/subscriptionSlice";

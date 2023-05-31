@@ -65,7 +65,7 @@ function HouseDescription() {
             status: true,
             ownerId: state.property.userId
           });
-          
+
         } else {
           setTimeout(() => {
           }, 1000)
@@ -117,7 +117,7 @@ function HouseDescription() {
             <div className="row">
               <div className="col-6 p-2">
                 <h2><b>{state.property?.houseCategory.toUpperCase()} for rent</b></h2>
-                <h3><i class="fa fa-inr fs-2 text-primary" aria-hidden="true"></i>{state.property?.rent} /-</h3>
+                {(!currentUser || currentUser.role == "Tenant")&& <h3><i class="fa fa-inr fs-2 text-primary" aria-hidden="true"></i>{state.property?.rent} /-</h3>}
               </div>
               {(!currentUser?.role == "Owner") && <div className="col-6">
                 <div className="row p-4">
@@ -140,17 +140,7 @@ function HouseDescription() {
               </div>}
               {(currentUser?.role == "Owner") && <div className="col-6">
                 <div className="row p-4">
-                  <div className="col-6 offset-1" onClick={updated}>
-                    <a className="btn-connect">
-                      <span></span>
-                      <span></span>
-                      <span></span>
-                      <span></span>
-                      <h6>
-                        Update Property
-                      </h6>
-                    </a>
-                  </div>
+                <h3><i class="fa fa-inr fs-2 text-primary" aria-hidden="true"></i>{state.property?.rent} /-</h3>
                 </div>
               </div>}
               {(currentUser?.role == "Tenant") && <div className="col-6">
