@@ -113,7 +113,7 @@ function NavebarNext({ search }) {
                                     </select>
                                 </div>
                                 <div className='col-8 text-left '>
-                                    <input value={searchText}
+                                    <input 
                                         onChange={handleEvent} type='text' className=' inputfield' placeholder='&nbsp;&nbsp;Search Something' />
                                     <label className='searchicon'>
                                         <i className="fa fa-search icon" aria-hidden="true"></i>
