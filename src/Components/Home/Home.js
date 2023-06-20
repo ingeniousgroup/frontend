@@ -33,6 +33,7 @@ import AboutUs from "../aboutUS/about";
 import Services from "../Services/services";
 import CategoryProperty from "../categoryProperty/categoryProperty";
 import SearchingProperty from "../House/SearchProperty/SearchingProperty";
+import Contact from "../contactUs/contact";
 
 function Home(){
   
@@ -96,6 +97,7 @@ function Home(){
         <Route path="/nearByhouse" element={<NearByHouse/>}/>
         <Route path="/aboutUs" element={<AboutUs/>}></Route>
         <Route path="/services" element={<Services/>}/>
+        <Route path="/contact" element={<Contact/>}/>
         <Route path="/categoryProperty" element={<CategoryProperty/>}/>
     </Routes>
   </>

@@ -105,9 +105,9 @@ function Navbar({ search }) {
                 </li>
               )}
               <li>
-                <a href="#contact" className="fs-5 font-weight-bold ">
+                <Link to="/contact" className="fs-5 font-weight-bold ">
                   Contact
-                </a>
+                </Link>
               </li>
               <li className="userIconStyle">
                 <div className="col-md-1">

@@ -51,10 +51,10 @@ function RequestList(){
                       <tbody>
                         {list?.map((item,index)=> <tr>
                           <td>{index+1}</td>
-                          <td>Plot</td>
+                          <td>{item.propertyId.houseCategory}</td>
                           <td>{item.date}</td>
                           <td>{item.message}</td>
-                          <td>Vijay Vishwkarma</td>
+                          <td>{item.propertyId.userId.name}</td>
                           <td>
                             {/* <ul className="action-list">
                               <li>
