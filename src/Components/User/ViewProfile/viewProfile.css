@@ -1,0 +1,45 @@
+.profileMain{
+    padding: 8vh;
+    margin-top: -14vh;
+}
+.rowmain{
+    height: 80vh;
+}
+.profileDiv{
+    display: flex;
+    justify-content: center;
+}
+.profileHeading{
+    font-size: 3vh;
+    font-family: candara;
+}
+.inside1,.inside2{
+    width: 100%;
+}
+.rowData,.rowDataDown{
+    box-shadow: 1px 1px 2px black;
+    border-radius: 20px;
+    background-color: beige;
+    /* padding: 5px 5px 5px 5px ; */
+}
+.rowData{
+    background-color: beige;
+}
+.leftSide{
+    box-shadow: 3px 3px 10px black;
+    
+}
+.rightSide{
+    height: 80vh;
+    margin-left: 13vh;
+    box-shadow: 3px 3px 10px black;
+    overflow-x: hidden;
+    overflow-y: auto;
+    text-align:justify;
+    scrollbar-width: none;
+}
+.fa-check{
+    float: right;
+    font-size: 1vh;
+
+}

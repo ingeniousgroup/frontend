@@ -1,0 +1,43 @@
+.welcome{
+    font-family: candara;
+    font-weight: 600;
+}
+.com-outer{
+    text-align: left;
+}
+.com-element{
+    cursor: pointer;
+    height: 5vh;
+    width: 12vh;
+    background-color: #ffffff;
+    border-radius: 4vh 4vh;
+    border: 0;
+    box-shadow: 2px 2px 3px black;
+}
+.com-element1{
+    cursor: pointer;
+    height: 5vh;
+    width: 17vh;
+    background-color: #ffffff;
+    border-radius: 4vh 4vh;
+    border: 0;
+    box-shadow: 2px 2px 3px black;
+}
+.com-element2{
+    
+    cursor: pointer;
+    height: 5vh;
+    width: 20vh;
+    background-color: #ffffff;
+    border-radius: 4vh 4vh;
+    border: 0;
+    box-shadow: 2px 2px 3px black;
+}
+.continue{
+    height: 7vh;
+    width: 13vh;
+    background-color: #2775ea;
+    border-radius: 1vh 1vh ;
+    border: 0;
+    color: white;
+}
